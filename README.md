@@ -563,3 +563,7 @@ Since then, it got a full re-write of the styles and many additional cool featur
 
 <!--START_SECTION:waka-->
 <!--END_SECTION:waka-->
+
+### Latest Youtube Video 📺
+<!-- YOUTUBE:START -->
+<!-- YOUTUBE:END -->
