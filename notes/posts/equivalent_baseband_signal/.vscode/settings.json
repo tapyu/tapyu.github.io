@@ -1,0 +1,44 @@
+// config VScode in order to make LaTeX run LuaLaTeX engine with bibLaTeX
+
+//use XeLaTeX or LuaLaTeX (I prefer Lua, btw)
+//ref: https://tex.stackexchange.com/questions/668851/which-font-should-i-use-to-get-julias-code-with-bold-letter-using-minted-in-xel
+// it must be added inside .vscode/settings.json of the latex project directory
+// these engines are required to compile several features that is incompatible with pdflatex, such as:
+// \usepackage{minted} package for writing code
+// \usepackage{luacolor} for provide underlining, strikethough, and highlighting using features in LuaLATEX which avoid the restrictions imposed by other methods
+// \usepackage[soul]{lua-ul} for expand the functionality of coloring, e.g., highlighting, font coloring and strikeouting
+
+{
+    "latex-workshop.latex.recipe.default": "lualatex -> biber -> lualatex*2",
+    "latex-workshop.latex.recipes": [
+        {
+          "name": "lualatex -> biber -> lualatex*2",
+          "tools": [
+            "lualatex",
+            "biber", // comment these
+            "lualatex", // lines if you
+            "lualatex" // aren't using biblatex
+          ]
+        }
+      ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "--shell-escape", // makes it compatible with \usepackage{minted}
+                // "-synctex=1", //  This enables the synctex feature, which allows for synchronization between the source LaTeX document and the resulting PDF file.
+                // "-interaction=nonstopmode", // errors and warnings will be displayed in the console output but compilation will not stop
+                // "-file-line-error", // provides the file name and line number where an error occurred. 
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+}
