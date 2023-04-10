@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twocolumn]{article}
 
 % 1. Type of article: Review article
 % 2. Aimed journals
@@ -104,5 +104,45 @@
 \newcommand{\ensureoperation}{\negmedspace {}} % To ensure that a new line symbol is an operation instead of a sign
 
 \begin{document}
-Mathematical origins of Disagreement Among Authors over equivalent baseband signals: A Systematic Investigation
+\title{Mathematical origins of disagreement among authors over equivalent baseband signals: a systematic investigation}
+\maketitle
+
+\begin{abstract}
+    Lowpass equivalent signals are frequently adopted in digital communications as they simplify the mathematical analysis of real-valued bandpass signals.  However, different author definitions may lead to inconsistencies in the signal formulation, which in turn leads to numerical errors in the simulation of communication systems. This article investigates the mathematical origins of such divergences, and which implications they have on the formulation of baseband equivalent signals. Moreover, the bit error rate of a binary phase-shift keying modem is determined via computational simulation, which evidences the discrepancy in the system performance when coherent definitions are not adopted.
+\end{abstract}
+\section{Introduction}
+
+\section{Divergences in mathematical definitions}
+
+\subsection{Autocorrelation function of complex-valued signals}
+
+\subsection{\(\sqrt{2}\) or \(2\) factor}
+
+\subsection{\(P\) factor}
+
+\subsection{One- or two-sided bandwidth}
+
+\section{implications on signal formulations}
+
+\subsection{Signal power and symbol energy}
+
+\subsubsection{Signal noise}
+\subsubsection{Noise power}
+\subsubsection{Autocorrelation function and power spectral density}
+
+\subsection{ADC converter}
+\subsubsection{Sampling}
+% put here the Nyquiest rate
+\subsubsection{Quantization}
+% put here the quantization error
+
+\subsection{Bit error probability (?)}
+
+\subsection{Signal-to-noise ratio (?)}
+
+\section{Numerical results}
+
+\section{Conclusion}
+
+
 \end{document}
