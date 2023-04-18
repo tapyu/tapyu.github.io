@@ -1,5 +1,5 @@
 const divIframe = document.querySelector('.frame');
-const url = 'https://api.github.com/repos/tapyu/courses/contents/notations_ref/main.pdf'
+const url = 'https://api.github.com/repos/tapyu/courses/contents/notes/posts/notations_ref/latex/main.pdf'
 
 fetch(url)
 .then(response => response.json())
