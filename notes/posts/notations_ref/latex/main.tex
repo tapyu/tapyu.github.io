@@ -1,0 +1,483 @@
+\documentclass{article}
+\pagenumbering{gobble}
+
+% redefine \maketitle
+\makeatletter % changes the catcode of @ to 11
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\LARGE \@title \par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author\\
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\large {\tt Version:}\@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother % changes the catcode of @ back to 12
+
+\usepackage{authblk}
+\input{default_preamble.tex}
+\NewDocumentCommand{\nossekE}{O{} m}{\ensuremath{\operatorname{\bf E}_{#1}\left[#2\right]}} % statistical expectation operator, e.g., \E[u]{x} or \E{x}
+
+\begin{document}
+\title{\textbf{Notation}  \vspace{-.3cm}}
+\author{Rubem Vasconcelos Pacelli\\
+  {\tt rubem.engenharia@gmail.com}}
+\affil{Department of Teleinformatics Engineering,\\Federal University of Ceará.\\Fortaleza, Ceará, Brazil. \vspace{-.5cm}}
+\maketitle
+
+\section{Font notation}
+\begin{xltabular}{\textwidth}{XX}
+  $a,b,c, \dots, A, B, C, \dots$ & Scalars \\
+  $\mathbf{a}, \mathbf{b}, \mathbf{c}, \dots$ & Vectors \\
+  $\mathbf{A}, \mathbf{B}, \mathbf{C}, \dots$ & Matrices \\
+  $\bm{\mathcal{A}}, \bm{\mathcal{B}}, \bm{\mathcal{C}}, \dots$ & Tensors \\
+  $A, B, C, \dots, \mathcal{A}, \mathcal{B}, \mathcal{C}, \dots, \mathbb{A}, \mathbb{B}, \mathbb{C}, \dots$ &  Sets\\
+\end{xltabular}
+
+\section{Signals and functions}
+\subsection{Time indexing}
+\begin{xltabular}{\textwidth}{p{5.7cm}X}
+    \(x(t)\) & Continuous-time \(t\)\\
+    \(x[n], x[k], x[m], x[i], \dots\) \(x_n, x_k, x_m, x_i, \dots\) \(x(n), x(k), x(m), x(i), \dots\) & Discrete-time \(n, k, m, i, \dots\) (parenthesis should be adopted only if there are no continuous-time signals in the context to avoid ambiguity) \\
+    \(x\left[ \left( \left( n - m \right) \right)_N \right], x \left( \left( n - m \right) \right)_N\) & Circular shift in \(m\) samples within a \(N\)-samples window \cite{ingleDigitalSignalProcessing2000,oppenheimDiscreteTimeSignalProcessing2009}
+\end{xltabular}
+\subsection{Common functions}
+\begin{xltabular}{\textwidth}{XX}
+    \(\delta(t)\) & Delta function\\
+    \(\delta[n], \delta_{i,j}\) & Kronecker function (\(n = i-j\))\\
+    \(h(t), h[n]\) & Impulse response (continuous and discrete time)\\
+    \(\tilde{x}[n], \tilde{x}(t)\) & Periodic discrete- or continuous-time signal\\
+    \(\hat{x}[n], \hat{x}(t)\) & Estimate of \(x[n]\) or \(x(t)\)\\
+    \(\dot{x}[m]\) & Interpolation of \(x[n]\)\\
+\end{xltabular}
+\subsection{Operations and symbols}
+\begin{xltabular}{\textwidth}{XX}
+    \(f: A \rightarrow B\)& A function \(f\) whose domain is \(A\) and codomain is \(B\)\\
+    \(\mathbf{f}: A \rightarrow \mathbb{R}^n\)& A vector-valued function \(\mathbf{f}\), i.e., \(n \geq 2\)\\
+    \(f^{n}, x^{n}(t), x^{n}[k]\) & \(n\)th power of the function \(f\), \(x[n]\) or \(x(t)\)\\
+    \(f^{\left( n \right)},  x^{(n)}(t)\) & \(n\)th derivative of the function \(f\) or \(x(t)\)\\
+    \(f', f^{\left( 1 \right)}, x'(t)\) & \(1\)th derivative of the function \(f\) or \(x(t)\)\\
+    \(f'', f^{\left( 2 \right)}, x''(t)\) & \(2\)th derivative of the function \(f\) or \(x(t)\)\\
+    \(\argmax[x \in \mathcal{A}]{f(x)} \) & Value of \(x\) that minimizes \(x\)\\
+    \( \argmin[x \in \mathcal{A}]{f(x)} \) & Value of \(x\) that minimizes \(x\)\\
+    \(f(\mathbf{x}) = \underset{\mathbf{y} \in \mathcal{A}}{\textnormal{inf }} g(\mathbf{x},\mathbf{y})\) & Infimum, i.e., \(f(\mathbf{x}) = \min{\left\{ g(\mathbf{x}, \mathbf{y}) \mid \mathbf{y} \in \mathcal{A} \wedge \left( \mathbf{x}, \mathbf{y} \right) \in \dom{g} \right\}}\), which is the greatest lower bound of this set \cite{boydConvexOptimization2004}\\
+    \(f(\mathbf{x}) = \underset{\mathbf{y} \in \mathcal{A}}{\textnormal{sup }} g(\mathbf{x},\mathbf{y})\) & Supremum, i.e., \(f(\mathbf{x}) = \max{\left\{ g(\mathbf{x}, \mathbf{y}) \mid \mathbf{y} \in \mathcal{A} \wedge \left( \mathbf{x}, \mathbf{y} \right) \in \dom{g} \right\}}\), which is the least upper bound of this set \cite{boydConvexOptimization2004}\\
+    \(f \circ g\) & Composition of the functions \(f\) and \(g\)\\
+    \(*\) & Convolution (discrete or continuous)\\
+    \(\circledast, \circconv{N}\) & Circular convolution \cite{oppenheimDiscreteTimeSignalProcessing2009,dinizDigitalSignalProcessing2010}\\
+\end{xltabular}
+\subsection{Transformations}
+\begin{xltabular}{\textwidth}{XX}
+    \(W_N\) & Twiddle factor, \(e^{-j\frac{2\pi}{N}}\) \cite{ingleDigitalSignalProcessing2000}\\
+    \(\mathcal{F}\left\{ \cdot \right\}\) & Fourier transform\\
+    \(\mathcal{L}\left\{ \cdot \right\}\) & Laplace transform\\
+    \(\mathcal{Z}\left\{ \cdot \right\}\) & \(z\)-transform\\
+    \(\hat{x}(t), \hat{x}[n]\) & Hilbert transform of \(x(t)\) or \(x[n]\)\\
+    \(X(s)\) & Laplace transform of \(x(t)\)\\
+    \(X(f)\) & Fourier transform (FT) (in linear frequency, \(\unit{\Hz}\)) of \(x(t)\)\\
+    \(X(j\omega)\) & Fourier transform (FT) (in angular frequency, \(\unit{\radian\per\sec}\)) of \(x(t)\)\\
+    \(X(e^{j\omega})\) & Discrete-time Fourier transform (DTFT) of \(x[n]\)\\
+    \(X[k], X(k), X_k\) & Discrete Fourier transform (DFT) or fast Fourier transform (FFT) of \(x[n]\), or even the Fourier series (FS) of the periodic signal \(x(t)\)\\
+    \(\tilde{X}[k], \tilde{X}(k), \tilde{X}_k\) & Discrete Fourier series (DFS) of \(\tilde{x}[n]\)\\
+    \(X(z)\) & \(z\)-transform of \(x[n]\)\\
+\end{xltabular}
+
+\section{Probability, statistics, and stochastic processes}
+\subsection{Operators and symbols}
+\begin{xltabular}{\textwidth}{XX}
+    \(\E{\cdot}, \nossekE{\cdot}, E\left[ \cdot \right], \mathbb{E}\left[ \cdot \right]\) & Statistical expectation operator \cite{nossekAdaptiveArraySignal2015,dinizAdaptiveFilteringAlgorithms2002}\\
+    \(\E[u]{\cdot}, \nossekE[u]{\cdot},  E_u\left[ \cdot \right], \mathbb{E}_u\left[ \cdot \right]\) & Statistical expectation operator with respect to \(u\)\\
+    \(\expval{\cdot}\) & Ensamble average\\
+    \(\var{\cdot}, \textnormal{VAR}[\cdot]\) & Variance operator \cite{haykinAdaptiveFilterTheory2002,leon-garciaProbabilityStatisticsRandom2007,proakisDigitalCommunications2007,bishopPatternRecognitionMachine2006}\\
+    \(\var[u]{\cdot} \left[ \cdot \right], \textnormal{VAR}_u[\cdot]\) & Variance operator with respect to \(u\)\\
+    \(\cov{\cdot}, \textnormal{COV}[\cdot]\) & Covariance operator \cite{bishopPatternRecognitionMachine2006}\\
+    \(\cov[u]{\cdot}, \textnormal{COV}_u[\cdot]\) & Covariance operator with respect to \(u\)\\
+    \(\mu_x\) & Mean of the random variable \(x\) \\
+    \(\boldsymbol{\muup}_\mathbf{x}, \mathbf{m}_\mathbf{x}\) & Mean vector of the random variable \(\mathbf{x}\) \cite{brownIntroductionRandomSignals1997} \\
+    \(\mu_n\) & \(n\)th-order moment of a random variable \\
+    \(\sigma_x^2, \kappa_2\) & Variance of the random variable \(x\)\\
+    \(\mathcal{K}_x, \mu_4\) & Kurtosis (4th-order moment) of the random variable \(x\)\\
+    \(\kappa_n\) & \(n\)th-order cumulant of a random variable \\
+    \(\rho_{x,y}\) & Pearson correlation coefficient between \(x\) and \(y\)\\
+    \(a\sim P\) & Random variable \(a\) with distribution \(P\) \\
+    \(\mathcal{R}\) & Rayleigh's quotient
+\end{xltabular}
+\subsection{Stochastic processes}
+\begin{xltabular}{\textwidth}{XX}
+    \(r_x(\tau), R_x(\tau)\) & Autocorrelation function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015}\\
+    \(S_x(f), S_x(j\omega)\) & Power spectral density (PSD) of \(x(t)\) in linear (\(f\)) or angular (\(\omega\)) frequency\\
+    \(S_{x,y}(f), S_{x,y}(j\omega)\) & Cross PSD of \(x(t)\) and \(y(t)\) in linear or angular (\(\omega\)) frequency\\
+    \(\mathbf{R}_\mathbf{x}\) & (Auto)correlation matrix of \(\mathbf{x}(n)\) \\
+    \(r_{x,d}(\tau), R_{x,d}(\tau)\) & Cross-correlation between \(x[n]\) and \(d[n]\) or \(x(t)\) and \(d(t)\) \cite{nossekAdaptiveArraySignal2015}\\
+    \(\mathbf{R}_\mathbf{xy}\) & Cross-correlation matrix of \(\mathbf{x}(n)\) and \(\mathbf{y}(n)\)\\
+    \(\mathbf{p}_{\mathbf{x}d}\)& Cross-correlation vector between \(\mathbf{x}(n)\) and \(d(n)\) \cite{dinizAdaptiveFiltering1997} \\
+    \(c_x(\tau), C_x(\tau)\) & Autocovariance function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015}\\
+    \(\mathbf{C}_\mathbf{x}, \mathbf{K}_\mathbf{x}, \boldsymbol{\Sigmaup}_\mathbf{x}, \textnormal{cov}\left[ \mathbf{x} \right]\) & (Auto)covariance matrix of \(\mathbf{x}\) \cite{vantreesOptimumArrayProcessing2002,proakisDigitalCommunications2007,leon-garciaProbabilityStatisticsRandom2007,haykinAdaptiveFilterTheory2002} \\
+    \(c_{xy}(\tau), C_{xy}(\tau)\) & Cross-covariance function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015} \\
+    \(\mathbf{C}_{\mathbf{xy}}, \mathbf{K}_{\mathbf{xy}}, \boldsymbol{\Sigmaup}_{\mathbf{xy}}\) & Cross-covariance matrix of \(\mathbf{x}\) and \(\mathbf{y}\)
+\end{xltabular}
+
+\subsection{Functions}
+\begin{xltabular}{\textwidth}{XX}
+    \(Q(\cdot)\) & \(Q\)-function, i.e., \(P\left[ \mathcal{N}(0,1) > x \right] \) \cite{proakisDigitalCommunications2007} \\
+    \(\textnormal{erf}(\cdot)\) & Error function \cite{proakisDigitalCommunications2007}\\
+    \(\textnormal{erfc}(\cdot)\) & Complementary error function i.e., \(\textnormal{erfc}(x) = 2Q(\sqrt{2}x) - \textnormal{erf}(x)\) \cite{proakisDigitalCommunications2007}\\
+    \(P[A]\) & Probability of the event or set \(A\) \cite{leon-garciaProbabilityStatisticsRandom2007}\\
+    \(p(\cdot), f(\cdot)\) & Probability density function (PDF) or probability mass function (PMF) \cite{leon-garciaProbabilityStatisticsRandom2007}\\
+    \(p(x\mid A)\) & Conditional PDF or PMF \cite{leon-garciaProbabilityStatisticsRandom2007}\\
+    \(F(\cdot)\) & Cumulative distribution function (CDF)\\
+    \(\Phi_x(\omega), M_x(j\omega), E\left[ e^{j \omega x} \right]\) & First characteristic function (CF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020a} \\
+    \(M_x(t), \Phi_x(-j t), E\left[ e^{t x} \right]\) & Moment-generating function (MGF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020a} \\
+    \(\Psi_x(\omega), \ln \Phi_x(\omega), \ln E\left[ e^{j \omega x}\right]\) & Second characteristic function \\
+    \(K_x(t), \ln E\left[ e^{t x} \right], \ln M_x(t)\) & Cumulant-generating function (CGF) of \(x\) \cite{haykinAdaptiveFilterTheory2002} \\
+\end{xltabular}
+
+\subsection{Distributions}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathcal{N}(\mu, \sigma^2)\) & Gaussian distribution of a random variable with mean \(\mu\) and variance \(\sigma^{2}\). The same notation can be used to denote a real-valued white Gaussian process with mean equal to \(\mu\) and power spectral density equal to \(N_0/2\), e.g., \(s(t) \sim \mathcal{N}(\mu, N_0/2)\)\\
+    \(\mathcal{CN}(\mu, \sigma^2)\) & Complex Gaussian distribution of a random variable with mean \(\mu\) and variance \(\sigma^{2}\). The same notation can be used to denote a complex-valued white Gaussian process with mean equal to \(\mu\) and power spectral density equal to \(N_0\), e.g., \(s(t) \sim \mathcal{CN}(\mu, N_0)\)\\
+    \(\mathcal{N}(\boldsymbol{\muup}, \boldsymbol{\Sigmaup})\) & Gaussian distribution of a vector random variable with mean \(\boldsymbol{\muup}\) and covariance matrix \(\boldsymbol{\Sigmaup}\)\\
+    \(\mathcal{CN}(\boldsymbol{\muup}, \boldsymbol{\Sigmaup})\) & Complex Gaussian distribution of a vector random variable with mean \(\boldsymbol{\muup}\) and covariance matrix \(\boldsymbol{\Sigmaup}\)\\
+    \(\mathcal{U}(a,b)\) & Uniform distribution from \(a\) to \(b\)\\
+    \(\chi^2 (n), \chi^2_n\) & Chi-square distribution with \(n\) degree of freedom (assuming that the Gaussians are \(\mathcal{N}(0,1)\))\\
+    \(\textnormal{Exp}(\lambda)\) & Exponential distribution with rate parameter \(\lambda\)\\
+    \(\Gamma(\alpha, \beta)\) & Gamma distribution with shape parameter \(\alpha\) and rate parameter \(\beta\)\\
+    \(\Gamma(\alpha, \theta)\) & Gamma distribution with shape parameter \(\alpha\) and scale parameter \(\theta\ = 1/\beta\)\\
+    \(\textnormal{Nakagami}(m, \Omega)\) & Nakagami-m distribution with shape parameter \(m\) and spread parameter \(\Omega\) \\
+    \(\textnormal{Rayleigh}(\sigma)\) & Rayleigh distribution with scale parameter \(\sigma\)\\
+    \(\textnormal{Rayleigh}(\Omega)\) & Rayleigh distribution with the second moment \(\Omega = E\left[ x^2 \right] = 2\sigma^2\)\\
+    \(\textnormal{Rice}(s, \sigma)\) & Rice distribution with noncentrality parameter (specular component) \(s\) and \(\sigma\)\\
+    \(\textnormal{Rice}(A, K)\) & Rice distribution with Rice factor \(K=s^2/2\sigma^2\) and scale parameter \(A = s^2 + 2\sigma^2\)
+\end{xltabular}
+
+\section{Statistical signal processing}
+\begin{xltabular}{\textwidth}{XX}
+    \(\boldsymbol{\nabla}f, \mathbf{g}\) & Gradient descent vector \\
+    \(\boldsymbol{\nabla}_{x}f, \mathbf{g}_{x}\) & Gradient descent vector with respect \(x\)\\
+    \(\mathbf{g}\) (or \(\hat{\mathbf{g}}\) if the gradient vector is \(\mathbf{g}\)) & Stochastic gradient descent (SGD) \\
+    \(J(\cdot), \mathcal{E}(\cdot)\) & Cost-function or objective function\\
+    \(\Lambda(\cdot)\) & Likelihood function\\
+    \(\Lambda_l(\cdot)\) & Log-likelihood function\\
+    \(\hat{x}(t)\) or \(\hat{x}[n]\) & Estimate of \(x(t)\) or \(x[n]\)\\
+    \(\hat{\boldsymbol{\muup}}_x, \hat{\mathbf{m}}_x\) & Sample mean of \(x[n]\) or \(x(t)\) \\
+    \(\hat{\boldsymbol{\muup}}_\mathbf{x}, \hat{\mathbf{m}}_\mathbf{x}\) & Sample mean vector of \(\mathbf{x}[n]\) or \(\mathbf{x}(t)\)\\
+    \(\hat{r}_x(\tau), \hat{R}_x(\tau)\) & Estimated autocorrelation function of the signal \(x(t)\) or \(x[n]\)\\
+    \(\hat{S}_x(f), \hat{S}_x(j\omega)\) & Estimated power spectral density (PSD) of \(x(t)\) in linear (\(f\)) or angular (\(\omega\)) frequency\\
+    \(\hat{\mathbf{R}}_\mathbf{x}\) & Sample (auto)correlation matrix \\
+    \(\hat{r}_{x,d}(\tau), \hat{R}_{x,d}(\tau)\) & Estimated cross-correlation between \(x[n]\) and \(d[n]\) or \(x(t)\) and \(d(t)\)\\
+    \(\hat{S}_{x,y}(f), \hat{S}_{x,y}(j\omega)\) & Estimated cross PSD of \(x(t)\) and \(y(t)\) in linear or angular (\(\omega\)) frequency\\
+    \(\hat{\mathbf{R}}_\mathbf{xy}\) & Sample cross-correlation matrix of \(\mathbf{R}_\mathbf{xy}\) \\
+    \(\hat{\rho}_{x,y}\) & Estimated Pearson correlation coefficient between \(x\) and \(y\)\\
+    \(\hat{c}_x(\tau), \hat{C}_x(\tau)\) & Estimated autocovariance function of the signal \(x(t)\) or \(x[n]\)\\
+    \(\hat{\mathbf{C}}_\mathbf{x}, \hat{\mathbf{K}}_\mathbf{x}, \hat{\boldsymbol{\Sigmaup}}_\mathbf{x}\) & Sample (auto)covariance matrix \\
+    \(\hat{c}_{xy}(\tau), \hat{C}_{xy}(\tau)\) & Estimated cross-covariance function of the signal \(x(t)\) or \(x[n]\)\\
+    \(\hat{\mathbf{C}}_{\mathbf{xy}}, \hat{\mathbf{K}}_{\mathbf{xy}}, \hat{\boldsymbol{\Sigmaup}}_{\mathbf{xy}}\) & Sample cross-covariance matrix \\
+    \(\mathbf{w}, \boldsymbol{\thetaup}\) & Parameters, coefficients, or weights vector \\
+    \(\mathbf{w}_o, \mathbf{w}^{\star}, \boldsymbol{\thetaup}_o, \boldsymbol{\thetaup}^{\star}\) & Optimum value of the parameters, coefficients, or weights vector \\
+    \(\mathbf{W}\) & Matrix of the weights \\
+    \(\mathbf{J}\) & Jacobian matrix\\
+    \(\mathbf{H}\) & Hessian matrix \\
+    \(\hat{\mathbf{H}}\) & Estimate of the Hessian matrix
+\end{xltabular}
+
+\section{Linear Algebra}
+\subsection{Common matrices and vectors}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathbf{W}, \mathbf{D}\) & Diagonal matrix \\
+    \(\mathbf{P}\) & Projection matrix; Permutation matrix \\
+    \(\mathbf{J}\) & Jordan matrix \\
+    \(\mathbf{L}\) & Lower matrix\\
+    \(\mathbf{U}\) & Upper matrix\\
+    \(\mathbf{C}\) & Cofactor matrix\\
+    \(\mathbf{C}_\mathbf{A}, \cof{\mathbf{A}}\) & Cofactor matrix of \(\mathbf{A}\)\\
+    \(\mathbf{S}\) & Symmetric matrix\\
+    \(\mathbf{Q}\) & Orthogonal matrix\\
+    \(\mathbf{I}_N\) & \(N\times N\)-dimensional identity matrix\\
+    \(\mathbf{0}_{M\times N}\) & \(M\times N\)-dimensional null matrix\\
+    \(\mathbf{0}_{N}\) & \(N\)-dimensional null vector\\
+    \(\mathbf{1}_{M\times N}\) & \(M\times N\)-dimensional ones matrix\\
+    \(\mathbf{1}_{N}\) & \(N\)-dimensional ones vector\\
+    \(\mathbf{0}\) & Null matrix, vector, or tensor (dimensionality understood by context)\\
+    \(\mathbf{1}\) & Ones matrix, vector, or tensor (dimensionality understood by context)\\
+\end{xltabular}
+
+\subsection{Indexing}
+\begin{xltabular}[l]{\linewidth}{XX}
+    \(x_{i_1,i_2, \dots, i_N}, \left[ \bm{\mathcal{X}} \right]_{i_1,i_2, \dots, i_N}\) & Element in the position \((i_1,i_2, \dots, i_N)\) of the tensor \(\bm{\mathcal{X}}\)\\
+    \(\bm{\mathcal{X}}^{(n)}\) & \(n\)th tensor of a nontemporal sequence\\
+    \(\mathbf{x}_{n}, \mathbf{x}_{:n}\) & \(n\)th column of the matrix \(X\)\\
+    \(\mathbf{x}_{n:}\) & \(n\)th row of the matrix \(X\)\\
+    \(\mathbf{x}_{i_1,\dots,i_{n-1}, :, i_{n+1},\dots, i_N}\) & Mode-\(n\) fiber of the tensor \(\bm{\mathcal{X}}\)\\
+    \(\mathbf{x}_{:,i_2,i_3}\) & Column fiber (mode-\(1\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)\\
+    \(\mathbf{x}_{i_1,:,i_3}\) & Row fiber (mode-\(2\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)\\
+    \(\mathbf{x}_{i_1,i_2,:}\) & Tube fiber (mode-\(3\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)\\
+    \(\mathbf{X}_{i_1,:,:}\) & Horizontal slice of the thrid-order tensor \(\bm{\mathcal{X}}\)\\
+    \(\mathbf{X}_{:,i_2,:}\) & Lateral slices slice of the thrid-order tensor \(\bm{\mathcal{X}}\)\\
+    \(\mathbf{X}_{i_3}, \mathbf{X}_{:,:,i_3}\) & Frontal slices slice of the thrid-order tensor \(\bm{\mathcal{X}}\)
+\end{xltabular}
+
+\subsection{General operations}
+\begin{xltabular}{\textwidth}{XX}
+    \(\expval{\cdot, \cdot}\) & Inner product, e.g., \(\expval{\mathbf{a}, \mathbf{b}} = \mathbf{a}^\top\mathbf{b}\)\\
+    \(\circ\) & Outer product, e.g., \(\mathbf{a} \circ \mathbf{b} = \mathbf{a}\mathbf{b}^\top\)\\
+    \(\otimes\) & Kronecker product\\
+    \(\odot\) & Hadamard (or Schur) (elementwise) product\\
+    \(\cdot^{\odot n}\) & \(n\)th-order Hadamard power\\
+    \(\cdot^{\odot \frac{1}{n}}\) & \(n\)th-order Hadamard root\\
+    \(\oslash\) & Hadamard (or Schur) (elementwise) division\\
+    \(\diamond\) & Khatri-Rao product\\
+    \(\otimes\) & Kronecker Product\\
+    \(\times_n\) & \(n\)-mode product\\
+\end{xltabular}
+
+\subsection{Operations with matrices and tensors}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathbf{A}^{-1}\) & Inverse matrix\\
+    \(\mathbf{A}^+, \mathbf{A}^{\dagger}\) & Moore-Penrose left pseudoinverse\\
+    \(\mathbf{A}^\top\) & Transpose\\
+    \(\mathbf{A}^{-\top}\) & Transpose of the inverse, i.e., \(\left( \mathbf{A}^{-1} \right)^{\top} = \left( \mathbf{A}^{\top} \right)^{-1}\) \cite{petersenMatrixCookbook2008,golubMatrixComputations2013}\\
+    \(\mathbf{A}^*\) & Complex conjugate\\
+    \(\mathbf{A}^\mathsf{H}\) & Hermitian\\
+    \(\frob{\mathbf{A}}\)& Frobenius norm \\
+    \(\norm{\mathbf{A}}\) & Matrix norm\\
+    \(\abs{\mathbf{A}}, \textnormal{det}\left( \mathbf{A} \right)\) & Determinant\\
+    \(\diag{\mathbf{A}}\) & The elements in the diagonal of \(\mathbf{A}\) \\
+    \(\vec[]{\mathbf{A}}\) &  Vectorization: stacks the columns of the matrix \(\mathbf{A}\) into a long column vector\\
+    \(\vec[d]{\mathbf{A}}\) &  Extracts the diagonal elements of a square matrix and returns them
+    in a column vector\\
+    \(\vec[l]{\mathbf{A}}\) & Extracts the elements strictly below the main diagonal of a square matrix in a column-wise manner and returns them into a column vector\\
+    \(\vec[u]{\mathbf{A}}\) & Extracts the elements strictly above the main diagonal of a square matrix in a column-wise manner and returns them into a column vector\\
+    \(\vec[b]{\mathbf{A}}\) & Block vectorization operator: stacks square block matrices of the input into a long block column matrix\\
+    \(\unvec{\mathbf{A}}\)& Reshapes a column vector into a matrix\\
+    \(\tr{\mathbf{A}}\)& trace\\
+    \(\mathbf{X}_{(n)}\) & \(n\)-mode matricization of the tensor \(\bm{\mathcal{X}}\)\\
+\end{xltabular}
+\subsection{Operations with vectors}
+\begin{xltabular}{\textwidth}{XX}
+    \(\norm{\mathbf{a}}\) & \(l_1\) norm, 1-norm, or Manhatan norm\\
+    \(\norm{\mathbf{a}}, \norm{\mathbf{a}}_2\) & \(l_2\) norm, 2-norm, or Euclidean norm\\
+    \(\norm{\mathbf{a}}_p\) & \(l_p\) norm, \(p\)-norm, or Minkowski norm\\
+    \(\norm{\mathbf{a}}_\infty\) & \(l_\infty\) norm, \(\infty\)-norm, or Chebyshev norm\\
+    \(\diag{\mathbf{a}}\) & Diagonalization: a square, diagonal matrix with entries given by the vector \(\mathbf{a}\)\\
+\end{xltabular}
+
+\subsection{Decompositions}
+\begin{xltabular}{\textwidth}{XX}
+    \(\boldsymbol{\Lambdaup}\) & Eigenvalue matrix \cite{strangIntroductionLinearAlgebra1993}\\
+    \(\mathbf{Q}\) & Eigenvectors matrix; Orthogonal matrix of the QR decomposition\cite{strangIntroductionLinearAlgebra1993}\\
+    \(\mathbf{R}\) & Upper triangular matrix of the QR decomposition\cite{strangIntroductionLinearAlgebra1993}\\
+    \(\mathbf{U}\) & Left singular vectors\cite{strangIntroductionLinearAlgebra1993}\\
+    \(\mathbf{U}_r\) & Left singular nondegenerated vectors\\
+    \(\boldsymbol{\Sigmaup}\) & Singular value matrix\\
+    \(\boldsymbol{\Sigmaup}_r\) & Singular value matrix with nonzero singular values in the main diagonal\\
+    \(\boldsymbol{\Sigmaup}^{+}\) & Singular value matrix of the pseudoinverse \cite{strangIntroductionLinearAlgebra1993}\\
+    \(\boldsymbol{\Sigmaup}^{+}_r\) & Singular value matrix of the pseudoinverse with nonzero singular values in the main diagonal\\
+    \(\mathbf{V}\) & Right singular vectors \cite{strangIntroductionLinearAlgebra1993}\\
+    \(\mathbf{V}_r\) & Right singular nondegenerated vectors\\
+    \(\eig{\mathbf{A}}\) & Set of the eigenvalues of \(\mathbf{A}\) \cite{chellappaSignalProcessingTheory2014,leon-garciaProbabilityStatisticsRandom2007,petersenMatrixCookbook2008}\\
+    \(\llbracket \mathbf{A}, \mathbf{B}, \mathbf{C}, \dots \rrbracket\) & CANDECOMP/PARAFAC (CP) decomposition of the tensor \(\bm{\mathcal{X}}\) from the outer product of column vectors of \(\mathbf{A}\), \(\mathbf{B}\), \(\mathbf{C}, \dots\)\\
+    \(\llbracket \boldsymbol{\lambdaup}; \mathbf{A}, \mathbf{B}, \mathbf{C}, \dots \rrbracket\) & Normalized CANDECOMP/PARAFAC (CP) decomposition of the tensor \(\bm{\mathcal{X}}\) from the outer product of column vectors of \(\mathbf{A}\), \(\mathbf{B}\), \(\mathbf{C}, \dots\)\\
+\end{xltabular}
+\subsection{Spaces}
+\begin{xltabular}{\textwidth}{XX}
+    \(\spn{\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_n}\) & Vector space spanned by the argument vectors \cite{golubMatrixComputations2013}\\
+    \(\range{\mathbf{A}}\), \(\mathrm{columnspace}(\mathbf{A})\), \(\mathrm{range}(\mathbf{A})\), \(\spn{\mathbf{A}}\), \(\mathrm{image}(\mathbf{A})\) & Columnspace, range or image, i.e., the space \(\spn{\mathbf{a}_1,\mathbf{a}_2, \dots, \mathbf{a}_n}\), where \(\mathbf{a}_i\) is the ith column vector of the matrix \(\mathbf{A}\) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}\\
+    \(\range{\mathbf{A}^\mathsf{H}}\) & Row space (also called left columnspace) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}\\
+    \(\nullspace{\mathbf{A}}, \mathrm{nullspace}(\mathbf{A}), \mathrm{kernel}(\mathbf{A})\) & Nullspace (or kernel space) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}\\
+    \(\nullspace{\mathbf{A^\mathsf{H}}}\) & Left nullspace\\
+    \(\rank{\mathbf{A}}\) & Rank, that is, \(\dim{\spn{\mathbf{A}}} = \dim{\range{\mathbf{A}}}\) \cite{nossekAdaptiveArraySignal2015} \\
+    \(\nullity{\mathbf{A}}\) & Nullity of \(\mathbf{A}\), i.e., \(\dim{\nullspace{\mathbf{A}}}\)\\
+    \(\mathbf{a} \perp \mathbf{b}\) & \(\mathbf{a}\) is orthogonal to \(\mathbf{b}\)\\
+    \(\mathbf{a} \not\perp \mathbf{b}\) & \(\mathbf{a}\) is not orthogonal to \(\mathbf{b}\)\\
+\end{xltabular}
+\subsection{Inequalities}
+\begin{xltabular}{\textwidth}{XX}
+    \(\bm{\mathcal{X}} \leq 0\) & Nonnegative tensor\\
+    \(\mathbf{a} \preceq_K \mathbf{b}\) & Generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the conic subset \(K\) in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004}\\
+    \(\mathbf{a} \prec_K \mathbf{b}\) & Strict generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the interior of the conic subset \(K\) in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004}\\
+    \(\mathbf{a} \preceq \mathbf{b}\) & Generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the nonnegative orthant conic subset, \(\mathbb{R}_{+}^{n}\), in the space \(\mathbb{R}^{n}\).\cite{boydConvexOptimization2004}\\
+    \(\mathbf{a} \prec \mathbf{b}\) & Strict generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the positive orthant conic subset, \(\mathbb{R}_{++}^{n}\), in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004}\\
+    \(\mathbf{A} \preceq_K \mathbf{B}\) & Generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the conic subset \(K\) in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}\\
+    \(\mathbf{A} \prec_K \mathbf{B}\) & Strict generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the interior of the conic subset \(K\) in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}\\
+    \(\mathbf{A} \preceq \mathbf{B}\) & Generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the positive semidefinite conic subset, \(\mathbb{S}_{+}^{n}\), in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}\\
+    \(\mathbf{A} \prec \mathbf{B}\) & Strict generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the positive orthant conic subset, \(\mathbb{S}_{++}^{n}\), in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}
+\end{xltabular}
+
+\section{Communication systems}
+\begin{xltabular}{\textwidth}{XX}
+    \(B\) & One-sided bandwidth of the transmitted signal, in Hz\\
+    \(W\) & One-sided bandwidth of the transmitted signal, in rad/s\\
+    \(x_i\) & Real or in-phase part of \(x\)\\
+    \(x_q\) & Imaginary or quadrature part of \(x\)\\
+    \(f_c, f_{RF}\) & Carrier frequency (in Hertz)\\
+    \(f_L\) & Carrier frequency in L-band (in Hertz)\\
+    \(f_{IF}\) & Intermediate frequency (in Hertz)\\
+    \(f_{s}\) & Sampling frequency or sampling rate (in Hertz)\\
+    \(T_{s}\) & Sampling time interval/duration/period\\
+    \(R\) & Bit rate\\
+    \(T\) & Bit interval/duration/period\\
+    \(T_c\) & Chip interval/duration/period\\
+    \(T_{sy}, T_{sym}\) & Symbol/signaling\cite{proakisDigitalCommunications2007} interval/duration/period\\
+    \(s_{RF}\) & Transmitted signal in RF\\
+    \(s_{FI}\) & Transmitted signal in FI\\
+    \(s, s_l\) & Lowpass (or baseband) equivalent signal or envelope complex of transmitted signal\\
+    \(r_{RF}\) & Received signal in RF\\
+    \(r_{FI}\) & Received signal in FI\\
+    \(r, r_l\) & Lowpass (or baseband) equivalent signal or envelope complex of received signal\\
+    \(\phi\) & Signal phase\\
+    \(\phi_0\) & Initial phase\\
+    \(\eta_{RF}, w_{RF}\) & Noise in RF\\
+    \(\eta_{FI}, w_{FI}\) & Noise in FI\\
+    \(\eta, w\) & Noise in baseband\\
+    \(\tau\) & Timing delay \\
+    \(\Delta\tau\) & Timing error (delay - estimated) \\
+    \(\varphi\) & Phase offset \\
+    \(\Delta\varphi\) & Phase error (offset - estimated) \\
+    \(f_d\) & Linear Doppler frequency\\
+    \(\Delta f_d\) & Frequency error (Doppler frequency - estimated)\\
+    \(\nu\) & Angular Doppler frequency\\
+    \(\Delta \nu\) & Frequency error (Doppler frequency - estimated)\\
+    \(\gamma, A\) & Transmitted signal amplitude\\
+    \(\gamma_0, A_0\) & Combined effect of the path loss and antenna gain
+\end{xltabular}
+
+\section{Discrete mathematics}
+\subsection{Set theory}
+\begin{xltabular}{\textwidth}{XX}
+    \(A + B\) & Set addition (Minkowski sum), i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} = \mathbf{x}+\mathbf{y}, \forall \; \mathbf{x} \in \mathcal{X} \wedge \mathbf{y} \in \mathcal{Y} \right\}\) \cite{kouvaritakisModelPredictiveControl2016}\\
+    \(A - B\) &  Minkowski difference, i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} = \mathbf{x}-\mathbf{y}, \forall \; \mathbf{x} \in \mathcal{X} \wedge \mathbf{y} \in \mathcal{Y} \right\}\)\\
+    \(A \ominus B\) & Pontryagin difference, i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} + \mathbf{y} \in \mathcal{X} , \forall \; \mathbf{y} \in \mathcal{Y} \right\}\) \cite{kouvaritakisModelPredictiveControl2016}\\
+    \(A \setminus B, A-B\) & Set difference or set subtraction, i.e., \(A \setminus B = \left\{ x \vert x \in A \wedge x \not\in B \right\}\) the set containing the elements of \(A\) that are not in \(B\) \cite{rosenDiscreteMathematicsIts2011}\\
+    \(A \cup B\) & Set of union\\
+    \(A \cap B\) & Set of intersection\\
+    \(A \times B\) & Cartesian product\\
+    \(A^n\) & \(\underbrace{A \times A \times \dots \times A}_{n \text{ times}}\)\\
+    \(A^{\perp}\) & Orthogonal complement of \(A\), e.g., \(\nullspace{\mathbf{A}} = \range{\mathbf{A}^{\top}}^{\perp}\) \cite{boydConvexOptimization2004}\\
+    \(A \oplus B\) & Direct sum, i.e., each \(\mathbf{v} \in \left\{ \sum \mathbf{a}_i \mid \mathbf{a}_i \in S_i, i=1,\dots,k \right\}\) has a unique representation of \(\sum \mathbf{a}_i\) with \(\mathbf{a}_i \in S_i\). That is, they expand to a space. Note that \(\left\{ S_i \right\}\) might not be orthogonal each other \cite{golubMatrixComputations2013}\\
+    \(A \overset{\perp}{\oplus} B\) & Direct sum of two space that are orthogonal and span a \(n\)-dimensional space, e.g., \(\range{\mathbf{A}^{\top}} \overset{\perp}{\oplus} \range{\mathbf{A}^{\top}}^{\perp} = \mathbb{R}^{n}\) (this decomposition of \(\mathbb{R}^{n}\) is called the orthogonal decomposition induced by \(\mathbf{A}\)) \cite{boydConvexOptimization2004}\\
+    \(\bar{A}, A^{c}\) & Complement set (given $U$)\\
+    \(\#A, \abs{A}\) & Cardinality\\
+    \(a \in A\)& \(a\) is element of \(A\) \\
+    \(a \notin A\)& \(a\) is not element of \(A\) \\
+    \(\left\{ 1,2, \dots, n \right\}\) & Discrete set containing the integer elements \(1,2, \dots, n\)\\
+    \(U\) & Universe\\
+    \(2^A\) & Power set of \(A\)\\
+    \(\mathbb{R}\) & Set of real numbers\\
+    \(\mathbb{C}\)& Set of complex numbers\\
+    \(\mathbb{Z}\) & Set of integer number\\
+    \(\mathbb{B} = \left\{ 0, 1 \right\}\) & Boolean set\\ % Circuit Complexity and Neural Networks - Ian Parberry; Further Improvements in the Boolean Domain
+    \(\emptyset\) & Empty set\\
+    \(\mathbb{N}\) & Set of natural numbers\\
+    \(\mathbb{K} \in \left\{ \mathbb{R}, \mathbb{C} \right\}\) & Real or complex space (field)\\
+    \(\mathbb{K}^{I_1\times I_2 \times \dots \times I_N}\) & \(I_1\times I_2 \times \dots \times I_N\)-dimensional real (or complex) space\\
+    \(\mathbb{K}_{+}\) & Nonnegative real (or complex) space \cite{boydConvexOptimization2004}\\
+    \(\mathbb{K}_{++}\) & Positive real (or complex) space, i.e., \(\mathbb{K}_{++} = \mathbb{K}_{+}\setminus\left\{ \mathbf{0} \right\}\) \cite{boydConvexOptimization2004}\\
+    \(\mathbb{S}^{n}, \mathcal{S}^{n}\) & Conic set of the symmetric matrices in \(\mathbb{R}^{n\times n}\) \cite{boydConvexOptimization2004}\\
+    \(\mathbb{S}_{+}^{n}, \mathcal{S}_{+}^{n}\) & Conic set of the symmetric positive semidefinite matrices in \(\mathbb{R}^{n\times n}\) \cite{boydConvexOptimization2004}\\
+    \(\mathbb{S}_{++}^{n}, \mathcal{S}_{++}^{n}\) & Conic set of the symmetric positive definite matrices in \(\mathbb{R}^{n\times n}\), i.e., \(\mathbb{S}_{++}^{n} = \mathbb{S}_{+}^{n}\setminus \left\{ \mathbf{0} \right\}\) \cite{boydConvexOptimization2004}\\
+    \(\mathbb{H}^{n}\) & Set of all hermitian matrices in \(\mathbb{C}^{n\times n}\)\\
+    \([a, b]\) & Closed interval of a real set from \(a\) to \(b\)\\
+    \((a, b)\) & Opened interval of a real set from \(a\) to \(b\)\\
+    \([a, b), (a, b]\) & Half-opened intervals of a real set from \(a\) to \(b\)\\
+\end{xltabular}
+
+\subsection{Quantifiers, inferences}
+\begin{xltabular}{\textwidth}{XX}
+    \(\forall\) & For all (universal quantifier) \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\exists\) & There exists (existential quantifier) \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\nexists\) & There does not exist \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\exists!\) & There exist an unique \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\in\) & Belongs to \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\not\in\) & Does not belong to \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\because\) & Because \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\mid, :\) & Such that, sometimes that parantheses is used \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(, , \left( \cdot \right)\) & Used to separate the quantifier with restricted domain from the its scope, e.g., \(\forall \; x < 0 \left( x^{2} > 0 \right)\) or \(\forall \; x < 0, x^{2} > 0\) \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\therefore\) & Therefore \cite{grahamConcreteMathematicsFoundation1989}\\
+\end{xltabular}
+
+\subsection{Propositional Logic}
+\begin{xltabular}{\textwidth}{XX}
+    \(\lnot a\) & Logical negation of \(a\) \cite{rosenDiscreteMathematicsIts2011}\\
+    \(a \wedge b\) & Conjunction (logical AND) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}\\
+    \(a \vee b\) & Disjunction (logical OR) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}\\
+    \(a \oplus b\) & Exclusive OR (logical XOR) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}\\
+    \(a \rightarrow b\) & Implication (or conditional) statement\cite{rosenDiscreteMathematicsIts2011}\\
+    \(a \leftrightarrow b\) & Bi-implication (or biconditional) statement, i.e., \(\left( a \rightarrow b \right) \wedge (b \rightarrow a )\) \cite{rosenDiscreteMathematicsIts2011}\\
+    \(a \equiv b, a \iff b, a \Leftrightarrow b \) & Logical equivalence, i.e., \(a \leftrightarrow b\) is a tautology\cite{rosenDiscreteMathematicsIts2011}\\
+\end{xltabular}
+
+\section{Physics}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathbf{E}\) & Electric feild vector (in \(\si{\volt\per\meter}\))\\
+    \(\mathbf{\Phi}\) & Electric flux (scalar) (in \(\si{\volt\meter}\))\\
+    \(\mathbf{D}\) & Electric flux density, electric displacement, or electric induction vector (in \(\si{\coulomb\per\square\meter}\))\\
+    \(\mathbf{J}\) & Electric current density vector (in \(\si{\ampere\per\square\meter}\))\\
+    \(\mathbf{H}\) & Magnetic feild vector (in \(\si{\ampere\per\meter}\))\\
+    \(\mathbf{B}\) & Magnetic flux density vector (in \(\si{\weber\per\meter\squared} = \si{\tesla}\))\\
+    \(\epsilon\) & Electric permittivity \\
+    \(\mu\) & Magnetic permeability \\
+    \(\mu_0\) & Magnetic permeability in vacuum \\
+\end{xltabular}
+
+\section{Number theory, algorithm theory, and other notations}
+\subsection{Mathematical symbols}
+\begin{xltabular}{\textwidth}{XX}
+    \(\blacksquare\) & Q.E.D. \\
+    \(\triangleq\) & Equal by definition\\
+    \(:=, \leftarrow\) & Assignment \cite{rosenDiscreteMathematicsIts2011}\\
+    \(\neq\) & Not equal\\
+    \(\infty\) & Infinity\\
+    \(j\) & \(\sqrt{-1}\)\\
+\end{xltabular}
+\subsection{Calculus}
+\begin{xltabular}{\textwidth}{XX}
+    \(\nabla\) & Nabla operator (vector differential operator) \\
+    \(\oint_C\) & Closed line integral around the contour \(C\) \\
+    \(\iint_S\)& Sufarce integral over \(S\) enclosed by \(C\)
+\end{xltabular}
+\subsection{Operations}
+\begin{xltabular}{\textwidth}{XX}
+    \(\abs{a}\) & Absolute value of \(a\)\\
+    \(\log\) & Base-10 logarithm or decimal logarithm\\
+    \(\ln\) & Natual logarithm\\
+    \(\textnormal{Re}\left\{ x \right\}\) & Real part of \(x\)\\
+    \(\textnormal{Im}\left\{ x \right\}\) & Imaginary part of \(x\)\\
+    \(\angle\cdot\) & phase (complex argument)\\
+    \(x\;\mathrm{mod}\;y\) & Remainder, i.e., \(x-y\floor{x/y}\), for \(y \neq 0\)\\
+    \(x\;\mathrm{div}\;y\) & Quotient \cite{rosenDiscreteMathematicsIts2011}\\
+    \(x \equiv y\;(\mathrm{mod}\;m)\) & Congruent, i.e.,  \(m \backslash (x-y)\) \cite{rosenDiscreteMathematicsIts2011}\\
+    \(\mathrm{frac}\left(x\right)\) & Fractional part, i.e., \(x\;\mathrm{mod}\;1\) \cite{grahamConcreteMathematicsFoundation1989} \\
+    \(a \backslash b\), \(a \mid b\) & \(b\) is a positive integer multiple of \(a\), i.e., \( \exists\; n \in \mathbb{Z}_{++} \mid b = n a \) \cite{grahamConcreteMathematicsFoundation1989,rosenDiscreteMathematicsIts2011} \\
+    \(a \centernot\backslash b\), \(a \centernot\mid b\) & \(b\) is not a positive integer multiple of \(a\), i.e., \( \nexists\; n \in \mathbb{Z}_{++} \mid b = n a \) \cite{grahamConcreteMathematicsFoundation1989,rosenDiscreteMathematicsIts2011} \\
+    \(\ceil{\cdot}\) & Ceiling operation \cite{grahamConcreteMathematicsFoundation1989}\\
+    \(\floor{\cdot}\) & Floor operation \cite{grahamConcreteMathematicsFoundation1989}
+\end{xltabular}
+\subsection{Functions}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathcal{O}(\cdot), O(\cdot)\) & Big-O notation\\
+    \(\Gamma(\cdot)\) & Gamma function\\
+    \(Q(\cdot)\) & Quantization function
+\end{xltabular}
+
+\section{Abbreviations}
+\begin{xltabular}{\textwidth}{XX}
+    wrt. & With respect to\\
+    st. & Subject to\\
+    iff. & If and only if\\
+    EVD & Eigenvalue decomposition, or eigendecomposition \cite{nossekAdaptiveArraySignal2015}\\
+    SVD & Singular value decomposition\\
+    CP & CANDECOMP/PARAFAC\\
+\end{xltabular}
+
+\printbibliography
+
+\end{document}

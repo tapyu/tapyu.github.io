@@ -1,0 +1,105 @@
+% put \input{default_preamble.tex} on your main command
+%%%%%%%%% new commands %%%%%%%%%
+\usepackage{xparse} % make command behave differently depending on the number of arguments
+
+%%%%%%%%% items, tables and figs %%%%%%%%%
+\usepackage{enumitem}
+\usepackage{xltabular}
+\usepackage{float} % use the [H] option
+\usepackage{tikz}
+\usepackage{graphicx} % extends the basic LaTeX graphic capabilities: placement, scaling, and rotation, file formats
+\usepackage{standalone} % place tikz environments or other material in own source files
+
+%%%%%%%%% refs %%%%%%%%%
+\usepackage{hyperref} % make references clickable
+\usepackage[style=numeric-comp,backend=biber]{biblatex} % tells LaTeX to use the biber tool instead of the traditional bibtex tool for sorting and formatting your bibliography. Biber is a more advanced and powerful tool than bibtex and it provides more features, such as advanced sorting, Unicode support and support for various data sources.
+\addbibresource{/home/tapyu/.cache/zotero/refs.bib} % add reference file, in the document, add \printbibliography to print bibliography
+
+%%%%%%%%% math %%%%%%%%%
+\usepackage{amsmath}
+\usepackage{mathtools} % is an extension package to amsmath to use \DeclarePairedDelimiter
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{newtxmath} % for Greek variants (bold, nonitalic, etc...)
+\usepackage{stmaryrd} % provides new symbols, such as \llbracket \rrbracket
+\usepackage{bm} % for writing tensor, e.g., $\bm{\mathcal{A}}$
+\usepackage{IEEEtrantools}
+\usepackage{siunitx} % typesetting units and unitless numbers SI (Système International d’Unités) units (PS: use \SI{} instead \qty{} to avoid conflicts with the same command from the package physics)
+% use \SI for number and unit, e.g., \SI{10}{\meter\per\second}
+% use \si for unit only, e.g., \si{\meter\per\second}
+% use \SIrange[options]{value1}{value2}{unit commands} for a range ot values, possible options:
+% 1. "range-phrase=-" ->  change the word "to" to "--"
+% 2. range-units=single -> chage "1m to 10m" to "1 to 10m"
+% use the [per-mode=symbol] option in the \si or \SI command to change the writing of \per, or change the line below to set it globally
+\sisetup{per-mode=symbol}
+% \squared -> ^2
+
+\usepackage{physics} % several math macros, such as
+% \tr -> trace
+% \rank -> rank
+% \expval -> angle brackets to inner product,〈a|b〉, or ensamble average〈s (t)〉
+% \abs -> |x|
+% \norm -> ||x||
+% \eval -> evaluated bar x|_y=a
+% \order -> Big-O notation
+% \Re -> real
+% \Im -> imaginary
+% \dd[]{} -> differential
+% \dv -> derivative
+% \pdv -> partial derivative
+
+%%%%%%%%% creating new operators %%%%%%%%%
+\let\oldemptyset\emptyset % change empty set
+\let\emptyset\varnothing
+
+% for simple operator definitions, use \newcommand{}[]{\operatorname{}}
+\newcommand{\adj}[1]{\ensuremath{\operatorname{adj}\left(#1\right)}} % adjugate matrix
+\newcommand{\cof}[1]{\ensuremath{\operatorname{cof}\left(#1\right)}} % cofactor matrix
+\newcommand{\eig}[1]{\ensuremath{\operatorname{eig}\left(#1\right)}} % eigenvalues
+\newcommand{\nullspace}[1]{\ensuremath{\operatorname{N}\left(#1\right)}} % nullspace or kernel of the matrix
+\newcommand{\nullity}[1]{\ensuremath{\operatorname{nullity}\left(#1\right)}} % nullity=dim(N(A))
+\newcommand{\spn}[1]{\ensuremath{\operatorname{span}\left\{#1\right\}}} % span of a set of vectors, \span is a reserved word
+\newcommand{\range}[1]{\ensuremath{\operatorname{C}\left(#1\right)}} % range or columnspace of a matrix=span(a1,a2, ..., an), where ai is the ith column vector of the matrix A
+\newcommand{\unvec}[1]{\ensuremath{\operatorname{unvec}\left(#1\right)}} % unvectorize operator
+\newcommand{\diag}[1]{\ensuremath{\operatorname{diag}\left(#1\right)}} % diagonal operator
+\newcommand{\dom}[1]{\ensuremath{\operatorname{dom}\left(#1\right)}} % domain of the function
+\newcommand{\frob}[1]{\ensuremath{\norm{#1}_\textrm{F}}} % Frobenius norm
+\newcommand{\intersection}{\bigcap\limits} % intersection operator
+\renewcommand{\dim}[1]{\ensuremath{\operatorname{dim}\left(#1\right)}} % dimension of a set
+
+% for more complex operator difinition with optional arguments, use \NewDocumentCommand{}{}{\operatorname}
+\NewDocumentCommand{\argmin}{ O{} m }{\underset{#1}{\ensuremath{\operatorname{arg\,min}}\;#2}} % arg min, e.g., \argmin[x \in \mathcal{A}]{f(x)}
+\NewDocumentCommand{\argmax}{ O{} m }{\underset{#1}{\ensuremath{\operatorname{arg\,max}}\;#2}}
+\NewDocumentCommand{\E}{O{} m}{\ensuremath{\operatorname{E}_{#1}\left[#2\right]}} % statistical expectation operator, e.g., \E[u]{x} or \E{x}
+\NewDocumentCommand{\cov}{O{} m}{\ensuremath{\operatorname{cov}_{#1}\left[#2\right]}} % covariance, e.g., \cov[u]{x} or \cov{x}
+\let\var\undefined\NewDocumentCommand{\var}{O{} m}{\ensuremath{\operatorname{var}_{#1}\left[#2\right]}} % variance, e.g., \var[u]{x} or \var{x}
+\let\vec\undefined\NewDocumentCommand{\vec}{O{} m}{\ensuremath{\operatorname{\bf E}_{#1}\left[#2\right]}} % vectorize operator, e.g., \vec[u]{\mathbf{A}}, [u] is optional
+
+% circular convolution a lá Oppenheim (if possible, prefer \circledast)
+\newcommand*\circconv[1]{%
+  \begin{tikzpicture}
+    \node[draw,circle,inner sep=1pt] {#1};
+  \end{tikzpicture}}
+
+%%%%%%%%% creating delimited operators %%%%%%%%%
+\makeatletter % changes the catcode of @ to 11
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ⌈x⌉
+\let\oldceil\ceil
+\def\ceil{\@ifstar{\oldceil}{\oldceil*}} % swap the asterist and the nonasterisk behaviors
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % ⌊x⌋
+\let\oldfloor\floor
+\def\floor{\@ifstar{\oldfloor}{\oldfloor*}}
+
+\makeatother % changes the catcode of @ back to 12
+
+%%%%%%%%% minor adjusts in some mathematical symbols %%%%%%%%%
+\let\oldforall\forall % put some spaces between the \forall command
+\renewcommand{\forall}{\;\oldforall\;}
+
+%%%%%%%%% comments, corrections, or revisions %%%%%%%%%
+\usepackage{luacolor} % color support based on LuaTEX’s
+\usepackage[soul]{lua-ul} % provide underlining, strikethough, and highlighting using features in LuaLATEX which avoid the restrictions imposed by other methods
+\newcommand{\obs}[1]{\textcolor{red}{(#1)}} % comment
+\newcommand{\sizecorr}[1]{\makebox[0cm]{\phantom{$\displaystyle #1$}}} % Used to seize the height of equation
+\newcommand{\ensureoperation}{\negmedspace {}} % To ensure that a new line symbol is an operation instead of a sign
