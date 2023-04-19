@@ -1,5 +1,5 @@
 const divIframe = document.querySelector('.frame');
-const url = 'https://api.github.com/repos/tapyu/tapyu.github.io/contents/notes/posts/matrix_diff_ref/latex/main.pdf'
+const url = 'https://api.github.com/repos/tapyu/tapyu.github.io/contents/notes/posts/electromag_quick_guide/latex/main.pdf'
 
 fetch(url)
 .then(response => response.json())
