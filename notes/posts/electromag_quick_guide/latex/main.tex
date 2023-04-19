@@ -1,0 +1,34 @@
+\documentclass{article}
+\input{default_preamble.tex}
+
+% redefine \maketitle
+\makeatletter % changes the catcode of @ to 11
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\LARGE \@title \par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author\\
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\large {\tt Version:}\@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother % changes the catcode of @ back to 12
+
+\usepackage{authblk}
+
+\begin{document}
+\title{\textbf{Quick guide for Electromagnetics}  \vspace{-.3cm}}
+\author{Rubem Vasconcelos Pacelli\\
+  {\tt rubem.engenharia@gmail.com}}
+\affil{Department of Teleinformatics Engineering,\\Federal University of Ceará.\\Fortaleza, Ceará, Brazil. \vspace{-.5cm}}
+\maketitle
+\end{document}
