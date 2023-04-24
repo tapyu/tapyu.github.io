@@ -228,8 +228,8 @@
 
 \subsection{General operations}
 \begin{xltabular}{\textwidth}{XX}
-    \(\expval{\mathbf{a}, \mathbf{b}}, \mathbf{a}^\top\mathbf{b}, \mathbf{a}\cdot\mathbf{b}\) & Inner product or dot product\\ \hline
-    \(\circ\) & Outer product, e.g., \(\mathbf{a} \circ \mathbf{b} = \mathbf{a}\mathbf{b}^\top\)\\ \hline
+    \(\expval{\mathbf{a}, \mathbf{b}}, \mathbf{a}^\top\mathbf{b}, \mathbf{a}\cdot\mathbf{b}\) & Inner or dot product\\ \hline
+    \(\mathbf{a}\circ\mathbf{b}, \mathbf{a}\mathbf{b}^\top\) & Outer product\\ \hline
     \(\otimes\) & Kronecker product\\ \hline
     \(\odot\) & Hadamard (or Schur) (elementwise) product\\ \hline
     \(\cdot^{\odot n}\) & \(n\)th-order Hadamard power\\ \hline
@@ -416,62 +416,6 @@
     \(a \equiv b, a \iff b, a \Leftrightarrow b \) & Logical equivalence, i.e., \(a \leftrightarrow b\) is a tautology\cite{rosenDiscreteMathematicsIts2011}\\
 \end{xltabular}
 
-\section{Physics}
-\begin{xltabular}{\textwidth}{XX}
-    \(\mathbf{E}\) & Electric feild vector (in \(\si{\volt\per\meter}\))\\ \hline
-    \(\mathbf{\Phi}\) & Electric flux (scalar) (in \(\si{\volt\meter}\))\\ \hline
-    \(\mathbf{D}\) & Electric flux density, electric displacement, or electric induction vector (in \(\si{\coulomb\per\square\meter}\))\\ \hline
-    \(\mathbf{J}\) & Electric current density vector (in \(\si{\ampere\per\square\meter}\))\\ \hline
-    \(\mathbf{H}\) & Magnetic feild vector (in \(\si{\ampere\per\meter}\))\\ \hline
-    \(\mathbf{B}\) & Magnetic flux density vector (in \(\si{\weber\per\meter\squared} = \si{\tesla}\))\\ \hline
-    \(\epsilon\) & Electric permittivity \\ \hline
-    \(\mu\) & Magnetic permeability \\ \hline
-    \(\mu_0\) & Magnetic permeability in vacuum \\
-\end{xltabular}
-
-\section{Number theory, algorithm theory, and other notations}
-\subsection{Mathematical symbols}
-\begin{xltabular}{\textwidth}{XX}
-    \(\blacksquare\) & Q.E.D. \\
-    \(\triangleq\) & Equal by definition\\
-    \(:=, \leftarrow\) & Assignment \cite{rosenDiscreteMathematicsIts2011}\\
-    \(\neq\) & Not equal\\
-    \(\infty\) & Infinity\\
-    \(j\) & \(\sqrt{-1}\)\\
-\end{xltabular}
-
-\section{Calculus}
-\begin{xltabular}{\textwidth}{XX}
-    \(\nabla\) & Nabla operator (vector differential operator), i.e., \(\nabla f\) is the gradient of the scalar-valued function \(f\), i.e., \(f: \mathbb{R}^n \rightarrow \mathbb{R}\) \\ \hline
-    \(t, (u,v)\) & Parametric variables commonly used, \(t\) for one variable, \((u,v)\) for two variables\\ \hline
-    \(\mathbf{r}(t)\) & Vector position \((x(t), y(t), z(t))\) parametrized by \(t\)\\ \hline
-    \(\mathbf{r}'(t)\) & First derivative of \(\mathbf{r}(t)\), i.e., the tangent vector of the curve \((x(t), y(t), z(t))\) \\ \hline
-    \(\mathbf{t}(t),\mathbf{T}(t)\) & Unit tangent vector of \(\mathbf{r}(t)\), i.e., \newline  \(\mathbf{t}(t) = \mathbf{r}'(t)/\abs{\mathbf{r}'(t)}\)\\ \hline
-    \(\mathbf{n}(t), \left( \frac{y'(t)}{\abs{\mathbf{r}'(t)}}, -\frac{x'(t)}{\abs{\mathbf{r}'(t)}} \right)\) & Normal vector of \(\mathbf{r}(t)\), i.e., \newline \(\mathbf{n}(t)\perp \mathbf{T}(t) \)\\ \hline
-    \(C\)& Contour that traveled by \(\mathbf{r}(t)\), for \(a \leq t \leq b\) \\ \hline
-    \(L, L(C)\) & Total length of the contour \(C\) (which can be defined the vector \(\mathbf{r}\), parametrized by \(t\)), i.e., \(L_C = \int_a^b \abs{\mathbf{r}'(t)} \dd{t}\)\\ \hline
-    \(s(t)\) & Length of the arc, which can be defined by the vector \(\mathbf{r}\) and \(t\), that is, \(s(t) = \int_a^t \abs{\mathbf{r}'(t)} \dd{t}\) (\(s(b) = L\))\cite{stewartCalculus2011}\\ \hline
-    \(\dd{s}\) & Differential operator of the length of the contour \(C\), i.e., \(\dd{s} = \abs{\mathbf{r}'(t)} \dd{t}\)\\ \hline
-    \(\int_C f(\mathbf{r}) \dd{s}, \int_a^b f(\mathbf{r}(t)) \abs{\mathbf{r}'(t)} \dd{t}\) & Line integral of the function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) along the contour \(C\) \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\ \hline
-    \(\int_C \mathbf{F}\cdot\dd{\mathbf{r}}, \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t) \dd{t}, \int_C \mathbf{F}\cdot\mathbf{T} \dd{s}\) & Line integral of vector field \(\mathbf{F}\) along the contour \(C\)  \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\ \hline
-    \(\int_\mathbf{a}^\mathbf{b} \mathbf{F}, \int_\mathbf{a}^\mathbf{b} \mathbf{F}\cdot\dd{\mathbf{r}}\) & Alternative notation to the line integral, where the parametric variable \(t\) goes from \(a\) to \(b\), making \(r\) goes from \(\mathbf{r}(a) = \mathbf{a}\) to \(\mathbf{r}(b) = \mathbf{b}\) \cite{apostolCalculus2ndEdn1967} \\ \hline
-    \(\oint_C, \varointctrclockwise_C\) & Closed line integral along the contour \(C\) \\ \hline
-    \(\mathbf{r}(u,v)\) & Vector position \((x(u,v), y(u,v), z(u,v))\) parametrized by \((u,v)\)\\ \hline
-    \(\mathbf{r}_u\) & \((\partial x/ \partial u, \partial y/ \partial u, \partial z/ \partial u)\)\\ \hline
-    \(\mathbf{r}_v\) & \((\partial x/ \partial v, \partial y/ \partial v, \partial z/ \partial v)\)\\ \hline
-    \(\dd{A}\) & Differential operator of 2D area (\(D\) or \(R\)) in 2D space (\(\mathbb{R}^2\) domain). This differential operator can be solved in different ways (rectangular, polar, cylindric, etc) \cite{stewartCalculus2011} \\ \hline
-    \(D, R\) & Integration domain in which \(\dd{A}\) is integrated, i.e., \(\iint_D f \dd{A}\) \cite{stewartCalculus2011} \\ \hline
-    \(S\)& Smooth surface \(S\), i.e., a 2D area in a 3D space (\(\mathbb{R}^3\) domain) \\ \hline
-    \(\dd{S}, \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A} \)& Differential operator of a 2D area in a 3D domain (an surface). Note that \(\dd{S} = \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\) should be accompanied with the change of the integration interval(from \(S\) to \(D\)) \\ \hline
-    \(A(S), \iint_S \dd{S}, \iint_D \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\) & Area of the surface \(S\) parametrized by \((u,v)\), in which \(\dd{A}\) is the area defined in the \(D\) domain (which is form by the \(u\)-by-\(v\) graph)\\ \hline
-    \(V, \iint_D f \dd{A}\) & Volume of the function \(f\) over the region \(D\) \\ \hline
-    \(\iint_S f \dd{S}, \iint_D f \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\)& Surface integral over \(S\) \\ \hline
-    \(\mathbf{n}(u,v), \frac{\mathbf{r}_u(u,v)\times\mathbf{r}_v(u,v)}{\abs{\mathbf{r}_u(u,v)\times\mathbf{r}_v(u,v)}}\) & Normal vector of of the smooth surface \(S\) \\ \hline
-    \(\iint_S \mathbf{F}\cdot \mathbf{n} \dd{S}, \iint_S \mathbf{F} \cdot \dd{\mathbf{S}}, \newline \iint_D \mathbf{F} \cdot (\mathbf{r}_u\times\mathbf{r}_v) \dd{A}\) & Flux integral of vector field \(\mathbf{F}\) through the smooth surface \(S\) (\(\mathbf{n} \dd{S} \triangleq \dd{\mathbf{S}}\)) \\ \hline
-    \(\nabla \times \mathbf{F} , \textnormal{curl } \mathbf{F}\) & Curl (rotacional) of the vector field \(\mathbf{F}\)\\ \hline
-    \(\nabla \cdot \mathbf{F} , \textnormal{div } \mathbf{F}\) & Divercence of the vector field \(\mathbf{F}\)\\ \hline
-    \(\nabla^2 \mathbf{F}\) & Laplacian operator\\
-\end{xltabular}
 \subsection{Operations}
 \begin{xltabular}{\textwidth}{XX}
     \(\abs{a}\) & Absolute value of \(a\)\\ \hline
@@ -489,7 +433,67 @@
     \(\ceil{\cdot}\) & Ceiling operation \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
     \(\floor{\cdot}\) & Floor operation \cite{grahamConcreteMathematicsFoundation1989}
 \end{xltabular}
-\subsection{Functions}
+
+\section{Physics}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathbf{E}\) & Electric feild vector (in \(\si{\volt\per\meter}\))\\ \hline
+    \(\mathbf{\Phi}\) & Electric flux (scalar) (in \(\si{\volt\meter}\))\\ \hline
+    \(\mathbf{D}\) & Electric flux density, electric displacement, or electric induction vector (in \(\si{\coulomb\per\square\meter}\))\\ \hline
+    \(\mathbf{J}\) & Electric current density vector (in \(\si{\ampere\per\square\meter}\))\\ \hline
+    \(\mathbf{H}\) & Magnetic feild vector (in \(\si{\ampere\per\meter}\))\\ \hline
+    \(\mathbf{B}\) & Magnetic flux density vector (in \(\si{\weber\per\meter\squared} = \si{\tesla}\))\\ \hline
+    \(\epsilon\) & Electric permittivity \\ \hline
+    \(\mu\) & Magnetic permeability \\ \hline
+    \(\mu_0\) & Magnetic permeability in vacuum \\
+\end{xltabular}
+
+\section{Calculus}
+\begin{xltabular}{\textwidth}{XX}
+    \(\nabla\) & Vector differential operator (Nabla symbol), i.e., \(\nabla f\) is the gradient of the scalar-valued function \(f\), i.e., \(f: \mathbb{R}^n \rightarrow \mathbb{R}\) \\ \hline
+    \(t, (u,v)\) & Parametric variables commonly used, \(t\) for one variable, \((u,v)\) for two variables\cite{stewartCalculus2011}\\ \hline
+    \(\mathbf{r}(t)\) & Vector position \((x(t), y(t), z(t))\) parametrized by \(t\)\cite{stewartCalculus2011}\\ \hline
+    \(\mathbf{r}'(t)\) & First derivative of \(\mathbf{r}(t)\), i.e., the tangent vector of the curve \((x(t), y(t), z(t))\) \cite{stewartCalculus2011}\\ \hline
+    \(\mathbf{T}(t), \mathbf{u}(t)\) & Tangent unit vector of \(\mathbf{r}(t)\), i.e., \newline  \(\mathbf{u}(t) = \mathbf{r}'(t)/\abs{\mathbf{r}'(t)}\)\cite{stewartCalculus2011,kreyszigAdvancedEngineeringMathematics2008}\\ \hline
+    \(\mathbf{n}(t), \left( \frac{y'(t)}{\abs{\mathbf{r}'(t)}}, -\frac{x'(t)}{\abs{\mathbf{r}'(t)}} \right)\) & Normal vector of \(\mathbf{r}(t)\), i.e., \newline \(\mathbf{n}(t)\perp \mathbf{T}(t) \)\cite{stewartCalculus2011}\\ \hline
+    \(C\)& Contour that traveled by \(\mathbf{r}(t)\), for \(a \leq t \leq b\) \cite{stewartCalculus2011}\\ \hline
+    \(L, L(C)\) & Total length of the contour \(C\) (which can be defined the vector \(\mathbf{r}\), parametrized by \(t\)), i.e., \(L_C = \int_a^b \abs{\mathbf{r}'(t)} \dd{t}\)\cite{stewartCalculus2011}\\ \hline
+    \(s(t)\) & Length of the arc, which can be defined by the vector \(\mathbf{r}\) and \(t\), that is, \(s(t) = \int_a^t \abs{\mathbf{r}'(u)} \dd{u}\) (\(s(b) = L\))\cite{stewartCalculus2011}\\ \hline
+    \(\dd{s}\) & Differential operator of the length of the contour \(C\), i.e., \(\dd{s} = \abs{\mathbf{r}'(t)} \dd{t}\)\\ \hline
+    \(\int_C f(\mathbf{r}) \dd{s}, \int_a^b f(\mathbf{r}(t)) \abs{\mathbf{r}'(t)} \dd{t}\) & Line integral of the function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) along the contour \(C\) \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\ \hline
+    \(\int_C \mathbf{F}\cdot\dd{\mathbf{r}}, \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t) \dd{t}, \int_C \mathbf{F}\cdot\mathbf{T} \dd{s}\) & Line integral of vector field \(\mathbf{F}\) along the contour \(C\)  \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\ \hline
+    \(\int_\mathbf{a}^\mathbf{b} \mathbf{F}, \int_\mathbf{a}^\mathbf{b} \mathbf{F}\cdot\dd{\mathbf{r}}\) & Alternative notation to the line integral, where the parametric variable \(t\) goes from \(a\) to \(b\), making \(r\) goes from \(\mathbf{r}(a) = \mathbf{a}\) to \(\mathbf{r}(b) = \mathbf{b}\) \cite{apostolCalculus2ndEdn1967} \\ \hline
+    \(\oint_C, \varointctrclockwise_C\) & Closed line integral along the contour \(C\) \\ \hline
+    \(\mathbf{r}(u,v)\) & Vector position \((x(u,v), y(u,v), z(u,v))\) parametrized by \((u,v)\)\\ \hline
+    \(\mathbf{r}_u\) & \((\partial x/ \partial u, \partial y/ \partial u, \partial z/ \partial u)\)\\ \hline
+    \(\mathbf{r}_v\) & \((\partial x/ \partial v, \partial y/ \partial v, \partial z/ \partial v)\)\\ \hline
+    \(\dd{A}\) & Differential operator of a 2D area (denoted by \(D\) or \(R\)) in the \(\mathbb{R}^2\) domain. This differential operator can be solved in different ways (rectangular, polar, cylindric, etc) \cite{stewartCalculus2011} \\ \hline
+    \(D, R\) & Integration domain in which \(\dd{A}\) is integrated, i.e., \(\iint_D f \dd{A}\) \cite{stewartCalculus2011} \\ \hline
+    \(S\)& Smooth surface \(S\), i.e., a 2D area in a 3D space (\(\mathbb{R}^3\) domain) \\ \hline
+    \(\dd{S}, \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A} \)& Differential operator of a 2D area in a 3D domain (an surface). Note that \(\dd{S} = \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\) should be accompanied with the change of the integration interval(from \(S\) to \(D\)) \\ \hline
+    \(A(S), \iint_S \dd{S}, \iint_D \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\) & Area of the surface \(S\) parametrized by \((u,v)\), in which \(\dd{A}\) is the area defined in the \(D\) domain (which is form by the \(u\)-by-\(v\) graph)\\ \hline
+    \(\dd{V}\) & Differential operator of a shape volume (denoted by \(E\)) in \(\mathbb{R}^3\) domain, i.e., \(\iiint_E \dd{V} = V\) \\ \hline
+    \(E\) & Integration domain in which \(\dd{V}\) is integrated, i.e., \(\iiint_E f \dd{V}\) \cite{stewartCalculus2011} \\ \hline
+    \(V, \iint_D f \dd{A}, \iiint_E f \dd{V}\) & Volume of the function \(f\) over the regions \(D\) (in the case of double integrais) or \(E\) (in the case of triple integrais) \\ \hline
+    \(\iint_S f \dd{S}, \iint_D f \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\)& Surface integral over \(S\) \\ \hline
+    \(\mathbf{n}(u,v), \frac{\mathbf{r}_u(u,v)\times\mathbf{r}_v(u,v)}{\abs{\mathbf{r}_u(u,v)\times\mathbf{r}_v(u,v)}}\) & Normal vector of of the smooth surface \(S\) \\ \hline
+    \(\iint_S \mathbf{F}\cdot \mathbf{n} \dd{S}, \iint_S \mathbf{F} \cdot \dd{\mathbf{S}}, \newline \iint_D \mathbf{F} \cdot (\mathbf{r}_u\times\mathbf{r}_v) \dd{A}\) & Flux integral of vector field \(\mathbf{F}\) through the smooth surface \(S\) (\(\mathbf{n} \dd{S} \triangleq \dd{\mathbf{S}}\)) \\ \hline
+    \(\nabla \times \mathbf{F} , \textnormal{curl } \mathbf{F}\) & Curl (rotacional) of the vector field \(\mathbf{F}\)\\ \hline
+    \(\nabla \cdot \mathbf{F} , \textnormal{div } \mathbf{F}\) & Divercence of the vector field \(\mathbf{F}\)\\ \hline
+    \(\nabla^2 f, \nabla \cdot (\nabla f), \Delta f, \newline \partial^2f/\partial x^2 + \partial^2f/\partial y^2 + \partial^2f/\partial z^2\) & Scalar Laplacian operator (performed on a scalar-valued function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\))\\ \hline
+    \(\nabla^2 \mathbf{F}, \nabla \times \nabla \times \mathbf{F} - \nabla(\nabla \cdot \mathbf{F}), \Delta \mathbf{F}, \newline (\partial^2\mathbf{F}/\partial x^2 , \partial^2\mathbf{F}/\partial y^2 , \partial^2\mathbf{F}/\partial z^2)\) & Vector Laplacian operator (performed on a vector field, i.e., a vector-valued function, \(\mathbf{F}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}\))\\
+\end{xltabular}
+
+\section{Generic mathematical symbols}
+\begin{xltabular}{\textwidth}{XX}
+    \(\blacksquare\) & Q.E.D. \\ \hline
+    \(\triangleq\) & Equal by definition\\ \hline
+    \(:=, \leftarrow\) & Assignment \cite{rosenDiscreteMathematicsIts2011}\\ \hline
+    \(\neq\) & Not equal\\ \hline
+    \(\infty\) & Infinity\\ \hline
+    \(j\) & \(\sqrt{-1}\)\\
+\end{xltabular}
+
+\section{Generic mathematical functions}
 \begin{xltabular}{\textwidth}{XX}
     \(\mathcal{O}(\cdot), O(\cdot)\) & Big-O notation\\ \hline
     \(\Gamma(\cdot)\) & Gamma function\\ \hline
