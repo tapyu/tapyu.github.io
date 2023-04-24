@@ -25,6 +25,7 @@
 
 \usepackage{authblk}
 \input{default_preamble.tex}
+\usepackage{esint}
 \NewDocumentCommand{\nossekE}{O{} m}{\ensuremath{\operatorname{\bf E}_{#1}\left[#2\right]}} % statistical expectation operator, e.g., \E[u]{x} or \E{x}
 
 \begin{document}
@@ -227,7 +228,7 @@
 
 \subsection{General operations}
 \begin{xltabular}{\textwidth}{XX}
-    \(\expval{\cdot, \cdot}\) & Inner product, e.g., \(\expval{\mathbf{a}, \mathbf{b}} = \mathbf{a}^\top\mathbf{b}\)\\
+    \(\expval{\mathbf{a}, \mathbf{b}}, \mathbf{a}^\top\mathbf{b}, \mathbf{a}\cdot\mathbf{b}\) & Inner product or dot product\\
     \(\circ\) & Outer product, e.g., \(\mathbf{a} \circ \mathbf{b} = \mathbf{a}\mathbf{b}^\top\)\\
     \(\otimes\) & Kronecker product\\
     \(\odot\) & Hadamard (or Schur) (elementwise) product\\
@@ -292,7 +293,7 @@
     \(\spn{\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_n}\) & Vector space spanned by the argument vectors \cite{golubMatrixComputations2013}\\
     \(\range{\mathbf{A}}\), \(\mathrm{columnspace}(\mathbf{A})\), \(\mathrm{range}(\mathbf{A})\), \(\spn{\mathbf{A}}\), \(\mathrm{image}(\mathbf{A})\) & Columnspace, range or image, i.e., the space \(\spn{\mathbf{a}_1,\mathbf{a}_2, \dots, \mathbf{a}_n}\), where \(\mathbf{a}_i\) is the ith column vector of the matrix \(\mathbf{A}\) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}\\
     \(\range{\mathbf{A}^\mathsf{H}}\) & Row space (also called left columnspace) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}\\
-    \(\nullspace{\mathbf{A}}, \mathrm{nullspace}(\mathbf{A}), \mathrm{kernel}(\mathbf{A})\) & Nullspace (or kernel space) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}\\
+    \(\nullspace{\mathbf{A}}, \mathrm{nullspace}(\mathbf{A}), \mathrm{null}(\mathbf{A}), \mathrm{kernel}(\mathbf{A})\) & Nullspace (or kernel space) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015,theodoridisMachineLearningBayesian2020}\\
     \(\nullspace{\mathbf{A^\mathsf{H}}}\) & Left nullspace\\
     \(\rank{\mathbf{A}}\) & Rank, that is, \(\dim{\spn{\mathbf{A}}} = \dim{\range{\mathbf{A}}}\) \cite{nossekAdaptiveArraySignal2015} \\
     \(\nullity{\mathbf{A}}\) & Nullity of \(\mathbf{A}\), i.e., \(\dim{\nullspace{\mathbf{A}}}\)\\
@@ -440,9 +441,35 @@
 \end{xltabular}
 \subsection{Calculus}
 \begin{xltabular}{\textwidth}{XX}
-    \(\nabla\) & Nabla operator (vector differential operator) \\
-    \(\oint_C\) & Closed line integral around the contour \(C\) \\
-    \(\iint_S\)& Sufarce integral over \(S\) enclosed by \(C\)
+    \(\nabla\) & Nabla operator (vector differential operator), i.e., \(\nabla f\) is the gradient of the scalar-valued function \(f\), i.e., \(f: \mathbb{R}^n \rightarrow \mathbb{R}\) \\
+    \(t, (u,v)\) & Parametric variables commonly used, \(t\) for one variable, \((u,v)\) for two variables\\
+    \(\mathbf{r}(t)\) & Vector position \((x(t), y(t), z(t))\) parametrized by \(t\)\\
+    \(\mathbf{r}'(t)\) & First derivative of \(\mathbf{r}(t)\), i.e., the tangent vector of the curve \((x(t), y(t), z(t))\) \\
+    \(\mathbf{t}(t),\mathbf{T}(t)\) & Unit tangent vector of \(\mathbf{r}(t)\), i.e., \newline  \(\mathbf{t}(t) = \mathbf{r}'(t)/\abs{\mathbf{r}'(t)}\)\\
+    \(\mathbf{n}(t), \left( \frac{y'(t)}{\abs{\mathbf{r}'(t)}}, -\frac{x'(t)}{\abs{\mathbf{r}'(t)}} \right)\) & Normal vector of \(\mathbf{r}(t)\), i.e., \newline \(\mathbf{n}(t)\perp \mathbf{T}(t) \)\\
+    \(C\)& Contour that traveled by \(\mathbf{r}(t)\), for \(a \leq t \leq b\) \\
+    \(L, L(C)\) & Total length of the contour \(C\) (which can be defined the vector \(\mathbf{r}\), parametrized by \(t\)), i.e., \(L_C = \int_a^b \abs{\mathbf{r}'(t)} \dd{t}\)\\
+    \(s(t)\) & Length of the arc, which can be defined by the vector \(\mathbf{r}\) and \(t\), that is, \(s(t) = \int_a^t \abs{\mathbf{r}'(t)} \dd{t}\) (\(s(b) = L\))\cite{stewartCalculus2011}\\
+    \(\dd{s}\) & Differential operator of the length of the contour \(C\), i.e., \(\dd{s} = \abs{\mathbf{r}'(t)} \dd{t}\)\\
+    \(\int_C f(\mathbf{r}) \dd{s}, \int_a^b f(\mathbf{r}(t)) \abs{\mathbf{r}'(t)} \dd{t}\) & Line integral of the function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) along the contour \(C\) \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\
+    \(\int_C \mathbf{F}\cdot\dd{\mathbf{r}}, \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t) \dd{t}, \int_C \mathbf{F}\cdot\mathbf{T} \dd{s}\) & Line integral of vector field \(\mathbf{F}\) along the contour \(C\)  \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\
+    \(\int_\mathbf{a}^\mathbf{b} \mathbf{F}, \int_\mathbf{a}^\mathbf{b} \mathbf{F}\cdot\dd{\mathbf{r}}\) & Alternative notation to the line integral, where the parametric variable \(t\) goes from \(a\) to \(b\), making \(r\) goes from \(\mathbf{r}(a) = \mathbf{a}\) to \(\mathbf{r}(b) = \mathbf{b}\) \cite{apostolCalculus2ndEdn1967} \\
+    \(\oint_C, \varointctrclockwise_C\) & Closed line integral along the contour \(C\) \\
+    \(\mathbf{r}(u,v)\) & Vector position \((x(u,v), y(u,v), z(u,v))\) parametrized by \((u,v)\)\\
+    \(\mathbf{r}_u\) & \((\partial x/ \partial u, \partial y/ \partial u, \partial z/ \partial u)\)\\
+    \(\mathbf{r}_v\) & \((\partial x/ \partial v, \partial y/ \partial v, \partial z/ \partial v)\)\\
+    \(\dd{A}\) & Differential operator of 2D area (\(D\) or \(R\)) in 2D space (\(\mathbb{R}^2\) domain). This differential operator can be solved in different ways (rectangular, polar, cylindric, etc) \cite{stewartCalculus2011} \\
+    \(D, R\) & Integration domain in which \(\dd{A}\) is integrated, i.e., \(\iint_D f \dd{A}\) \cite{stewartCalculus2011} \\
+    \(S\)& Smooth surface \(S\), i.e., a 2D area in a 3D space (\(\mathbb{R}^3\) domain) \\
+    \(\dd{S}, \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A} \)& Differential operator of a 2D area in a 3D domain (an surface). Note that \(\dd{S} = \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\) should be accompanied with the change of the integration interval(from \(S\) to \(D\)) \\
+    \(A(S), \iint_S \dd{S}, \iint_D \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\) & Area of the surface \(S\) parametrized by \((u,v)\), in which \(\dd{A}\) is the area defined in the \(D\) domain (which is form by the \(u\)-by-\(v\) graph)\\
+    \(V, \iint_D f \dd{A}\) & Volume of the function \(f\) over the region \(D\) \\
+    \(\iint_S f \dd{S}, \iint_D f \abs{\mathbf{r}_u\times\mathbf{r}_v} \dd{A}\)& Surface integral over \(S\) \\
+    \(\mathbf{n}(u,v), \frac{\mathbf{r}_u(u,v)\times\mathbf{r}_v(u,v)}{\abs{\mathbf{r}_u(u,v)\times\mathbf{r}_v(u,v)}}\) & Normal vector of of the smooth surface \(S\) \\
+    \(\iint_S \mathbf{F}\cdot \mathbf{n} \dd{S}, \iint_S \mathbf{F} \cdot \dd{\mathbf{S}}, \newline \iint_D \mathbf{F} \cdot (\mathbf{r}_u\times\mathbf{r}_v) \dd{A}\) & Flux integral of vector field \(\mathbf{F}\) through the smooth surface \(S\) (\(\mathbf{n} \dd{S} \triangleq \dd{\mathbf{S}}\)) \\
+    \(\nabla \times \mathbf{F} , \textnormal{curl } \mathbf{F}\) & Curl (rotacional) of the vector field \(\mathbf{F}\)\\
+    \(\nabla \cdot \mathbf{F} , \textnormal{div } \mathbf{F}\) & Divercence of the vector field \(\mathbf{F}\)\\
+    \(\nabla^2 \mathbf{F}\) & Laplacian operator\\
 \end{xltabular}
 \subsection{Operations}
 \begin{xltabular}{\textwidth}{XX}
@@ -451,7 +478,7 @@
     \(\ln\) & Natual logarithm\\
     \(\textnormal{Re}\left\{ x \right\}\) & Real part of \(x\)\\
     \(\textnormal{Im}\left\{ x \right\}\) & Imaginary part of \(x\)\\
-    \(\angle\cdot\) & phase (complex argument)\\
+    \(\angle\cdot\) & Phase (complex argument)\\
     \(x\;\mathrm{mod}\;y\) & Remainder, i.e., \(x-y\floor{x/y}\), for \(y \neq 0\)\\
     \(x\;\mathrm{div}\;y\) & Quotient \cite{rosenDiscreteMathematicsIts2011}\\
     \(x \equiv y\;(\mathrm{mod}\;m)\) & Congruent, i.e.,  \(m \backslash (x-y)\) \cite{rosenDiscreteMathematicsIts2011}\\
