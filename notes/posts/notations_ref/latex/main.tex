@@ -153,10 +153,10 @@
     \(\textnormal{Exp}(\lambda)\) & Exponential distribution with rate parameter \(\lambda\)\\ \hline
     \(\Gamma(\alpha, \beta)\) & Gamma distribution with shape parameter \(\alpha\) and rate parameter \(\beta\)\\ \hline
     \(\Gamma(\alpha, \theta)\) & Gamma distribution with shape parameter \(\alpha\) and scale parameter \(\theta\ = 1/\beta\)\\ \hline
-    \(\textnormal{Nakagami}(m, \Omega)\) & Nakagami-m distribution with shape parameter \(m\) and spread parameter \(\Omega\) \\ \hline
+    \(\textnormal{Nakagami}(m, \Omega)\) & Nakagami-m distribution with shape parameter or fading figure \(m\) and spread, scale, or shape parameter \(\Omega\) \\ \hline
     \(\textnormal{Rayleigh}(\sigma)\) & Rayleigh distribution with scale parameter \(\sigma\)\\ \hline
     \(\textnormal{Rayleigh}(\Omega)\) & Rayleigh distribution with the second moment \(\Omega = E\left[ x^2 \right] = 2\sigma^2\)\\ \hline
-    \(\textnormal{Rice}(s, \sigma)\) & Rice distribution with noncentrality parameter (specular component) \(s\) and \(\sigma\)\\ \hline
+    \(\textnormal{Rice}(s, \sigma)\) & Rice distribution with noncentrality parameter \(s\) and \(\sigma\). \(s^2\) represent the specular component power\\ \hline
     \(\textnormal{Rice}(A, K)\) & Rice distribution with Rice factor \(K=s^2/2\sigma^2\) and scale parameter \(A = s^2 + 2\sigma^2\)
 \end{xltabular}
 
@@ -314,6 +314,7 @@
 \end{xltabular}
 
 \section{Communication systems}
+\subsection{Symbols}
 \begin{xltabular}{\textwidth}{XX}
     \(B\) & One-sided bandwidth of the transmitted signal, in Hz\\ \hline
     \(W\) & One-sided bandwidth of the transmitted signal, in rad/s\\ \hline
@@ -349,6 +350,26 @@
     \(\Delta \nu\) & Frequency error (Doppler frequency - estimated)\\ \hline
     \(\gamma, A\) & Transmitted signal amplitude\\ \hline
     \(\gamma_0, A_0\) & Combined effect of the path loss and antenna gain
+\end{xltabular}
+\subsection{Fading multipath channels}
+\begin{xltabular}{\textwidth}{XX}
+    \(t \overset{\mathcal{F}}{\leftrightarrow} \lambda\) & Support temporal of the signal. \(\lambda\) is obtained after taking the Fourier transform on \(t\). \\ \hline
+    \(\tau \overset{\mathcal{F}}{\leftrightarrow} f\) & Second support temporal of the signal (\(c(t)\) varies with with the input at the time \(\tau\)). \(f\) is obtained after taking the Fourier transform on \(\tau\). \\ \hline
+    \(c(t, \tau)\) & Complex envelope of the channel response at the time \(t\) due to an impulse applied at the \(t - \tau\) \\ \hline
+    \(C(f,t)\) & Transfer function of \(c(t, \tau)\) in \(\tau\) \\ \hline
+    \(\alpha(t, \tau)\) & Attenuation of \(c(t, \tau)\), i.e., \(c(t, \tau) = \alpha(t, \tau) e^{e\pi f_c \tau}\) \\ \hline
+    \(R_c(\tau_1, \tau_2, \Delta t)\) & Autocorrelation function of \(c(t, \tau)\), i.e., \(R_c(\tau_1, \tau_2, \Delta t) = \E{c^*(t, \tau_1), c^*(t + \Delta t, \tau_2)}\) \\ \hline
+    \(R_c(\tau, \Delta t)\) & Autocorrelation function of \(c(t, \tau)\) assuming uncorrelated scattering \\ \hline
+    \(R_c(\tau), \eval{R_c(\tau, \Delta t)}_{\Delta t = 0}\) & Multipath intensity profile or delay power spectrum \\ \hline
+    \(R_C(\Delta f, \Delta t), R_C(f_1, f_2; \Delta t)\), \(\E{C(f_1,t), C(f_2, t + \Delta t)}\), \(\mathcal{F}_\tau \left\{ R_c(\tau, \Delta t) \right\}\) &  Spaced-frequency, spaced-time correlation function (\(\Delta f = f_2 - f_1\)) \\ \hline
+    \(R_C(\Delta f), \eval{R_C(\Delta f, \Delta t)}_{\Delta t = 0}\), \(\mathcal{F}\left\{ R_c(\tau) \right\}\) & Spaced-frequency correlation function \\ \hline
+    \((\Delta f)_c\) & Coherence bandwidth of \(c(t)\), that is, the frequency interval in which \(R_C(\Delta f)\) is nonzero \\ \hline
+    \(T_m\) & Multipath spread of the channel, that is, the time interval in which \(R_c(\tau)\) is nonzero (\(T_m \approx 1/(\Delta f)_c \)) \\ \hline
+    \(R_C(\Delta t), \eval{R_C(\Delta f, \Delta t)}_{\Delta f = 0}\) & Spaced-time correlation function \\ \hline
+    \(S_C(\lambda), \mathcal{F}\left\{ R_C (\Delta t) \right\}\) & Doppler power spectrum \\ \hline
+    \((\Delta t)_c\) & Coherence time of \(c(t)\), that is, the time interval in which \(R_C(\Delta t)\) is nonzero \\ \hline
+    \(B_m\) & Multipath spread of the channel, that is, the frequency interval in which \(S_c(\lambda)\) is nonzero (\(B_d \approx 1/(\Delta t)_c \)) \\ \hline
+    \(S_C(\tau, \lambda), \mathcal{F}_{\Delta f, \Delta t}\left\{ R_C (\Delta f, \Delta t) \right\}\) & Scattering function \\ \hline
 \end{xltabular}
 
 \section{Discrete mathematics}
@@ -450,7 +471,6 @@
     \(\varepsilon_0\) & Electric permittivity in vacuum, \(\SI{8.854e-12}{\farad\per\meter}\) \cite{ramoFieldsWavesCommunication1994} \\ \hline
     \(\mathbf{E}\) & Electric field vector (in \(\si{\volt\per\meter}\))\\ \hline
     \(\mathbf{D}\) & Electric flux density, electric displacement, or electric induction vector (in \(\si{\coulomb\per\meter\squared}\))\\ \hline
-    \(\varPsi\) & Electric flux\\ \hline
     \(\mathbf{P}\) & Electric polarization of the material (in \(\si{\coulomb\per\meter\squared}\))\\ \hline
     \(\chi_e\) & Electric susceptibility (for linear and isotropic materiais)\\ \hline
     \(\mu\) & Magnetic permeability \\ \hline
@@ -507,7 +527,8 @@
 \begin{xltabular}{\textwidth}{XX}
     \(\mathcal{O}(\cdot), O(\cdot)\) & Big-O notation\\ \hline
     \(\Gamma(\cdot)\) & Gamma function\\ \hline
-    \(Q(\cdot)\) & Quantization function
+    \(Q(\cdot)\) & Quantization function\\ \hline
+    \(I_\alpha(\cdot)\) & Modified Bessel function of the first kind and order \(\alpha\)
 \end{xltabular}
 
 \section{Abbreviations}

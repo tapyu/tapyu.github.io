@@ -1,4 +1,3 @@
-% put \input{default_preamble.tex} on your main command
 %%%%%%%%% new commands %%%%%%%%%
 \usepackage{xparse} % make command behave differently depending on the number of arguments
 
@@ -30,6 +29,7 @@
 % use \SIrange[options]{value1}{value2}{unit commands} for a range ot values, possible options:
 % 1. "range-phrase=-" ->  change the word "to" to "--"
 % 2. range-units=single -> chage "1m to 10m" to "1 to 10m"
+% 3. mode=text % writes the unit in full
 % use the [per-mode=symbol] option in the \si or \SI command to change the writing of \per, or change the line below to set it globally
 \sisetup{per-mode=symbol}
 % \squared -> ^2
@@ -37,7 +37,7 @@
 \usepackage{physics} % several math macros, such as
 % \tr -> trace
 % \rank -> rank
-% \expval -> angle brackets to inner product,〈a|b〉, or ensamble average〈s (t)〉
+% \expval -> angle brackets to inner product,〈a,b〉, or ensemble average〈s(t)〉
 % \abs -> |x|
 % \norm -> ||x||
 % \eval -> evaluated bar x|_y=a
@@ -94,6 +94,7 @@
 \makeatother % changes the catcode of @ back to 12
 
 %%%%%%%%% minor adjusts in some mathematical symbols %%%%%%%%%
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n} % newtxmath changes the font style of \mathcal. It prevents \mathcal from being changed
 \let\oldforall\forall % put some spaces between the \forall command
 \renewcommand{\forall}{\;\oldforall\;}
 
