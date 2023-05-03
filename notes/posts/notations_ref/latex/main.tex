@@ -35,6 +35,9 @@
 \affil{Department of Teleinformatics Engineering,\\Federal University of Ceará.\\Fortaleza, Ceará, Brazil. \vspace{-.5cm}}
 \maketitle
 
+\tableofcontents
+\newpage
+
 \section{Font notation}
 \begin{xltabular}{\textwidth}{XX}
   $a,b,c, \dots, A, B, C, \dots$ & Scalars \\ \hline
@@ -51,7 +54,7 @@
     \(x[n], x[k], x[m], x[i], \dots\) \(x_n, x_k, x_m, x_i, \dots\) \(x(n), x(k), x(m), x(i), \dots\) & Discrete-time \(n, k, m, i, \dots\) (parenthesis should be adopted only if there are no continuous-time signals in the context to avoid ambiguity) \\ \hline
     \(x\left[ \left( \left( n - m \right) \right)_N \right], x \left( \left( n - m \right) \right)_N\) & Circular shift in \(m\) samples within a \(N\)-samples window \cite{ingleDigitalSignalProcessing2000,oppenheimDiscreteTimeSignalProcessing2009}
 \end{xltabular}
-\subsection{Common functions}
+\subsection{Common signals}
 \begin{xltabular}{\textwidth}{XX}
     \(\delta(t)\) & Delta function\\ \hline
     \(\delta[n], \delta_{i,j}\) & Kronecker function (\(n = i-j\))\\ \hline
@@ -59,6 +62,17 @@
     \(\tilde{x}[n], \tilde{x}(t)\) & Periodic discrete- or continuous-time signal\\ \hline
     \(\hat{x}[n], \hat{x}(t)\) & Estimate of \(x[n]\) or \(x(t)\)\\ \hline
     \(\dot{x}[m]\) & Interpolation of \(x[n]\)\\
+\end{xltabular}
+\subsection{Common functions}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathcal{O}(\cdot), O(\cdot)\) & Big-O notation\\ \hline
+    \(\Gamma(\cdot)\) & Gamma function\\ \hline
+    \(Q(\cdot)\) & Quantization function\\ \hline
+    \(I_\alpha(\cdot)\) & Modified Bessel function of the first kind and order \(\alpha\)\\ \hline
+    \(\left( \begin{array}{cc}
+        n \\
+        k
+    \end{array} \right)\) & Binomial coefficient
 \end{xltabular}
 \subsection{Operations and symbols}
 \begin{xltabular}{\textwidth}{XX}
@@ -136,8 +150,8 @@
     \(p(\cdot), f(\cdot)\) & Probability density function (PDF) or probability mass function (PMF) \cite{leon-garciaProbabilityStatisticsRandom2007}\\ \hline
     \(p(x\mid A)\) & Conditional PDF or PMF \cite{leon-garciaProbabilityStatisticsRandom2007}\\ \hline
     \(F(\cdot)\) & Cumulative distribution function (CDF)\\ \hline
-    \(\Phi_x(\omega), M_x(j\omega), E\left[ e^{j \omega x} \right]\) & First characteristic function (CF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020a} \\ \hline
-    \(M_x(t), \Phi_x(-j t), E\left[ e^{t x} \right]\) & Moment-generating function (MGF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020a} \\ \hline
+    \(\Phi_x(\omega), M_x(j\omega), E\left[ e^{j \omega x} \right]\) & First characteristic function (CF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020} \\ \hline
+    \(M_x(t), \Phi_x(-j t), E\left[ e^{t x} \right]\) & Moment-generating function (MGF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020} \\ \hline
     \(\Psi_x(\omega), \ln \Phi_x(\omega), \ln E\left[ e^{j \omega x}\right]\) & Second characteristic function \\ \hline
     \(K_x(t), \ln E\left[ e^{t x} \right], \ln M_x(t)\) & Cumulant-generating function (CGF) of \(x\) \cite{haykinAdaptiveFilterTheory2002} \\
 \end{xltabular}
@@ -160,12 +174,12 @@
     \(\textnormal{Rice}(A, K)\) & Rice distribution with Rice factor \(K=s^2/2\sigma^2\) and scale parameter \(A = s^2 + 2\sigma^2\)
 \end{xltabular}
 
-\section{Statistical signal processing}
+\section{Statistical signal processing and machine learning}
+\subsection{Statistical and estimated terms}
 \begin{xltabular}{\textwidth}{XX}
     \(\boldsymbol{\nabla}f, \mathbf{g}\) & Gradient descent vector \\ \hline
     \(\boldsymbol{\nabla}_{x}f, \mathbf{g}_{x}\) & Gradient descent vector with respect \(x\)\\ \hline
     \(\mathbf{g}\) (or \(\hat{\mathbf{g}}\) if the gradient vector is \(\mathbf{g}\)) & Stochastic gradient descent (SGD) \\ \hline
-    \(J(\cdot), \mathcal{E}(\cdot)\) & Cost-function or objective function\\ \hline
     \(\Lambda(\cdot)\) & Likelihood function\\ \hline
     \(\Lambda_l(\cdot)\) & Log-likelihood function\\ \hline
     \(\hat{x}(t)\) or \(\hat{x}[n]\) & Estimate of \(x(t)\) or \(x[n]\)\\ \hline
@@ -177,17 +191,26 @@
     \(\hat{r}_{x,d}(\tau), \hat{R}_{x,d}(\tau)\) & Estimated cross-correlation between \(x[n]\) and \(d[n]\) or \(x(t)\) and \(d(t)\)\\ \hline
     \(\hat{S}_{x,y}(f), \hat{S}_{x,y}(j\omega)\) & Estimated cross PSD of \(x(t)\) and \(y(t)\) in linear or angular (\(\omega\)) frequency\\ \hline
     \(\hat{\mathbf{R}}_\mathbf{xy}\) & Sample cross-correlation matrix of \(\mathbf{R}_\mathbf{xy}\) \\ \hline
-    \(\hat{\rho}_{x,y}\) & Estimated Pearson correlation coefficient between \(x\) and \(y\)\\ \hline
     \(\hat{c}_x(\tau), \hat{C}_x(\tau)\) & Estimated autocovariance function of the signal \(x(t)\) or \(x[n]\)\\ \hline
     \(\hat{\mathbf{C}}_\mathbf{x}, \hat{\mathbf{K}}_\mathbf{x}, \hat{\boldsymbol{\Sigmaup}}_\mathbf{x}\) & Sample (auto)covariance matrix \\ \hline
     \(\hat{c}_{xy}(\tau), \hat{C}_{xy}(\tau)\) & Estimated cross-covariance function of the signal \(x(t)\) or \(x[n]\)\\ \hline
     \(\hat{\mathbf{C}}_{\mathbf{xy}}, \hat{\mathbf{K}}_{\mathbf{xy}}, \hat{\boldsymbol{\Sigmaup}}_{\mathbf{xy}}\) & Sample cross-covariance matrix \\ \hline
-    \(\mathbf{w}, \boldsymbol{\thetaup}\) & Parameters, coefficients, or weights vector \\ \hline
-    \(\mathbf{w}_o, \mathbf{w}^{\star}, \boldsymbol{\thetaup}_o, \boldsymbol{\thetaup}^{\star}\) & Optimum value of the parameters, coefficients, or weights vector \\ \hline
-    \(\mathbf{W}\) & Matrix of the weights \\ \hline
     \(\mathbf{J}\) & Jacobian matrix\\ \hline
     \(\mathbf{H}\) & Hessian matrix \\ \hline
     \(\hat{\mathbf{H}}\) & Estimate of the Hessian matrix
+\end{xltabular}
+
+\subsection{Weights, classes, discriminants, hyperparameters, and system performance}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathbf{w}, \boldsymbol{\thetaup}\) & Parameters, coefficients, or weights vector \\ \hline
+    \(\mathbf{w}_o, \mathbf{w}^{\star}, \boldsymbol{\thetaup}_o, \boldsymbol{\thetaup}^{\star}\) & Optimum value of the parameters, coefficients, or weights vector \\ \hline
+    \(\mathbf{W}\) & Matrix of the weights \\ \hline
+    \(\eta\) & Learning rate hyperparameter \\ \hline
+    \(J(\cdot), \mathcal{E}(\cdot)\) & Cost-function or objective function\\ \hline
+    \(\hat{\rho}_{x,y}\) & Estimated Pearson correlation coefficient between \(x\) and \(y\)\\ \hline
+    \(d(n), d_n\) & Desired label (in case of supervised learning) \\ \hline
+    \(\rho\) & Distance of the margin of separation between two classes (Support Vector Machine, SVM) \\ \hline
+    \(g(\cdot)\) & Discriminant function, i.e., \(g(\mathbf{w}^{\star}) = 0\)
 \end{xltabular}
 
 \section{Linear Algebra}
@@ -488,7 +511,7 @@
     \(C\)& Contour that traveled by \(\mathbf{r}(t)\), for \(a \leq t \leq b\) \cite{stewartCalculus2011}\\ \hline
     \(L, L(C)\) & Total length of the contour \(C\) (which can be defined the vector \(\mathbf{r}\), parametrized by \(t\)), i.e., \(L_C = \int_a^b \abs{\mathbf{r}'(t)} \dd{t}\)\cite{stewartCalculus2011}\\ \hline
     \(s(t)\) & Length of the arc, which can be defined by the vector \(\mathbf{r}\) and \(t\), that is, \(s(t) = \int_a^t \abs{\mathbf{r}'(u)} \dd{u}\) (\(s(b) = L\))\cite{stewartCalculus2011}\\ \hline
-    \(\dd{s}\) & Differential operator of the length of the contour \(C\), i.e., \(\dd{s} = \abs{\mathbf{r}'(t)} \dd{t}\)\\ \hline
+    \(\dd{s}, \dd{l}\) & Differential operator of the length of the contour \(C\), i.e., \(\dd{s} = \abs{\mathbf{r}'(t)} \dd{t}\). It is also denoted by \(\dd{l}\) \cite{ramoFieldsWavesCommunication1994} \\ \hline
     \(\int_C f(\mathbf{r}) \dd{s}, \int_a^b f(\mathbf{r}(t)) \abs{\mathbf{r}'(t)} \dd{t}\) & Line integral of the function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) along the contour \(C\) \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\ \hline
     \(\int_C \mathbf{F}\cdot\dd{\mathbf{r}}, \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t) \dd{t}, \int_C \mathbf{F}\cdot\mathbf{T} \dd{s}\) & Line integral of vector field \(\mathbf{F}\) along the contour \(C\)  \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\ \hline
     \(\int_\mathbf{a}^\mathbf{b} \mathbf{F}, \int_\mathbf{a}^\mathbf{b} \mathbf{F}\cdot\dd{\mathbf{r}}\) & Alternative notation to the line integral, where the parametric variable \(t\) goes from \(a\) to \(b\), making \(r\) goes from \(\mathbf{r}(a) = \mathbf{a}\) to \(\mathbf{r}(b) = \mathbf{b}\) \cite{apostolCalculus2ndEdn1967} \\ \hline
@@ -523,22 +546,19 @@
     \(j\) & \(\sqrt{-1}\)\\
 \end{xltabular}
 
-\section{Generic mathematical functions}
-\begin{xltabular}{\textwidth}{XX}
-    \(\mathcal{O}(\cdot), O(\cdot)\) & Big-O notation\\ \hline
-    \(\Gamma(\cdot)\) & Gamma function\\ \hline
-    \(Q(\cdot)\) & Quantization function\\ \hline
-    \(I_\alpha(\cdot)\) & Modified Bessel function of the first kind and order \(\alpha\)
-\end{xltabular}
-
 \section{Abbreviations}
+PS: Only names of techniques and algorithms or usual abbreviations are considered.
 \begin{xltabular}{\textwidth}{XX}
     wrt. & With respect to\\ \hline
     st. & Subject to\\ \hline
     iff. & If and only if\\ \hline
     EVD & Eigenvalue decomposition, or eigendecomposition \cite{nossekAdaptiveArraySignal2015}\\ \hline
     SVD & Singular value decomposition\\ \hline
-    CP & CANDECOMP/PARAFAC\\
+    CP & CANDECOMP/PARAFAC\\ \hline
+    SGD & Stochastic gradient descent\\ \hline
+    SVM & Support vector machine\\ \hline
+    BPNN & Backpropagation neural network \cite{jiaoAutomaticEquatorialGPS2017}\\ \hline
+    RBF & Radial basis function\\ \hline
 \end{xltabular}
 
 \printbibliography
