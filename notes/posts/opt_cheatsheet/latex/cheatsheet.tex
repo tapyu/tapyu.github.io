@@ -388,8 +388,8 @@ The set \(S \in \mathbb{R}^{n}\) is convex iff it contains all convex combinatio
 \section{Fuctions}
 \subsection{Categories of functions regarding its curvature for CVX}
 \begin{itemize}
-    \item On CVX, for functions with multiple arguments (a vector as input), the curvature categories are always considered jointly \autocite{DCPRulesetCVX}.
-	\item The CVX optimization package, and, apparently, its derivatives (CVXPY, Convex.jl, CVXR...) categorize the functions as follows \autocite{DCPRulesetCVX}:
+    \item On CVX, for functions with multiple arguments (a vector as input), the curvature categories are always considered jointly \cite{DCPRulesetCVX}.
+	\item The CVX optimization package, and, apparently, its derivatives (CVXPY, Convex.jl, CVXR...) categorize the functions as follows \cite{DCPRulesetCVX}:
 \end{itemize}
 \subsubsection{Convex}
 \begin{align}
@@ -514,7 +514,7 @@ The set \(S \in \mathbb{R}^{n}\) is convex iff it contains all convex combinatio
     \item \(f(\mathbf{x}, y) = \norm{\mathbf{x}}^2/y\), where \(\mathbf{x} \in \mathbb{R}^{n}\) and \(y \in \mathbb{R}_{++}\)
     \end{itemize} & Convex & \vspace{-3.5ex} 
     \begin{itemize}[leftmargin=*]
-        \item It appeared for the first time in Stephen Boyd's Book \autocite{boydConvexOptimization2004} with \(n=1\), but then it appeared generalized for \(n\)-dimensional vector on the exercises \autocite{boydAdditionalExercisesConvex}.
+        \item It appeared for the first time in Stephen Boyd's Book \cite{boydConvexOptimization2004} with \(n=1\), but then it appeared generalized for \(n\)-dimensional vector on the exercises \cite{boydAdditionalExercisesConvex}.
     \end{itemize}
     \\
     \hline
@@ -744,8 +744,8 @@ The set \(S \in \mathbb{R}^{n}\) is convex iff it contains all convex combinatio
     \item Construct the problem as convex from the DCP ruleset and a ``atom library'', which is a set of basic functions that preserve convexity/concavity (vide Sec. \ref{cvx-dcp}).
     \begin{itemize}
         \item It is restricted to the atom library and DCP ruleset, but the convexity verification is automatic.
-        \item It usually involves adding auxiliary variables and reformulating the original optimization problem in order to get an expression that obeys the CDP ruleset \autocite{HomeConvexJl}.
-        \item The manipulation of the original problem by using operations that preserve the convexity/concavity is called convex calculus\autocite{boydDisciplinedConvexProgramming}.
+        \item It usually involves adding auxiliary variables and reformulating the original optimization problem in order to get an expression that obeys the CDP ruleset \cite{HomeConvexJl}.
+        \item The manipulation of the original problem by using operations that preserve the convexity/concavity is called convex calculus\cite{boydDisciplinedConvexProgramming}.
         \item The reformulation usually leads to a new optimization problem that is not equal to the original one. However, they are equivalents, that is, if your find the solve the reformulated problem, then you also find the solution to the original problem.
     \end{itemize}
 \end{itemize}
@@ -793,14 +793,14 @@ The set \(S \in \mathbb{R}^{n}\) is convex iff it contains all convex combinatio
         \item R: CVXR.
         \item Python: CVXPY.
     \end{itemize}
-    \item What distinguishes disciplined convex programming from more general convex programming is the rules, called \emph{DCP ruleset}, that govern the construction of the expressions used in objective functions and constraints \autocite{DCPRulesetCVX}.
+    \item What distinguishes disciplined convex programming from more general convex programming is the rules, called \emph{DCP ruleset}, that govern the construction of the expressions used in objective functions and constraints \cite{DCPRulesetCVX}.
     \item Problems that violate the ruleset are rejected—even when the problem is convex. That is not to say that such problems cannot be solved using DCP; they just need to be rewritten in a way that conforms to the DCP ruleset.
     \item For matrix and array expressions, these rules are applied on an elementwise basis.
     \item CVX is \emph{not} meant to be a tool for checking whether your problem is convex.
 \end{itemize}
 \subsection{\textit{No-product rule} and the scalar quadratic form expection}
 \begin{itemize}
-    \item CVX generally forbids products between nonconstant expressions, e.g., \(x * x\) (assuming \(x\) is a scalar variable). We call this the \emph{no-product rule}, and paying close attention to it will go a long way to ensuring that the expressions you construct are valid \autocite{DCPRulesetCVX}.
+    \item CVX generally forbids products between nonconstant expressions, e.g., \(x * x\) (assuming \(x\) is a scalar variable). We call this the \emph{no-product rule}, and paying close attention to it will go a long way to ensuring that the expressions you construct are valid \cite{DCPRulesetCVX}.
     \begin{itemize}
         \item For example, the expression \texttt{x*sqrt(x)} happens to be a convex function of \texttt{x}, but its convexity cannot be verified using the CVX ruleset, and so it is rejected.
         \item It can be expressed as \texttt{pow\_p(x,3/2)} though, where \(\texttt{pow\_p}(\cdot)\) is a function from the atom library that substitutes power expressions.
@@ -816,7 +816,7 @@ The set \(S \in \mathbb{R}^{n}\) is convex iff it contains all convex combinatio
     \item It will \emph{not} check, for example, sums of products of affine expressions. For example, \(\mathtt{x \textsuperscript{$\wedge$} 2 + 2 * x * y + y \textsuperscript{$\wedge$}2}\), where \(\mathtt{x,y} \in \mathbb{R}\), will cause an error on CVX, because the second term is neither convex nor concave. However, the alternative expressions \(( x + y ) \textsuperscript{$\wedge$} 2\) and \(( x + y ) * ( x + y )\) are compatible to CVX.
     \item The quadratic form, however, can (and must) be avoided since there exist equivalent expressions.
     \begin{itemize}
-        \item For instance, \(\mathtt{sum( ( \mathbf{A} * \mathbf{x} - \mathbf{b} ) .^ 2 ) <= 1}\) can the rewritten to the equivalent expression by using the Euclidean norm: \(\mathtt{norm( A * x - b ) <= 1}\), which is more efficient than that former \autocite{DCPRulesetCVX}.
+        \item For instance, \(\mathtt{sum( ( \mathbf{A} * \mathbf{x} - \mathbf{b} ) .^ 2 ) <= 1}\) can the rewritten to the equivalent expression by using the Euclidean norm: \(\mathtt{norm( A * x - b ) <= 1}\), which is more efficient than that former \cite{DCPRulesetCVX}.
     \end{itemize}
 \end{itemize}
 
@@ -827,7 +827,7 @@ The set \(S \in \mathbb{R}^{n}\) is convex iff it contains all convex combinatio
         \item As an example, consider the function \texttt{1/x}. This function is convex for \texttt{x>0}, and concave for \texttt{x<0}. But you can never write \texttt{1/x} on CVX (unless \texttt{x} is constant), even if you have imposed a constraint such as \texttt{x>=1}, which restricts \texttt{x} to lie in the convex portion of function \texttt{1/x}.
         \item You can use the CVX function \texttt{inv\_pos(x)} (\texttt{invpos(x)} on Convex.jl), defined as \texttt{1/x} for \texttt{x>0} and \(\infty\) otherwise, for the convex portion of \texttt{1/x}. CVX recognizes this function as convex and nonincreasing.
     \end{itemize}
-    \item Some computational functions are convex, concave, or affine only for a subset of its arguments\autocite{DCPRulesetCVX}.
+    \item Some computational functions are convex, concave, or affine only for a subset of its arguments\cite{DCPRulesetCVX}.
     \begin{itemize}
         \item For example, the function \texttt{norm(x,p)} where \(p \geq 1\) is convex only in its first argument. Whenever this function is used in a CVX specification, then, the remaining arguments must be constant (these kinds of input values are called \emph{parameters}), or CVX will issue an error message.
         \item Such arguments correspond to a function's parameters in mathematical terminology; e.g.,
@@ -836,7 +836,7 @@ The set \(S \in \mathbb{R}^{n}\) is convex iff it contains all convex combinatio
         \item Henceforth, whenever we speak of a CVX function as being convex, concave, or affine, we will assume that its parameters are known and have been given appropriate, constant values.
     \end{itemize}
 \end{itemize}
-\subsection{DCP Ruleset \autocite{DCPRulesetCVX}}
+\subsection{DCP Ruleset \cite{DCPRulesetCVX}}
 \begin{itemize}
 	\item A valid constant expression is
 	\begin{itemize}
@@ -884,8 +884,8 @@ The set \(S \in \mathbb{R}^{n}\) is convex iff it contains all convex combinatio
         \item The curvature (convex or concave).
         \item Monotonicity (nondecreasing or nonincreasing).
     \end{itemize}
-    \item The composition of functions is the base rule for the construction of expressions on the CVX family \autocite{DCPRulesetCVXa}.
-    \item One shall use the atoms functions in order to build expressions on CVX \autocite{DCPRulesetCVX}.
+    \item The composition of functions is the base rule for the construction of expressions on the CVX family \cite{DCPRulesetCVXa}.
+    \item One shall use the atoms functions in order to build expressions on CVX \cite{DCPRulesetCVX}.
 \end{itemize}
 Consider the following examples:
     \begin{itemize}
@@ -909,7 +909,7 @@ Consider the following examples:
             \item To circumvent it, one can rewrite as \(f\) as \(x\textsuperscript{$\wedge$}4 + 2*x\textsuperscript{$\wedge$}2 + 1\). Now, the power function guarantees that \(f\) is convex, thus this expression is DCP-compliant.
             \item Another approach is to use the atom library \(\mathtt{square\_pos}(\cdot)\), which represents the function \((x_+)^2\), where \(x_+ = \max \left\{ 0,x \right\}\). Now, since \(h = \mathtt{square\_pos}(\cdot)\) is convex and \(\tilde{h}\) is nondecreasing, \(f = h\circ g\) is guaranteed to be convex as long a \(g\) is convex as well. As \(g = x\textsuperscript{$\wedge$}2 + 1\) is convex, we conclude that \(f\) is convex and a valid DCP expression.
         \end{itemize}
-        \item \(f(x) = 2*x\textsuperscript{$\wedge$}2 + 3\) \autocite{Rules}
+        \item \(f(x) = 2*x\textsuperscript{$\wedge$}2 + 3\) \cite{Rules}
         \begin{itemize}
             \item \(g(x) = x\textsuperscript{$\wedge$}2\) is a convex function (vide power function).
             \item \(2*g(x)\) is convex (vide nonnegative weighted sum).
@@ -919,7 +919,7 @@ Consider the following examples:
             \centering
             \includegraphics[scale=0.15]{figs/example3.png}
         \end{figure}
-        \item \(f(x) = \mathtt{sqrt}(1 + x\textsuperscript{$\wedge$}2)\) \autocite{Rules}
+        \item \(f(x) = \mathtt{sqrt}(1 + x\textsuperscript{$\wedge$}2)\) \cite{Rules}
         \begin{itemize}
             \item \(g(x) = x\textsuperscript{$\wedge$}2\) is a convex function (vide power function).
             \item \(g(x) + 1\) is a convex function (vide addition/subtraction by a constant).
@@ -941,7 +941,7 @@ Consider the following examples:
     \end{itemize}
     \item Nonequalities is \emph{nerver} a constraint.
     \item For CVX packages, strict inequalities (\(<\), \(>\), \(\prec_K\), \(\succ_K\)) are analyzed as inequalities (\(\leq\), \(\geq\), \(\preceq_K\), \(\succeq_K\)). Thus, \emph{it is strongly recommended to only deal with nonstrict inequalities}.
-    \item Convex and concave functions on CVX are interpreted as their \emph{extended-valued extensions} \autocite{DCPRulesetCVX}. This has the effect of automatically constraining the argument of a function to be in the function's domain.
+    \item Convex and concave functions on CVX are interpreted as their \emph{extended-valued extensions} \cite{DCPRulesetCVX}. This has the effect of automatically constraining the argument of a function to be in the function's domain.
     \begin{itemize}
         \item For example, if we form \texttt{sqrt(x+1)} in a CVX specification, \texttt{x} will automatically be constrained to be larger than or equal to \texttt{-1}.
         \item There is no need to add a separate constraint, \texttt{x>=-1}, to enforce this.
@@ -949,7 +949,7 @@ Consider the following examples:
 \end{itemize}
 
 
-\section{Methods of each optimization problem \autocite{macielSlidesOtimizacaoNaolinear}}
+\section{Methods of each optimization problem \cite{macielSlidesOtimizacaoNaolinear}}
 \begin{xltabular}[l]{\linewidth}{|>{\hsize=.25\hsize}X|>{\hsize=.25\hsize}X|}
     \hline
     Linear Optimization     & Simplex method     \\\hline
