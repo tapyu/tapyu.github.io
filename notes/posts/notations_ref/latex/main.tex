@@ -112,7 +112,7 @@ test\end{xltabular}
 \begin{xltabular}{\textwidth}{XX}
     \(\E{\cdot}, \nossekE{\cdot}, E\left[ \cdot \right], \mathbb{E}\left[ \cdot \right]\)               & Statistical expectation operator \cite{nossekAdaptiveArraySignal2015,dinizAdaptiveFilteringAlgorithms2002}\\ \hline
     \(\E[u]{\cdot}, \nossekE[u]{\cdot},  E_u\left[ \cdot \right], \mathbb{E}_u\left[ \cdot \right]\)    & Statistical expectation operator with respect to \(u\)\\ \hline
-    \(\expval{\cdot}\)                                                                                  & Ensamble average\\ \hline
+    \(\expval{\cdot}\)                                                                                  & Ensemble average\\ \hline
     \(\var{\cdot}, \textnormal{VAR}[\cdot]\)                                                            & Variance operator \cite{haykinAdaptiveFilterTheory2002,leon-garciaProbabilityStatisticsRandom2007,proakisDigitalCommunications2007,bishopPatternRecognitionMachine2006}\\ \hline
     \(\var[u]{\cdot} \left[ \cdot \right], \textnormal{VAR}_u[\cdot]\)                                  & Variance operator with respect to \(u\)\\ \hline
     \(\cov{\cdot}, \textnormal{COV}[\cdot]\)                                                            & Covariance operator \cite{bishopPatternRecognitionMachine2006}\\ \hline
@@ -295,7 +295,7 @@ test\end{xltabular}
 \end{xltabular}
 \subsection{Operations with vectors}
 \begin{xltabular}{\textwidth}{XX}
-    \(\norm{\mathbf{a}}\)                         & \(l_1\) norm, 1-norm, or Manhatan norm\\ \hline
+    \(\norm{\mathbf{a}}\)                         & \(l_1\) norm, 1-norm, or Manhattan norm\\ \hline
     \(\norm{\mathbf{a}}, \norm{\mathbf{a}}_2\)    & \(l_2\) norm, 2-norm, or Euclidean norm\\ \hline
     \(\norm{\mathbf{a}}_p\)                       & \(l_p\) norm, \(p\)-norm, or Minkowski norm\\ \hline
     \(\norm{\mathbf{a}}_\infty\)                  & \(l_\infty\) norm, \(\infty\)-norm, or Chebyshev norm\\ \hline
@@ -379,7 +379,7 @@ test\end{xltabular}
     \(\mathbf{a} \perp \mathbf{b}\)   & \(\mathbf{a}\) is orthogonal to \(\mathbf{b}\)\\ \hline
     \(\mathbf{a} \not\perp \mathbf{b}\)            & \(\mathbf{a}\) is not orthogonal to \(\mathbf{b}\)\\
     \(A \oplus B\) & Direct sum, i.e., each \(\mathbf{v} \in \left\{ \sum \mathbf{a}_i \mid \mathbf{a}_i \in S_i, i=1,\dots,k \right\}\) has a unique representation of \(\sum \mathbf{a}_i\) with \(\mathbf{a}_i \in S_i\). That is, they expand to a space. Note that \(\left\{ S_i \right\}\) might not be orthogonal each other \cite{golubMatrixComputations2013}\\ \hline
-    \(A \overset{\perp}{\oplus} B\) & Direct sum of two space that are orthogonal and span a \(n\)-dimensional space, e.g., \(\range{\mathbf{A}^{\top}} \overset{\perp}{\oplus} \range{\mathbf{A}^{\top}}^{\perp} = \mathbb{R}^{n}\) (this decomposition of \(\mathbb{R}^{n}\) is called the orthogonal decomposition induced by \(\mathbf{A}\)) \cite{boydConvexOptimization2004}\\ \hline
+    \(A \overset{\perp}{\oplus} B\) & Direct sum of two spaces that are orthogonal and span a \(n\)-dimensional space, e.g., \(\range{\mathbf{A}^{\top}} \overset{\perp}{\oplus} \range{\mathbf{A}^{\top}}^{\perp} = \mathbb{R}^{n}\) (this decomposition of \(\mathbb{R}^{n}\) is called the orthogonal decomposition induced by \(\mathbf{A}\)) \cite{boydConvexOptimization2004}\\ \hline
     \(\bar{A}, A^{c}\) & Complement set (given $U$)\\ \hline
     \(\#A, \abs{A}\) & Cardinality\\ \hline
     \(a \in A\)& \(a\) is element of \(A\) \\ \hline
@@ -468,8 +468,8 @@ test\end{xltabular}
     \(\in\) & Belongs to \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
     \(\not\in\) & Does not belong to \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
     \(\because\) & Because \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\mid, :\) & Such that, sometimes that parantheses is used \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(, , \left( \cdot \right)\) & Used to separate the quantifier with restricted domain from the its scope, e.g., \(\forall \; x < 0 \left( x^{2} > 0 \right)\) or \(\forall \; x < 0, x^{2} > 0\) \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
+    \(\mid, :\) & Such that, sometimes that parentheses is used \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
+    \(, , \left( \cdot \right)\) & Used to separate the quantifier with restricted domain from its scope, e.g., \(\forall \; x < 0 \left( x^{2} > 0 \right)\) or \(\forall \; x < 0, x^{2} > 0\) \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
     \(\therefore\) & Therefore \cite{grahamConcreteMathematicsFoundation1989}\\
 \end{xltabular}
 
@@ -502,32 +502,6 @@ test\end{xltabular}
     \(\floor{\cdot}\) & Floor operation \cite{grahamConcreteMathematicsFoundation1989}
 \end{xltabular}
 
-\section{Electromagnetic waves}
-\begin{xltabular}{\textwidth}{XX}
-    \(\mathbf{\Phi}\) & Electric flux (scalar) (in \(\si{\volt\meter}\))\\ \hline
-    \(\mathbf{J}\) & Electric current density vector (in \(\si{\ampere\per\square\meter}\))\\ \hline
-    \(\mathbf{H}\) & Magnetic field vector (in \(\si{\ampere\per\meter}\))\\ \hline
-    \(\mathbf{B}\) & Magnetic flux density vector (in \(\si{\weber\per\meter\squared} = \si{\tesla}\))\\ \hline
-    \(q_{\textnormal{free}}\) & Free electric charge (in \(\si{\coulomb}\)) \\ \hline
-    \(q_{\textnormal{bound}}\) & Bound electric charge (in \(\si{\coulomb}\)) \\ \hline
-    \(q, q_{\textnormal{free}}+q_{\textnormal{bound}}\) & Electric charge (in \(\si{\coulomb}\)) \\ \hline
-    \(\rho_{\textnormal{free}}\) & Free electric charge density\\ \hline
-    \(\rho_{\textnormal{bound}}\) & Electric charge density\\ \hline
-    \(\rho, \rho_{\textnormal{free}}+\rho_{\textnormal{bound}}\) & Electric charge density (it can be in \(\si{\coulomb\per\meter^3}, \si{\coulomb\per\meter^2}\) or \(\si{\coulomb\per\meter}\) depending whether it is a volume, surface, or line shapes) \\ \hline
-    \(\mathbf{f}\) & Electrostatic force (Coulomb force), (in \(\si{\kilo\gram\meter\per\second\squared}\)) \\ \hline
-    \(\varepsilon\) & Electric permittivity(in \(\si{\farad\per\meter}\)) \cite{ramoFieldsWavesCommunication1994} \\ \hline
-    \(\varepsilon_r\) & Relative electric permittivity or dielectric constant (in \(\si{\farad\per\meter}\)) \cite{ramoFieldsWavesCommunication1994} \\ \hline
-    \(\varepsilon_0\) & Electric permittivity in vacuum, \(\SI{8.854e-12}{\farad\per\meter}\) \cite{ramoFieldsWavesCommunication1994} \\ \hline
-    \(\mathbf{E}\) & Electric field vector (in \(\si{\volt\per\meter}\))\\ \hline
-    \(\mathbf{D}\) & Electric flux density, electric displacement, or electric induction vector (in \(\si{\coulomb\per\meter\squared}\))\\ \hline
-    \(\Phi_D, \varPsi, \oiint_S \mathbf{D} \dd{\mathbf{S}}\) & Electric flux (\(\mathbf{D}\)-filed flux) \cite{wiki:D-field-flux} \\ \hline
-    \(\Phi_E, \oiint_S \mathbf{E} \dd{\mathbf{S}}\) & Electric flux (\(\mathbf{E}\)-filed flux) \cite{wiki:electric-flux} \\ \hline
-    \(\mathbf{P}\) & Electric polarization of the material (in \(\si{\coulomb\per\meter\squared}\))\\ \hline
-    \(\chi_e\) & Electric susceptibility (for linear and isotropic materiais)\\ \hline
-    \(\mu\) & Magnetic permeability \\ \hline
-    \(\mu_0\) & Magnetic permeability in vacuum \\
-\end{xltabular}
-
 \section{Calculus}
 \begin{xltabular}{\textwidth}{XX}
     \(\nabla\) & Vector differential operator (Nabla symbol), i.e., \(\nabla f\) is the gradient of the scalar-valued function \(f\), i.e., \(f: \mathbb{R}^n \rightarrow \mathbb{R}\) \\ \hline
@@ -556,7 +530,7 @@ test\end{xltabular}
     \(A(S), \iint_S \dd{S}, \iint_D \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A}\) & Area of the surface \(S\) parametrized by \((u,v)\), in which \(\dd{A}\) is the area defined in the \(D\) domain (which is form by the \(u\)-by-\(v\) graph)\\ \hline
     \(\dd{V}\) & Differential operator of a shape volume (denoted by \(E\)) in \(\mathbb{R}^3\) domain, i.e., \(\iiint_E \dd{V} = V\) \\ \hline
     \(E\) & Integration domain in which \(\dd{V}\) is integrated, i.e., \(\iiint_E f \dd{V}\) \cite{stewartCalculus2011} \\ \hline
-    \(V, \iint_D f \dd{A}, \iiint_E f \dd{V}\) & Volume of the function \(f\) over the regions \(D\) (in the case of double integrais) or \(E\) (in the case of triple integrais) \\ \hline
+    \(V, \iint_D f \dd{A}, \iiint_E f \dd{V}\) & Volume of the function \(f\) over the regions \(D\) (in the case of double integrals) or \(E\) (in the case of triple integrals) \\ \hline
     \(\iint_S f \dd{S}, \iint_D f \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A}\)& Surface integral over \(S\) \\ \hline
     \(\mathbf{n}(u,v), \frac{\mathbf{l}_u(u,v)\times\mathbf{l}_v(u,v)}{\abs{\mathbf{l}_u(u,v)\times\mathbf{l}_v(u,v)}}\) & Normal vector of of the smooth surface \(S\) \\ \hline
     \(\iint_S \mathbf{F}\cdot \mathbf{n} \dd{S}, \iint_S \mathbf{F} \cdot \dd{\mathbf{S}}, \newline \iint_D \mathbf{F} \cdot (\mathbf{l}_u\times\mathbf{l}_v) \dd{A}\) & Flux integral of vector field \(\mathbf{F}\) through the smooth surface \(S\) (\(\mathbf{n} \dd{S} \triangleq \dd{\mathbf{S}}\)) \\ \hline
@@ -565,6 +539,32 @@ test\end{xltabular}
     \(\nabla \cdot \mathbf{F} , \textnormal{div } \mathbf{F}\) & Divercence of the vector field \(\mathbf{F}\)\\ \hline
     \(\nabla^2 f, \nabla \cdot (\nabla f), \Delta f, \newline \partial^2f/\partial x^2 + \partial^2f/\partial y^2 + \partial^2f/\partial z^2\) & Scalar Laplacian operator (performed on a scalar-valued function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\))\\ \hline
     \(\nabla^2 \mathbf{F}, \nabla \times \nabla \times \mathbf{F} - \nabla(\nabla \cdot \mathbf{F}), \Delta \mathbf{F}, \newline (\partial^2\mathbf{F}/\partial x^2 , \partial^2\mathbf{F}/\partial y^2 , \partial^2\mathbf{F}/\partial z^2)\) & Vector Laplacian operator (performed on a vector field, i.e., a vector-valued function, \(\mathbf{F}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}\)). \(\nabla^2\) denotes the scalar (vector) Laplacian if the function is scalar-valued (vector-valued)\\
+\end{xltabular}
+
+\section{Electromagnetic waves}
+\begin{xltabular}{\textwidth}{XX}
+    \(\mathbf{\Phi}\) & Electric flux (scalar) (in \(\si{\volt\meter}\))\\ \hline
+    \(\mathbf{J}\) & Electric current density vector (in \(\si{\ampere\per\square\meter}\))\\ \hline
+    \(\mathbf{H}\) & Magnetic field vector (in \(\si{\ampere\per\meter}\))\\ \hline
+    \(\mathbf{B}\) & Magnetic flux density vector (in \(\si{\weber\per\meter\squared} = \si{\tesla}\))\\ \hline
+    \(q_{\textnormal{free}}\) & Free electric charge (in \(\si{\coulomb}\)) \\ \hline
+    \(q_{\textnormal{bound}}\) & Bound electric charge (in \(\si{\coulomb}\)) \\ \hline
+    \(q, q_{\textnormal{free}}+q_{\textnormal{bound}}\) & Electric charge (in \(\si{\coulomb}\)) \\ \hline
+    \(\rho_{\textnormal{free}}\) & Free electric charge density\\ \hline
+    \(\rho_{\textnormal{bound}}\) & Electric charge density\\ \hline
+    \(\rho, \rho_{\textnormal{free}}+\rho_{\textnormal{bound}}\) & Electric charge density (it can be in \(\si{\coulomb\per\meter^3}, \si{\coulomb\per\meter^2}\) or \(\si{\coulomb\per\meter}\) depending whether it is a volume, surface, or line shapes) \\ \hline
+    \(\mathbf{f}\) & Electrostatic force (Coulomb force), (in \(\si{\kilo\gram\meter\per\second\squared}\)) \\ \hline
+    \(\varepsilon\) & Electric permittivity(in \(\si{\farad\per\meter}\)) \cite{ramoFieldsWavesCommunication1994} \\ \hline
+    \(\varepsilon_r\) & Relative electric permittivity or dielectric constant (in \(\si{\farad\per\meter}\)) \cite{ramoFieldsWavesCommunication1994} \\ \hline
+    \(\varepsilon_0\) & Electric permittivity in vacuum, \(\SI{8.854e-12}{\farad\per\meter}\) \cite{ramoFieldsWavesCommunication1994} \\ \hline
+    \(\mathbf{E}\) & Electric field vector (in \(\si{\volt\per\meter}\))\\ \hline
+    \(\mathbf{D}\) & Electric flux density, electric displacement, or electric induction vector (in \(\si{\coulomb\per\meter\squared}\))\\ \hline
+    \(\Phi_D, \varPsi, \oiint_S \mathbf{D} \dd{\mathbf{S}}\) & Electric flux (\(\mathbf{D}\)-filed flux) \cite{wiki:D-field-flux} \\ \hline
+    \(\Phi_E, \oiint_S \mathbf{E} \dd{\mathbf{S}}\) & Electric flux (\(\mathbf{E}\)-filed flux) \cite{wiki:electric-flux} \\ \hline
+    \(\mathbf{P}\) & Electric polarization of the material (in \(\si{\coulomb\per\meter\squared}\))\\ \hline
+    \(\chi_e\) & Electric susceptibility (for linear and isotropic materials)\\ \hline
+    \(\mu\) & Magnetic permeability \\ \hline
+    \(\mu_0\) & Magnetic permeability in vacuum \\
 \end{xltabular}
 
 \section{Generic mathematical symbols}
