@@ -71,9 +71,9 @@
 	\(Q(\cdot)\)                     & Quantization function                                           \\ \hline
 	\(I_\alpha(\cdot)\)              & Modified Bessel function of the first kind and order \(\alpha\) \\ \hline
 	\(\left( \begin{array}{cc}
-			         n \\
-			         k
-		         \end{array} \right)\)       & Binomial coefficient
+			n \\
+			k
+		\end{array} \right)\)       & Binomial coefficient
 \end{xltabular}
 \subsection{Operations and symbols}
 \begin{xltabular}{\textwidth}{XX}
@@ -585,7 +585,7 @@ PS: Only names of techniques and algorithms or usual abbreviations are considere
 	iff. & If and only if                                                                       \\ \hline
 	EVD  & Eigenvalue decomposition, or eigendecomposition \cite{nossekAdaptiveArraySignal2015} \\ \hline
 	SVD  & Singular value decomposition                                                         \\ \hline
-	CP   & CANDECOMP/PARAFAC                                                                    \\ \hline
+	CP   & CANDECOMP/PARAFAC\\ \hline
 	SGD  & Stochastic gradient descent                                                          \\ \hline
 	SVM  & Support vector machine                                                               \\ \hline
 	BPNN & Backpropagation neural network \cite{jiaoAutomaticEquatorialGPS2017}                 \\ \hline

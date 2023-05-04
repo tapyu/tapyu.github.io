@@ -1,6 +1,6 @@
 SHELL := /usr/bin/zsh # you must run this Makefile using the zsh interpreter
 filename=main
-.PHONY := clean format
+.PHONY: clean format
 
 # Make considers targets that correspond to filenames to be up-to-date if the file exists and its modification time is later than that of its prerequisites. However, sometimes you may want to define targets that do not correspond to actual files, but rather perform some action such as cleaning up a build directory or running tests. These are called "phony" targets.
 
@@ -32,4 +32,4 @@ clean:
 	@echo "Process completed successfully!"
 
 format:
-	@latexindent -s -w $(filename).tex
+	@latexindent -s -w -l .latexindent.yaml $(filename).tex
