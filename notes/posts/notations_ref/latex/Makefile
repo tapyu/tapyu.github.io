@@ -1,5 +1,8 @@
 SHELL := /usr/bin/zsh # you must run this Makefile using the zsh interpreter
 filename=main
+.PHONY := clean format
+
+# Make considers targets that correspond to filenames to be up-to-date if the file exists and its modification time is later than that of its prerequisites. However, sometimes you may want to define targets that do not correspond to actual files, but rather perform some action such as cleaning up a build directory or running tests. These are called "phony" targets.
 
 # The reason why the command expansion $(command) is not working in your Makefile is because it is not being evaluated by the shell, but by Make itself. In Make, the $ character has a special meaning and is used to reference variables, so when you write $(command) in your Makefile, Make thinks you are trying to reference a variable called command and not running the command command. double dollar sign ($$) forces shell to run this command, $(shell command) also works
 
@@ -27,3 +30,6 @@ clean:
 	@rm -f *.out *.aux *.alg *.acr *.dvi *.gls *.log *.bbl *.blg *.ntn *.not *.lof *.lot *.toc *.loa *.lsg *.nlo *.nls *.ilg *.ind *.ist *.glg *.glo *.xdy *.acn *.idx *.loq *~
 	@rm -f $(filename).pdf
 	@echo "Process completed successfully!"
+
+format:
+	@latexindent -s -w $(filename).tex

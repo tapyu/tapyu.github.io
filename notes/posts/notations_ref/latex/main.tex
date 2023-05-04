@@ -32,7 +32,7 @@
 \begin{document}
 \title{\textbf{Notation}  \vspace{-.3cm}}
 \author{Rubem Vasconcelos Pacelli\\
-  {\tt rubem.engenharia@gmail.com}}
+{\tt rubem.engenharia@gmail.com}}
 \affil{Department of Teleinformatics Engineering,\\Federal University of Ceará.\\Fortaleza, Ceará, Brazil. \vspace{-.5cm}}
 \maketitle
 
@@ -41,555 +41,555 @@
 
 \section{Font notation}
 \begin{xltabular}{\textwidth}{XX}
-  $a,b,c, \dots, A, B, C, \dots$                                                                              & Scalars \\ \hline
-  $\mathbf{a}, \mathbf{b}, \mathbf{c}, \dots$                                                                 & Vectors \\ \hline
-  $\mathbf{A}, \mathbf{B}, \mathbf{C}, \dots$                                                                 & Matrices \\ \hline
-  $\bm{\mathcal{A}}, \bm{\mathcal{B}}, \bm{\mathcal{C}}, \dots$                                               & Tensors \\ \hline
-  $A, B, C, \dots, \mathcal{A}, \mathcal{B}, \mathcal{C}, \dots, \mathbb{A}, \mathbb{B}, \mathbb{C}, \dots$   & Sets\\
+	$a,b,c, \dots, A, B, C, \dots$                                                                            & Scalars  \\ \hline
+	$\mathbf{a}, \mathbf{b}, \mathbf{c}, \dots$                                                               & Vectors  \\ \hline
+	$\mathbf{A}, \mathbf{B}, \mathbf{C}, \dots$                                                               & Matrices \\ \hline
+	$\bm{\mathcal{A}}, \bm{\mathcal{B}}, \bm{\mathcal{C}}, \dots$                                             & Tensors  \\ \hline
+	$A, B, C, \dots, \mathcal{A}, \mathcal{B}, \mathcal{C}, \dots, \mathbb{A}, \mathbb{B}, \mathbb{C}, \dots$ & Sets     \\
 \end{xltabular}
 
 \section{Signals and functions}
 \subsection{Time indexing}
 \begin{xltabular}{\textwidth}{p{5.7cm}X}
-    \(x(t)\)                                                                                            & Continuous-time \(t\)\\ \hline
-    \(x[n], x[k], x[m], x[i], \dots\) \(x_n, x_k, x_m, x_i, \dots\) \(x(n), x(k), x(m), x(i), \dots\)   & Discrete-time \(n, k, m, i, \dots\) (parenthesis should be adopted only if there are no continuous-time signals in the context to avoid ambiguity) \\ \hline
-    \(x\left[ \left( \left( n - m \right) \right)_N \right], x \left( \left( n - m \right) \right)_N\)  & Circular shift in \(m\) samples within a \(N\)-samples window \cite{ingleDigitalSignalProcessing2000,oppenheimDiscreteTimeSignalProcessing2009}
+	\(x(t)\)                                                                                           & Continuous-time \(t\)                                                                                                                              \\ \hline
+	\(x[n], x[k], x[m], x[i], \dots\) \(x_n, x_k, x_m, x_i, \dots\) \(x(n), x(k), x(m), x(i), \dots\)  & Discrete-time \(n, k, m, i, \dots\) (parenthesis should be adopted only if there are no continuous-time signals in the context to avoid ambiguity) \\ \hline
+	\(x\left[ \left( \left( n - m \right) \right)_N \right], x \left( \left( n - m \right) \right)_N\) & Circular shift in \(m\) samples within a \(N\)-samples window \cite{ingleDigitalSignalProcessing2000,oppenheimDiscreteTimeSignalProcessing2009}
 \end{xltabular}
 \subsection{Common signals}
 \begin{xltabular}{\textwidth}{XX}
-    \(\delta(t)\)                     & Delta function\\ \hline
-    \(\delta[n], \delta_{i,j}\)       & Kronecker function (\(n = i-j\))\\ \hline
-    \(h(t), h[n]\)                    & Impulse response (continuous and discrete time)\\ \hline
-    \(\tilde{x}[n], \tilde{x}(t)\)    & Periodic discrete- or continuous-time signal\\ \hline
-    \(\hat{x}[n], \hat{x}(t)\)        & Estimate of \(x[n]\) or \(x(t)\)\\ \hline
-    \(\dot{x}[m]\)                    & Interpolation of \(x[n]\)\\
+	\(\delta(t)\)                  & Delta function                                  \\ \hline
+	\(\delta[n], \delta_{i,j}\)    & Kronecker function (\(n = i-j\))                \\ \hline
+	\(h(t), h[n]\)                 & Impulse response (continuous and discrete time) \\ \hline
+	\(\tilde{x}[n], \tilde{x}(t)\) & Periodic discrete- or continuous-time signal    \\ \hline
+	\(\hat{x}[n], \hat{x}(t)\)     & Estimate of \(x[n]\) or \(x(t)\)                \\ \hline
+	\(\dot{x}[m]\)                 & Interpolation of \(x[n]\)                       \\
 \end{xltabular}
 \subsection{Common functions}
 \begin{xltabular}{\textwidth}{XX}
-    \(\mathcal{O}(\cdot), O(\cdot)\)    & Big-O notation\\ \hline
-    \(\Gamma(\cdot)\)                   & Gamma function\\ \hline
-    \(Q(\cdot)\)                        & Quantization function\\ \hline
-    \(I_\alpha(\cdot)\)                 & Modified Bessel function of the first kind and order \(\alpha\)\\ \hline
-    \(\left( \begin{array}{cc}
-        n \\
-        k
-    \end{array} \right)\)               & Binomial coefficient
+	\(\mathcal{O}(\cdot), O(\cdot)\) & Big-O notation                                                  \\ \hline
+	\(\Gamma(\cdot)\)                & Gamma function                                                  \\ \hline
+	\(Q(\cdot)\)                     & Quantization function                                           \\ \hline
+	\(I_\alpha(\cdot)\)              & Modified Bessel function of the first kind and order \(\alpha\) \\ \hline
+	\(\left( \begin{array}{cc}
+			n \\
+			k
+		\end{array} \right)\)       & Binomial coefficient
 \end{xltabular}
 \subsection{Operations and symbols}
 \begin{xltabular}{\textwidth}{XX}
-    \(f: A \rightarrow B\)                        & A function \(f\) whose domain is \(A\) and codomain is \(B\)\\ \hline
-    \(\mathbf{f}: A \rightarrow \mathbb{R}^n\)    & A vector-valued function \(\mathbf{f}\), i.e., \(n \geq 2\)\\ \hline
-    \(f^{n}, x^{n}(t), x^{n}[k]\)                 & \(n\)th power of the function \(f\), \(x[n]\) or \(x(t)\)\\ \hline
-    \(f^{\left( n \right)},  x^{(n)}(t)\)         & \(n\)th derivative of the function \(f\) or \(x(t)\)\\ \hline
-    \(f', f^{\left( 1 \right)}, x'(t)\)           & \(1\)th derivative of the function \(f\) or \(x(t)\)\\ \hline
-    \(f'', f^{\left( 2 \right)}, x''(t)\)         & \(2\)th derivative of the function \(f\) or \(x(t)\)\\ \hline
-    \(\argmax[x \in \mathcal{A}]{f(x)} \)         & Value of \(x\) that minimizes \(x\)\\ \hline
-    \( \argmin[x \in \mathcal{A}]{f(x)} \)        & Value of \(x\) that minimizes \(x\)\\ \hline
-    \(f(\mathbf{x})                               = \underset{\mathbf{y} \in \mathcal{A}}{\textnormal{inf }} g(\mathbf{x},\mathbf{y})\) & Infimum, i.e., \(f(\mathbf{x}) = \min{\left\{ g(\mathbf{x}, \mathbf{y}) \mid \mathbf{y} \in \mathcal{A} \wedge \left( \mathbf{x}, \mathbf{y} \right) \in \dom{g} \right\}}\), which is the greatest lower bound of this set \cite{boydConvexOptimization2004}\\ \hline
-    \(f(\mathbf{x})                               = \underset{\mathbf{y} \in \mathcal{A}}{\textnormal{sup }} g(\mathbf{x},\mathbf{y})\) & Supremum, i.e., \(f(\mathbf{x}) = \max{\left\{ g(\mathbf{x}, \mathbf{y}) \mid \mathbf{y} \in \mathcal{A} \wedge \left( \mathbf{x}, \mathbf{y} \right) \in \dom{g} \right\}}\), which is the least upper bound of this set \cite{boydConvexOptimization2004}\\ \hline
-    \(f \circ g\)                                 & Composition of the functions \(f\) and \(g\)\\ \hline
-    \(*\) & Convolution (discrete or continuous)\\ \hline
-    \(\circledast, \circconv{N}\)                 & Circular convolution \cite{oppenheimDiscreteTimeSignalProcessing2009,dinizDigitalSignalProcessing2010}\\
+	\(f: A \rightarrow B\)                                                                                & A function \(f\) whose domain is \(A\) and codomain is \(B\)                                                                                                                                                                                                  \\ \hline
+	\(\mathbf{f}: A \rightarrow \mathbb{R}^n\)                                                            & A vector-valued function \(\mathbf{f}\), i.e., \(n \geq 2\)                                                                                                                                                                                                   \\ \hline
+	\(f^{n}, x^{n}(t), x^{n}[k]\)                                                                         & \(n\)th power of the function \(f\), \(x[n]\) or \(x(t)\)                                                                                                                                                                                                     \\ \hline
+	\(f^{\left( n \right)},  x^{(n)}(t)\)                                                                 & \(n\)th derivative of the function \(f\) or \(x(t)\)                                                                                                                                                                                                          \\ \hline
+	\(f', f^{\left( 1 \right)}, x'(t)\)                                                                   & \(1\)th derivative of the function \(f\) or \(x(t)\)                                                                                                                                                                                                          \\ \hline
+	\(f'', f^{\left( 2 \right)}, x''(t)\)                                                                 & \(2\)th derivative of the function \(f\) or \(x(t)\)                                                                                                                                                                                                          \\ \hline
+	\(\argmax[x \in \mathcal{A}]{f(x)} \)                                                                 & Value of \(x\) that minimizes \(x\)                                                                                                                                                                                                                           \\ \hline
+	\( \argmin[x \in \mathcal{A}]{f(x)} \)                                                                & Value of \(x\) that minimizes \(x\)                                                                                                                                                                                                                           \\ \hline
+	\(f(\mathbf{x}) = \underset{\mathbf{y} \in \mathcal{A}}{\textnormal{inf }} g(\mathbf{x},\mathbf{y})\) & Infimum, i.e., \(f(\mathbf{x}) = \min{\left\{ g(\mathbf{x}, \mathbf{y}) \mid \mathbf{y} \in \mathcal{A} \wedge \left( \mathbf{x}, \mathbf{y} \right) \in \dom{g} \right\}}\), which is the greatest lower bound of this set \cite{boydConvexOptimization2004} \\ \hline
+	\(f(\mathbf{x}) = \underset{\mathbf{y} \in \mathcal{A}}{\textnormal{sup }} g(\mathbf{x},\mathbf{y})\) & Supremum, i.e., \(f(\mathbf{x}) = \max{\left\{ g(\mathbf{x}, \mathbf{y}) \mid \mathbf{y} \in \mathcal{A} \wedge \left( \mathbf{x}, \mathbf{y} \right) \in \dom{g} \right\}}\), which is the least upper bound of this set \cite{boydConvexOptimization2004}   \\ \hline
+	\(f \circ g\)                                                                                         & Composition of the functions \(f\) and \(g\)                                                                                                                                                                                                                  \\ \hline
+	\(*\)                                                                                                 & Convolution (discrete or continuous)                                                                                                                                                                                                                          \\ \hline
+	\(\circledast, \circconv{N}\)                                                                         & Circular convolution \cite{oppenheimDiscreteTimeSignalProcessing2009,dinizDigitalSignalProcessing2010}                                                                                                                                                        \\
 \end{xltabular}
 \subsection{Transformations}
 \begin{xltabular}{\textwidth}{XX}
-    \(W_N\)                                       & Twiddle factor, \(e^{-j\frac{2\pi}{N}}\) \cite{ingleDigitalSignalProcessing2000}\\ \hline
-    \(\mathcal{F}\left\{ \cdot \right\}\)         & Fourier transform\\ \hline
-    \(\mathcal{L}\left\{ \cdot \right\}\)         & Laplace transform\\ \hline
-    \(\mathcal{Z}\left\{ \cdot \right\}\)         & \(z\)-transform\\ \hline
-    \(\hat{x}(t), \hat{x}[n]\)                    & Hilbert transform of \(x(t)\) or \(x[n]\)\\ \hline
-    \(X(s)\)                                      & Laplace transform of \(x(t)\)\\ \hline
-    \(X(f)\)                                      & Fourier transform (FT) (in linear frequency, \(\unit{\Hz}\)) of \(x(t)\)\\ \hline
-    \(X(j\omega)\)                                & Fourier transform (FT) (in angular frequency, \(\unit{\radian\per\sec}\)) of \(x(t)\)\\ \hline
-    \(X(e^{j\omega})\)                            & Discrete-time Fourier transform (DTFT) of \(x[n]\)\\ \hline
-    \(X[k], X(k), X_k\)                           & Discrete Fourier transform (DFT) or fast Fourier transform (FFT) of \(x[n]\), or even the Fourier series (FS) of the periodic signal \(x(t)\)\\ \hline
-    \(\tilde{X}[k], \tilde{X}(k), \tilde{X}_k\)   & Discrete Fourier series (DFS) of \(\tilde{x}[n]\)\\ \hline
-    \(X(z)\)                                      & \(z\)-transform of \(x[n]\)\\
+	\(W_N\)                                     & Twiddle factor, \(e^{-j\frac{2\pi}{N}}\) \cite{ingleDigitalSignalProcessing2000}                                                              \\ \hline
+	\(\mathcal{F}\left\{ \cdot \right\}\)       & Fourier transform                                                                                                                             \\ \hline
+	\(\mathcal{L}\left\{ \cdot \right\}\)       & Laplace transform                                                                                                                             \\ \hline
+	\(\mathcal{Z}\left\{ \cdot \right\}\)       & \(z\)-transform                                                                                                                               \\ \hline
+	\(\hat{x}(t), \hat{x}[n]\)                  & Hilbert transform of \(x(t)\) or \(x[n]\)                                                                                                     \\ \hline
+	\(X(s)\)                                    & Laplace transform of \(x(t)\)                                                                                                                 \\ \hline
+	\(X(f)\)                                    & Fourier transform (FT) (in linear frequency, \(\unit{\Hz}\)) of \(x(t)\)                                                                      \\ \hline
+	\(X(j\omega)\)                              & Fourier transform (FT) (in angular frequency, \(\unit{\radian\per\sec}\)) of \(x(t)\)                                                         \\ \hline
+	\(X(e^{j\omega})\)                          & Discrete-time Fourier transform (DTFT) of \(x[n]\)                                                                                            \\ \hline
+	\(X[k], X(k), X_k\)                         & Discrete Fourier transform (DFT) or fast Fourier transform (FFT) of \(x[n]\), or even the Fourier series (FS) of the periodic signal \(x(t)\) \\ \hline
+	\(\tilde{X}[k], \tilde{X}(k), \tilde{X}_k\) & Discrete Fourier series (DFS) of \(\tilde{x}[n]\)                                                                                             \\ \hline
+	\(X(z)\)                                    & \(z\)-transform of \(x[n]\)                                                                                                                   \\
 \end{xltabular}
 
 \section{Probability, statistics, and stochastic processes}
 \subsection{Operators and symbols}
 \begin{xltabular}{\textwidth}{XX}
-    \(\E{\cdot}, \nossekE{\cdot}, E\left[ \cdot \right], \mathbb{E}\left[ \cdot \right]\)               & Statistical expectation operator \cite{nossekAdaptiveArraySignal2015,dinizAdaptiveFilteringAlgorithms2002}\\ \hline
-    \(\E[u]{\cdot}, \nossekE[u]{\cdot},  E_u\left[ \cdot \right], \mathbb{E}_u\left[ \cdot \right]\)    & Statistical expectation operator with respect to \(u\)\\ \hline
-    \(\expval{\cdot}\)                                                                                  & Ensemble average\\ \hline
-    \(\var{\cdot}, \textnormal{VAR}[\cdot]\)                                                            & Variance operator \cite{haykinAdaptiveFilterTheory2002,leon-garciaProbabilityStatisticsRandom2007,proakisDigitalCommunications2007,bishopPatternRecognitionMachine2006}\\ \hline
-    \(\var[u]{\cdot} \left[ \cdot \right], \textnormal{VAR}_u[\cdot]\)                                  & Variance operator with respect to \(u\)\\ \hline
-    \(\cov{\cdot}, \textnormal{COV}[\cdot]\)                                                            & Covariance operator \cite{bishopPatternRecognitionMachine2006}\\ \hline
-    \(\cov[u]{\cdot}, \textnormal{COV}_u[\cdot]\)                                                       & Covariance operator with respect to \(u\)\\ \hline
-    \(\mu_x\)                                                                                           & Mean of the random variable \(x\) \\ \hline
-    \(\boldsymbol{\muup}_\mathbf{x}, \mathbf{m}_\mathbf{x}\)                                            & Mean vector of the random variable \(\mathbf{x}\) \cite{brownIntroductionRandomSignals1997} \\ \hline
-    \(\mu_n\)                                                                                           & \(n\)th-order moment of a random variable \\ \hline
-    \(\sigma_x^2, \kappa_2\)                                                                            & Variance of the random variable \(x\)\\ \hline
-    \(\mathcal{K}_x, \mu_4\)                                                                            & Kurtosis (4th-order moment) of the random variable \(x\)\\ \hline
-    \(\kappa_n\)                                                                                        & \(n\)th-order cumulant of a random variable \\ \hline
-    \(\rho_{x,y}\)                                                                                      & Pearson correlation coefficient between \(x\) and \(y\)\\ \hline
-    \(a\sim P\)                                                                                         & Random variable \(a\) with distribution \(P\) \\ \hline
-    \(\mathcal{R}\)                                                                                     & Rayleigh's quotient
+	\(\E{\cdot}, \nossekE{\cdot}, E\left[ \cdot \right], \mathbb{E}\left[ \cdot \right]\)            & Statistical expectation operator \cite{nossekAdaptiveArraySignal2015,dinizAdaptiveFilteringAlgorithms2002}                                                              \\ \hline
+	\(\E[u]{\cdot}, \nossekE[u]{\cdot},  E_u\left[ \cdot \right], \mathbb{E}_u\left[ \cdot \right]\) & Statistical expectation operator with respect to \(u\)                                                                                                                  \\ \hline
+	\(\expval{\cdot}\)                                                                               & Ensemble average                                                                                                                                                        \\ \hline
+	\(\var{\cdot}, \textnormal{VAR}[\cdot]\)                                                         & Variance operator \cite{haykinAdaptiveFilterTheory2002,leon-garciaProbabilityStatisticsRandom2007,proakisDigitalCommunications2007,bishopPatternRecognitionMachine2006} \\ \hline
+	\(\var[u]{\cdot} \left[ \cdot \right], \textnormal{VAR}_u[\cdot]\)                               & Variance operator with respect to \(u\)                                                                                                                                 \\ \hline
+	\(\cov{\cdot}, \textnormal{COV}[\cdot]\)                                                         & Covariance operator \cite{bishopPatternRecognitionMachine2006}                                                                                                          \\ \hline
+	\(\cov[u]{\cdot}, \textnormal{COV}_u[\cdot]\)                                                    & Covariance operator with respect to \(u\)                                                                                                                               \\ \hline
+	\(\mu_x\)                                                                                        & Mean of the random variable \(x\)                                                                                                                                       \\ \hline
+	\(\boldsymbol{\muup}_\mathbf{x}, \mathbf{m}_\mathbf{x}\)                                         & Mean vector of the random variable \(\mathbf{x}\) \cite{brownIntroductionRandomSignals1997}                                                                             \\ \hline
+	\(\mu_n\)                                                                                        & \(n\)th-order moment of a random variable                                                                                                                               \\ \hline
+	\(\sigma_x^2, \kappa_2\)                                                                         & Variance of the random variable \(x\)                                                                                                                                   \\ \hline
+	\(\mathcal{K}_x, \mu_4\)                                                                         & Kurtosis (4th-order moment) of the random variable \(x\)                                                                                                                \\ \hline
+	\(\kappa_n\)                                                                                     & \(n\)th-order cumulant of a random variable                                                                                                                             \\ \hline
+	\(\rho_{x,y}\)                                                                                   & Pearson correlation coefficient between \(x\) and \(y\)                                                                                                                 \\ \hline
+	\(a\sim P\)                                                                                      & Random variable \(a\) with distribution \(P\)                                                                                                                           \\ \hline
+	\(\mathcal{R}\)                                                                                  & Rayleigh's quotient
 \end{xltabular}
 \subsection{Stochastic processes}
 \begin{xltabular}{\textwidth}{XX}
-    \(r_x(\tau), R_x(\tau)\)                                                                                                        & Autocorrelation function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015}\\ \hline
-    \(S_x(f), S_x(j\omega)\)                                                                                                        & Power spectral density (PSD) of \(x(t)\) in linear (\(f\)) or angular (\(\omega\)) frequency\\ \hline
-    \(S_{x,y}(f), S_{x,y}(j\omega)\)                                                                                                & Cross PSD of \(x(t)\) and \(y(t)\) in linear or angular (\(\omega\)) frequency\\ \hline
-    \(\mathbf{R}_\mathbf{x}\)                                                                                                       & (Auto)correlation matrix of \(\mathbf{x}(n)\) \\ \hline
-    \(r_{x,d}(\tau), R_{x,d}(\tau)\)                                                                                                & Cross-correlation between \(x[n]\) and \(d[n]\) or \(x(t)\) and \(d(t)\) \cite{nossekAdaptiveArraySignal2015}\\ \hline
-    \(\mathbf{R}_\mathbf{xy}\)                                                                                                      & Cross-correlation matrix of \(\mathbf{x}(n)\) and \(\mathbf{y}(n)\)\\ \hline
-    \(\mathbf{p}_{\mathbf{x}d}\)                                                                                                    & Cross-correlation vector between \(\mathbf{x}(n)\) and \(d(n)\) \cite{dinizAdaptiveFiltering1997} \\ \hline
-    \(c_x(\tau), C_x(\tau)\)                                                                                                        & Autocovariance function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015}\\ \hline
-    \(\mathbf{C}_\mathbf{x}, \mathbf{K}_\mathbf{x}, \boldsymbol{\Sigmaup}_\mathbf{x}, \textnormal{cov}\left[ \mathbf{x} \right]\)   & (Auto)covariance matrix of \(\mathbf{x}\) \cite{vantreesOptimumArrayProcessing2002,proakisDigitalCommunications2007,leon-garciaProbabilityStatisticsRandom2007,haykinAdaptiveFilterTheory2002} \\ \hline
-    \(c_{xy}(\tau), C_{xy}(\tau)\)                                                                                                  & Cross-covariance function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015} \\ \hline
-    \(\mathbf{C}_{\mathbf{xy}}, \mathbf{K}_{\mathbf{xy}}, \boldsymbol{\Sigmaup}_{\mathbf{xy}}\)                                     & Cross-covariance matrix of \(\mathbf{x}\) and \(\mathbf{y}\)
+	\(r_x(\tau), R_x(\tau)\)                                                                                                      & Autocorrelation function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015}                                                                                               \\ \hline
+	\(S_x(f), S_x(j\omega)\)                                                                                                      & Power spectral density (PSD) of \(x(t)\) in linear (\(f\)) or angular (\(\omega\)) frequency                                                                                                   \\ \hline
+	\(S_{x,y}(f), S_{x,y}(j\omega)\)                                                                                              & Cross PSD of \(x(t)\) and \(y(t)\) in linear or angular (\(\omega\)) frequency                                                                                                                 \\ \hline
+	\(\mathbf{R}_\mathbf{x}\)                                                                                                     & (Auto)correlation matrix of \(\mathbf{x}(n)\)                                                                                                                                                  \\ \hline
+	\(r_{x,d}(\tau), R_{x,d}(\tau)\)                                                                                              & Cross-correlation between \(x[n]\) and \(d[n]\) or \(x(t)\) and \(d(t)\) \cite{nossekAdaptiveArraySignal2015}                                                                                  \\ \hline
+	\(\mathbf{R}_\mathbf{xy}\)                                                                                                    & Cross-correlation matrix of \(\mathbf{x}(n)\) and \(\mathbf{y}(n)\)                                                                                                                            \\ \hline
+	\(\mathbf{p}_{\mathbf{x}d}\)                                                                                                  & Cross-correlation vector between \(\mathbf{x}(n)\) and \(d(n)\) \cite{dinizAdaptiveFiltering1997}                                                                                              \\ \hline
+	\(c_x(\tau), C_x(\tau)\)                                                                                                      & Autocovariance function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015}                                                                                                \\ \hline
+	\(\mathbf{C}_\mathbf{x}, \mathbf{K}_\mathbf{x}, \boldsymbol{\Sigmaup}_\mathbf{x}, \textnormal{cov}\left[ \mathbf{x} \right]\) & (Auto)covariance matrix of \(\mathbf{x}\) \cite{vantreesOptimumArrayProcessing2002,proakisDigitalCommunications2007,leon-garciaProbabilityStatisticsRandom2007,haykinAdaptiveFilterTheory2002} \\ \hline
+	\(c_{xy}(\tau), C_{xy}(\tau)\)                                                                                                & Cross-covariance function of the signal \(x(t)\) or \(x[n]\) \cite{nossekAdaptiveArraySignal2015}                                                                                              \\ \hline
+	\(\mathbf{C}_{\mathbf{xy}}, \mathbf{K}_{\mathbf{xy}}, \boldsymbol{\Sigmaup}_{\mathbf{xy}}\)                                   & Cross-covariance matrix of \(\mathbf{x}\) and \(\mathbf{y}\)
 \end{xltabular}
 
 \subsection{Functions}
 \begin{xltabular}{\textwidth}{XX}
-    \(Q(\cdot)\)                                                                & \(Q\)-function, i.e., \(P\left[ \mathcal{N}(0,1) > x \right] \) \cite{proakisDigitalCommunications2007} \\ \hline
-    \(\textnormal{erf}(\cdot)\)                                                 & Error function \cite{proakisDigitalCommunications2007}\\ \hline
-    \(\textnormal{erfc}(\cdot)\)                                                & Complementary error function i.e., \(\textnormal{erfc}(x) = 2Q(\sqrt{2}x) - \textnormal{erf}(x)\) \cite{proakisDigitalCommunications2007}\\ \hline
-    \(P[A]\)                                                                    & Probability of the event or set \(A\) \cite{leon-garciaProbabilityStatisticsRandom2007}\\ \hline
-    \(p(\cdot), f(\cdot)\)                                                      & Probability density function (PDF) or probability mass function (PMF) \cite{leon-garciaProbabilityStatisticsRandom2007}\\ \hline
-    \(p(x\mid A)\)                                                              & Conditional PDF or PMF \cite{leon-garciaProbabilityStatisticsRandom2007}\\ \hline
-    \(F(\cdot)\)                                                                & Cumulative distribution function (CDF)\\ \hline
-    \(\Phi_x(\omega), M_x(j\omega), E\left[ e^{j \omega x} \right]\)            & First characteristic function (CF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020} \\ \hline
-    \(M_x(t), \Phi_x(-j t), E\left[ e^{t x} \right]\)                           & Moment-generating function (MGF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020} \\ \hline
-    \(\Psi_x(\omega), \ln \Phi_x(\omega), \ln E\left[ e^{j \omega x}\right]\)   & Second characteristic function \\ \hline
-    \(K_x(t), \ln E\left[ e^{t x} \right], \ln M_x(t)\)                         & Cumulant-generating function (CGF) of \(x\) \cite{haykinAdaptiveFilterTheory2002} \\
+	\(Q(\cdot)\)                                                              & \(Q\)-function, i.e., \(P\left[ \mathcal{N}(0,1) > x \right] \) \cite{proakisDigitalCommunications2007}                                   \\ \hline
+	\(\textnormal{erf}(\cdot)\)                                               & Error function \cite{proakisDigitalCommunications2007}                                                                                    \\ \hline
+	\(\textnormal{erfc}(\cdot)\)                                              & Complementary error function i.e., \(\textnormal{erfc}(x) = 2Q(\sqrt{2}x) - \textnormal{erf}(x)\) \cite{proakisDigitalCommunications2007} \\ \hline
+	\(P[A]\)                                                                  & Probability of the event or set \(A\) \cite{leon-garciaProbabilityStatisticsRandom2007}                                                   \\ \hline
+	\(p(\cdot), f(\cdot)\)                                                    & Probability density function (PDF) or probability mass function (PMF) \cite{leon-garciaProbabilityStatisticsRandom2007}                   \\ \hline
+	\(p(x\mid A)\)                                                            & Conditional PDF or PMF \cite{leon-garciaProbabilityStatisticsRandom2007}                                                                  \\ \hline
+	\(F(\cdot)\)                                                              & Cumulative distribution function (CDF)                                                                                                    \\ \hline
+	\(\Phi_x(\omega), M_x(j\omega), E\left[ e^{j \omega x} \right]\)          & First characteristic function (CF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020}                \\ \hline
+	\(M_x(t), \Phi_x(-j t), E\left[ e^{t x} \right]\)                         & Moment-generating function (MGF) of \(x\) \cite{proakisDigitalCommunications2007,theodoridisMachineLearningBayesian2020}                  \\ \hline
+	\(\Psi_x(\omega), \ln \Phi_x(\omega), \ln E\left[ e^{j \omega x}\right]\) & Second characteristic function                                                                                                            \\ \hline
+	\(K_x(t), \ln E\left[ e^{t x} \right], \ln M_x(t)\)                       & Cumulant-generating function (CGF) of \(x\) \cite{haykinAdaptiveFilterTheory2002}                                                         \\
 \end{xltabular}
 
 \subsection{Distributions}
 \begin{xltabular}{\textwidth}{XX}
-    \(\mathcal{N}(\mu, \sigma^2)\)                                & Gaussian distribution of a random variable with mean \(\mu\) and variance \(\sigma^{2}\) \\ \hline
-    \(\mathcal{CN}(\mu, \sigma^2)\)                               & Complex Gaussian distribution of a random variable with mean \(\mu\) and variance \(\sigma^{2}\) \\ \hline
-    \(\mathcal{N}(\boldsymbol{\muup}, \boldsymbol{\Sigmaup})\)    & Gaussian distribution of a vector random variable with mean \(\boldsymbol{\muup}\) and covariance matrix \(\boldsymbol{\Sigmaup}\)\\ \hline
-    \(\mathcal{CN}(\boldsymbol{\muup}, \boldsymbol{\Sigmaup})\)   & Complex Gaussian distribution of a vector random variable with mean \(\boldsymbol{\muup}\) and covariance matrix \(\boldsymbol{\Sigmaup}\)\\ \hline
-    \(\mathcal{U}(a,b)\)                                          & Uniform distribution from \(a\) to \(b\)\\ \hline
-    \(\chi^2 (n), \chi^2_n\)                                      & Chi-square distribution with \(n\) degree of freedom (assuming that the Gaussians are \(\mathcal{N}(0,1)\))\\ \hline
-    \(\textnormal{Exp}(\lambda)\)                                 & Exponential distribution with rate parameter \(\lambda\)\\ \hline
-    \(\Gamma(\alpha, \beta)\)                                     & Gamma distribution with shape parameter \(\alpha\) and rate parameter \(\beta\)\\ \hline
-    \(\Gamma(\alpha, \theta)\)                                    & Gamma distribution with shape parameter \(\alpha\) and scale parameter \(\theta\ = 1/\beta\)\\ \hline
-    \(\textnormal{Nakagami}(m, \Omega)\)                          & Nakagami-m distribution with shape parameter or fading figure \(m\) and spread, scale, or shape parameter \(\Omega\) \\ \hline
-    \(\textnormal{Rayleigh}(\sigma)\)                             & Rayleigh distribution with scale parameter \(\sigma\)\\ \hline
-    \(\textnormal{Rayleigh}(\Omega)\)                             & Rayleigh distribution with the second moment \(\Omega = E\left[ x^2 \right] = 2\sigma^2\)\\ \hline
-    \(\textnormal{Rice}(s, \sigma)\)                              & Rice distribution with noncentrality parameter \(s\) and \(\sigma\). \(s^2\) represent the specular component power\\ \hline
-    \(\textnormal{Rice}(A, K)\)                                   & Rice distribution with Rice factor \(K=s^2/2\sigma^2\) and scale parameter \(A = s^2 + 2\sigma^2\)
+	\(\mathcal{N}(\mu, \sigma^2)\)                              & Gaussian distribution of a random variable with mean \(\mu\) and variance \(\sigma^{2}\)                                                   \\ \hline
+	\(\mathcal{CN}(\mu, \sigma^2)\)                             & Complex Gaussian distribution of a random variable with mean \(\mu\) and variance \(\sigma^{2}\)                                           \\ \hline
+	\(\mathcal{N}(\boldsymbol{\muup}, \boldsymbol{\Sigmaup})\)  & Gaussian distribution of a vector random variable with mean \(\boldsymbol{\muup}\) and covariance matrix \(\boldsymbol{\Sigmaup}\)         \\ \hline
+	\(\mathcal{CN}(\boldsymbol{\muup}, \boldsymbol{\Sigmaup})\) & Complex Gaussian distribution of a vector random variable with mean \(\boldsymbol{\muup}\) and covariance matrix \(\boldsymbol{\Sigmaup}\) \\ \hline
+	\(\mathcal{U}(a,b)\)                                        & Uniform distribution from \(a\) to \(b\)                                                                                                   \\ \hline
+	\(\chi^2 (n), \chi^2_n\)                                    & Chi-square distribution with \(n\) degree of freedom (assuming that the Gaussians are \(\mathcal{N}(0,1)\))                                \\ \hline
+	\(\textnormal{Exp}(\lambda)\)                               & Exponential distribution with rate parameter \(\lambda\)                                                                                   \\ \hline
+	\(\Gamma(\alpha, \beta)\)                                   & Gamma distribution with shape parameter \(\alpha\) and rate parameter \(\beta\)                                                            \\ \hline
+	\(\Gamma(\alpha, \theta)\)                                  & Gamma distribution with shape parameter \(\alpha\) and scale parameter \(\theta\ = 1/\beta\)                                               \\ \hline
+	\(\textnormal{Nakagami}(m, \Omega)\)                        & Nakagami-m distribution with shape parameter or fading figure \(m\) and spread, scale, or shape parameter \(\Omega\)                       \\ \hline
+	\(\textnormal{Rayleigh}(\sigma)\)                           & Rayleigh distribution with scale parameter \(\sigma\)                                                                                      \\ \hline
+	\(\textnormal{Rayleigh}(\Omega)\)                           & Rayleigh distribution with the second moment \(\Omega = E\left[ x^2 \right] = 2\sigma^2\)                                                  \\ \hline
+	\(\textnormal{Rice}(s, \sigma)\)                            & Rice distribution with noncentrality parameter \(s\) and \(\sigma\). \(s^2\) represent the specular component power                        \\ \hline
+	\(\textnormal{Rice}(A, K)\)                                 & Rice distribution with Rice factor \(K=s^2/2\sigma^2\) and scale parameter \(A = s^2 + 2\sigma^2\)
 \end{xltabular}
 
 \section{Machine learning, optimization theory, and \newline statistical signal processing}
 \subsection{Derivative terms}
 \begin{xltabular}{\textwidth}{XX}
-    \(\boldsymbol{\nabla}f, \mathbf{g}\)            & Gradient descent vector \\ \hline
-    \(\boldsymbol{\nabla}_{x}f, \mathbf{g}_{x}\)    & Gradient descent vector with respect \(x\) \cite{bishopPatternRecognitionMachine2006}\\ \hline
-    \(\mathbf{J}\)                                  & Jacobian matrix\\ \hline
-    \(\mathbf{H}\)                                  & Hessian matrix \\ \hline
+	\(\boldsymbol{\nabla}f, \mathbf{g}\)         & Gradient descent vector                                                               \\ \hline
+	\(\boldsymbol{\nabla}_{x}f, \mathbf{g}_{x}\) & Gradient descent vector with respect \(x\) \cite{bishopPatternRecognitionMachine2006} \\ \hline
+	\(\mathbf{J}\)                               & Jacobian matrix                                                                       \\ \hline
+	\(\mathbf{H}\)                               & Hessian matrix                                                                        \\ \hline
 \end{xltabular}
 \subsection{Estimated terms}
 \begin{xltabular}{\textwidth}{XX}
-    \(\mathbf{g}\) (or \(\hat{\mathbf{g}}\) if the gradient vector is \(\mathbf{g}\))                               & Stochastic gradient descent (SGD), i.e., instantaneous approximation of gradient descent vector \\ \hline
-    \(\hat{x}(t)\) or \(\hat{x}[n]\)                                                                                & Estimate of \(x(t)\) or \(x[n]\)\\ \hline
-    \(\hat{\boldsymbol{\muup}}_x, \hat{\mathbf{m}}_x\)                                                              & Sample mean of \(x[n]\) or \(x(t)\) \\ \hline
-    \(\hat{\boldsymbol{\muup}}_\mathbf{x}, \hat{\mathbf{m}}_\mathbf{x}\)                                            & Sample mean vector of \(\mathbf{x}[n]\) or \(\mathbf{x}(t)\)\\ \hline
-    \(\hat{r}_x(\tau), \hat{R}_x(\tau)\)                                                                            & Estimated autocorrelation function of the signal \(x(t)\) or \(x[n]\)\\ \hline
-    \(\hat{S}_x(f), \hat{S}_x(j\omega)\)                                                                            & Estimated power spectral density (PSD) of \(x(t)\) in linear (\(f\)) or angular (\(\omega\)) frequency\\ \hline
-    \(\hat{\mathbf{R}}_\mathbf{x}\)                                                                                 & Sample (auto)correlation matrix \\ \hline
-    \(\hat{r}_{x,d}(\tau), \hat{R}_{x,d}(\tau)\)                                                                    & Estimated cross-correlation between \(x[n]\) and \(d[n]\) or \(x(t)\) and \(d(t)\)\\ \hline
-    \(\hat{S}_{x,y}(f), \hat{S}_{x,y}(j\omega)\)                                                                    & Estimated cross PSD of \(x(t)\) and \(y(t)\) in linear or angular (\(\omega\)) frequency\\ \hline
-    \(\hat{\mathbf{R}}_\mathbf{xy}\)                                                                                & Sample cross-correlation matrix of \(\mathbf{R}_\mathbf{xy}\) \\ \hline
-    \(\hat{c}_x(\tau), \hat{C}_x(\tau)\)                                                                            & Estimated autocovariance function of the signal \(x(t)\) or \(x[n]\)\\ \hline
-    \(\hat{\mathbf{C}}_\mathbf{x}, \hat{\mathbf{K}}_\mathbf{x}, \hat{\boldsymbol{\Sigmaup}}_\mathbf{x}\)            & Sample (auto)covariance matrix \\ \hline
-    \(\hat{c}_{xy}(\tau), \hat{C}_{xy}(\tau)\)                                                                      & Estimated cross-covariance function of the signal \(x(t)\) or \(x[n]\)\\ \hline
-    \(\hat{\mathbf{C}}_{\mathbf{xy}}, \hat{\mathbf{K}}_{\mathbf{xy}}, \hat{\boldsymbol{\Sigmaup}}_{\mathbf{xy}}\)   & Sample cross-covariance matrix \\ \hline
-    \(\hat{\mathbf{H}}\)                                                                                            & Estimate of the Hessian matrix
+	\(\mathbf{g}\) (or \(\hat{\mathbf{g}}\) if the gradient vector is \(\mathbf{g}\))                             & Stochastic gradient descent (SGD), i.e., instantaneous approximation of gradient descent vector        \\ \hline
+	\(\hat{x}(t)\) or \(\hat{x}[n]\)                                                                              & Estimate of \(x(t)\) or \(x[n]\)                                                                       \\ \hline
+	\(\hat{\boldsymbol{\muup}}_x, \hat{\mathbf{m}}_x\)                                                            & Sample mean of \(x[n]\) or \(x(t)\)                                                                    \\ \hline
+	\(\hat{\boldsymbol{\muup}}_\mathbf{x}, \hat{\mathbf{m}}_\mathbf{x}\)                                          & Sample mean vector of \(\mathbf{x}[n]\) or \(\mathbf{x}(t)\)                                           \\ \hline
+	\(\hat{r}_x(\tau), \hat{R}_x(\tau)\)                                                                          & Estimated autocorrelation function of the signal \(x(t)\) or \(x[n]\)                                  \\ \hline
+	\(\hat{S}_x(f), \hat{S}_x(j\omega)\)                                                                          & Estimated power spectral density (PSD) of \(x(t)\) in linear (\(f\)) or angular (\(\omega\)) frequency \\ \hline
+	\(\hat{\mathbf{R}}_\mathbf{x}\)                                                                               & Sample (auto)correlation matrix                                                                        \\ \hline
+	\(\hat{r}_{x,d}(\tau), \hat{R}_{x,d}(\tau)\)                                                                  & Estimated cross-correlation between \(x[n]\) and \(d[n]\) or \(x(t)\) and \(d(t)\)                     \\ \hline
+	\(\hat{S}_{x,y}(f), \hat{S}_{x,y}(j\omega)\)                                                                  & Estimated cross PSD of \(x(t)\) and \(y(t)\) in linear or angular (\(\omega\)) frequency               \\ \hline
+	\(\hat{\mathbf{R}}_\mathbf{xy}\)                                                                              & Sample cross-correlation matrix of \(\mathbf{R}_\mathbf{xy}\)                                          \\ \hline
+	\(\hat{c}_x(\tau), \hat{C}_x(\tau)\)                                                                          & Estimated autocovariance function of the signal \(x(t)\) or \(x[n]\)                                   \\ \hline
+	\(\hat{\mathbf{C}}_\mathbf{x}, \hat{\mathbf{K}}_\mathbf{x}, \hat{\boldsymbol{\Sigmaup}}_\mathbf{x}\)          & Sample (auto)covariance matrix                                                                         \\ \hline
+	\(\hat{c}_{xy}(\tau), \hat{C}_{xy}(\tau)\)                                                                    & Estimated cross-covariance function of the signal \(x(t)\) or \(x[n]\)                                 \\ \hline
+	\(\hat{\mathbf{C}}_{\mathbf{xy}}, \hat{\mathbf{K}}_{\mathbf{xy}}, \hat{\boldsymbol{\Sigmaup}}_{\mathbf{xy}}\) & Sample cross-covariance matrix                                                                         \\ \hline
+	\(\hat{\mathbf{H}}\)                                                                                          & Estimate of the Hessian matrix
 \end{xltabular}
 
 \subsection{Signals, (hyper)parameters, system performance, and criteria}
 \begin{xltabular}{\textwidth}{XX}
-    \(\mathbf{x}(n), \mathbf{x}_n\)                                                                 & Input signal \\ \hline
-    \(\mathbf{y}(n), \mathbf{y}_n\)                                                                 & Output signal \\ \hline
-    \(\hat{\mathbf{y}}(n), \hat{\mathbf{y}}_n\)                                                     & Alternative output signal \\ \hline
-    \(d(n), d_n\)                                                                                   & Desired label (in case of supervised learning) \\ \hline
-    \(\hat{\mathbf{y}}(n), \hat{\mathbf{y}}_n\)                                                     & Alternative desired signal if the output is \(\mathbf{y}(n), \mathbf{y}_n\) \\ \hline
-    \(\mathbf{w}(n), \mathbf{w}_n, \boldsymbol{\thetaup}(n), \boldsymbol{\thetaup}_n\)              & Parameters, coefficients, or weights vector \\ \hline
-    \(\mathbf{w}_o, \mathbf{w}^{\star}, \boldsymbol{\thetaup}_o, \boldsymbol{\thetaup}^{\star}\)    & Optimum value of the parameters, coefficients, or weights vector \\ \hline
-    \(\mathbf{W}\)                                                                                  & Matrix of the weights \\ \hline
-    \(\eta\)                                                                                        & Learning rate hyperparameter \\ \hline
-    \(J(\cdot), \mathcal{E}(\cdot)\)                                                                & Cost-function or objective function\\ \hline
-    \(\Lambda(\cdot)\)                                                                              & Likelihood function\\ \hline
-    \(\Lambda_l(\cdot)\)                                                                            & Log-likelihood function\\ \hline
-    \(\hat{\rho}_{x,y}\)                                                                            & Estimated Pearson correlation coefficient between \(x\) and \(y\)\\ \hline
-    \(\rho\)                                                                                        & Distance of the margin of separation between two classes (Support Vector Machine, SVM) \\ \hline
-    \(g(\cdot)\)                                                                                    & Discriminant function, i.e., \(g(\mathbf{w}^{\star}) = 0\)
+	\(\mathbf{x}(n), \mathbf{x}_n\)                                                              & Input signal                                                                           \\ \hline
+	\(\mathbf{y}(n), \mathbf{y}_n\)                                                              & Output signal                                                                          \\ \hline
+	\(\hat{\mathbf{y}}(n), \hat{\mathbf{y}}_n\)                                                  & Alternative output signal                                                              \\ \hline
+	\(d(n), d_n\)                                                                                & Desired label (in case of supervised learning)                                         \\ \hline
+	\(\hat{\mathbf{y}}(n), \hat{\mathbf{y}}_n\)                                                  & Alternative desired signal if the output is \(\mathbf{y}(n), \mathbf{y}_n\)            \\ \hline
+	\(\mathbf{w}(n), \mathbf{w}_n, \boldsymbol{\thetaup}(n), \boldsymbol{\thetaup}_n\)           & Parameters, coefficients, or weights vector                                            \\ \hline
+	\(\mathbf{w}_o, \mathbf{w}^{\star}, \boldsymbol{\thetaup}_o, \boldsymbol{\thetaup}^{\star}\) & Optimum value of the parameters, coefficients, or weights vector                       \\ \hline
+	\(\mathbf{W}\)                                                                               & Matrix of the weights                                                                  \\ \hline
+	\(\eta\)                                                                                     & Learning rate hyperparameter                                                           \\ \hline
+	\(J(\cdot), \mathcal{E}(\cdot)\)                                                             & Cost-function or objective function                                                    \\ \hline
+	\(\Lambda(\cdot)\)                                                                           & Likelihood function                                                                    \\ \hline
+	\(\Lambda_l(\cdot)\)                                                                         & Log-likelihood function                                                                \\ \hline
+	\(\hat{\rho}_{x,y}\)                                                                         & Estimated Pearson correlation coefficient between \(x\) and \(y\)                      \\ \hline
+	\(\rho\)                                                                                     & Distance of the margin of separation between two classes (Support Vector Machine, SVM) \\ \hline
+	\(g(\cdot)\)                                                                                 & Discriminant function, i.e., \(g(\mathbf{w}^{\star}) = 0\)
 \end{xltabular}
 
 \section{Linear Algebra}
 \subsection{Common matrices and vectors}
 \begin{xltabular}{\textwidth}{XX}
-    \(\mathbf{W}, \mathbf{D}\)                    & Diagonal matrix \\ \hline
-    \(\mathbf{P}\)                                & Projection matrix; Permutation matrix \\ \hline
-    \(\mathbf{J}\)                                & Jordan matrix \\ \hline
-    \(\mathbf{L}\)                                & Lower matrix\\ \hline
-    \(\mathbf{U}\)                                & Upper matrix\\ \hline
-    \(\mathbf{C}\)                                & Cofactor matrix\\ \hline
-    \(\mathbf{C}_\mathbf{A}, \cof{\mathbf{A}}\)   & Cofactor matrix of \(\mathbf{A}\)\\ \hline
-    \(\mathbf{S}\)                                & Symmetric matrix\\ \hline
-    \(\mathbf{Q}\)                                & Orthogonal matrix\\ \hline
-    \(\mathbf{I}_N\)                              & \(N\times N\)-dimensional identity matrix\\ \hline
-    \(\mathbf{0}_{M\times N}\)                    & \(M\times N\)-dimensional null matrix\\ \hline
-    \(\mathbf{0}_{N}\)                            & \(N\)-dimensional null vector\\ \hline
-    \(\mathbf{1}_{M\times N}\)                    & \(M\times N\)-dimensional ones matrix\\ \hline
-    \(\mathbf{1}_{N}\)                            & \(N\)-dimensional ones vector\\ \hline
-    \(\mathbf{0}\)                                & Null matrix, vector, or tensor (dimensionality understood by context)\\ \hline
-    \(\mathbf{1}\)                                & Ones matrix, vector, or tensor (dimensionality understood by context)\\
+	\(\mathbf{W}, \mathbf{D}\)                  & Diagonal matrix                                                       \\ \hline
+	\(\mathbf{P}\)                              & Projection matrix; Permutation matrix                                 \\ \hline
+	\(\mathbf{J}\)                              & Jordan matrix                                                         \\ \hline
+	\(\mathbf{L}\)                              & Lower matrix                                                          \\ \hline
+	\(\mathbf{U}\)                              & Upper matrix                                                          \\ \hline
+	\(\mathbf{C}\)                              & Cofactor matrix                                                       \\ \hline
+	\(\mathbf{C}_\mathbf{A}, \cof{\mathbf{A}}\) & Cofactor matrix of \(\mathbf{A}\)                                     \\ \hline
+	\(\mathbf{S}\)                              & Symmetric matrix                                                      \\ \hline
+	\(\mathbf{Q}\)                              & Orthogonal matrix                                                     \\ \hline
+	\(\mathbf{I}_N\)                            & \(N\times N\)-dimensional identity matrix                             \\ \hline
+	\(\mathbf{0}_{M\times N}\)                  & \(M\times N\)-dimensional null matrix                                 \\ \hline
+	\(\mathbf{0}_{N}\)                          & \(N\)-dimensional null vector                                         \\ \hline
+	\(\mathbf{1}_{M\times N}\)                  & \(M\times N\)-dimensional ones matrix                                 \\ \hline
+	\(\mathbf{1}_{N}\)                          & \(N\)-dimensional ones vector                                         \\ \hline
+	\(\mathbf{0}\)                              & Null matrix, vector, or tensor (dimensionality understood by context) \\ \hline
+	\(\mathbf{1}\)                              & Ones matrix, vector, or tensor (dimensionality understood by context) \\
 \end{xltabular}
 
 \subsection{Indexing}
 \begin{xltabular}[l]{\linewidth}{XX}
-    \(x_{i_1,i_2, \dots, i_N}, \left[ \bm{\mathcal{X}} \right]_{i_1,i_2, \dots, i_N}\)    & Element in the position \((i_1,i_2, \dots, i_N)\) of the tensor \(\bm{\mathcal{X}}\)\\ \hline
-    \(\bm{\mathcal{X}}^{(n)}\)                                                            & \(n\)th tensor of a nontemporal sequence\\ \hline
-    \(\mathbf{x}_{n}, \mathbf{x}_{:n}\)                                                   & \(n\)th column of the matrix \(X\)\\ \hline
-    \(\mathbf{x}_{n:}\)                                                                   & \(n\)th row of the matrix \(X\)\\ \hline
-    \(\mathbf{x}_{i_1,\dots,i_{n-1}, :, i_{n+1},\dots, i_N}\)                             & Mode-\(n\) fiber of the tensor \(\bm{\mathcal{X}}\)\\ \hline
-    \(\mathbf{x}_{:,i_2,i_3}\)                                                            & Column fiber (mode-\(1\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)\\ \hline
-    \(\mathbf{x}_{i_1,:,i_3}\)                                                            & Row fiber (mode-\(2\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)\\ \hline
-    \(\mathbf{x}_{i_1,i_2,:}\)                                                            & Tube fiber (mode-\(3\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)\\ \hline
-    \(\mathbf{X}_{i_1,:,:}\)                                                              & Horizontal slice of the thrid-order tensor \(\bm{\mathcal{X}}\)\\ \hline
-    \(\mathbf{X}_{:,i_2,:}\)                                                              & Lateral slices slice of the thrid-order tensor \(\bm{\mathcal{X}}\)\\ \hline
-    \(\mathbf{X}_{i_3}, \mathbf{X}_{:,:,i_3}\)                                            & Frontal slices slice of the thrid-order tensor \(\bm{\mathcal{X}}\)
+	\(x_{i_1,i_2, \dots, i_N}, \left[ \bm{\mathcal{X}} \right]_{i_1,i_2, \dots, i_N}\) & Element in the position \((i_1,i_2, \dots, i_N)\) of the tensor \(\bm{\mathcal{X}}\) \\ \hline
+	\(\bm{\mathcal{X}}^{(n)}\)                                                         & \(n\)th tensor of a nontemporal sequence                                             \\ \hline
+	\(\mathbf{x}_{n}, \mathbf{x}_{:n}\)                                                & \(n\)th column of the matrix \(X\)                                                   \\ \hline
+	\(\mathbf{x}_{n:}\)                                                                & \(n\)th row of the matrix \(X\)                                                      \\ \hline
+	\(\mathbf{x}_{i_1,\dots,i_{n-1}, :, i_{n+1},\dots, i_N}\)                          & Mode-\(n\) fiber of the tensor \(\bm{\mathcal{X}}\)                                  \\ \hline
+	\(\mathbf{x}_{:,i_2,i_3}\)                                                         & Column fiber (mode-\(1\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)       \\ \hline
+	\(\mathbf{x}_{i_1,:,i_3}\)                                                         & Row fiber (mode-\(2\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)          \\ \hline
+	\(\mathbf{x}_{i_1,i_2,:}\)                                                         & Tube fiber (mode-\(3\) fiber) of the thrid-order tensor \(\bm{\mathcal{X}}\)         \\ \hline
+	\(\mathbf{X}_{i_1,:,:}\)                                                           & Horizontal slice of the thrid-order tensor \(\bm{\mathcal{X}}\)                      \\ \hline
+	\(\mathbf{X}_{:,i_2,:}\)                                                           & Lateral slices slice of the thrid-order tensor \(\bm{\mathcal{X}}\)                  \\ \hline
+	\(\mathbf{X}_{i_3}, \mathbf{X}_{:,:,i_3}\)                                         & Frontal slices slice of the thrid-order tensor \(\bm{\mathcal{X}}\)
 \end{xltabular}
 
 \subsection{General operations}
 \begin{xltabular}{\textwidth}{XX}
-    \(\expval{\mathbf{a}, \mathbf{b}}, \mathbf{a}^\top\mathbf{b}, \mathbf{a}\cdot\mathbf{b}\)   & Inner or dot product\\ \hline
-    \(\mathbf{a}\circ\mathbf{b}, \mathbf{a}\mathbf{b}^\top\)                                    & Outer product\\ \hline
-    \(\otimes\)                                                                                 & Kronecker product\\ \hline
-    \(\odot\)                                                                                   & Hadamard (or Schur) (elementwise) product\\ \hline
-    \(\cdot^{\odot n}\)                                                                         & \(n\)th-order Hadamard power\\ \hline
-    \(\cdot^{\odot \frac{1}{n}}\)                                                               & \(n\)th-order Hadamard root\\ \hline
-    \(\oslash\)                                                                                 & Hadamard (or Schur) (elementwise) division\\ \hline
-    \(\diamond\)                                                                                & Khatri-Rao product\\ \hline
-    \(\otimes\)                                                                                 & Kronecker Product\\ \hline
-    \(\times_n\)                                                                                & \(n\)-mode product\\
+	\(\expval{\mathbf{a}, \mathbf{b}}, \mathbf{a}^\top\mathbf{b}, \mathbf{a}\cdot\mathbf{b}\) & Inner or dot product                       \\ \hline
+	\(\mathbf{a}\circ\mathbf{b}, \mathbf{a}\mathbf{b}^\top\)                                  & Outer product                              \\ \hline
+	\(\otimes\)                                                                               & Kronecker product                          \\ \hline
+	\(\odot\)                                                                                 & Hadamard (or Schur) (elementwise) product  \\ \hline
+	\(\cdot^{\odot n}\)                                                                       & \(n\)th-order Hadamard power               \\ \hline
+	\(\cdot^{\odot \frac{1}{n}}\)                                                             & \(n\)th-order Hadamard root                \\ \hline
+	\(\oslash\)                                                                               & Hadamard (or Schur) (elementwise) division \\ \hline
+	\(\diamond\)                                                                              & Khatri-Rao product                         \\ \hline
+	\(\otimes\)                                                                               & Kronecker Product                          \\ \hline
+	\(\times_n\)                                                                              & \(n\)-mode product                         \\
 \end{xltabular}
 
 \subsection{Operations with matrices and tensors}
 \begin{xltabular}{\textwidth}{XX}
-    \(\mathbf{A}^{-1}\)                                               & Inverse matrix\\ \hline
-    \(\mathbf{A}^+, \mathbf{A}^{\dagger}\)                            & Moore-Penrose left pseudoinverse\\ \hline
-    \(\mathbf{A}^\top\)                                               & Transpose\\ \hline
-    \(\mathbf{A}^{-\top}\)                                            & Transpose of the inverse, i.e., \(\left( \mathbf{A}^{-1} \right)^{\top} = \left( \mathbf{A}^{\top} \right)^{-1}\) \cite{petersenMatrixCookbook2008,golubMatrixComputations2013}\\ \hline
-    \(\mathbf{A}^*\) & Complex conjugate\\ \hline
-    \(\mathbf{A}^\mathsf{H}\)                                         & Hermitian\\ \hline
-    \(\frob{\mathbf{A}}\)                                             & Frobenius norm \\ \hline
-    \(\norm{\mathbf{A}}\)                                             & Matrix norm\\ \hline
-    \(\abs{\mathbf{A}}, \textnormal{det}\left( \mathbf{A} \right)\)   & Determinant\\ \hline
-    \(\diag{\mathbf{A}}\)                                             & The elements in the diagonal of \(\mathbf{A}\) \\ \hline
-    \(\vec[]{\mathbf{A}}\)                                            & Vectorization: stacks the columns of the matrix \(\mathbf{A}\) into a long column vector\\ \hline
-    \(\vec[d]{\mathbf{A}}\)                                           & Extracts the diagonal elements of a square matrix and returns them
-    in a column vector\\ \hline
-    \(\vec[l]{\mathbf{A}}\)                                           & Extracts the elements strictly below the main diagonal of a square matrix in a column-wise manner and returns them into a column vector\\ \hline
-    \(\vec[u]{\mathbf{A}}\)                                           & Extracts the elements strictly above the main diagonal of a square matrix in a column-wise manner and returns them into a column vector\\ \hline
-    \(\vec[b]{\mathbf{A}}\)                                           & Block vectorization operator: stacks square block matrices of the input into a long block column matrix\\ \hline
-    \(\unvec{\mathbf{A}}\)                                            & Reshapes a column vector into a matrix\\ \hline
-    \(\tr{\mathbf{A}}\)                                               & trace\\ \hline
-    \(\mathbf{X}_{(n)}\)                                              & \(n\)-mode matricization of the tensor \(\bm{\mathcal{X}}\)\\
+	\(\mathbf{A}^{-1}\)                                             & Inverse matrix                                                                                                                                                                  \\ \hline
+	\(\mathbf{A}^+, \mathbf{A}^{\dagger}\)                          & Moore-Penrose left pseudoinverse                                                                                                                                                \\ \hline
+	\(\mathbf{A}^\top\)                                             & Transpose                                                                                                                                                                       \\ \hline
+	\(\mathbf{A}^{-\top}\)                                          & Transpose of the inverse, i.e., \(\left( \mathbf{A}^{-1} \right)^{\top} = \left( \mathbf{A}^{\top} \right)^{-1}\) \cite{petersenMatrixCookbook2008,golubMatrixComputations2013} \\ \hline
+	\(\mathbf{A}^*\)                                                & Complex conjugate                                                                                                                                                               \\ \hline
+	\(\mathbf{A}^\mathsf{H}\)                                       & Hermitian                                                                                                                                                                       \\ \hline
+	\(\frob{\mathbf{A}}\)                                           & Frobenius norm                                                                                                                                                                  \\ \hline
+	\(\norm{\mathbf{A}}\)                                           & Matrix norm                                                                                                                                                                     \\ \hline
+	\(\abs{\mathbf{A}}, \textnormal{det}\left( \mathbf{A} \right)\) & Determinant                                                                                                                                                                     \\ \hline
+	\(\diag{\mathbf{A}}\)                                           & The elements in the diagonal of \(\mathbf{A}\)                                                                                                                                  \\ \hline
+	\(\vec[]{\mathbf{A}}\)                                          & Vectorization: stacks the columns of the matrix \(\mathbf{A}\) into a long column vector                                                                                        \\ \hline
+	\(\vec[d]{\mathbf{A}}\)                                         & Extracts the diagonal elements of a square matrix and returns them
+	in a column vector                                                                                                                                                                                                                                \\ \hline
+	\(\vec[l]{\mathbf{A}}\)                                         & Extracts the elements strictly below the main diagonal of a square matrix in a column-wise manner and returns them into a column vector                                         \\ \hline
+	\(\vec[u]{\mathbf{A}}\)                                         & Extracts the elements strictly above the main diagonal of a square matrix in a column-wise manner and returns them into a column vector                                         \\ \hline
+	\(\vec[b]{\mathbf{A}}\)                                         & Block vectorization operator: stacks square block matrices of the input into a long block column matrix                                                                         \\ \hline
+	\(\unvec{\mathbf{A}}\)                                          & Reshapes a column vector into a matrix                                                                                                                                          \\ \hline
+	\(\tr{\mathbf{A}}\)                                             & trace                                                                                                                                                                           \\ \hline
+	\(\mathbf{X}_{(n)}\)                                            & \(n\)-mode matricization of the tensor \(\bm{\mathcal{X}}\)                                                                                                                     \\
 \end{xltabular}
 \subsection{Operations with vectors}
 \begin{xltabular}{\textwidth}{XX}
-    \(\norm{\mathbf{a}}\)                         & \(l_1\) norm, 1-norm, or Manhattan norm\\ \hline
-    \(\norm{\mathbf{a}}, \norm{\mathbf{a}}_2\)    & \(l_2\) norm, 2-norm, or Euclidean norm\\ \hline
-    \(\norm{\mathbf{a}}_p\)                       & \(l_p\) norm, \(p\)-norm, or Minkowski norm\\ \hline
-    \(\norm{\mathbf{a}}_\infty\)                  & \(l_\infty\) norm, \(\infty\)-norm, or Chebyshev norm\\ \hline
-    \(\diag{\mathbf{a}}\)                         & Diagonalization: a square, diagonal matrix with entries given by the vector \(\mathbf{a}\)\\
+	\(\norm{\mathbf{a}}\)                      & \(l_1\) norm, 1-norm, or Manhattan norm                                                    \\ \hline
+	\(\norm{\mathbf{a}}, \norm{\mathbf{a}}_2\) & \(l_2\) norm, 2-norm, or Euclidean norm                                                    \\ \hline
+	\(\norm{\mathbf{a}}_p\)                    & \(l_p\) norm, \(p\)-norm, or Minkowski norm                                                \\ \hline
+	\(\norm{\mathbf{a}}_\infty\)               & \(l_\infty\) norm, \(\infty\)-norm, or Chebyshev norm                                      \\ \hline
+	\(\diag{\mathbf{a}}\)                      & Diagonalization: a square, diagonal matrix with entries given by the vector \(\mathbf{a}\) \\
 \end{xltabular}
 
 \subsection{Decompositions}
 \begin{xltabular}{\textwidth}{XX}
-    \(\boldsymbol{\Lambdaup}\)                                                                    & Eigenvalue matrix \cite{strangIntroductionLinearAlgebra1993}\\ \hline
-    \(\mathbf{Q}\)                                                                                & Eigenvectors matrix; Orthogonal matrix of the QR decomposition\cite{strangIntroductionLinearAlgebra1993}\\ \hline
-    \(\mathbf{R}\)                                                                                & Upper triangular matrix of the QR decomposition\cite{strangIntroductionLinearAlgebra1993}\\ \hline
-    \(\mathbf{U}\)                                                                                & Left singular vectors\cite{strangIntroductionLinearAlgebra1993}\\ \hline
-    \(\mathbf{U}_r\)                                                                              & Left singular nondegenerated vectors\\ \hline
-    \(\boldsymbol{\Sigmaup}\)                                                                     & Singular value matrix\\ \hline
-    \(\boldsymbol{\Sigmaup}_r\)                                                                   & Singular value matrix with nonzero singular values in the main diagonal\\ \hline
-    \(\boldsymbol{\Sigmaup}^{+}\)                                                                 & Singular value matrix of the pseudoinverse \cite{strangIntroductionLinearAlgebra1993}\\ \hline
-    \(\boldsymbol{\Sigmaup}^{+}_r\)                                                               & Singular value matrix of the pseudoinverse with nonzero singular values in the main diagonal\\ \hline
-    \(\mathbf{V}\)                                                                                & Right singular vectors \cite{strangIntroductionLinearAlgebra1993}\\ \hline
-    \(\mathbf{V}_r\)                                                                              & Right singular nondegenerated vectors\\ \hline
-    \(\eig{\mathbf{A}}\)                                                                          & Set of the eigenvalues of \(\mathbf{A}\) \cite{chellappaSignalProcessingTheory2014,leon-garciaProbabilityStatisticsRandom2007,petersenMatrixCookbook2008}\\ \hline
-    \(\llbracket \mathbf{A}, \mathbf{B}, \mathbf{C}, \dots \rrbracket\)                           & CANDECOMP/PARAFAC (CP) decomposition of the tensor \(\bm{\mathcal{X}}\) from the outer product of column vectors of \(\mathbf{A}\), \(\mathbf{B}\), \(\mathbf{C}, \dots\)\\ \hline
-    \(\llbracket \boldsymbol{\lambdaup}; \mathbf{A}, \mathbf{B}, \mathbf{C}, \dots \rrbracket\)   & Normalized CANDECOMP/PARAFAC (CP) decomposition of the tensor \(\bm{\mathcal{X}}\) from the outer product of column vectors of \(\mathbf{A}\), \(\mathbf{B}\), \(\mathbf{C}, \dots\)\\
+	\(\boldsymbol{\Lambdaup}\)                                                                  & Eigenvalue matrix \cite{strangIntroductionLinearAlgebra1993}                                                                                                                         \\ \hline
+	\(\mathbf{Q}\)                                                                              & Eigenvectors matrix; Orthogonal matrix of the QR decomposition\cite{strangIntroductionLinearAlgebra1993}                                                                             \\ \hline
+	\(\mathbf{R}\)                                                                              & Upper triangular matrix of the QR decomposition\cite{strangIntroductionLinearAlgebra1993}                                                                                            \\ \hline
+	\(\mathbf{U}\)                                                                              & Left singular vectors\cite{strangIntroductionLinearAlgebra1993}                                                                                                                      \\ \hline
+	\(\mathbf{U}_r\)                                                                            & Left singular nondegenerated vectors                                                                                                                                                 \\ \hline
+	\(\boldsymbol{\Sigmaup}\)                                                                   & Singular value matrix                                                                                                                                                                \\ \hline
+	\(\boldsymbol{\Sigmaup}_r\)                                                                 & Singular value matrix with nonzero singular values in the main diagonal                                                                                                              \\ \hline
+	\(\boldsymbol{\Sigmaup}^{+}\)                                                               & Singular value matrix of the pseudoinverse \cite{strangIntroductionLinearAlgebra1993}                                                                                                \\ \hline
+	\(\boldsymbol{\Sigmaup}^{+}_r\)                                                             & Singular value matrix of the pseudoinverse with nonzero singular values in the main diagonal                                                                                         \\ \hline
+	\(\mathbf{V}\)                                                                              & Right singular vectors \cite{strangIntroductionLinearAlgebra1993}                                                                                                                    \\ \hline
+	\(\mathbf{V}_r\)                                                                            & Right singular nondegenerated vectors                                                                                                                                                \\ \hline
+	\(\eig{\mathbf{A}}\)                                                                        & Set of the eigenvalues of \(\mathbf{A}\) \cite{chellappaSignalProcessingTheory2014,leon-garciaProbabilityStatisticsRandom2007,petersenMatrixCookbook2008}                            \\ \hline
+	\(\llbracket \mathbf{A}, \mathbf{B}, \mathbf{C}, \dots \rrbracket\)                         & CANDECOMP/PARAFAC (CP) decomposition of the tensor \(\bm{\mathcal{X}}\) from the outer product of column vectors of \(\mathbf{A}\), \(\mathbf{B}\), \(\mathbf{C}, \dots\)            \\ \hline
+	\(\llbracket \boldsymbol{\lambdaup}; \mathbf{A}, \mathbf{B}, \mathbf{C}, \dots \rrbracket\) & Normalized CANDECOMP/PARAFAC (CP) decomposition of the tensor \(\bm{\mathcal{X}}\) from the outer product of column vectors of \(\mathbf{A}\), \(\mathbf{B}\), \(\mathbf{C}, \dots\) \\
 \end{xltabular}
 \subsection{Spaces and sets}
 \begin{xltabular}{\textwidth}{XX}
-    \(\spn{\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_n}\) & Vector space spanned by the argument vectors \cite{golubMatrixComputations2013}\\ \hline
-    \(\range{\mathbf{A}}\), \(\mathrm{columnspace}(\mathbf{A})\), \(\mathrm{range}(\mathbf{A})\), \(\spn{\mathbf{A}}\), \(\mathrm{image}(\mathbf{A})\)    & Columnspace, range or image, i.e., the space \(\spn{\mathbf{a}_1,\mathbf{a}_2, \dots, \mathbf{a}_n}\), where \(\mathbf{a}_i\) is the ith column vector of the matrix \(\mathbf{A}\) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}\\ \hline
-    \(\range{\mathbf{A}^\mathsf{H}}\) & Row space (also called left columnspace) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}\\ \hline
-    \(\nullspace{\mathbf{A}}, \mathrm{nullspace}(\mathbf{A}), \mathrm{null}(\mathbf{A}), \mathrm{kernel}(\mathbf{A})\) & Nullspace (or kernel space) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015,theodoridisMachineLearningBayesian2020}\\ \hline
-    \(\nullspace{\mathbf{A^\mathsf{H}}}\)          & Left nullspace\\ \hline
-    \(\rank{\mathbf{A}}\)  & Rank, that is, \(\dim{\spn{\mathbf{A}}} = \dim{\range{\mathbf{A}}}\) \cite{nossekAdaptiveArraySignal2015} \\ \hline
-    \(\nullity{\mathbf{A}}\)          & Nullity of \(\mathbf{A}\), i.e., \(\dim{\nullspace{\mathbf{A}}}\)\\ \hline
-    \(\left\{ 1,2, \dots, n \right\}\) & Discrete set containing the integer elements \(1,2, \dots, n\)\\ \hline
-    \(U\) & Universe\\ \hline
-    \(2^A\) & Power set of \(A\)\\ \hline
-    \(\mathbb{R}\) & Set of real numbers\\ \hline
-    \(\mathbb{C}\)& Set of complex numbers\\ \hline
-    \(\mathbb{Z}\) & Set of integer number\\ \hline
-    \(\mathbb{B} = \left\{ 0, 1 \right\}\) & Boolean set\\ \hline % Circuit Complexity and Neural Networks - Ian Parberry; Further Improvements in the Boolean Domain
-    \(\emptyset\) & Empty set\\ \hline
-    \(\mathbb{N}\) & Set of natural numbers\\ \hline
-    \(\mathbb{K} \in \left\{ \mathbb{R}, \mathbb{C} \right\}\) & Real or complex space (field)\\ \hline
-    \(\mathbb{K}^{I_1\times I_2 \times \dots \times I_N}\) & \(I_1\times I_2 \times \dots \times I_N\)-dimensional real (or complex) space\\ \hline
-    \(\mathbb{K}_{+}\) & Nonnegative real (or complex) space \cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbb{K}_{++}\) & Positive real (or complex) space, i.e., \(\mathbb{K}_{++} = \mathbb{K}_{+}\setminus\left\{ \mathbf{0} \right\}\) \cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbb{S}^{n}, \mathcal{S}^{n}\) & Conic set of the symmetric matrices in \(\mathbb{R}^{n\times n}\) \cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbb{S}_{+}^{n}, \mathcal{S}_{+}^{n}\) & Conic set of the symmetric positive semidefinite matrices in \(\mathbb{R}^{n\times n}\) \cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbb{S}_{++}^{n}, \mathcal{S}_{++}^{n}\) & Conic set of the symmetric positive definite matrices in \(\mathbb{R}^{n\times n}\), i.e., \(\mathbb{S}_{++}^{n} = \mathbb{S}_{+}^{n}\setminus \left\{ \mathbf{0} \right\}\) \cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbb{H}^{n}\) & Set of all hermitian matrices in \(\mathbb{C}^{n\times n}\)\\ \hline
-    \([a, b]\) & Closed interval of a real set from \(a\) to \(b\)\\ \hline
-    \((a, b)\) & Opened interval of a real set from \(a\) to \(b\)\\ \hline
-    \([a, b), (a, b]\) & Half-opened intervals of a real set from \(a\) to \(b\)\\
-    \(\textnormal{conv } C\) & Convex hull \\ \hline
-    \(\textnormal{aff } C\) & Affune hull \\ \hline
-    \(\mathcal{R}\) & Ray \\ \hline
-    \(\mathcal{H}\) & Hyperplane \\ \hline
-    \(\mathcal{H}_{+}, \mathcal{H}_{-}\) & Positive/negative halfspace\\ \hline
-    \(B(\mathbf{x}_c, r)\) & Euclidean ball with radium \(r\) and centered at \(\mathbf{x}_c\) \\ \hline
-    \(\mathcal{E}\) & Ellipsoid \\ \hline
-    \(C\) & Norm cone \\ \hline
-    \(K\) & Proper cone \\ \hline
-    \(K^*\) & Dual cone \\ \hline
-    \(\mathcal{P}\) & Polyhedra \\ \hline
-    \(S\) & Simplex \\ \hline
-    \(C_\alpha\) & \(\alpha\)-sublevel set \\ \hline
-    \(\textnormal{epi } f\) & Epigraph of the function \(f\) \\ \hline
-    \(\textnormal{hypo } f\) & Hypograph of the function \(f\)
+	\(\spn{\mathbf{a}_1, \mathbf{a}_2, \dots, \mathbf{a}_n}\)                                                                                          & Vector space spanned by the argument vectors \cite{golubMatrixComputations2013}                                                                                                                                                                               \\ \hline
+	\(\range{\mathbf{A}}\), \(\mathrm{columnspace}(\mathbf{A})\), \(\mathrm{range}(\mathbf{A})\), \(\spn{\mathbf{A}}\), \(\mathrm{image}(\mathbf{A})\) & Columnspace, range or image, i.e., the space \(\spn{\mathbf{a}_1,\mathbf{a}_2, \dots, \mathbf{a}_n}\), where \(\mathbf{a}_i\) is the ith column vector of the matrix \(\mathbf{A}\) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015} \\ \hline
+	\(\range{\mathbf{A}^\mathsf{H}}\)                                                                                                                  & Row space (also called left columnspace) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015}                                                                                                                                            \\ \hline
+	\(\nullspace{\mathbf{A}}, \mathrm{nullspace}(\mathbf{A}), \mathrm{null}(\mathbf{A}), \mathrm{kernel}(\mathbf{A})\)                                 & Nullspace (or kernel space) \cite{strangIntroductionLinearAlgebra1993, nossekAdaptiveArraySignal2015,theodoridisMachineLearningBayesian2020}                                                                                                                  \\ \hline
+	\(\nullspace{\mathbf{A^\mathsf{H}}}\)                                                                                                              & Left nullspace                                                                                                                                                                                                                                                \\ \hline
+	\(\rank{\mathbf{A}}\)                                                                                                                              & Rank, that is, \(\dim{\spn{\mathbf{A}}} = \dim{\range{\mathbf{A}}}\) \cite{nossekAdaptiveArraySignal2015}                                                                                                                                                     \\ \hline
+	\(\nullity{\mathbf{A}}\)                                                                                                                           & Nullity of \(\mathbf{A}\), i.e., \(\dim{\nullspace{\mathbf{A}}}\)                                                                                                                                                                                             \\ \hline
+	\(\left\{ 1,2, \dots, n \right\}\)                                                                                                                 & Discrete set containing the integer elements \(1,2, \dots, n\)                                                                                                                                                                                                \\ \hline
+	\(U\)                                                                                                                                              & Universe                                                                                                                                                                                                                                                      \\ \hline
+	\(2^A\)                                                                                                                                            & Power set of \(A\)                                                                                                                                                                                                                                            \\ \hline
+	\(\mathbb{R}\)                                                                                                                                     & Set of real numbers                                                                                                                                                                                                                                           \\ \hline
+	\(\mathbb{C}\)                                                                                                                                     & Set of complex numbers                                                                                                                                                                                                                                        \\ \hline
+	\(\mathbb{Z}\)                                                                                                                                     & Set of integer number                                                                                                                                                                                                                                         \\ \hline
+	\(\mathbb{B} = \left\{ 0, 1 \right\}\)                                                                                                             & Boolean set                                                                                                                                                                                                                                                   \\ \hline % Circuit Complexity and Neural Networks - Ian Parberry; Further Improvements in the Boolean Domain
+	\(\emptyset\)                                                                                                                                      & Empty set                                                                                                                                                                                                                                                     \\ \hline
+	\(\mathbb{N}\)                                                                                                                                     & Set of natural numbers                                                                                                                                                                                                                                        \\ \hline
+	\(\mathbb{K} \in \left\{ \mathbb{R}, \mathbb{C} \right\}\)                                                                                         & Real or complex space (field)                                                                                                                                                                                                                                 \\ \hline
+	\(\mathbb{K}^{I_1\times I_2 \times \dots \times I_N}\)                                                                                             & \(I_1\times I_2 \times \dots \times I_N\)-dimensional real (or complex) space                                                                                                                                                                                 \\ \hline
+	\(\mathbb{K}_{+}\)                                                                                                                                 & Nonnegative real (or complex) space \cite{boydConvexOptimization2004}                                                                                                                                                                                         \\ \hline
+	\(\mathbb{K}_{++}\)                                                                                                                                & Positive real (or complex) space, i.e., \(\mathbb{K}_{++} = \mathbb{K}_{+}\setminus\left\{ \mathbf{0} \right\}\) \cite{boydConvexOptimization2004}                                                                                                            \\ \hline
+	\(\mathbb{S}^{n}, \mathcal{S}^{n}\)                                                                                                                & Conic set of the symmetric matrices in \(\mathbb{R}^{n\times n}\) \cite{boydConvexOptimization2004}                                                                                                                                                           \\ \hline
+	\(\mathbb{S}_{+}^{n}, \mathcal{S}_{+}^{n}\)                                                                                                        & Conic set of the symmetric positive semidefinite matrices in \(\mathbb{R}^{n\times n}\) \cite{boydConvexOptimization2004}                                                                                                                                     \\ \hline
+	\(\mathbb{S}_{++}^{n}, \mathcal{S}_{++}^{n}\)                                                                                                      & Conic set of the symmetric positive definite matrices in \(\mathbb{R}^{n\times n}\), i.e., \(\mathbb{S}_{++}^{n} = \mathbb{S}_{+}^{n}\setminus \left\{ \mathbf{0} \right\}\) \cite{boydConvexOptimization2004}                                                \\ \hline
+	\(\mathbb{H}^{n}\)                                                                                                                                 & Set of all hermitian matrices in \(\mathbb{C}^{n\times n}\)                                                                                                                                                                                                   \\ \hline
+	\([a, b]\)                                                                                                                                         & Closed interval of a real set from \(a\) to \(b\)                                                                                                                                                                                                             \\ \hline
+	\((a, b)\)                                                                                                                                         & Opened interval of a real set from \(a\) to \(b\)                                                                                                                                                                                                             \\ \hline
+	\([a, b), (a, b]\)                                                                                                                                 & Half-opened intervals of a real set from \(a\) to \(b\)                                                                                                                                                                                                       \\
+	\(\textnormal{conv } C\)                                                                                                                           & Convex hull                                                                                                                                                                                                                                                   \\ \hline
+	\(\textnormal{aff } C\)                                                                                                                            & Affune hull                                                                                                                                                                                                                                                   \\ \hline
+	\(\mathcal{R}\)                                                                                                                                    & Ray                                                                                                                                                                                                                                                           \\ \hline
+	\(\mathcal{H}\)                                                                                                                                    & Hyperplane                                                                                                                                                                                                                                                    \\ \hline
+	\(\mathcal{H}_{+}, \mathcal{H}_{-}\)                                                                                                               & Positive/negative halfspace                                                                                                                                                                                                                                   \\ \hline
+	\(B(\mathbf{x}_c, r)\)                                                                                                                             & Euclidean ball with radium \(r\) and centered at \(\mathbf{x}_c\)                                                                                                                                                                                             \\ \hline
+	\(\mathcal{E}\)                                                                                                                                    & Ellipsoid                                                                                                                                                                                                                                                     \\ \hline
+	\(C\)                                                                                                                                              & Norm cone                                                                                                                                                                                                                                                     \\ \hline
+	\(K\)                                                                                                                                              & Proper cone                                                                                                                                                                                                                                                   \\ \hline
+	\(K^*\)                                                                                                                                            & Dual cone                                                                                                                                                                                                                                                     \\ \hline
+	\(\mathcal{P}\)                                                                                                                                    & Polyhedra                                                                                                                                                                                                                                                     \\ \hline
+	\(S\)                                                                                                                                              & Simplex                                                                                                                                                                                                                                                       \\ \hline
+	\(C_\alpha\)                                                                                                                                       & \(\alpha\)-sublevel set                                                                                                                                                                                                                                       \\ \hline
+	\(\textnormal{epi } f\)                                                                                                                            & Epigraph of the function \(f\)                                                                                                                                                                                                                                \\ \hline
+	\(\textnormal{hypo } f\)                                                                                                                           & Hypograph of the function \(f\)
 \end{xltabular}
 
 \subsection{Set operations}
 \begin{xltabular}{\textwidth}{XX}
-    \(A + B\) & Set addition (Minkowski sum), i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} = \mathbf{x}+\mathbf{y}, \forall \; \mathbf{x} \in \mathcal{X} \wedge \mathbf{y} \in \mathcal{Y} \right\}\) \cite{kouvaritakisModelPredictiveControl2016}\\ \hline
-    \(A - B\) &  Minkowski difference, i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} = \mathbf{x}-\mathbf{y}, \forall \; \mathbf{x} \in \mathcal{X} \wedge \mathbf{y} \in \mathcal{Y} \right\}\)\\ \hline
-    \(A \ominus B\) & Pontryagin difference, i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} + \mathbf{y} \in \mathcal{X} , \forall \; \mathbf{y} \in \mathcal{Y} \right\}\) \cite{kouvaritakisModelPredictiveControl2016}\\ \hline
-    \(A \setminus B, A-B\) & Set difference or set subtraction, i.e., \(A \setminus B = \left\{ x \vert x \in A \wedge x \not\in B \right\}\) the set containing the elements of \(A\) that are not in \(B\) \cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(A \cup B\) & Set of union\\ \hline
-    \(A \cap B\) & Set of intersection\\ \hline
-    \(A \times B\) & Cartesian product\\ \hline
-    \(A^n\) & \(\underbrace{A \times A \times \dots \times A}_{n \text{ times}}\)\\ \hline
-    \(A^{\perp}\) & Orthogonal complement of \(A\), e.g., \(\nullspace{\mathbf{A}} = \range{\mathbf{A}^{\top}}^{\perp}\) \cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbf{a} \perp \mathbf{b}\)   & \(\mathbf{a}\) is orthogonal to \(\mathbf{b}\)\\ \hline
-    \(\mathbf{a} \not\perp \mathbf{b}\)            & \(\mathbf{a}\) is not orthogonal to \(\mathbf{b}\)\\
-    \(A \oplus B\) & Direct sum, i.e., each \(\mathbf{v} \in \left\{ \sum \mathbf{a}_i \mid \mathbf{a}_i \in S_i, i=1,\dots,k \right\}\) has a unique representation of \(\sum \mathbf{a}_i\) with \(\mathbf{a}_i \in S_i\). That is, they expand to a space. Note that \(\left\{ S_i \right\}\) might not be orthogonal each other \cite{golubMatrixComputations2013}\\ \hline
-    \(A \overset{\perp}{\oplus} B\) & Direct sum of two spaces that are orthogonal and span a \(n\)-dimensional space, e.g., \(\range{\mathbf{A}^{\top}} \overset{\perp}{\oplus} \range{\mathbf{A}^{\top}}^{\perp} = \mathbb{R}^{n}\) (this decomposition of \(\mathbb{R}^{n}\) is called the orthogonal decomposition induced by \(\mathbf{A}\)) \cite{boydConvexOptimization2004}\\ \hline
-    \(\bar{A}, A^{c}\) & Complement set (given $U$)\\ \hline
-    \(\#A, \abs{A}\) & Cardinality\\ \hline
-    \(a \in A\)& \(a\) is element of \(A\) \\ \hline
-    \(a \notin A\)& \(a\) is not element of \(A\) \\ \hline
+	\(A + B\)                           & Set addition (Minkowski sum), i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} = \mathbf{x}+\mathbf{y}, \forall \; \mathbf{x} \in \mathcal{X} \wedge \mathbf{y} \in \mathcal{Y} \right\}\) \cite{kouvaritakisModelPredictiveControl2016}                                                                                             \\ \hline
+	\(A - B\)                           & Minkowski difference, i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} = \mathbf{x}-\mathbf{y}, \forall \; \mathbf{x} \in \mathcal{X} \wedge \mathbf{y} \in \mathcal{Y} \right\}\)                                                                                                                                                   \\ \hline
+	\(A \ominus B\)                     & Pontryagin difference, i.e., \(\left\{ \mathbf{v} \in \mathbb{R}^{n} \mid \mathbf{v} + \mathbf{y} \in \mathcal{X} , \forall \; \mathbf{y} \in \mathcal{Y} \right\}\) \cite{kouvaritakisModelPredictiveControl2016}                                                                                                                                \\ \hline
+	\(A \setminus B, A-B\)              & Set difference or set subtraction, i.e., \(A \setminus B = \left\{ x \vert x \in A \wedge x \not\in B \right\}\) the set containing the elements of \(A\) that are not in \(B\) \cite{rosenDiscreteMathematicsIts2011}                                                                                                                            \\ \hline
+	\(A \cup B\)                        & Set of union                                                                                                                                                                                                                                                                                                                                      \\ \hline
+	\(A \cap B\)                        & Set of intersection                                                                                                                                                                                                                                                                                                                               \\ \hline
+	\(A \times B\)                      & Cartesian product                                                                                                                                                                                                                                                                                                                                 \\ \hline
+	\(A^n\)                             & \(\underbrace{A \times A \times \dots \times A}_{n \text{ times}}\)                                                                                                                                                                                                                                                                               \\ \hline
+	\(A^{\perp}\)                       & Orthogonal complement of \(A\), e.g., \(\nullspace{\mathbf{A}} = \range{\mathbf{A}^{\top}}^{\perp}\) \cite{boydConvexOptimization2004}                                                                                                                                                                                                            \\ \hline
+	\(\mathbf{a} \perp \mathbf{b}\)     & \(\mathbf{a}\) is orthogonal to \(\mathbf{b}\)                                                                                                                                                                                                                                                                                                    \\ \hline
+	\(\mathbf{a} \not\perp \mathbf{b}\) & \(\mathbf{a}\) is not orthogonal to \(\mathbf{b}\)                                                                                                                                                                                                                                                                                                \\
+	\(A \oplus B\)                      & Direct sum, i.e., each \(\mathbf{v} \in \left\{ \sum \mathbf{a}_i \mid \mathbf{a}_i \in S_i, i=1,\dots,k \right\}\) has a unique representation of \(\sum \mathbf{a}_i\) with \(\mathbf{a}_i \in S_i\). That is, they expand to a space. Note that \(\left\{ S_i \right\}\) might not be orthogonal each other \cite{golubMatrixComputations2013} \\ \hline
+	\(A \overset{\perp}{\oplus} B\)     & Direct sum of two spaces that are orthogonal and span a \(n\)-dimensional space, e.g., \(\range{\mathbf{A}^{\top}} \overset{\perp}{\oplus} \range{\mathbf{A}^{\top}}^{\perp} = \mathbb{R}^{n}\) (this decomposition of \(\mathbb{R}^{n}\) is called the orthogonal decomposition induced by \(\mathbf{A}\)) \cite{boydConvexOptimization2004}     \\ \hline
+	\(\bar{A}, A^{c}\)                  & Complement set (given $U$)                                                                                                                                                                                                                                                                                                                        \\ \hline
+	\(\#A, \abs{A}\)                    & Cardinality                                                                                                                                                                                                                                                                                                                                       \\ \hline
+	\(a \in A\)                         & \(a\) is element of \(A\)                                                                                                                                                                                                                                                                                                                         \\ \hline
+	\(a \notin A\)                      & \(a\) is not element of \(A\)                                                                                                                                                                                                                                                                                                                     \\ \hline
 \end{xltabular}
 
 \subsection{Inequalities}
 \begin{xltabular}{\textwidth}{XX}
-    \(\bm{\mathcal{X}} \leq 0\)           & Nonnegative tensor\\ \hline
-    \(\mathbf{a} \preceq_K \mathbf{b}\)   & Generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the conic subset \(K\) in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbf{a} \prec_K \mathbf{b}\)     & Strict generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the interior of the conic subset \(K\) in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbf{a} \preceq \mathbf{b}\)     & Generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the nonnegative orthant conic subset, \(\mathbb{R}_{+}^{n}\), in the space \(\mathbb{R}^{n}\).\cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbf{a} \prec \mathbf{b}\)       & Strict generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the positive orthant conic subset, \(\mathbb{R}_{++}^{n}\), in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbf{A} \preceq_K \mathbf{B}\)   & Generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the conic subset \(K\) in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbf{A} \prec_K \mathbf{B}\)     & Strict generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the interior of the conic subset \(K\) in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbf{A} \preceq \mathbf{B}\)     & Generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the positive semidefinite conic subset, \(\mathbb{S}_{+}^{n}\), in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}\\ \hline
-    \(\mathbf{A} \prec \mathbf{B}\)       & Strict generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the positive orthant conic subset, \(\mathbb{S}_{++}^{n}\), in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}
+	\(\bm{\mathcal{X}} \leq 0\)         & Nonnegative tensor                                                                                                                                                                                           \\ \hline
+	\(\mathbf{a} \preceq_K \mathbf{b}\) & Generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the conic subset \(K\) in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004}                                             \\ \hline
+	\(\mathbf{a} \prec_K \mathbf{b}\)   & Strict generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the interior of the conic subset \(K\) in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004}                      \\ \hline
+	\(\mathbf{a} \preceq \mathbf{b}\)   & Generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the nonnegative orthant conic subset, \(\mathbb{R}_{+}^{n}\), in the space \(\mathbb{R}^{n}\).\cite{boydConvexOptimization2004}     \\ \hline
+	\(\mathbf{a} \prec \mathbf{b}\)     & Strict generalized inequality meaning that \(\mathbf{b}-\mathbf{a}\) belongs to the positive orthant conic subset, \(\mathbb{R}_{++}^{n}\), in the space \(\mathbb{R}^{n}\)\cite{boydConvexOptimization2004} \\ \hline
+	\(\mathbf{A} \preceq_K \mathbf{B}\) & Generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the conic subset \(K\) in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}                                             \\ \hline
+	\(\mathbf{A} \prec_K \mathbf{B}\)   & Strict generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the interior of the conic subset \(K\) in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}                      \\ \hline
+	\(\mathbf{A} \preceq \mathbf{B}\)   & Generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the positive semidefinite conic subset, \(\mathbb{S}_{+}^{n}\), in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}    \\ \hline
+	\(\mathbf{A} \prec \mathbf{B}\)     & Strict generalized inequality meaning that \(\mathbf{B}-\mathbf{A}\) belongs to the positive orthant conic subset, \(\mathbb{S}_{++}^{n}\), in the space \(\mathbb{S}^{n}\)\cite{boydConvexOptimization2004}
 \end{xltabular}
 
 \section{Communication systems}
 \subsection{Symbols}
 \begin{xltabular}{\textwidth}{XX}
-    \(B\)                 & One-sided bandwidth of the transmitted signal, in Hz\\ \hline
-    \(W\)                 & One-sided bandwidth of the transmitted signal, in rad/s\\ \hline
-    \(x_i\)               & Real or in-phase part of \(x\)\\ \hline
-    \(x_q\)               & Imaginary or quadrature part of \(x\)\\ \hline
-    \(f_c, f_{RF}\)       & Carrier frequency (in Hertz)\\ \hline
-    \(f_L\)               & Carrier frequency in L-band (in Hertz)\\ \hline
-    \(f_{IF}\)            & Intermediate frequency (in Hertz)\\ \hline
-    \(f_{s}\)             & Sampling frequency or sampling rate (in Hertz)\\ \hline
-    \(T_{s}\)             & Sampling time interval/duration/period\\ \hline
-    \(R\)                 & Bit rate\\ \hline
-    \(T\)                 & Bit interval/duration/period\\ \hline
-    \(T_c\)               & Chip interval/duration/period\\ \hline
-    \(T_{sy}, T_{sym}\)   & Symbol/signaling\cite{proakisDigitalCommunications2007} interval/duration/period\\ \hline
-    \(s_{RF}\)            & Transmitted signal in RF\\ \hline
-    \(s_{FI}\)            & Transmitted signal in FI\\ \hline
-    \(s, s_l\)            & Lowpass (or baseband) equivalent signal or envelope complex of transmitted signal\\ \hline
-    \(r_{RF}\)            & Received signal in RF\\ \hline
-    \(r_{FI}\)            & Received signal in FI\\ \hline
-    \(r, r_l\)            & Lowpass (or baseband) equivalent signal or envelope complex of received signal\\ \hline
-    \(\phi\)              & Signal phase\\ \hline
-    \(\phi_0\)            & Initial phase\\ \hline
-    \(\eta_{RF}, w_{RF}\) & Noise in RF\\ \hline
-    \(\eta_{FI}, w_{FI}\) & Noise in FI\\ \hline
-    \(\eta, w\)           & Noise in baseband\\ \hline
-    \(\tau\)              & Timing delay \\ \hline
-    \(\Delta\tau\)        & Timing error (delay - estimated) \\ \hline
-    \(\varphi\)           & Phase offset \\ \hline
-    \(\Delta\varphi\)     & Phase error (offset - estimated) \\ \hline
-    \(f_d\)               & Linear Doppler frequency\\ \hline
-    \(\Delta f_d\)        & Frequency error (Doppler frequency - estimated)\\ \hline
-    \(\nu\)               & Angular Doppler frequency\\ \hline
-    \(\Delta \nu\)        & Frequency error (Doppler frequency - estimated)\\ \hline
-    \(\gamma, A\)         & Transmitted signal amplitude\\ \hline
-    \(\gamma_0, A_0\)     & Combined effect of the path loss and antenna gain
+	\(B\)                 & One-sided bandwidth of the transmitted signal, in Hz                              \\ \hline
+	\(W\)                 & One-sided bandwidth of the transmitted signal, in rad/s                           \\ \hline
+	\(x_i\)               & Real or in-phase part of \(x\)                                                    \\ \hline
+	\(x_q\)               & Imaginary or quadrature part of \(x\)                                             \\ \hline
+	\(f_c, f_{RF}\)       & Carrier frequency (in Hertz)                                                      \\ \hline
+	\(f_L\)               & Carrier frequency in L-band (in Hertz)                                            \\ \hline
+	\(f_{IF}\)            & Intermediate frequency (in Hertz)                                                 \\ \hline
+	\(f_{s}\)             & Sampling frequency or sampling rate (in Hertz)                                    \\ \hline
+	\(T_{s}\)             & Sampling time interval/duration/period                                            \\ \hline
+	\(R\)                 & Bit rate                                                                          \\ \hline
+	\(T\)                 & Bit interval/duration/period                                                      \\ \hline
+	\(T_c\)               & Chip interval/duration/period                                                     \\ \hline
+	\(T_{sy}, T_{sym}\)   & Symbol/signaling\cite{proakisDigitalCommunications2007} interval/duration/period  \\ \hline
+	\(s_{RF}\)            & Transmitted signal in RF                                                          \\ \hline
+	\(s_{FI}\)            & Transmitted signal in FI                                                          \\ \hline
+	\(s, s_l\)            & Lowpass (or baseband) equivalent signal or envelope complex of transmitted signal \\ \hline
+	\(r_{RF}\)            & Received signal in RF                                                             \\ \hline
+	\(r_{FI}\)            & Received signal in FI                                                             \\ \hline
+	\(r, r_l\)            & Lowpass (or baseband) equivalent signal or envelope complex of received signal    \\ \hline
+	\(\phi\)              & Signal phase                                                                      \\ \hline
+	\(\phi_0\)            & Initial phase                                                                     \\ \hline
+	\(\eta_{RF}, w_{RF}\) & Noise in RF                                                                       \\ \hline
+	\(\eta_{FI}, w_{FI}\) & Noise in FI                                                                       \\ \hline
+	\(\eta, w\)           & Noise in baseband                                                                 \\ \hline
+	\(\tau\)              & Timing delay                                                                      \\ \hline
+	\(\Delta\tau\)        & Timing error (delay - estimated)                                                  \\ \hline
+	\(\varphi\)           & Phase offset                                                                      \\ \hline
+	\(\Delta\varphi\)     & Phase error (offset - estimated)                                                  \\ \hline
+	\(f_d\)               & Linear Doppler frequency                                                          \\ \hline
+	\(\Delta f_d\)        & Frequency error (Doppler frequency - estimated)                                   \\ \hline
+	\(\nu\)               & Angular Doppler frequency                                                         \\ \hline
+	\(\Delta \nu\)        & Frequency error (Doppler frequency - estimated)                                   \\ \hline
+	\(\gamma, A\)         & Transmitted signal amplitude                                                      \\ \hline
+	\(\gamma_0, A_0\)     & Combined effect of the path loss and antenna gain
 \end{xltabular}
 \subsection{Fading multipath channels}
 \begin{xltabular}{\textwidth}{XX}
-    \(t \overset{\mathcal{F}}{\leftrightarrow} \lambda\) & Support temporal of the signal. \(\lambda\) is obtained after taking the Fourier transform on \(t\). \\ \hline
-    \(\tau \overset{\mathcal{F}}{\leftrightarrow} f\) & Second support temporal of the signal (\(c(t)\) varies with with the input at the time \(\tau\)). \(f\) is obtained after taking the Fourier transform on \(\tau\). \\ \hline
-    \(c(t, \tau)\) & Complex envelope of the channel response at the time \(t\) due to an impulse applied at the \(t - \tau\) \\ \hline
-    \(C(f,t)\) & Transfer function of \(c(t, \tau)\) in \(\tau\) \\ \hline
-    \(\alpha(t, \tau)\) & Attenuation of \(c(t, \tau)\), i.e., \(c(t, \tau) = \alpha(t, \tau) e^{e\pi f_c \tau}\) \\ \hline
-    \(R_c(\tau_1, \tau_2, \Delta t)\) & Autocorrelation function of \(c(t, \tau)\), i.e., \(R_c(\tau_1, \tau_2, \Delta t) = \E{c^*(t, \tau_1), c^*(t + \Delta t, \tau_2)}\) \\ \hline
-    \(R_c(\tau, \Delta t)\) & Autocorrelation function of \(c(t, \tau)\) assuming uncorrelated scattering \\ \hline
-    \(R_c(\tau), \eval{R_c(\tau, \Delta t)}_{\Delta t = 0}\) & Multipath intensity profile or delay power spectrum \\ \hline
-    \(R_C(\Delta f, \Delta t), R_C(f_1, f_2; \Delta t)\), \(\E{C(f_1,t), C(f_2, t + \Delta t)}\), \(\mathcal{F}_\tau \left\{ R_c(\tau, \Delta t) \right\}\) &  Spaced-frequency, spaced-time correlation function (\(\Delta f = f_2 - f_1\)) \\ \hline
-    \(R_C(\Delta f), \eval{R_C(\Delta f, \Delta t)}_{\Delta t = 0}\), \(\mathcal{F}\left\{ R_c(\tau) \right\}\) & Spaced-frequency correlation function \\ \hline
-    \((\Delta f)_c\) & Coherence bandwidth of \(c(t)\), that is, the frequency interval in which \(R_C(\Delta f)\) is nonzero \\ \hline
-    \(T_m\) & Multipath spread of the channel, that is, the time interval in which \(R_c(\tau)\) is nonzero (\(T_m \approx 1/(\Delta f)_c \)) \\ \hline
-    \(R_C(\Delta t), \eval{R_C(\Delta f, \Delta t)}_{\Delta f = 0}\) & Spaced-time correlation function \\ \hline
-    \(S_C(\lambda), \mathcal{F}\left\{ R_C (\Delta t) \right\}\) & Doppler power spectrum \\ \hline
-    \((\Delta t)_c\) & Coherence time of \(c(t)\), that is, the time interval in which \(R_C(\Delta t)\) is nonzero \\ \hline
-    \(B_m\) & Multipath spread of the channel, that is, the frequency interval in which \(S_c(\lambda)\) is nonzero (\(B_d \approx 1/(\Delta t)_c \)) \\ \hline
-    \(S_C(\tau, \lambda), \mathcal{F}_{\Delta f, \Delta t}\left\{ R_C (\Delta f, \Delta t) \right\}\) & Scattering function \\ \hline
+	\(t \overset{\mathcal{F}}{\leftrightarrow} \lambda\)                                                                                                    & Support temporal of the signal. \(\lambda\) is obtained after taking the Fourier transform on \(t\).                                                                \\ \hline
+	\(\tau \overset{\mathcal{F}}{\leftrightarrow} f\)                                                                                                       & Second support temporal of the signal (\(c(t)\) varies with with the input at the time \(\tau\)). \(f\) is obtained after taking the Fourier transform on \(\tau\). \\ \hline
+	\(c(t, \tau)\)                                                                                                                                          & Complex envelope of the channel response at the time \(t\) due to an impulse applied at the \(t - \tau\)                                                            \\ \hline
+	\(C(f,t)\)                                                                                                                                              & Transfer function of \(c(t, \tau)\) in \(\tau\)                                                                                                                     \\ \hline
+	\(\alpha(t, \tau)\)                                                                                                                                     & Attenuation of \(c(t, \tau)\), i.e., \(c(t, \tau) = \alpha(t, \tau) e^{e\pi f_c \tau}\)                                                                             \\ \hline
+	\(R_c(\tau_1, \tau_2, \Delta t)\)                                                                                                                       & Autocorrelation function of \(c(t, \tau)\), i.e., \(R_c(\tau_1, \tau_2, \Delta t) = \E{c^*(t, \tau_1), c^*(t + \Delta t, \tau_2)}\)                                 \\ \hline
+	\(R_c(\tau, \Delta t)\)                                                                                                                                 & Autocorrelation function of \(c(t, \tau)\) assuming uncorrelated scattering                                                                                         \\ \hline
+	\(R_c(\tau), \eval{R_c(\tau, \Delta t)}_{\Delta t = 0}\)                                                                                                & Multipath intensity profile or delay power spectrum                                                                                                                 \\ \hline
+	\(R_C(\Delta f, \Delta t), R_C(f_1, f_2; \Delta t)\), \(\E{C(f_1,t), C(f_2, t + \Delta t)}\), \(\mathcal{F}_\tau \left\{ R_c(\tau, \Delta t) \right\}\) & Spaced-frequency, spaced-time correlation function (\(\Delta f = f_2 - f_1\))                                                                                       \\ \hline
+	\(R_C(\Delta f), \eval{R_C(\Delta f, \Delta t)}_{\Delta t = 0}\), \(\mathcal{F}\left\{ R_c(\tau) \right\}\)                                             & Spaced-frequency correlation function                                                                                                                               \\ \hline
+	\((\Delta f)_c\)                                                                                                                                        & Coherence bandwidth of \(c(t)\), that is, the frequency interval in which \(R_C(\Delta f)\) is nonzero                                                              \\ \hline
+	\(T_m\)                                                                                                                                                 & Multipath spread of the channel, that is, the time interval in which \(R_c(\tau)\) is nonzero (\(T_m \approx 1/(\Delta f)_c \))                                     \\ \hline
+	\(R_C(\Delta t), \eval{R_C(\Delta f, \Delta t)}_{\Delta f = 0}\)                                                                                        & Spaced-time correlation function                                                                                                                                    \\ \hline
+	\(S_C(\lambda), \mathcal{F}\left\{ R_C (\Delta t) \right\}\)                                                                                            & Doppler power spectrum                                                                                                                                              \\ \hline
+	\((\Delta t)_c\)                                                                                                                                        & Coherence time of \(c(t)\), that is, the time interval in which \(R_C(\Delta t)\) is nonzero                                                                        \\ \hline
+	\(B_m\)                                                                                                                                                 & Multipath spread of the channel, that is, the frequency interval in which \(S_c(\lambda)\) is nonzero (\(B_d \approx 1/(\Delta t)_c \))                             \\ \hline
+	\(S_C(\tau, \lambda), \mathcal{F}_{\Delta f, \Delta t}\left\{ R_C (\Delta f, \Delta t) \right\}\)                                                       & Scattering function                                                                                                                                                 \\ \hline
 \end{xltabular}
 
 \section{Discrete mathematics}
 \subsection{Quantifiers, inferences}
 \begin{xltabular}{\textwidth}{XX}
-    \(\forall\) & For all (universal quantifier) \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\exists\) & There exists (existential quantifier) \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\nexists\) & There does not exist \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\exists!\) & There exist an unique \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\in\) & Belongs to \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\not\in\) & Does not belong to \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\because\) & Because \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\mid, :\) & Such that, sometimes that parentheses is used \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(, , \left( \cdot \right)\) & Used to separate the quantifier with restricted domain from its scope, e.g., \(\forall \; x < 0 \left( x^{2} > 0 \right)\) or \(\forall \; x < 0, x^{2} > 0\) \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\therefore\) & Therefore \cite{grahamConcreteMathematicsFoundation1989}\\
+	\(\forall\)                  & For all (universal quantifier) \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                                \\ \hline
+	\(\exists\)                  & There exists (existential quantifier) \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                         \\ \hline
+	\(\nexists\)                 & There does not exist \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                                          \\ \hline
+	\(\exists!\)                 & There exist an unique \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                                         \\ \hline
+	\(\in\)                      & Belongs to \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                                                    \\ \hline
+	\(\not\in\)                  & Does not belong to \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                                            \\ \hline
+	\(\because\)                 & Because \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                                                       \\ \hline
+	\(\mid, :\)                  & Such that, sometimes that parentheses is used \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                 \\ \hline
+	\(, , \left( \cdot \right)\) & Used to separate the quantifier with restricted domain from its scope, e.g., \(\forall \; x < 0 \left( x^{2} > 0 \right)\) or \(\forall \; x < 0, x^{2} > 0\) \cite{grahamConcreteMathematicsFoundation1989} \\ \hline
+	\(\therefore\)               & Therefore \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                                                     \\
 \end{xltabular}
 
 \subsection{Propositional Logic}
 \begin{xltabular}{\textwidth}{XX}
-    \(\lnot a\) & Logical negation of \(a\) \cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(a \wedge b\) & Conjunction (logical AND) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(a \vee b\) & Disjunction (logical OR) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(a \oplus b\) & Exclusive OR (logical XOR) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(a \rightarrow b\) & Implication (or conditional) statement\cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(a \leftrightarrow b\) & Bi-implication (or biconditional) statement, i.e., \(\left( a \rightarrow b \right) \wedge (b \rightarrow a )\) \cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(a \equiv b, a \iff b, a \Leftrightarrow b \) & Logical equivalence, i.e., \(a \leftrightarrow b\) is a tautology\cite{rosenDiscreteMathematicsIts2011}\\
+	\(\lnot a\)                                    & Logical negation of \(a\) \cite{rosenDiscreteMathematicsIts2011}                                                                                       \\ \hline
+	\(a \wedge b\)                                 & Conjunction (logical AND) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}                                                       \\ \hline
+	\(a \vee b\)                                   & Disjunction (logical OR) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}                                                        \\ \hline
+	\(a \oplus b\)                                 & Exclusive OR (logical XOR) operator between \(a\) and \(b\)\cite{rosenDiscreteMathematicsIts2011}                                                      \\ \hline
+	\(a \rightarrow b\)                            & Implication (or conditional) statement\cite{rosenDiscreteMathematicsIts2011}                                                                           \\ \hline
+	\(a \leftrightarrow b\)                        & Bi-implication (or biconditional) statement, i.e., \(\left( a \rightarrow b \right) \wedge (b \rightarrow a )\) \cite{rosenDiscreteMathematicsIts2011} \\ \hline
+	\(a \equiv b, a \iff b, a \Leftrightarrow b \) & Logical equivalence, i.e., \(a \leftrightarrow b\) is a tautology\cite{rosenDiscreteMathematicsIts2011}                                                \\
 \end{xltabular}
 
 \subsection{Operations}
 \begin{xltabular}{\textwidth}{XX}
-    \(\abs{a}\) & Absolute value of \(a\)\\ \hline
-    \(\log\) & Base-10 logarithm or decimal logarithm\\ \hline
-    \(\ln\) & Natual logarithm\\ \hline
-    \(\textnormal{Re}\left\{ x \right\}\) & Real part of \(x\)\\ \hline
-    \(\textnormal{Im}\left\{ x \right\}\) & Imaginary part of \(x\)\\ \hline
-    \(\angle\cdot\) & Phase (complex argument)\\ \hline
-    \(x\;\mathrm{mod}\;y\) & Remainder, i.e., \(x-y\floor{x/y}\), for \(y \neq 0\)\\ \hline
-    \(x\;\mathrm{div}\;y\) & Quotient \cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(x \equiv y\;(\mathrm{mod}\;m)\) & Congruent, i.e.,  \(m \backslash (x-y)\) \cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(\mathrm{frac}\left(x\right)\) & Fractional part, i.e., \(x\;\mathrm{mod}\;1\) \cite{grahamConcreteMathematicsFoundation1989} \\ \hline
-    \(a \backslash b\), \(a \mid b\) & \(b\) is a positive integer multiple of \(a\), i.e., \( \exists\; n \in \mathbb{Z}_{++} \mid b = n a \) \cite{grahamConcreteMathematicsFoundation1989,rosenDiscreteMathematicsIts2011} \\ \hline
-    \(a \centernot\backslash b\), \(a \centernot\mid b\) & \(b\) is not a positive integer multiple of \(a\), i.e., \( \nexists\; n \in \mathbb{Z}_{++} \mid b = n a \) \cite{grahamConcreteMathematicsFoundation1989,rosenDiscreteMathematicsIts2011} \\ \hline
-    \(\ceil{\cdot}\) & Ceiling operation \cite{grahamConcreteMathematicsFoundation1989}\\ \hline
-    \(\floor{\cdot}\) & Floor operation \cite{grahamConcreteMathematicsFoundation1989}
+	\(\abs{a}\)                                          & Absolute value of \(a\)                                                                                                                                                                     \\ \hline
+	\(\log\)                                             & Base-10 logarithm or decimal logarithm                                                                                                                                                      \\ \hline
+	\(\ln\)                                              & Natual logarithm                                                                                                                                                                            \\ \hline
+	\(\textnormal{Re}\left\{ x \right\}\)                & Real part of \(x\)                                                                                                                                                                          \\ \hline
+	\(\textnormal{Im}\left\{ x \right\}\)                & Imaginary part of \(x\)                                                                                                                                                                     \\ \hline
+	\(\angle\cdot\)                                      & Phase (complex argument)                                                                                                                                                                    \\ \hline
+	\(x\;\mathrm{mod}\;y\)                               & Remainder, i.e., \(x-y\floor{x/y}\), for \(y \neq 0\)                                                                                                                                       \\ \hline
+	\(x\;\mathrm{div}\;y\)                               & Quotient \cite{rosenDiscreteMathematicsIts2011}                                                                                                                                             \\ \hline
+	\(x \equiv y\;(\mathrm{mod}\;m)\)                    & Congruent, i.e.,  \(m \backslash (x-y)\) \cite{rosenDiscreteMathematicsIts2011}                                                                                                             \\ \hline
+	\(\mathrm{frac}\left(x\right)\)                      & Fractional part, i.e., \(x\;\mathrm{mod}\;1\) \cite{grahamConcreteMathematicsFoundation1989}                                                                                                \\ \hline
+	\(a \backslash b\), \(a \mid b\)                     & \(b\) is a positive integer multiple of \(a\), i.e., \( \exists\; n \in \mathbb{Z}_{++} \mid b = n a \) \cite{grahamConcreteMathematicsFoundation1989,rosenDiscreteMathematicsIts2011}      \\ \hline
+	\(a \centernot\backslash b\), \(a \centernot\mid b\) & \(b\) is not a positive integer multiple of \(a\), i.e., \( \nexists\; n \in \mathbb{Z}_{++} \mid b = n a \) \cite{grahamConcreteMathematicsFoundation1989,rosenDiscreteMathematicsIts2011} \\ \hline
+	\(\ceil{\cdot}\)                                     & Ceiling operation \cite{grahamConcreteMathematicsFoundation1989}                                                                                                                            \\ \hline
+	\(\floor{\cdot}\)                                    & Floor operation \cite{grahamConcreteMathematicsFoundation1989}
 \end{xltabular}
 
 \section{Calculus}
 \begin{xltabular}{\textwidth}{XX}
-    \(\nabla\) & Vector differential operator (Nabla symbol), i.e., \(\nabla f\) is the gradient of the scalar-valued function \(f\), i.e., \(f: \mathbb{R}^n \rightarrow \mathbb{R}\) \\ \hline
-    \(t, (u,v)\) & Parametric variables commonly used, \(t\) for one variable, \((u,v)\) for two variables\cite{stewartCalculus2011}\\ \hline
-    \(\dd{\mathbf{l}}, \dd{\mathbf{r}}\) & Vector position, i.e., \((x, y, z)\). Stewart \cite{stewartCalculus2011} utilizes the letter \(\mathbf{r}\) to denote it, but it appears in many electromagnetics books as \(\dd{\mathbf{l}}\) \\ \hline
-    \(\mathbf{l}(t)\) & Vector position parametrized by \(t\), i.e., \((x(t), y(t), z(t))\) \cite{stewartCalculus2011,ramoFieldsWavesCommunication1994}\\ \hline
-    \(\mathbf{l}'(t), \dd{\mathbf{l}}/\dd{t}\) & First derivative of \(\mathbf{l}(t)\), i.e., the tangent vector of the curve \((x(t), y(t), z(t))\) \cite{stewartCalculus2011}\\ \hline
-    \(\mathbf{T}(t), \mathbf{u}(t)\) & Tangent unit vector of \(\mathbf{l}(t)\), i.e., \newline  \(\mathbf{u}(t) = \mathbf{l}'(t)/\abs{\mathbf{l}'(t)}\)\cite{stewartCalculus2011,kreyszigAdvancedEngineeringMathematics2008}\\ \hline
-    \(\mathbf{n}(t), \left( \frac{y'(t)}{\abs{\mathbf{l}'(t)}}, -\frac{x'(t)}{\abs{\mathbf{l}'(t)}} \right)\) & Normal vector of \(\mathbf{l}(t)\), i.e., \newline \(\mathbf{n}(t)\perp \mathbf{T}(t) \)\cite{stewartCalculus2011}\\ \hline
-    \(C\)& Contour that traveled by \(\mathbf{l}(t)\), for \(a \leq t \leq b\) \cite{stewartCalculus2011}\\ \hline
-    \(L, L(C)\) & Total length of the contour \(C\) (which can be defined the vector \(\mathbf{l}\), parametrized by \(t\)), i.e., \(L_C = \int_a^b \abs{\mathbf{l}'(t)} \dd{t}\)\cite{stewartCalculus2011}\\ \hline
-    \(s(t)\) & Length of the arc, which can be defined by the vector \(\mathbf{l}\) and \(t\), that is, \(s(t) = \int_a^t \abs{\mathbf{l}'(u)} \dd{u}\) (\(s(b) = L\))\cite{stewartCalculus2011}\\ \hline
-    \(\dd{s}\) & Differential operator of the length of the contour \(C\), i.e., \(\dd{s} = \abs{\mathbf{l}'(t)} \dd{t}\) \cite{stewartCalculus2011} \\ \hline
-    \(\int_C f(\mathbf{l}) \dd{s}, \int_a^b f(\mathbf{l}(t)) \abs{\mathbf{l}'(t)} \dd{t}\) & Line integral of the function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) along the contour \(C\) \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\ \hline
-    \(\int_C \mathbf{F}\cdot\dd{\mathbf{l}}, \int_a^b \mathbf{F}(\mathbf{l}(t)) \cdot \mathbf{l}'(t) \dd{t}, \int_C \mathbf{F}\cdot\mathbf{T} \dd{s}\) & Line integral of vector field \(\mathbf{F}\) along the contour \(C\)  \cite{apostolCalculus2ndEdn1967,stewartCalculus2011} \\ \hline
-    \(\int_\mathbf{a}^\mathbf{b} \mathbf{F}, \int_\mathbf{a}^\mathbf{b} \mathbf{F}\cdot\dd{\mathbf{l}}\) & Alternative notation to the line integral, where the parametric variable \(t\) goes from \(a\) to \(b\), making \(r\) goes from \(\mathbf{l}(a) = \mathbf{a}\) to \(\mathbf{l}(b) = \mathbf{b}\) \cite{apostolCalculus2ndEdn1967} \\ \hline
-    \(\oint_C, \varointctrclockwise_C\) & Line integral along the closed contour \(C\) (the arrow indicates the contour integral orientation, which is counterclockwise, by default) \\ \hline
-    \(\oiint_S\) & Surface integral over the closed surface \(S\) \\ \hline
-    \(\mathbf{l}(u,v)\) & Vector position \((x(u,v), y(u,v), z(u,v))\) parametrized by \((u,v)\)\\ \hline
-    \(\mathbf{l}_u\) & \((\partial x/ \partial u, \partial y/ \partial u, \partial z/ \partial u)\)\\ \hline
-    \(\mathbf{l}_v\) & \((\partial x/ \partial v, \partial y/ \partial v, \partial z/ \partial v)\)\\ \hline
-    \(\dd{A}\) & Differential operator of a 2D area (denoted by \(D\) or \(R\)) in the \(\mathbb{R}^2\) domain. This differential operator can be solved in different ways (rectangular, polar, cylindric, etc) \cite{stewartCalculus2011} \\ \hline
-    \(D, R\) & Integration domain in which \(\dd{A}\) is integrated, i.e., \(\iint_D f \dd{A}\) \cite{stewartCalculus2011} \\ \hline
-    \(S\)& Smooth surface \(S\), i.e., a 2D area in a 3D space (\(\mathbb{R}^3\) domain) \\ \hline
-    \(\dd{S}, \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A} \)& Differential operator of a 2D area in a 3D domain (an surface). Note that \(\dd{S} = \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A}\) should be accompanied with the change of the integration interval(from \(S\) to \(D\)) \\ \hline
-    \(A(S), \iint_S \dd{S}, \iint_D \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A}\) & Area of the surface \(S\) parametrized by \((u,v)\), in which \(\dd{A}\) is the area defined in the \(D\) domain (which is form by the \(u\)-by-\(v\) graph)\\ \hline
-    \(\dd{V}\) & Differential operator of a shape volume (denoted by \(E\)) in \(\mathbb{R}^3\) domain, i.e., \(\iiint_E \dd{V} = V\) \\ \hline
-    \(E\) & Integration domain in which \(\dd{V}\) is integrated, i.e., \(\iiint_E f \dd{V}\) \cite{stewartCalculus2011} \\ \hline
-    \(V, \iint_D f \dd{A}, \iiint_E f \dd{V}\) & Volume of the function \(f\) over the regions \(D\) (in the case of double integrals) or \(E\) (in the case of triple integrals) \\ \hline
-    \(\iint_S f \dd{S}, \iint_D f \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A}\)& Surface integral over \(S\) \\ \hline
-    \(\mathbf{n}(u,v), \frac{\mathbf{l}_u(u,v)\times\mathbf{l}_v(u,v)}{\abs{\mathbf{l}_u(u,v)\times\mathbf{l}_v(u,v)}}\) & Normal vector of of the smooth surface \(S\) \\ \hline
-    \(\iint_S \mathbf{F}\cdot \mathbf{n} \dd{S}, \iint_S \mathbf{F} \cdot \dd{\mathbf{S}}, \newline \iint_D \mathbf{F} \cdot (\mathbf{l}_u\times\mathbf{l}_v) \dd{A}\) & Flux integral of vector field \(\mathbf{F}\) through the smooth surface \(S\) (\(\mathbf{n} \dd{S} \triangleq \dd{\mathbf{S}}\)) \\ \hline
-    \(\oiint_S \mathbf{F}\cdot \mathbf{n} \dd{S}, \oiint_S \mathbf{F} \cdot \dd{\mathbf{S}}, \newline \iint_D \mathbf{F} \cdot (\mathbf{l}_u\times\mathbf{l}_v) \dd{A}\) & Flux integral of vector field \(\mathbf{F}\) through the smooth and closed surface \(S\) (\(\mathbf{n} \dd{S} \triangleq \dd{\mathbf{S}}\)) \\ \hline
-    \(\nabla \times \mathbf{F} , \textnormal{curl } \mathbf{F}\) & Curl (rotacional) of the vector field \(\mathbf{F}\)\\ \hline
-    \(\nabla \cdot \mathbf{F} , \textnormal{div } \mathbf{F}\) & Divercence of the vector field \(\mathbf{F}\)\\ \hline
-    \(\nabla^2 f, \nabla \cdot (\nabla f), \Delta f, \newline \partial^2f/\partial x^2 + \partial^2f/\partial y^2 + \partial^2f/\partial z^2\) & Scalar Laplacian operator (performed on a scalar-valued function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\))\\ \hline
-    \(\nabla^2 \mathbf{F}, \nabla \times \nabla \times \mathbf{F} - \nabla(\nabla \cdot \mathbf{F}), \Delta \mathbf{F}, \newline (\partial^2\mathbf{F}/\partial x^2 , \partial^2\mathbf{F}/\partial y^2 , \partial^2\mathbf{F}/\partial z^2)\) & Vector Laplacian operator (performed on a vector field, i.e., a vector-valued function, \(\mathbf{F}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}\)). \(\nabla^2\) denotes the scalar (vector) Laplacian if the function is scalar-valued (vector-valued)\\
+	\(\nabla\)                                                                                                                                                                                                                                 & Vector differential operator (Nabla symbol), i.e., \(\nabla f\) is the gradient of the scalar-valued function \(f\), i.e., \(f: \mathbb{R}^n \rightarrow \mathbb{R}\)                                                                                   \\ \hline
+	\(t, (u,v)\)                                                                                                                                                                                                                               & Parametric variables commonly used, \(t\) for one variable, \((u,v)\) for two variables\cite{stewartCalculus2011}                                                                                                                                       \\ \hline
+	\(\dd{\mathbf{l}}, \dd{\mathbf{r}}\)                                                                                                                                                                                                       & Vector position, i.e., \((x, y, z)\). Stewart \cite{stewartCalculus2011} utilizes the letter \(\mathbf{r}\) to denote it, but it appears in many electromagnetics books as \(\dd{\mathbf{l}}\)                                                          \\ \hline
+	\(\mathbf{l}(t)\)                                                                                                                                                                                                                          & Vector position parametrized by \(t\), i.e., \((x(t), y(t), z(t))\) \cite{stewartCalculus2011,ramoFieldsWavesCommunication1994}                                                                                                                         \\ \hline
+	\(\mathbf{l}'(t), \dd{\mathbf{l}}/\dd{t}\)                                                                                                                                                                                                 & First derivative of \(\mathbf{l}(t)\), i.e., the tangent vector of the curve \((x(t), y(t), z(t))\) \cite{stewartCalculus2011}                                                                                                                          \\ \hline
+	\(\mathbf{T}(t), \mathbf{u}(t)\)                                                                                                                                                                                                           & Tangent unit vector of \(\mathbf{l}(t)\), i.e., \newline  \(\mathbf{u}(t) = \mathbf{l}'(t)/\abs{\mathbf{l}'(t)}\)\cite{stewartCalculus2011,kreyszigAdvancedEngineeringMathematics2008}                                                                  \\ \hline
+	\(\mathbf{n}(t), \left( \frac{y'(t)}{\abs{\mathbf{l}'(t)}}, -\frac{x'(t)}{\abs{\mathbf{l}'(t)}} \right)\)                                                                                                                                  & Normal vector of \(\mathbf{l}(t)\), i.e., \newline \(\mathbf{n}(t)\perp \mathbf{T}(t) \)\cite{stewartCalculus2011}                                                                                                                                      \\ \hline
+	\(C\)                                                                                                                                                                                                                                      & Contour that traveled by \(\mathbf{l}(t)\), for \(a \leq t \leq b\) \cite{stewartCalculus2011}                                                                                                                                                          \\ \hline
+	\(L, L(C)\)                                                                                                                                                                                                                                & Total length of the contour \(C\) (which can be defined the vector \(\mathbf{l}\), parametrized by \(t\)), i.e., \(L_C = \int_a^b \abs{\mathbf{l}'(t)} \dd{t}\)\cite{stewartCalculus2011}                                                               \\ \hline
+	\(s(t)\)                                                                                                                                                                                                                                   & Length of the arc, which can be defined by the vector \(\mathbf{l}\) and \(t\), that is, \(s(t) = \int_a^t \abs{\mathbf{l}'(u)} \dd{u}\) (\(s(b) = L\))\cite{stewartCalculus2011}                                                                       \\ \hline
+	\(\dd{s}\)                                                                                                                                                                                                                                 & Differential operator of the length of the contour \(C\), i.e., \(\dd{s} = \abs{\mathbf{l}'(t)} \dd{t}\) \cite{stewartCalculus2011}                                                                                                                     \\ \hline
+	\(\int_C f(\mathbf{l}) \dd{s}, \int_a^b f(\mathbf{l}(t)) \abs{\mathbf{l}'(t)} \dd{t}\)                                                                                                                                                     & Line integral of the function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) along the contour \(C\) \cite{apostolCalculus2ndEdn1967,stewartCalculus2011}                                                                                                 \\ \hline
+	\(\int_C \mathbf{F}\cdot\dd{\mathbf{l}}, \int_a^b \mathbf{F}(\mathbf{l}(t)) \cdot \mathbf{l}'(t) \dd{t}, \int_C \mathbf{F}\cdot\mathbf{T} \dd{s}\)                                                                                         & Line integral of vector field \(\mathbf{F}\) along the contour \(C\)  \cite{apostolCalculus2ndEdn1967,stewartCalculus2011}                                                                                                                              \\ \hline
+	\(\int_\mathbf{a}^\mathbf{b} \mathbf{F}, \int_\mathbf{a}^\mathbf{b} \mathbf{F}\cdot\dd{\mathbf{l}}\)                                                                                                                                       & Alternative notation to the line integral, where the parametric variable \(t\) goes from \(a\) to \(b\), making \(r\) goes from \(\mathbf{l}(a) = \mathbf{a}\) to \(\mathbf{l}(b) = \mathbf{b}\) \cite{apostolCalculus2ndEdn1967}                       \\ \hline
+	\(\oint_C, \varointctrclockwise_C\)                                                                                                                                                                                                        & Line integral along the closed contour \(C\) (the arrow indicates the contour integral orientation, which is counterclockwise, by default)                                                                                                              \\ \hline
+	\(\oiint_S\)                                                                                                                                                                                                                               & Surface integral over the closed surface \(S\)                                                                                                                                                                                                          \\ \hline
+	\(\mathbf{l}(u,v)\)                                                                                                                                                                                                                        & Vector position \((x(u,v), y(u,v), z(u,v))\) parametrized by \((u,v)\)                                                                                                                                                                                  \\ \hline
+	\(\mathbf{l}_u\)                                                                                                                                                                                                                           & \((\partial x/ \partial u, \partial y/ \partial u, \partial z/ \partial u)\)                                                                                                                                                                            \\ \hline
+	\(\mathbf{l}_v\)                                                                                                                                                                                                                           & \((\partial x/ \partial v, \partial y/ \partial v, \partial z/ \partial v)\)                                                                                                                                                                            \\ \hline
+	\(\dd{A}\)                                                                                                                                                                                                                                 & Differential operator of a 2D area (denoted by \(D\) or \(R\)) in the \(\mathbb{R}^2\) domain. This differential operator can be solved in different ways (rectangular, polar, cylindric, etc) \cite{stewartCalculus2011}                               \\ \hline
+	\(D, R\)                                                                                                                                                                                                                                   & Integration domain in which \(\dd{A}\) is integrated, i.e., \(\iint_D f \dd{A}\) \cite{stewartCalculus2011}                                                                                                                                             \\ \hline
+	\(S\)                                                                                                                                                                                                                                      & Smooth surface \(S\), i.e., a 2D area in a 3D space (\(\mathbb{R}^3\) domain)                                                                                                                                                                           \\ \hline
+	\(\dd{S}, \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A} \)                                                                                                                                                                                   & Differential operator of a 2D area in a 3D domain (an surface). Note that \(\dd{S} = \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A}\) should be accompanied with the change of the integration interval(from \(S\) to \(D\))                               \\ \hline
+	\(A(S), \iint_S \dd{S}, \iint_D \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A}\)                                                                                                                                                              & Area of the surface \(S\) parametrized by \((u,v)\), in which \(\dd{A}\) is the area defined in the \(D\) domain (which is form by the \(u\)-by-\(v\) graph)                                                                                            \\ \hline
+	\(\dd{V}\)                                                                                                                                                                                                                                 & Differential operator of a shape volume (denoted by \(E\)) in \(\mathbb{R}^3\) domain, i.e., \(\iiint_E \dd{V} = V\)                                                                                                                                    \\ \hline
+	\(E\)                                                                                                                                                                                                                                      & Integration domain in which \(\dd{V}\) is integrated, i.e., \(\iiint_E f \dd{V}\) \cite{stewartCalculus2011}                                                                                                                                            \\ \hline
+	\(V, \iint_D f \dd{A}, \iiint_E f \dd{V}\)                                                                                                                                                                                                 & Volume of the function \(f\) over the regions \(D\) (in the case of double integrals) or \(E\) (in the case of triple integrals)                                                                                                                        \\ \hline
+	\(\iint_S f \dd{S}, \iint_D f \abs{\mathbf{l}_u\times\mathbf{l}_v} \dd{A}\)                                                                                                                                                                & Surface integral over \(S\)                                                                                                                                                                                                                             \\ \hline
+	\(\mathbf{n}(u,v), \frac{\mathbf{l}_u(u,v)\times\mathbf{l}_v(u,v)}{\abs{\mathbf{l}_u(u,v)\times\mathbf{l}_v(u,v)}}\)                                                                                                                       & Normal vector of of the smooth surface \(S\)                                                                                                                                                                                                            \\ \hline
+	\(\iint_S \mathbf{F}\cdot \mathbf{n} \dd{S}, \iint_S \mathbf{F} \cdot \dd{\mathbf{S}}, \newline \iint_D \mathbf{F} \cdot (\mathbf{l}_u\times\mathbf{l}_v) \dd{A}\)                                                                         & Flux integral of vector field \(\mathbf{F}\) through the smooth surface \(S\) (\(\mathbf{n} \dd{S} \triangleq \dd{\mathbf{S}}\))                                                                                                                        \\ \hline
+	\(\oiint_S \mathbf{F}\cdot \mathbf{n} \dd{S}, \oiint_S \mathbf{F} \cdot \dd{\mathbf{S}}, \newline \iint_D \mathbf{F} \cdot (\mathbf{l}_u\times\mathbf{l}_v) \dd{A}\)                                                                       & Flux integral of vector field \(\mathbf{F}\) through the smooth and closed surface \(S\) (\(\mathbf{n} \dd{S} \triangleq \dd{\mathbf{S}}\))                                                                                                             \\ \hline
+	\(\nabla \times \mathbf{F} , \textnormal{curl } \mathbf{F}\)                                                                                                                                                                               & Curl (rotacional) of the vector field \(\mathbf{F}\)                                                                                                                                                                                                    \\ \hline
+	\(\nabla \cdot \mathbf{F} , \textnormal{div } \mathbf{F}\)                                                                                                                                                                                 & Divercence of the vector field \(\mathbf{F}\)                                                                                                                                                                                                           \\ \hline
+	\(\nabla^2 f, \nabla \cdot (\nabla f), \Delta f, \newline \partial^2f/\partial x^2 + \partial^2f/\partial y^2 + \partial^2f/\partial z^2\)                                                                                                 & Scalar Laplacian operator (performed on a scalar-valued function \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\))                                                                                                                                          \\ \hline
+	\(\nabla^2 \mathbf{F}, \nabla \times \nabla \times \mathbf{F} - \nabla(\nabla \cdot \mathbf{F}), \Delta \mathbf{F}, \newline (\partial^2\mathbf{F}/\partial x^2 , \partial^2\mathbf{F}/\partial y^2 , \partial^2\mathbf{F}/\partial z^2)\) & Vector Laplacian operator (performed on a vector field, i.e., a vector-valued function, \(\mathbf{F}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}\)). \(\nabla^2\) denotes the scalar (vector) Laplacian if the function is scalar-valued (vector-valued) \\
 \end{xltabular}
 
 \section{Electromagnetic waves}
 \begin{xltabular}{\textwidth}{XX}
-    \(\mathbf{\Phi}\) & Electric flux (scalar) (in \(\si{\volt\meter}\))\\ \hline
-    \(\mathbf{J}\) & Electric current density vector (in \(\si{\ampere\per\square\meter}\))\\ \hline
-    \(\mathbf{H}\) & Magnetic field vector (in \(\si{\ampere\per\meter}\))\\ \hline
-    \(\mathbf{B}\) & Magnetic flux density vector (in \(\si{\weber\per\meter\squared} = \si{\tesla}\))\\ \hline
-    \(q_{\textnormal{free}}\) & Free electric charge (in \(\si{\coulomb}\)) \\ \hline
-    \(q_{\textnormal{bound}}\) & Bound electric charge (in \(\si{\coulomb}\)) \\ \hline
-    \(q, q_{\textnormal{free}}+q_{\textnormal{bound}}\) & Electric charge (in \(\si{\coulomb}\)) \\ \hline
-    \(\rho_{\textnormal{free}}\) & Free electric charge density\\ \hline
-    \(\rho_{\textnormal{bound}}\) & Electric charge density\\ \hline
-    \(\rho, \rho_{\textnormal{free}}+\rho_{\textnormal{bound}}\) & Electric charge density (it can be in \(\si{\coulomb\per\meter^3}, \si{\coulomb\per\meter^2}\) or \(\si{\coulomb\per\meter}\) depending whether it is a volume, surface, or line shapes) \\ \hline
-    \(\mathbf{f}\) & Electrostatic force (Coulomb force), (in \(\si{\kilo\gram\meter\per\second\squared}\)) \\ \hline
-    \(\varepsilon\) & Electric permittivity(in \(\si{\farad\per\meter}\)) \cite{ramoFieldsWavesCommunication1994} \\ \hline
-    \(\varepsilon_r\) & Relative electric permittivity or dielectric constant (in \(\si{\farad\per\meter}\)) \cite{ramoFieldsWavesCommunication1994} \\ \hline
-    \(\varepsilon_0\) & Electric permittivity in vacuum, \(\SI{8.854e-12}{\farad\per\meter}\) \cite{ramoFieldsWavesCommunication1994} \\ \hline
-    \(\mathbf{E}\) & Electric field vector (in \(\si{\volt\per\meter}\))\\ \hline
-    \(\mathbf{D}\) & Electric flux density, electric displacement, or electric induction vector (in \(\si{\coulomb\per\meter\squared}\))\\ \hline
-    \(\Phi_D, \varPsi, \oiint_S \mathbf{D} \dd{\mathbf{S}}\) & Electric flux (\(\mathbf{D}\)-filed flux) \cite{wiki:D-field-flux} \\ \hline
-    \(\Phi_E, \oiint_S \mathbf{E} \dd{\mathbf{S}}\) & Electric flux (\(\mathbf{E}\)-filed flux) \cite{wiki:electric-flux} \\ \hline
-    \(\mathbf{P}\) & Electric polarization of the material (in \(\si{\coulomb\per\meter\squared}\))\\ \hline
-    \(\chi_e\) & Electric susceptibility (for linear and isotropic materials)\\ \hline
-    \(\mu\) & Magnetic permeability \\ \hline
-    \(\mu_0\) & Magnetic permeability in vacuum \\
+	\(\mathbf{\Phi}\)                                            & Electric flux (scalar) (in \(\si{\volt\meter}\))                                                                                                                                         \\ \hline
+	\(\mathbf{J}\)                                               & Electric current density vector (in \(\si{\ampere\per\square\meter}\))                                                                                                                   \\ \hline
+	\(\mathbf{H}\)                                               & Magnetic field vector (in \(\si{\ampere\per\meter}\))                                                                                                                                    \\ \hline
+	\(\mathbf{B}\)                                               & Magnetic flux density vector (in \(\si{\weber\per\meter\squared} = \si{\tesla}\))                                                                                                        \\ \hline
+	\(q_{\textnormal{free}}\)                                    & Free electric charge (in \(\si{\coulomb}\))                                                                                                                                              \\ \hline
+	\(q_{\textnormal{bound}}\)                                   & Bound electric charge (in \(\si{\coulomb}\))                                                                                                                                             \\ \hline
+	\(q, q_{\textnormal{free}}+q_{\textnormal{bound}}\)          & Electric charge (in \(\si{\coulomb}\))                                                                                                                                                   \\ \hline
+	\(\rho_{\textnormal{free}}\)                                 & Free electric charge density                                                                                                                                                             \\ \hline
+	\(\rho_{\textnormal{bound}}\)                                & Electric charge density                                                                                                                                                                  \\ \hline
+	\(\rho, \rho_{\textnormal{free}}+\rho_{\textnormal{bound}}\) & Electric charge density (it can be in \(\si{\coulomb\per\meter^3}, \si{\coulomb\per\meter^2}\) or \(\si{\coulomb\per\meter}\) depending whether it is a volume, surface, or line shapes) \\ \hline
+	\(\mathbf{f}\)                                               & Electrostatic force (Coulomb force), (in \(\si{\kilo\gram\meter\per\second\squared}\))                                                                                                   \\ \hline
+	\(\varepsilon\)                                              & Electric permittivity(in \(\si{\farad\per\meter}\)) \cite{ramoFieldsWavesCommunication1994}                                                                                              \\ \hline
+	\(\varepsilon_r\)                                            & Relative electric permittivity or dielectric constant (in \(\si{\farad\per\meter}\)) \cite{ramoFieldsWavesCommunication1994}                                                             \\ \hline
+	\(\varepsilon_0\)                                            & Electric permittivity in vacuum, \(\SI{8.854e-12}{\farad\per\meter}\) \cite{ramoFieldsWavesCommunication1994}                                                                            \\ \hline
+	\(\mathbf{E}\)                                               & Electric field vector (in \(\si{\volt\per\meter}\))                                                                                                                                      \\ \hline
+	\(\mathbf{D}\)                                               & Electric flux density, electric displacement, or electric induction vector (in \(\si{\coulomb\per\meter\squared}\))                                                                      \\ \hline
+	\(\Phi_D, \varPsi, \oiint_S \mathbf{D} \dd{\mathbf{S}}\)     & Electric flux (\(\mathbf{D}\)-filed flux) \cite{wiki:D-field-flux}                                                                                                                       \\ \hline
+	\(\Phi_E, \oiint_S \mathbf{E} \dd{\mathbf{S}}\)              & Electric flux (\(\mathbf{E}\)-filed flux) \cite{wiki:electric-flux}                                                                                                                      \\ \hline
+	\(\mathbf{P}\)                                               & Electric polarization of the material (in \(\si{\coulomb\per\meter\squared}\))                                                                                                           \\ \hline
+	\(\chi_e\)                                                   & Electric susceptibility (for linear and isotropic materials)                                                                                                                             \\ \hline
+	\(\mu\)                                                      & Magnetic permeability                                                                                                                                                                    \\ \hline
+	\(\mu_0\)                                                    & Magnetic permeability in vacuum                                                                                                                                                          \\
 \end{xltabular}
 
 \section{Generic mathematical symbols}
 \begin{xltabular}{\textwidth}{XX}
-    \(\blacksquare\) & Q.E.D. \\ \hline
-    \(\triangleq\) & Equal by definition\\ \hline
-    \(:=, \leftarrow\) & Assignment \cite{rosenDiscreteMathematicsIts2011}\\ \hline
-    \(\neq\) & Not equal\\ \hline
-    \(\infty\) & Infinity\\ \hline
-    \(j\) & \(\sqrt{-1}\)\\
+	\(\blacksquare\)   & Q.E.D.                                            \\ \hline
+	\(\triangleq\)     & Equal by definition                               \\ \hline
+	\(:=, \leftarrow\) & Assignment \cite{rosenDiscreteMathematicsIts2011} \\ \hline
+	\(\neq\)           & Not equal                                         \\ \hline
+	\(\infty\)         & Infinity                                          \\ \hline
+	\(j\)              & \(\sqrt{-1}\)                                     \\
 \end{xltabular}
 
 \section{Abbreviations}
 PS: Only names of techniques and algorithms or usual abbreviations are considered.
 \begin{xltabular}{\textwidth}{XX}
-    wrt. & With respect to\\ \hline
-    st. & Subject to\\ \hline
-    iff. & If and only if\\ \hline
-    EVD & Eigenvalue decomposition, or eigendecomposition \cite{nossekAdaptiveArraySignal2015}\\ \hline
-    SVD & Singular value decomposition\\ \hline
-    CP & CANDECOMP/PARAFAC\\ \hline
-    SGD & Stochastic gradient descent\\ \hline
-    SVM & Support vector machine\\ \hline
-    BPNN & Backpropagation neural network \cite{jiaoAutomaticEquatorialGPS2017}\\ \hline
-    RBF & Radial basis function\\ \hline
+	wrt. & With respect to                                                                      \\ \hline
+	st.  & Subject to                                                                           \\ \hline
+	iff. & If and only if                                                                       \\ \hline
+	EVD  & Eigenvalue decomposition, or eigendecomposition \cite{nossekAdaptiveArraySignal2015} \\ \hline
+	SVD  & Singular value decomposition                                                         \\ \hline
+	CP   & CANDECOMP/PARAFAC\\ \hline
+	SGD  & Stochastic gradient descent                                                          \\ \hline
+	SVM  & Support vector machine                                                               \\ \hline
+	BPNN & Backpropagation neural network \cite{jiaoAutomaticEquatorialGPS2017}                 \\ \hline
+	RBF  & Radial basis function                                                                \\ \hline
 \end{xltabular}
 
 \printbibliography
