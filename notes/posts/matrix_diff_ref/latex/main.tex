@@ -82,13 +82,26 @@
 \section{Introduction}
 Since my Master's degree, I've been struggling with matrix differentiation as I could not find good references that cover it nicely. The bibliographies I found at that time were books from Economics \cite{dhrymes1978mathematics}, but they use an \st{weird} unfamiliar notation.
 
-After delving a lot, I finally found a good reference from Professor Randal's class note \cite{barnes2006matrix} (honorable mention for the Matrix Cookbook too \cite{petersen2008matrix}). However, to my surprise, when I tried to apply those matrix differentiation propositions, I got ``wrong'' answers! The truth is that \emph{matrix calculus notation is severely fragmented and there is no consensus among the researchers over which notation to follow}. Fortunately, there are two major ways to represent a derivative of a vector \cite{Singh}. If you do not select the author's representation, you will end up with the same result, but in a row vector\footnote{Although the expression ``row vector'' is quite common, I really advocate avoiding it since, once defined a vector as a column, \(\mathbf{y}^{\trans} \in \mathbb{C}^{1\times n}\) is actually a linear transformation from \(\mathbb{R}^{n}\) to \(\mathbb{R}\). That is, it has nothing to do with a vector, which is a numerical entity in a \(n\)-dimensional space. Therefore, throughout this note, I will refer to it as \(1\times n\) matrix.} instead of a column vector or vice-versa. For the cases where the resulting derivative is a matrix, you will get its transpose. The first representation is called Jacobian formulation or numerator layout, while the second one is called Hessian formulation or denominator layout. Nevertheless, even for the same layout, some conventions need to be stated as there are some disagreements.
+After delving a lot, I finally found a good reference from Professor Randal's class note \cite{barnes2006matrix}. However, to my surprise, when I tried to apply those matrix differentiation propositions, I got ``wrong'' answers! The truth is that \emph{Matrix Calculus notation is severely fragmented and there is no consensus among the researchers over which notation to follow}. Fortunately, there are two major ways to represent a derivative of a vector \cite{Singh}. If you do not select the author's representation, you will end up with the same result, but in a row vector instead of a column vector or vice-versa. For the cases where the resulting derivative is a matrix, you will get its transpose. The first representation is called Jacobian formulation or numerator layout, while the second one is called Hessian formulation or denominator layout. Nevertheless, even for the same layout, some conventions need to be stated
+Due to the lack of references and the need to have one, I decided to make this quick guide. The goal here is twofold: make a quick-but-comprehensive explanation of both representations and derive the partial derivatives for the most common Matrix Calculus expressions you came across. In the end, I hope to have a consistent reference guide to understand an author's book that uses a different notation. The way I define in Section \ref{sec:denominator} will be the way I going to adopt throughout my papers, but I will let you know when some point is not consensus among the authors.
 
-Due to the lack of references and the need to have one, I decided to make this quick guide. The goal here is twofold: make a quick-but-comprehensive explanation of both representations, and derive the partial derivatives for the most common matrix calculus expressions you came across. In the end, I hope to have a consistent reference to guide me when writing my articles, or to help me when I need to understand an author's book that uses notations different from mine. The way I define in the Section \ref{sec:denominator} will be the way I going to adopt throughout my papers, but I will let you know when some point is not consensus among the authors. If you are only looking for a table of results, the most thorough I've seen so far is on Wikipedia \cite{Matrixca44:online}, but maybe it is not the most reliable source.
+I will adopt the notation that most Engineers might be used to and only apply the Hessian (or demodulator) formulation on the derivations since this is the notation I will adopt on my papers (it matches the derivative results I find in my books, too).
 
-I will adopt the notation that most Engineers might be used to and only apply the Hessian formulation on the derivations since this is the notation I will adopt on my papers (it matches the derivative results I find in my books, too). If you are looking for the Jacobian formulation for the same derivations I do here, I highly recommend Professor Randal's class note, which uses this representation. The unique drawback is that he does not use complex numbers and has fewer derivations than mine.
+\subsection{Curated list reference}
+The following list shows some references you can rely on besides this guide when it comes to Matrix Calculus (in decreasing order of importance):
+\begin{itemize}
+    \item Searle, Shayle R., and Andre I. Khuri. Matrix algebra useful for statistics \cite{searle2017matrix}: A classical book with the first edition in 1987. It treats Matrix Calculus in chapter 9 of the second edition.
+    \item Hj\o rungnes, Are, and David Gesbert. Complex-valued matrix differentiation: Techniques and key results \cite{hjorungnes2011complex}. An advanced book that uses Wirtinger calculus to differentiate complex-valued matrices. You might prefer his article \cite{hjorungnes2007complex} which summarizes the key results.
+    \item Matrix Calculus You Need For Deep Learning \cite{parrMatrixCalculusYou2018}: Preprint article focused on its application on Machine Learning. It offers the best balance between comprehension and brevity as it is just 33 pages long.
+    \item You can find good references in these book appendices: Dattoro \cite{dattorroConvexOptimizationEuclidean2010}, appendix D; Bishop \cite{bishopPatternRecognitionMachine2006}, appendix C; Simon Haykin, appendix B \cite{haykin2009neural} (Wirtinger calculus).
+    \item Old and New Matrix Algebra Useful for Statistics, Thomas Minka \cite{ThomasMinka}: Another good guide for matrix algebra hosted on the personal site of the author. It has very well-referenced and focuses more on the concepts of Matrix Calculus than solving the derivatives.
+    \item The Matrix Cookbook \cite{petersen2008matrix}: Good reference to see Matrix Calculus results rather than understanding how they were solved.
+    \item Lecture notes in Introduction to Machine Learning, from Carnegie Mellon University \cite{Singh}: A short lecture but with a clear explanation of the difference between numerator and denominator layout.
+    \item Wikipedia \cite{Matrixca44:online}: Maybe it is not the most reliable source, but it is very comprehensive.
+    \item Professor Randal's class note \cite{barnes2006matrix}: It has the same purpose as this guide, that is, to solve common matrix differentiation, but it is done using the numerator layout. Such a layout is rarely used for references herein cited.
+\end{itemize}
 
-Some of the differentiation solutions here were collected from class notes, while others I derived by myself. Obviously, this guide may have errors (I hope not). If you find it, feel free to reach me out through email or simply make a pull request on my \href{https://github.com/tapyu/courses/tree/main/matrix_diff_ref}{Github}.
+Differentiation solutions that were collected from other sources will be referenced, while solution that I derived by myself will not have any reference. Obviously, this guide may have errors (I hope not). If you find it, feel free to reach out through email or simply make a pull request on my \href{https://github.com/tapyu/tapyu.github.io/tree/master/notes/posts/matrix_diff_ref/latex}{Github}.
 
 \section{Notation and nomeclatures}
 \label{sec:notation}
@@ -215,7 +228,7 @@ Therefore,
 \end{align}
 
 \subsubsection{Jacobian matrix for the numerator layout}
-The matrix calculus notation for the Jacobian matrix is given by
+The Matrix Calculus notation for the Jacobian matrix is given by
 
 \begin{align}
     \mathbf{J} = \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}},
@@ -243,7 +256,7 @@ That is why it is also called ``Jacobian formulation''.
 
 \subsubsection{Hessian matrix for the numerator layout}
 
-The matrix calculus notation for the Hessian matrix in the numerator layout is given by
+The Matrix Calculus notation for the Hessian matrix in the numerator layout is given by
 \begin{align}
     \label{eq:hessian-eq-numerator}
     \mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
@@ -257,7 +270,7 @@ where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{
 \begin{align}
     \mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}^\top} \right) = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\top.
 \end{align}
-Note that \(\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\top = \left( \dfrac{\partial f(\mathbf{x})}{\partial x_1}, \dfrac{\partial f(\mathbf{x})}{\partial x_2}, \dots, \dfrac{\partial f(\mathbf{x})}{\partial x_n} \right)\) is a vector. Therefore, we have a vector-vector derivate and, by applying the differentiation as shown in Eq.\eqref{eq:jacobian-formulation}, we get \(\mathbf{H}\). As we will see further on, the Hessian in matrix calculus notation for the denominator layout needs to be written differently.
+Note that \(\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\top = \left( \dfrac{\partial f(\mathbf{x})}{\partial x_1}, \dfrac{\partial f(\mathbf{x})}{\partial x_2}, \dots, \dfrac{\partial f(\mathbf{x})}{\partial x_n} \right)\) is a vector. Therefore, we have a vector-vector derivate and, by applying the differentiation as shown in Eq.\eqref{eq:jacobian-formulation}, we get \(\mathbf{H}\). As we will see further on, the Hessian in Matrix Calculus notation for the denominator layout needs to be written differently.
 
 \subsection{Hessian formulation (denominator layout)}
 \label{sec:denominator}
@@ -358,7 +371,7 @@ Therefore,
 \end{align}
 
 \subsubsection{The Jacobian matrix for the denominator layout}
-The matrix calculus notation for the Jacobian matrix is given by
+The Matrix Calculus notation for the Jacobian matrix is given by
 \begin{align}
     \mathbf{J} = \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}},
 \end{align}
@@ -381,7 +394,7 @@ where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}\) is a vector function. We 
 \end{align}
 
 \subsubsection{The Hessian matrix for the denominator layout}
-The matrix calculus notation for the Hessian matrix in the denominator layout is given by
+The Matrix Calculus notation for the Hessian matrix in the denominator layout is given by
 \begin{align}
     \label{eq:hessian-eq-denomintor}
     \mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x}^2} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
@@ -460,7 +473,7 @@ and for a consistent denominator layout, we would have
 where \(\mathbf{X}\in \mathbb{C}^{m\times n}\) and \(\mathbf{Y} \in \mathbb{C}^{n\times m}\). Notwithstanding, keep in mind that both equations are not standard and their usage must be acknowledged by the reader.
 \section{Identities}
 
-We need to be cautious when applying the matrix differentiation identities since the element orders matter. For instance, for scalar elements, the product rule may be written as either \((fg)' = f'g + g'f\) or \((fg)' = g f' + f g'\). In matrix calculus, we do not have such a privilege.
+We need to be cautious when applying the matrix differentiation identities since the element orders matter. For instance, for scalar elements, the product rule may be written as either \((fg)' = f'g + g'f\) or \((fg)' = g f' + f g'\). In Matrix Calculus, we do not have such a privilege.
 
 \subsection{Chain rule}
 \subsubsection{Univariate functions}
@@ -473,7 +486,7 @@ Similarly, in matrix notation, we have
     \label{eq:chain-1inter}
     \dfrac{\partial \mathbf{w}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{x}}{\partial \mathbf{y}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}},
 \end{align}
-where \(\mathbf{x} \in \mathbb{C}^{n}, \mathbf{y} \in \mathbb{C}^{m}, \mathbf{z} \in \mathbb{C}^{p}\), and \(\mathbf{w} \in \mathbb{R}^q\). In this expression, \(\mathbf{w}\) depends on \(\mathbf{x}\), \(\mathbf{x}\) depends on \(\mathbf{y}\), and \(\mathbf{y}\) depends on \(\mathbf{z}\). The number of elements in the chain rule can be increased indiscriminately. The main point here is that \emph{the chain rule in matrix calculus notation must be placed backward when compared with the standard chain rule of scalar elements}.
+where \(\mathbf{x} \in \mathbb{C}^{n}, \mathbf{y} \in \mathbb{C}^{m}, \mathbf{z} \in \mathbb{C}^{p}\), and \(\mathbf{w} \in \mathbb{R}^q\). In this expression, \(\mathbf{w}\) depends on \(\mathbf{x}\), \(\mathbf{x}\) depends on \(\mathbf{y}\), and \(\mathbf{y}\) depends on \(\mathbf{z}\). The number of elements in the chain rule can be increased indiscriminately. The main point here is that \emph{the chain rule in Matrix Calculus notation must be placed backward when compared with the standard chain rule of scalar elements}.
 
 \subsubsection{Multivariate functions}
 
@@ -484,7 +497,7 @@ For scalar elements, we can find partial derivatives of multivariate functions b
     \dfrac{\partial w}{\partial z} = \dfrac{\partial w}{\partial x} \dfrac{\partial x}{\partial z} + \dfrac{\partial w}{\partial y} \dfrac{\partial y}{\partial z}.
 \end{align}
 
-Similarly, for matrix calculus notation, we have
+Similarly, for Matrix Calculus notation, we have
 \begin{align}
     \label{eq:chain-multi-inter}
     \dfrac{\partial \mathbf{w}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{y}}
@@ -555,11 +568,11 @@ where both \(\mathbf{W} \in \mathbb{C}^{m \times p}\) and \(\mathbf{Z} \in \math
 We usually have two ways to solve matrix differentiation:
 \begin{enumerate}
     \item Performing element-by-element operations in matrices and vectors;
-    \item Preserving the matrix calculus notation, performing operations on the whole matrix/vector and, eventually, using some identities.
+    \item Preserving the Matrix Calculus notation, performing operations on the whole matrix/vector and, eventually, using some identities.
 \end{enumerate}
 The latter is usually more straightforward and less toilsome than the former and is therefore preferable.
 
-The solutions in this Section will usually show the element-by-element solution and the solution by preserving the matrix calculus notation. For the element-by-element solutions, you only need to know that a scalar-vector derivate results in a vector for the Hessian formulation. All other shapes will naturally arise. For solutions with matrix calculus notation, you need to be acquainted with some of its identities.
+The solutions in this Section will usually show the element-by-element solution and the solution by preserving the Matrix Calculus notation. For the element-by-element solutions, you only need to know that a scalar-vector derivate results in a vector for the Hessian formulation. All other shapes will naturally arise. For solutions with Matrix Calculus notation, you need to be acquainted with some of its identities.
 
 \subsection{\(\dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans\)}
 
@@ -1031,7 +1044,7 @@ For the special case where \(\mathbf{A}\) is symmetric, we get
     \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{A} \mathbf{x} \in \mathbb{C}^{m}}
 \end{align}
 
-Note that the solution is much easier if we maintain the matrix calculus notation and apply the chain rule, that is,
+Note that the solution is much easier if we maintain the Matrix Calculus notation and apply the chain rule, that is,
 \begin{align}
     \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x},
 \end{align}
@@ -1236,7 +1249,7 @@ Recalling that \((fg)' = f'g + g'f\), we have that
     \boxed{\dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \mathbf{A} \mathbf{x}}
 \end{align}
 
-Even though this problem is trickier, we can find the same solution in a clever way by preserving the matrix calculus notation and applying the chain rule. Note that \(\mathbf{y}^\trans \mathbf{A} \mathbf{x}\) depends on both \(\mathbf{x}\) and \(\mathbf{y}\) which, in turn, depend on \(\mathbf{z}\). Therefore (c.f. Equation \eqref{eq:chain-multi-inter}),
+Even though this problem is trickier, we can find the same solution in a clever way by preserving the Matrix Calculus notation and applying the chain rule. Note that \(\mathbf{y}^\trans \mathbf{A} \mathbf{x}\) depends on both \(\mathbf{x}\) and \(\mathbf{y}\) which, in turn, depend on \(\mathbf{z}\). Therefore (c.f. Equation \eqref{eq:chain-multi-inter}),
 \begin{align}
     \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{y}} \\
     & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \mathbf{A} \mathbf{x},

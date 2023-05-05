@@ -18,7 +18,7 @@ compile: | default_preamble.tex # check whether it exists but does not trigger i
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error $(filename).tex
 	biber $(filename).bcf
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error $(filename).tex
-	# lualatex --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error $(filename).tex
+	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error $(filename).tex
 	@echo "Process completed successfully!"
 
 default_preamble.tex:
