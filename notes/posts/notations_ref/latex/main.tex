@@ -96,23 +96,31 @@
 \end{xltabular}
 \subsection{Digital signal processing}
 \begin{xltabular}{\textwidth}{XX}
-	\(W_N\)                                     & Twiddle factor, \(e^{-j\frac{2\pi}{N}}\) \cite{ingleDigitalSignalProcessing2000}                                                              \\ \hline
+	\(W_N\)                                     & Twiddle factor, \(e^{-j\frac{2\pi}{N}}\) \cite{ingleDigitalSignalProcessing2000}            \\ \hline
 	\(N\)                                     & Number of samples in the DFT/FFT                                                              \\ \hline
 	\(\Omega\) \cite{ingleDigitalSignalProcessing2000}                                      & Continuous angular frequency (in \(\si{\radian\per\second}\))                                                               \\ \hline
 	\(\omega\)                                     & Discrete angular frequency. As \(\omega\) is also used to denote continuous angular frequency outside the DSP context, it is always convenient to state that it denotes the discrete frequency when it does                                                                \\ \hline
 	\(f_c\)                                     & Continuous linear frequency (in \(\si{\hertz}\))                                                               \\ \hline
 	\(f\)                                     & Discrete linear frequency. As \(f\) is also used to denote continuous linear frequency outside the DSP context, it is always convenient to state that it denotes the discrete frequency when it does                                                                \\ \hline
     \(\mathcal{R}_N [n]\) & Rectangular window used to cut off the discrete sequences \cite{ingleDigitalSignalProcessing2000} \\ \hline
-    \(T_s\) & Sampling period \\ \hline
-    \(f_s\) & Sampling frequency \\ \hline
+    \(T\)\cite{oppenheimDiscreteTimeSignalProcessing2009}, \(T_s\) & Sampling period \\ \hline
+    \(f_s\) & Sampling frequency (in \(\si{\hertz}\)), i.e., \(1/T\) \\ \hline
+    \(\Omega_s\) & Sampling frequency (in \(\si{\radian\per\second}\)), i.e., \(2\pi f_s\) \\ \hline
+    \(\Omega_N\) \cite{oppenheimDiscreteTimeSignalProcessing2009}, \(B\) & One-sided effective bandwidth of the continuous-time signal spectrum \\ \hline
     \(\omega_s\) & Stop frequency \cite{ingleDigitalSignalProcessing2000} \\ \hline
     \(\omega_p\) & Pass frequency \cite{ingleDigitalSignalProcessing2000} \\ \hline
     \(\Delta \omega\) & \(\omega_s - \omega_p\) \cite{ingleDigitalSignalProcessing2000} \\ \hline
     \(\omega_c\) & Cutoff frequency \cite{ingleDigitalSignalProcessing2000} \\ \hline
+    \(s(t)\) & Impulse train \\ \hline
+    \(x_c(t)\) \cite{oppenheimDiscreteTimeSignalProcessing2009}, \(x(t)\) & Continuous-time signal \\ \hline
+    \(x_s(t)\) & Sampled version of \(x(t)\), i.e., \(x(t)s(t)\) \\ \hline
+    \(x_r(t)\) & Reconstruction of \(x(t)\) from interpolation \\ \hline
+    \(\tilde{x}[n]\) & Periodic extension of the the aperiodic signal \(x[n]\) \\ \hline
 \end{xltabular}
 \subsection{Transformations}
 \begin{xltabular}{\textwidth}{XX}
-	\(\mathcal{F}\left\{ \cdot \right\}\)       & Fourier transform                                                                                                                             \\ \hline
+	\(\mathcal{F}\left\{ \cdot \right\}\)       & Fourier transform (FT)                                                                                                                             \\ \hline
+	\(\mathrm{DTFT}\left\{ \cdot \right\}\), \(\mathrm{DFS}\left\{ \cdot \right\}\), \(\mathrm{FFT}\left\{ \cdot \right\}\)       & Discrete-time Fourier Transform (DTFT), Discrete Fourier Transform (DFT), Discrete Fourier Series (DFS), respectively \\ \hline
 	\(\mathcal{L}\left\{ \cdot \right\}\)       & Laplace transform                                                                                                                             \\ \hline
 	\(\mathcal{Z}\left\{ \cdot \right\}\)       & \(z\)-transform                                                                                                                               \\ \hline
 	\(\hat{x}(t), \hat{x}[n]\)                  & Hilbert transform of \(x(t)\) or \(x[n]\)                                                                                                     \\ \hline
