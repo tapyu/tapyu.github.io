@@ -1,0 +1,58 @@
+\section{Communication systems}
+\subsection{Common symbols}
+\begin{xltabular}{\textwidth}{XX}
+	\(B\)                 & One-sided bandwidth of the transmitted signal, in Hz                              \\ \hline
+	\(W\)                 & One-sided bandwidth of the transmitted signal, in rad/s                           \\ \hline
+	\(x_i\)               & Real or in-phase part of \(x\)                                                    \\ \hline
+	\(x_q\)               & Imaginary or quadrature part of \(x\)                                             \\ \hline
+	\(f_c, f_{RF}\)       & Carrier frequency (in Hertz)                                                      \\ \hline
+	\(f_L\)               & Carrier frequency in L-band (in Hertz)                                            \\ \hline
+	\(f_{IF}\)            & Intermediate frequency (in Hertz)                                                 \\ \hline
+	\(f_{s}\)             & Sampling frequency or sampling rate (in Hertz)                                    \\ \hline
+	\(T_{s}\)             & Sampling time interval/duration/period                                            \\ \hline
+	\(R\)                 & Bit rate                                                                          \\ \hline
+	\(T\)                 & Bit interval/duration/period                                                      \\ \hline
+	\(T_c\)               & Chip interval/duration/period                                                     \\ \hline
+	\(T_{sy}, T_{sym}\)   & Symbol/signaling\cite{proakisDigitalCommunications2007} interval/duration/period  \\ \hline
+	\(s_{RF}\)            & Transmitted signal in RF                                                          \\ \hline
+	\(s_{FI}\)            & Transmitted signal in FI                                                          \\ \hline
+	\(s, s_l\)            & Lowpass (or baseband) equivalent signal or envelope complex of transmitted signal \\ \hline
+	\(r_{RF}\)            & Received signal in RF                                                             \\ \hline
+	\(r_{FI}\)            & Received signal in FI                                                             \\ \hline
+	\(r, r_l\)            & Lowpass (or baseband) equivalent signal or envelope complex of received signal    \\ \hline
+	\(\phi\)              & Signal phase                                                                      \\ \hline
+	\(\phi_0\)            & Initial phase                                                                     \\ \hline
+	\(\eta_{RF}, w_{RF}\) & Noise in RF                                                                       \\ \hline
+	\(\eta_{FI}, w_{FI}\) & Noise in FI                                                                       \\ \hline
+	\(\eta, w\)           & Noise in baseband                                                                 \\ \hline
+	\(\tau\)              & Timing delay                                                                      \\ \hline
+	\(\Delta\tau\)        & Timing error (delay - estimated)                                                  \\ \hline
+	\(\varphi\)           & Phase offset                                                                      \\ \hline
+	\(\Delta\varphi\)     & Phase error (offset - estimated)                                                  \\ \hline
+	\(f_d\)               & Linear Doppler frequency                                                          \\ \hline
+	\(\Delta f_d\)        & Frequency error (Doppler frequency - estimated)                                   \\ \hline
+	\(\nu\)               & Angular Doppler frequency                                                         \\ \hline
+	\(\Delta \nu\)        & Frequency error (Doppler frequency - estimated)                                   \\ \hline
+	\(\gamma, A\)         & Transmitted signal amplitude                                                      \\ \hline
+	\(\gamma_0, A_0\)     & Combined effect of the path loss and antenna gain
+\end{xltabular}
+\subsection{Fading multipath channels}
+\begin{xltabular}{\textwidth}{XX}
+	\(t \overset{\mathcal{F}}{\leftrightarrow} \lambda\)  \cite{proakisDigitalCommunications2007}                                                                                                      & Support temporal of the signal. \(\lambda\) is obtained after taking the Fourier transform on \(t\).                                                                            \\ \hline
+	\(\tau \overset{\mathcal{F}}{\leftrightarrow} f\)  \cite{proakisDigitalCommunications2007}                                                                                                         & Second support temporal of the signal (\(c(t)\) varies with with the input at the time \(\tau\)). \(f\) is obtained after taking the Fourier transform on \(\tau\).             \\ \hline
+	\(c(t, \tau)\) \cite{proakisDigitalCommunications2007}                                                                                                                                             & Complex envelope of the channel response at the time \(t\) due to an impulse applied at the \(t - \tau\)                                                                        \\ \hline
+	\(C(f,t)\) \cite{proakisDigitalCommunications2007}                                                                                                                                                 & Transfer function of \(c(t, \tau)\) in \(\tau\)                                                                                                                                 \\ \hline
+	\(\alpha(t, \tau)\) \cite{proakisDigitalCommunications2007}                                                                                                                                        & Attenuation of \(c(t, \tau)\), i.e., \(c(t, \tau) = \alpha(t, \tau) e^{e\pi f_c \tau}\)                                                                                         \\ \hline
+	\(R_c(\tau_1, \tau_2, \Delta t)\) \cite{proakisDigitalCommunications2007}                                                                                                                          & Autocorrelation function of \(c(t, \tau)\), i.e., \(R_c(\tau_1, \tau_2, \Delta t) = \E{c^*(t, \tau_1), c^*(t + \Delta t, \tau_2)}\)                                             \\ \hline
+	\(R_c(\tau, \Delta t)\) \cite{proakisDigitalCommunications2007}                                                                                                                                    & Autocorrelation function of \(c(t, \tau)\) assuming uncorrelated scattering                                                                                                     \\ \hline
+	\(R_c(\tau), \eval{R_c(\tau, \Delta t)}_{\Delta t = 0}\) \cite{proakisDigitalCommunications2007}                                                                                                   & Multipath intensity profile or delay power spectrum                                                                                                                             \\ \hline
+	\(R_C(\Delta f, \Delta t), R_C(f_1, f_2; \Delta t)\), \(\E{C(f_1,t), C(f_2, t + \Delta t)}\), \(\mathcal{F}_\tau \left\{ R_c(\tau, \Delta t) \right\}\) \cite{goldsmithWirelessCommunications2005} & Spaced-frequency, spaced-time correlation function (\(\Delta f = f_2 - f_1\))                                                                                                   \\ \hline
+	\(R_C(\Delta f)\), \(\eval{R_C(\Delta f, \Delta t)}_{\Delta t = 0}\) \cite{proakisDigitalCommunications2007}, \(\mathcal{F}\left\{ R_c(\tau) \right\}\) \cite{goldsmithWirelessCommunications2005} & Spaced-frequency correlation function                                                                                                                                           \\ \hline
+	\((\Delta f)_c\)                                                                                                                                                                                   & Coherence bandwidth of \(c(t)\), that is, the frequency interval in which \(R_C(\Delta f)\) is nonzero \cite{proakisDigitalCommunications2007}                                  \\ \hline
+	\(T_m\)                                                                                                                                                                                            & Multipath spread of the channel, that is, the time interval in which \(R_c(\tau)\) is nonzero (\(T_m \approx 1/(\Delta f)_c \)) \cite{proakisDigitalCommunications2007}         \\ \hline
+	\(R_C(\Delta t), \eval{R_C(\Delta f, \Delta t)}_{\Delta f = 0}\)                                                                                                                                   & Spaced-time correlation function \cite{proakisDigitalCommunications2007}                                                                                                        \\ \hline
+	\(S_C(\lambda)\) \cite{proakisDigitalCommunications2007}, \(\mathcal{F}\left\{ R_C (\Delta t) \right\}\) \cite{goldsmithWirelessCommunications2005}                                                & Doppler power spectrum                                                                                                                                                          \\ \hline
+	\((\Delta t)_c\)                                                                                                                                                                                   & Coherence time of \(c(t)\), that is, the time interval in which \(R_C(\Delta t)\) is nonzero \cite{proakisDigitalCommunications2007}                                            \\ \hline
+	\(B_m\)                                                                                                                                                                                            & Multipath spread of the channel, that is, the frequency interval in which \(S_c(\lambda)\) is nonzero (\(B_d \approx 1/(\Delta t)_c \)) \cite{proakisDigitalCommunications2007} \\ \hline
+	\(S_C(\tau, \lambda)\) \cite{proakisDigitalCommunications2007}, \(\mathcal{F}_{\Delta f, \Delta t}\left\{ R_C (\Delta f, \Delta t) \right\}\) \cite{goldsmithWirelessCommunications2005}           & Scattering function                                                                                                                                                             \\ \hline
+\end{xltabular}
