@@ -32,4 +32,6 @@ clean:
 	@echo "Process completed successfully!"
 
 format:
-	@latexindent -s -w -l .latexindent.yaml $(filename).tex
+	@grep -oP "(?<=\\\\input{)[^}]+" main.tex | while read file; do
+		latexindent --silent --overwrite --local=.latexindent.yaml ${file}
+	done
