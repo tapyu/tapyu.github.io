@@ -444,6 +444,35 @@ and for a consistent denominator layout, we would have
     \end{bmatrix} \in \mathbb{R}^{m \times n},
 \end{align}
 where \(\mathbf{X}\in \mathbb{R}^{m\times n}\) and \(\mathbf{Y} \in \mathbb{R}^{n\times m}\). For expressions \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{X}}\) and \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{x}}\) can the derived by taking them as special cases of the matrix-matrix formulation. Notwithstanding, keep in mind that both equations are not standard and their usage must be acknowledged by the reader.
+
+\subsection{On the ambiguity of the notation \(\nabla^2\)}
+
+It is common for some authors, such as Simon Haykin \cite{haykin2009neural}, to denote the gradient vector and the Hessian matrix as
+\begin{align}
+    \mathbf{g} = \nabla f = \frac{\partial f}{\partial \mathbf{x}}
+\end{align}
+and
+\begin{align}
+    \mathbf{H} = \nabla^{2} f = \frac{\partial^2 f}{\partial \mathbf{x}^2},
+\end{align}
+respectively. It is important to point out, however, that the notation \(\nabla^{2}\) might be ambiguous since it is also used in Vector Calculus to denote the Laplacian operator.
+
+Vector Calculus is another branch of Mathematics that deals with differentiations and integrals of vector fields in three-dimensional space. It is used in different areas of Physics and Engineering, such as electromagnetic fields, fluid flow, etc. In Vector Calculus, the gradient vector is commonly defined as
+\begin{align}
+    \mathbf{\nabla} = \begin{bmatrix}
+        \dfrac{\partial}{\partial x_1} \\
+        \dfrac{\partial}{\partial x_2} \\
+        \vdots \\
+        \dfrac{\partial}{\partial x_n} \\
+    \end{bmatrix}
+\end{align}
+
+And the gradient vector is denoted in the very same way we denote in Matrix Calculus, i.e., \(\nabla f\), where \(f\) is a potential (or scalar-valued) function. On the other hand, the symbol \(\nabla^2 f\) is often used to denote the Laplacian operator, which is defined as
+\begin{align}
+    \nabla^2 f = \nabla \cdot \nabla f = \dfrac{\partial f}{\partial x_1} + \dfrac{\partial f}{\partial x_2} + \dots \dfrac{\partial f}{\partial x_n},
+\end{align}
+where \(\cdot\) is the dot or inner product. Since Vector Calculus is far enough from Matrix Calculus in many applications, the notation \(\nabla^2 f\) is used in both fields without problems. However, when it is not the case, the notation \(\nabla^2 f\) must be avoided to denote the Hessian matrix.
+
 \section{Identities}
 \label{sec:identities}
 
