@@ -82,18 +82,17 @@
 \section{Introduction}
 Since my Master's degree, I've been struggling with matrix differentiation as I could not find good references that cover it nicely. The bibliographies I found at that time were books from Economics \cite{dhrymes1978mathematics}, but they use an \st{weird} unfamiliar notation.
 
-After delving a lot, I finally found a good reference from Professor Randal's class note \cite{barnes2006matrix}. However, to my surprise, when I tried to apply those matrix differentiation propositions, I got ``wrong'' answers! The truth is that \emph{Matrix Calculus notation is severely fragmented and there is no consensus among the researchers over which notation to follow}. Fortunately, there are two major ways to represent a derivative of a vector \cite{Singh}. If you do not select the author's representation, you will end up with the same result, but in a row vector instead of a column vector or vice-versa. For the cases where the resulting derivative is a matrix, you will get its transpose. The first representation is called Jacobian formulation or numerator layout, while the second one is called Hessian formulation or denominator layout. Nevertheless, even for the same layout, some conventions need to be stated
-Due to the lack of references and the need to have one, I decided to make this quick guide. The goal here is twofold: make a quick-but-comprehensive explanation of both representations and derive the partial derivatives for the most common Matrix Calculus expressions you came across. In the end, I hope to have a consistent reference guide to understand an author's book that uses a different notation. The way I define in Section \ref{sec:denominator} will be the way I going to adopt throughout my papers, but I will let you know when some point is not consensus among the authors.
+After delving a lot, I finally found a good reference from Professor Randal's class note \cite{barnes2006matrix}. However, to my surprise, when I tried to apply those matrix differentiation propositions, I got ``wrong'' answers! The truth is that \emph{Matrix Calculus notation is severely fragmented and there is no consensus among the researchers over which notation to follow}. Fortunately, there are two major ways to represent a derivative of a vector \cite{Singh}. If you do not select the author's representation, you will end up with the transposed result. The first representation is called Jacobian formulation or numerator layout, while the second one is called Hessian formulation or denominator layout. Nevertheless, even for the same layout, some conventions need to be stated.
 
-I will adopt the notation that most Engineers might be used to and only apply the Hessian (or demodulator) formulation on the derivations since this is the notation I will adopt on my papers (it matches the derivative results I find in my books, too).
+Due to the lack of references and the need to have one, I decided to make this quick guide. The goal here is twofold: make an introduction to both representations and derive the partial derivatives for the most common Matrix Calculus expressions you came across. Most of the problems will be defined in real space, but some will be extended to the complex plane. In the end, I hope to have a consistent reference guide to understand an author's book that uses a different notation. The way I define in Section \ref{sec:denominator} will be the way I adopt in my papers and in this guide, but I will let you know when some point is not consensus among the authors. Furthermore, I will adopt only apply the Hessian (or demodulator) formulation since it matches with the notation commonly used by authors of the field of Signal Processing, Machine Learning, and Optimization Theory.
 
-\subsection{Curated list reference}
+\subsection{Curated reference list}
 The following list shows some references you can rely on besides this guide when it comes to Matrix Calculus (in decreasing order of importance):
 \begin{itemize}
     \item Searle, Shayle R., and Andre I. Khuri. Matrix algebra useful for statistics \cite{searle2017matrix}: A classical book with the first edition in 1987. It treats Matrix Calculus in chapter 9 of the second edition.
     \item Hj\o rungnes, Are, and David Gesbert. Complex-valued matrix differentiation: Techniques and key results \cite{hjorungnes2011complex}. An advanced book that uses Wirtinger calculus to differentiate complex-valued matrices. You might prefer his article \cite{hjorungnes2007complex} which summarizes the key results.
-    \item Matrix Calculus You Need For Deep Learning \cite{parrMatrixCalculusYou2018}: Preprint article focused on its application on Machine Learning. It offers the best balance between comprehension and brevity as it is just 33 pages long.
-    \item You can find good references in these book appendices: Dattoro \cite{dattorroConvexOptimizationEuclidean2010}, appendix D; Bishop \cite{bishopPatternRecognitionMachine2006}, appendix C; Simon Haykin, appendix B \cite{haykin2009neural} (Wirtinger calculus).
+    \item Matrix Calculus You Need For Deep Learning \cite{parrMatrixCalculusYou2018}: Preprint article focused on its application on Machine Learning. It offers the best tradeoff between comprehension and brevity as it is just 33 pages long.
+    \item You can find good references in these book appendices: Dattoro \cite{dattorroConvexOptimizationEuclidean2010}, appendix D; Bishop \cite{bishopPatternRecognitionMachine2006}, appendix C; Simon Haykin \cite{haykin2009neural}, appendix B (Wirtinger calculus).
     \item Old and New Matrix Algebra Useful for Statistics, Thomas Minka \cite{ThomasMinka}: Another good guide for matrix algebra hosted on the personal site of the author. It has very well-referenced and focuses more on the concepts of Matrix Calculus than solving the derivatives.
     \item The Matrix Cookbook \cite{petersen2008matrix}: Good reference to see Matrix Calculus results rather than understanding how they were solved.
     \item Lecture notes in Introduction to Machine Learning, from Carnegie Mellon University \cite{Singh}: A short lecture but with a clear explanation of the difference between numerator and denominator layout.
@@ -126,14 +125,14 @@ be a complex matrix with dimension equal to \(m \times n\), where \(a_{ij} \in \
 \end{align}
 which may also be denoted as an \(n\)-tuple, \((x_1, x_2, \dots, x_n)\), when more convenient.
 
-Nonbold Romain and Greek alphabets represent scalars, while bold uppercase and bold lowercase represent matrices and vectors, respectively. I make no distinction between scalar- and vector-valued functions, both are denoted as nonbold letters. In Section \ref{sec:diff}, I will try to use the initial letters of the Romain alphabet (\(a, b, c, \dots\)) to represent constants (known values), and the final letters of the Romain alphabet (\(x, y, z, w, \dots\)) to represent variables (unknown values). Greek letters will be preferred to represent independent and unknown scalars that are not within a vector or matrix. Finally, the operators \(\cdot^{\trans}\), \(\cdot^{\hermit}\), \(\cdot^*\) \(\text{tr}(\cdot)\), \(\textnormal{adj}(\cdot)\), and \(\abs{\cdot}\) denote, respectively, the transpose, the hermitian, the conjugate, the trace, the adjoint, and the determinant (or absolute value when the operand is a scalar).
+For scalars, italic Roman (\(a,b,c,\dots\)) represents constants (known values), while italic Greek\linebreak (\(\alpha, \beta, \gamma, \dots\)) represents variables (unknown values). For vectors, Roman bold lowercase letters will be adopted, where the initial letters (\(\mathbf{a}, \mathbf{b}, \mathbf{c}, \dots\)) represent constants (known values) and the final letters (\(\mathbf{x}, \mathbf{y}, \mathbf{w}, \dots\)) represent variables (unknown values). The same thing goes for matrices, but it is denoted as uppercase letters instead of lowercase. The letter \(\mathbf{z}\) (or \(\mathbf{Z}\), for matrices) will only be used when the vector (or matrix) is complex-valued. In any other case, the vector or matrix will be real-valued. Finally, the operators \(\cdot^{\trans}\), \(\cdot^{\hermit}\), \(\cdot^*\) \(\text{tr}(\cdot)\), \(\textnormal{adj}(\cdot)\), and \(\abs{\cdot}\) denote, respectively, the transpose, the hermitian, the conjugate, the trace, the adjoint, and the determinant (or absolute value when the operand is a scalar).
 
 \subsection{Jacobian formulation (numerator layout)}
 
 In the Jacobian formulation (also called numerator layout), the derivative matrix is written laying out the numerator in its shape, while the denominator has its shape transposed (you will understand it better as soon as you see the definitions).
 
 \subsubsection{Vector-vector, scalar-vector, and vector-scalar derivatives}
-Consider two vectors \(\mathbf{x} \in \mathbb{C}^n\) and \(\mathbf{y} \in \mathbb{C}^m\). The partial derivative of each element in \(\mathbf{y}\) by each element in \(\mathbf{x}\) is represented as
+Consider two vectors \(\mathbf{x} \in \mathbb{R}^n\) and \(\mathbf{y} \in \mathbb{R}^m\). The partial derivative of each element in \(\mathbf{y}\) by each element in \(\mathbf{x}\) is represented as
 \begin{align}
     \label{eq:jacobian-formulation}
     \left[ \dfrac{\partial \mathbf{y}}{\partial \mathbf{x}} \right]_{\textnormal{Num}} = \renewcommand{\arraystretch}{2.6} \begin{bmatrix}
@@ -147,10 +146,10 @@ Consider two vectors \(\mathbf{x} \in \mathbb{C}^n\) and \(\mathbf{y} \in \mathb
         \dfrac{\partial y_2}{\partial x_1} & \dfrac{\partial y_2}{\partial x_2} & \dots & \dfrac{\partial y_2}{\partial x_n} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial y_m}{\partial x_1} & \dfrac{\partial y_m}{\partial x_2} & \dots & \dfrac{\partial y_m}{\partial x_n} \\
-    \end{bmatrix} \in \mathbb{C}^{m\times n}.
+    \end{bmatrix} \in \mathbb{R}^{m\times n}.
 \end{align}
 
-We can infer what is the shape of \(\dfrac{\partial y}{\partial \mathbf{x}}\) and \(\dfrac{\partial \mathbf{y}}{\partial x}\) by changing the respective vector sizes in Equation \eqref{eq:jacobian-formulation}.
+We can infer what is the shape of \(\dfrac{\partial y}{\partial \mathbf{x}}\) and \(\dfrac{\partial \mathbf{y}}{\partial x}\) by changing the respective vector sizes in \eqref{eq:jacobian-formulation}.
 
 \subsubsection{Matrix-scalar derivative (tangent matrix)}
 The partial derivative \(\dfrac{\partial \mathbf{Y}}{\partial x}\) (usually called tangent matrix) is defined for the numerator layout as
@@ -161,9 +160,9 @@ The partial derivative \(\dfrac{\partial \mathbf{Y}}{\partial x}\) (usually call
         \dfrac{\partial y_{21}}{\partial x} & \dfrac{\partial y_{22}}{\partial x} & \dots & \dfrac{\partial y_{2n}}{\partial x} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial y_{m1}}{\partial x} & \dfrac{\partial y_{m2}}{\partial x} & \dots & \dfrac{\partial y_{mn}}{\partial x} \\
-    \end{bmatrix} \in \mathbb{C}^{m \times n},
+    \end{bmatrix} \in \mathbb{R}^{m \times n},
 \end{align}
-where \(\mathbf{Y} \in \mathbb{C}^{m \times n}\).
+where \(\mathbf{Y} \in \mathbb{R}^{m \times n}\).
 
 \subsubsection{Scalar-matrix derivative (gradient matrix)}
 The partial derivative of \(\dfrac{\partial y}{\partial \mathbf{X}}\) (usually called gradient matrix) is given by
@@ -175,13 +174,13 @@ The partial derivative of \(\dfrac{\partial y}{\partial \mathbf{X}}\) (usually c
 				\dfrac{\partial y}{\partial x_{12}} & \dfrac{\partial y}{\partial x_{22}} & \dots & \dfrac{\partial y}{\partial x_{m2}} \\
 				\vdots & \vdots & \ddots & \vdots \\
 				\dfrac{\partial y}{\partial x_{1n}} & \dfrac{\partial y}{\partial x_{2n}} & \dots & \dfrac{\partial y}{\partial x_{mn}} \\
-			\end{bmatrix} \in \mathbb{C}^{n \times m},
+			\end{bmatrix} \in \mathbb{R}^{n \times m},
 \end{align}
-where \(\mathbf{X} \in \mathbb{C}^{m \times n}\).
+where \(\mathbf{X} \in \mathbb{R}^{m \times n}\).
 
 \subsubsection{Row vector-scalar and scalar-row vector derivatives}
 
-From these definitions, we can infer two nonobvious equalities that are rather useful when handling matrix differentiations. If we consider a special case of the gradient matrix (Eq.\eqref{eq:gradient-matrix-num}) when $m=1 \therefore \mathbf{X} = \mathbf{x}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{x} \in \mathbb{R}^n$, we have that
+From these definitions, we can infer two nonobvious equalities that are rather useful when handling matrix differentiations. If we consider a special case of the gradient matrix \eqref{eq:gradient-matrix-num}, when $m=1 \therefore \mathbf{X} = \mathbf{x}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{x} \in \mathbb{R}^n$, we have that
 \begin{align}
     \left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Num}} = \renewcommand{\arraystretch}{2.6}\begin{bmatrix}
         \dfrac{\partial \alpha}{\partial x_{1}} \\
@@ -190,7 +189,7 @@ From these definitions, we can infer two nonobvious equalities that are rather u
         \dfrac{\partial \alpha}{\partial x_{n}}\vspace{1.3ex}
     \end{bmatrix} \in \mathbb{R}^{n}.
 \end{align}
-However, by using we definition from the Eq.\eqref{eq:jacobian-formulation}, it is also true to state that
+However, by comparing with \eqref{eq:jacobian-formulation}, one can state that
 \begin{align}
     \left[\dfrac{\partial \alpha}{\partial \mathbf{x}}\right]_{\textnormal{Num}} = \begin{bmatrix} \dfrac{\partial \alpha}{\partial x_{1}} & \dfrac{\partial \alpha}{\partial x_{2}} & \cdots & \dfrac{\partial \alpha}{\partial x_{n}} \end{bmatrix} \in \mathbb{R}^{1 \times n},
 \end{align}
@@ -200,7 +199,7 @@ Therefore,
     \left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Num}} = \left[\dfrac{\partial \alpha}{\partial \mathbf{x}}\right]_{\textnormal{Num}}^\top
 \end{align}
 
-Similarly, from the Eq.\eqref{eq:tangent-num}, when $m=1 \therefore \mathbf{Y} = \mathbf{y}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{y} \in \mathbb{R}^n$, we have that
+Similarly, from \eqref{eq:tangent-num}, when $m=1 \therefore \mathbf{Y} = \mathbf{y}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{y} \in \mathbb{R}^n$, we have that
 
 \begin{align}
     \left[\dfrac{\partial \mathbf{y}^\top}{\partial \alpha}\right]_{\textnormal{Num}} = \renewcommand{\arraystretch}{2.6}\begin{bmatrix}
@@ -211,7 +210,7 @@ Similarly, from the Eq.\eqref{eq:tangent-num}, when $m=1 \therefore \mathbf{Y} =
     \end{bmatrix} \in \mathbb{R}^{1 \times n}.
 \end{align}
 
-However, from the Eq.\eqref{eq:jacobian-formulation}, we also have that
+However, from \eqref{eq:jacobian-formulation}, we also have that
 
 \begin{align}
     \left[\dfrac{\partial \mathbf{y}}{\partial \alpha}\right]_{\textnormal{Num}} = \renewcommand{\arraystretch}{2.6}\begin{bmatrix}
@@ -228,12 +227,13 @@ Therefore,
 \end{align}
 
 \subsubsection{Jacobian matrix for the numerator layout}
-The Matrix Calculus notation for the Jacobian matrix is given by
-
+In the numerator layout, the notation for the Jacobian matrix is given by
 \begin{align}
-    \mathbf{J} = \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}},
+    \label{eq:jacobian-numerator}
+    \mathbf{J} = \left[ \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right]_{\textnormal{Num}}.
 \end{align}
-where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}\) is a vector function. As shown below, the matrix differentiation notation used to represent the Jacobian matrix is the numerator layout (c.f. Eq.\eqref{eq:jacobian-formulation})
+
+where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}\) is a vector function. By calling \eqref{eq:jacobian-formulation}, it is clear that the Jacobian takes the form
 \begin{align}
     \label{eq:jacobian-matrix}
     \mathbf{J} = \renewcommand{\arraystretch}{2.6} \begin{bmatrix}
@@ -248,11 +248,7 @@ where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}\) is a vector function. As 
         \dfrac{\partial f_m}{\partial x_1} & \dfrac{\partial f_m}{\partial x_2} & \dots & \dfrac{\partial f_m}{\partial x_n} \\
     \end{bmatrix} \in \mathbb{R}^{m \times n},
 \end{align}
-where \(f = (f_1, f_2, \dots, f_m)\), being \(f_i: \mathbb{R}^n \rightarrow \mathbb{R}\), for \(1 \leq i \leq m\). Therefore, it is true to state that
-\begin{align}
-    \mathbf{J} = \left[ \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right]_{\textnormal{Num}}.
-\end{align}
-That is why it is also called ``Jacobian formulation''.
+where \(f = (f_1, f_2, \dots, f_m)\), being \(f_i: \mathbb{R}^n \rightarrow \mathbb{R}\), for \(1 \leq i \leq m\). The numerator layout is also called the Jacobian formulation due to the fact that it is represented without the need for the transpose operator.
 
 \subsubsection{Hessian matrix for the numerator layout}
 
@@ -266,11 +262,11 @@ The Matrix Calculus notation for the Hessian matrix in the numerator layout is g
         \dfrac{\partial^{2} f}{\partial x_n \partial x_1} & \dfrac{\partial^{2} f}{\partial x_n \partial x_2} & \dots & \dfrac{\partial^{2} f}{\partial x_n^2}
     \end{bmatrix} \in \mathbb{R}^{n \times n},
 \end{align}
-where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). We can rewrite it by recalling the Eq.\eqref{eq:hidden-num}, that is,
+where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). We can rewrite it by recalling \eqref{eq:hidden-num}, that is,
 \begin{align}
     \mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}^\top} \right) = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\top.
 \end{align}
-Note that \(\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\top = \left( \dfrac{\partial f(\mathbf{x})}{\partial x_1}, \dfrac{\partial f(\mathbf{x})}{\partial x_2}, \dots, \dfrac{\partial f(\mathbf{x})}{\partial x_n} \right)\) is a vector. Therefore, we have a vector-vector derivate and, by applying the differentiation as shown in Eq.\eqref{eq:jacobian-formulation}, we get \(\mathbf{H}\). As we will see further on, the Hessian in Matrix Calculus notation for the denominator layout needs to be written differently.
+Note that \(\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\top = \left( \dfrac{\partial f(\mathbf{x})}{\partial x_1}, \dfrac{\partial f(\mathbf{x})}{\partial x_2}, \dots, \dfrac{\partial f(\mathbf{x})}{\partial x_n} \right)\) is a vector. Therefore, we have a vector-vector derivate and, by applying the differentiation as shown in \eqref{eq:jacobian-formulation}, we get \(\mathbf{H}\).
 
 \subsection{Hessian formulation (denominator layout)}
 \label{sec:denominator}
@@ -278,7 +274,7 @@ Note that \(\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\
 In the Hessian formulation (also called denominator layout), the derivative matrix is written laying out the denominator in its shape, while the numerator has its shape transposed.
 
 \subsubsection{Vector-vector, scalar-vector, and vector-scalar derivatives}
-Consider two vectors \(\mathbf{x} \in \mathbb{C}^n\) and \(\mathbf{y} \in \mathbb{C}^m\). The partial derivative of each element in \(\mathbf{y}\) by each element in \(\mathbf{x}\) is represented as
+Consider two vectors \(\mathbf{x} \in \mathbb{R}^n\) and \(\mathbf{y} \in \mathbb{R}^m\). The partial derivative of each element in \(\mathbf{y}\) by each element in \(\mathbf{x}\) is represented as
 
 \begin{align}
     \label{eq:denominator-layout}
@@ -289,9 +285,9 @@ Consider two vectors \(\mathbf{x} \in \mathbb{C}^n\) and \(\mathbf{y} \in \mathb
         \dfrac{\partial y_1}{\partial x_2} & \dfrac{\partial y_2}{\partial x_2} & \dots & \dfrac{\partial y_m}{\partial x_2} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial y_1}{\partial x_n} & \dfrac{\partial y_2}{\partial x_n} & \dots & \dfrac{\partial y_m}{\partial x_n} \\
-    \end{bmatrix} \in \mathbb{C}^{n\times m}.
+    \end{bmatrix} \in \mathbb{R}^{n\times m}.
 \end{align}
-We can infer what is the shape of \(\dfrac{\partial y}{\partial \mathbf{x}}\) and \(\dfrac{\partial \mathbf{y}}{\partial x}\) by changing the respective vector sizes in Equation \eqref{eq:denominator-layout}.
+We can infer what is the shape of \(\dfrac{\partial y}{\partial \mathbf{x}}\) and \(\dfrac{\partial \mathbf{y}}{\partial x}\) by changing the respective vector sizes in \eqref{eq:denominator-layout}.
 
 \subsubsection{Matrix-scalar derivative (tangent matrix)}
 The partial derivative \(\dfrac{\partial \mathbf{Y}}{\partial x}\) (usually called tangent matrix) is defined for the denominator layout as
@@ -302,9 +298,9 @@ The partial derivative \(\dfrac{\partial \mathbf{Y}}{\partial x}\) (usually call
         \dfrac{\partial y_{12}}{\partial x} & \dfrac{\partial y_{22}}{\partial x} & \dots & \dfrac{\partial y_{m2}}{\partial x} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial y_{1n}}{\partial x} & \dfrac{\partial y_{2n}}{\partial x} & \dots & \dfrac{\partial y_{mn}}{\partial x} \\
-    \end{bmatrix} \in \mathbb{C}^{n \times m},
+    \end{bmatrix} \in \mathbb{R}^{n \times m},
 \end{align}
-where \(\mathbf{Y} \in \mathbb{C}^{m \times n}\). However, be aware that some authors do not follow this convention for the tangent matrix for the denominator layout \cite{Matrixca44:online}. For sake of consistency (laying out the denominator and the transpose of the numerator), I will follow the convention as denoted in the Eq.\eqref{eq:tangent-matrix-den}.
+where \(\mathbf{Y} \in \mathbb{R}^{m \times n}\).% However, be aware that some authors do not follow this convention for the tangent matrix for the denominator layout \cite{Matrixca44:online}. For the sake of consistency (laying out the denominator and the transpose of the numerator), I will follow the convention as denoted in \eqref{eq:tangent-matrix-den}.
 
 \subsubsection{Scalar-matrix derivative (gradient matrix)}
 The partial derivative of \(\dfrac{\partial y}{\partial \mathbf{X}}\) (usually called gradient matrix) is given by
@@ -316,20 +312,20 @@ The partial derivative of \(\dfrac{\partial y}{\partial \mathbf{X}}\) (usually c
 				\dfrac{\partial y}{\partial x_{21}} & \dfrac{\partial y}{\partial x_{22}} & \dots & \dfrac{\partial y}{\partial x_{2n}} \\
 				\vdots & \vdots & \ddots & \vdots \\
 				\dfrac{\partial y}{\partial x_{m1}} & \dfrac{\partial y}{\partial x_{m2}} & \dots & \dfrac{\partial y}{\partial x_{mn}} \\
-			\end{bmatrix} \in \mathbb{C}^{m \times n},
+			\end{bmatrix} \in \mathbb{R}^{m \times n},
 \end{align}
-where \(\mathbf{X} \in \mathbb{C}^{m \times n}\).
+where \(\mathbf{X} \in \mathbb{R}^{m \times n}\).
 
 \subsubsection{Row vector-scalar and scalar-row vector derivatives}
 
-From these definitions, we can infer two nonobvious equality that are rather useful when handling matrix differentiations. If we consider a special case of the gradient matrix (Eq.\eqref{eq:gradient-matrix-den}) when $m=1 \therefore \mathbf{X} = \mathbf{x}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{x} \in \mathbb{R}^n$, we have that
+From these definitions, we can infer two nonobvious equalities that are rather useful when handling matrix differentiations. If we consider a special case of the gradient matrix, \eqref{eq:gradient-matrix-den}, when $m=1 \therefore \mathbf{X} = \mathbf{x}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{x} \in \mathbb{R}^n$, we have that
 \begin{align}
     \left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Den}} = \begin{bmatrix} \dfrac{\partial \alpha}{\partial x_{1}} &
         \dfrac{\partial \alpha}{\partial x_{2}} &
         \cdots &
         \dfrac{\partial \alpha}{\partial x_{n}} \end{bmatrix} \in \mathbb{R}^{1\times n},
 \end{align}
-however, by using we definition from the Eq.\eqref{eq:denominator-layout}, it is also true to state that
+however, by using we definition from \eqref{eq:denominator-layout}, it is also true to state that
 \begin{align}
     \left[\dfrac{\partial \alpha}{\partial \mathbf{x}}\right]_{\textnormal{Den}} = \begin{bmatrix} \dfrac{\partial \alpha}{\partial x_{1}} \\
         \dfrac{\partial \alpha}{\partial x_{2}} \\
@@ -343,7 +339,7 @@ Therefore,
     \left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Den}} = \left[\dfrac{\partial \alpha}{\partial \mathbf{x}}\right]_{\textnormal{Den}}^\top
 \end{align}
 
-Similarly, from the Eq.\eqref{eq:tangent-matrix-den}, when $m=1 \therefore \mathbf{Y} = \mathbf{y}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{y} \in \mathbb{R}^n$, we have that
+Similarly, from \eqref{eq:tangent-matrix-den}, when $m=1 \therefore \mathbf{Y} = \mathbf{y}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{y} \in \mathbb{R}^n$, we have that
 
 \begin{align}
     \left[\dfrac{\partial \mathbf{y}^\top}{\partial \alpha}\right]_{\textnormal{Den}} = \renewcommand{\arraystretch}{2.6}\begin{bmatrix}
@@ -354,7 +350,7 @@ Similarly, from the Eq.\eqref{eq:tangent-matrix-den}, when $m=1 \therefore \math
     \end{bmatrix} \in \mathbb{R}^{n}.
 \end{align}
 
-However, from the Eq.\eqref{eq:denominator-layout}, we also have that
+However, from \eqref{eq:denominator-layout}, we also have that
 
 \begin{align}
     \left[\dfrac{\partial \mathbf{y}}{\partial \alpha}\right]_{\textnormal{Den}} = \renewcommand{\arraystretch}{2.6}\begin{bmatrix}
@@ -371,17 +367,10 @@ Therefore,
 \end{align}
 
 \subsubsection{The Jacobian matrix for the denominator layout}
-The Matrix Calculus notation for the Jacobian matrix is given by
+The Jacobian matrix in denominator notation is given by
 \begin{align}
-    \mathbf{J} = \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}},
-\end{align}
-where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}\) is a vector function. We have seen that this equation follows the numerator layout, not the denominator. As we will see further on, to transform from one layout to another, we need to apply the transpose operator, that is (c.f. Eq.\eqref{eq:jacobian-matrix}),
-\begin{align}
-    \left[ \mathbf{J} \right]_{\textnormal{Den}} & = \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}}^{\top} \\
+    \mathbf{J} & = \left[ \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}}^{\top} \right]_{\textnormal{Den}} \\
     & = \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}}^\top\\
-    & = \begin{bmatrix}
-        \dfrac{\partial f_1(\mathbf{x})}{\partial \mathbf{x}} & \dfrac{\partial f_2(\mathbf{x})}{\partial \mathbf{x}} & \dots & \dfrac{\partial f_m(\mathbf{x})}{\partial \mathbf{x}}
-    \end{bmatrix}^\top \\
     & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
         \dfrac{\partial f_1(\mathbf{x})}{\partial \mathbf{x}}^\top \\ \dfrac{\partial f_2(\mathbf{x})}{\partial \mathbf{x}}^\top \\ \vdots \\ \dfrac{\partial f_m(\mathbf{x})}{\partial \mathbf{x}}^\top
     \end{bmatrix} \\
@@ -390,39 +379,22 @@ where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}\) is a vector function. We 
         \dfrac{\partial f_2}{\partial x_1} & \dfrac{\partial f_2}{\partial x_2} & \dots & \dfrac{\partial f_2}{\partial x_n} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial f_m}{\partial x_1} & \dfrac{\partial f_m}{\partial x_2} & \dots & \dfrac{\partial f_m}{\partial x_n} \\
-    \end{bmatrix} \in \mathbb{R}^{m \times n}.
+    \end{bmatrix} \in \mathbb{R}^{m \times n},
 \end{align}
+where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}\) and \(f = (f_1, f_2, \dots, f_m)\), being \(f_i: \mathbb{R}\rightarrow\mathbb{R}\) for \(1 \leq i \leq m\).
 
 \subsubsection{The Hessian matrix for the denominator layout}
-The Matrix Calculus notation for the Hessian matrix in the denominator layout is given by
+The Hessian matrix in the denominator layout is given by
 \begin{align}
     \label{eq:hessian-eq-denomintor}
-    \mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x}^2} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+    \mathbf{H} = \left[ \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x}^2} \right]_{\textnormal{Den}} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
         \dfrac{\partial^{2} f}{\partial x_1^2} & \dfrac{\partial^{2} f}{\partial x_1 \partial x_2} & \cdots & \dfrac{\partial^{2} f}{\partial x_1 \partial x_n} \\
         \dfrac{\partial^{2} f}{\partial x_2 \partial x_1} & \dfrac{\partial^{2} f}{\partial x_2^2} & \cdots & \dfrac{\partial^{2} f}{\partial x_2 \partial x_n} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial^{2} f}{\partial x_n \partial x_1} & \dfrac{\partial^{2} f}{\partial x_n \partial x_2} & \dots & \dfrac{\partial^{2} f}{\partial x_n^2}
     \end{bmatrix} \in \mathbb{R}^{n \times n},
 \end{align}
-where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). Some authors, such as Simon Haykin \cite{haykin2009neural}, adopt this notation. The element \(\partial\mathbf{x}^2\) seems to be merely a convention which means that \(f\) is being differentiated twice by \(\mathbf{x}\). It perfectly matches scalar differentiation notation and can be scaled to \(n\) consecutive derivatives without making the notation cumbersome (points to the Hessian team).
-
-We can rewrite the equation \eqref{eq:hessian-eq-denomintor} as
-\begin{align}
-    \mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x}^2} = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right),
-\end{align}
-Since \(\dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} = \left( \dfrac{\partial f(\mathbf{x})}{\partial x_1}, \dfrac{\partial f(\mathbf{x})}{\partial x_2}, \dots, \dfrac{\partial f(\mathbf{x})}{\partial x_n} \right)\) is a vector, we have a vector-vector differentiation, which for the denominator layout yields
-\begin{align}
-    \mathbf{H} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
-        \dfrac{\partial^{2} f}{\partial x_1^2} & \dfrac{\partial^{2} f}{\partial x_1 \partial x_2} & \cdots & \dfrac{\partial^{2} f}{\partial x_1 \partial x_n} \\
-        \dfrac{\partial^{2} f}{\partial x_2 \partial x_1} & \dfrac{\partial^{2} f}{\partial x_2^2} & \cdots & \dfrac{\partial^{2} f}{\partial x_2 \partial x_n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        \dfrac{\partial^{2} f}{\partial x_n \partial x_1} & \dfrac{\partial^{2} f}{\partial x_n \partial x_2} & \dots & \dfrac{\partial^{2} f}{\partial x_n^2}.
-    \end{bmatrix}.
-\end{align}
-Therefore, it is true to state that
-\begin{align}
-    \mathbf{H} = \left[ \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x}^2} \right]_{\textnormal{Den}}.
-\end{align}
+where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). The element \(\partial\mathbf{x}^2\) seems to be merely a convention which means that \(\partial\mathbf{x}\) is repeated twice, in the very same way it is done with scalar differentiations. It can be scaled to \(n\) consecutive derivatives without making the notation cumbersome (points to the denominator layout team).
 
 \subsection{Comparative between Jacobian and Hessian formulations}
 
@@ -435,7 +407,7 @@ As you could have noticed,
 \end{align}
 where that last equation can be inferred from the discussion about the Hessian matrix.
 
-That is the difference when you try to differentiate without paying attention to which representation the author adopted. The good news is that, as long as you differentiate it correctly, you can switch between the Jacobian and Hessian formulations by simply transposing the final result\footnote{First, you should apply \(\left[\cdot\right]_{\textnormal{Den}} = \left[\cdot\right]_{\textnormal{Num}}^{\trans}\) on partial derivatives that you get in the solution. Then, you apply the transpose to the whole solution.}. Fortunately, the denominator layout is the most adopted by authors from areas related to Electrical Engineering. That is why we will focus on the denominator layout hereafter (the notation \(\left[\cdot\right]_{\textnormal{Den}}\) will be dropped out since we do not need it anymore).
+That is the difference when you try to differentiate without paying attention to which representation the author adopted. The good news is that, as long as you differentiate it correctly, you can switch between the Jacobian and Hessian formulations by simply transposing the final result. Fortunately, the denominator layout is the most adopted by authors from areas related to Signal Processing and Machine Learning. That is why we will focus on the denominator layout hereafter (the notation \(\left[\cdot\right]_{\textnormal{Den}}\) will be dropped out since we do not need it anymore). % \footnote{First, you should apply \(\left[\cdot\right]_{\textnormal{Den}} = \left[\cdot\right]_{\textnormal{Num}}^{\trans}\) on partial derivatives that you get in the solution. Then, you apply the transpose to the whole solution.}
 
 As a rule of thumb, keep in mind that:
 \begin{itemize}
@@ -451,14 +423,15 @@ As a rule of thumb, keep in mind that:
 \end{itemize}
 
 \subsection{Notations not widely agreed upon}
-Expressions such as \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{X}}, \dfrac{\partial \mathbf{Y}}{\partial \mathbf{X}}\), or \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{x}}\) have no agreement for Jacobian and Hessian notations. It is possible, however, to define the matrix-matrix derivative for both representations. The problem is that some authors define it in the most intuitive manner: a matrix whose element in the position \((i,j)\) is \(\partial y_{ij}/\partial x_{ij}\). However, as we saw, it is inconsistent for both formulations as the matrix for the Jacobian (Hessian) formulation must lay out its denominator (numerator) in its transposed shape. Therefore, for a consistent numerator layout, we would have
+\label{sub-sec:notations-not-agreed}
+Expressions such as \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{X}}, \dfrac{\partial \mathbf{Y}}{\partial \mathbf{X}}\), or \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{x}}\) have no agreement for both Jacobian and Hessian notations. It is possible, however, to define the matrix-matrix derivative for both representations. The problem is that some authors define it in the most intuitive manner: For \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{X}}\), element in the position \((i,j)\) is \(\partial y_{ij}/\partial x_{ij}\). However, as we saw, it is inconsistent for both formulations as the matrix for the Jacobian (Hessian) formulation must lay out its denominator (numerator) in its transposed shape. Therefore, for a consistent numerator layout, we would have
 \begin{align}
     \left[\frac{\partial \mathbf{Y}}{\partial\mathbf{X}}\right]_{\textnormal{Num}} = \begin{bmatrix}
         \dfrac{\partial y_{1,1}}{\partial x_{1,1}} & \dfrac{\partial y_{1,2}}{\partial x_{2,1}} & \dots & \dfrac{\partial y_{1,m}}{\partial x_{m,1}} \\
         \dfrac{\partial y_{2,1}}{\partial x_{1,2}} & \dfrac{\partial y_{2,2}}{\partial x_{2,2}} & \dots & \dfrac{\partial y_{2,n}}{\partial x_{m,2}} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial y_{n,1}}{\partial x_{1,n}} & \dfrac{\partial y_{n,2}}{\partial x_{2,n}} & \dots & \dfrac{\partial y_{n,m}}{\partial x_{m,n}} \\
-    \end{bmatrix} \in \mathbb{C}^{n\times m},
+    \end{bmatrix} \in \mathbb{R}^{n\times m},
 \end{align}
 and for a consistent denominator layout, we would have
 
@@ -468,10 +441,11 @@ and for a consistent denominator layout, we would have
         \dfrac{\partial y_{1,2}}{\partial x_{2,1}} & \dfrac{\partial y_{2,2}}{\partial x_{2,2}} & \dots & \dfrac{\partial y_{n,2}}{\partial x_{2,n}} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial y_{1,m}}{\partial x_{m,1}} & \dfrac{\partial y_{2,m}}{\partial x_{m,2}} & \dots & \dfrac{\partial y_{n,m}}{\partial x_{m,n}} \\
-    \end{bmatrix} \in \mathbb{C}^{m \times n},
+    \end{bmatrix} \in \mathbb{R}^{m \times n},
 \end{align}
-where \(\mathbf{X}\in \mathbb{C}^{m\times n}\) and \(\mathbf{Y} \in \mathbb{C}^{n\times m}\). Notwithstanding, keep in mind that both equations are not standard and their usage must be acknowledged by the reader.
+where \(\mathbf{X}\in \mathbb{R}^{m\times n}\) and \(\mathbf{Y} \in \mathbb{R}^{n\times m}\). For expressions \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{X}}\) and \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{x}}\) can the derived by taking them as special cases of the matrix-matrix formulation. Notwithstanding, keep in mind that both equations are not standard and their usage must be acknowledged by the reader.
 \section{Identities}
+\label{sec:identities}
 
 We need to be cautious when applying the matrix differentiation identities since the element orders matter. For instance, for scalar elements, the product rule may be written as either \((fg)' = f'g + g'f\) or \((fg)' = g f' + f g'\). In Matrix Calculus, we do not have such a privilege.
 
@@ -479,18 +453,18 @@ We need to be cautious when applying the matrix differentiation identities since
 \subsubsection{Univariate functions}
 For scalar elements, the chain rule is given by
 \begin{align}
-    \dfrac{\partial w}{\partial z} = \dfrac{\partial w}{\partial x} \dfrac{\partial x}{\partial y} \dfrac{\partial y}{\partial z}.
+    \dfrac{\partial w}{\partial v} = \dfrac{\partial w}{\partial x} \dfrac{\partial x}{\partial y} \dfrac{\partial y}{\partial v}.
 \end{align}
 Similarly, in matrix notation, we have
 \begin{align}
     \label{eq:chain-1inter}
-    \dfrac{\partial \mathbf{w}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{x}}{\partial \mathbf{y}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}},
+    \dfrac{\partial \mathbf{w}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}}{\partial \mathbf{y}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}},
 \end{align}
-where \(\mathbf{x} \in \mathbb{C}^{n}, \mathbf{y} \in \mathbb{C}^{m}, \mathbf{z} \in \mathbb{C}^{p}\), and \(\mathbf{w} \in \mathbb{R}^q\). In this expression, \(\mathbf{w}\) depends on \(\mathbf{x}\), \(\mathbf{x}\) depends on \(\mathbf{y}\), and \(\mathbf{y}\) depends on \(\mathbf{z}\). The number of elements in the chain rule can be increased indiscriminately. The main point here is that \emph{the chain rule in Matrix Calculus notation must be placed backward when compared with the standard chain rule of scalar elements}.
+where \(\mathbf{x} \in \mathbb{R}^{n}, \mathbf{y} \in \mathbb{R}^{m}, \mathbf{v} \in \mathbb{R}^{p}\), and \(\mathbf{w} \in \mathbb{R}^q\). In this expression, \(\mathbf{w}\) depends on \(\mathbf{x}\), \(\mathbf{x}\) depends on \(\mathbf{y}\), and \(\mathbf{y}\) depends on \(\mathbf{z}\). The number of elements in the chain rule can be increased indiscriminately. The main point here is that \emph{the chain rule in Matrix Calculus notation must be placed backward when compared with the standard chain rule of scalar elements}.
 
 \subsubsection{Multivariate functions}
 
-In the previous section, we had a case where \(\mathbf{w}\) depends on \(\mathbf{x}\), which depends on \(\mathbf{y}\), which depends on \(\mathbf{z}\). If \(\mathbf{w} = f(\mathbf{x}), \mathbf{x} = g(\mathbf{y})\), and \(\mathbf{y} = h(\mathbf{z})\), then \(f, g\), and \(h\) are functions of one variable, also called univariate functions. However, we might find a situation where \(\mathbf{w} = f(\mathbf{x}, \mathbf{y})\) is a function of two (or more) variables.
+In the previous section, we had a case where \(\mathbf{w}\) depends on \(\mathbf{x}\), which depends on \(\mathbf{y}\), which depends on \(\mathbf{v}\). If \(\mathbf{w} = f(\mathbf{x}), \mathbf{x} = g(\mathbf{y})\), and \(\mathbf{y} = h(\mathbf{v})\), then \(f, g\), and \(h\) are functions of one variable, also called univariate functions. However, we might find a situation where \(\mathbf{w} = f(\mathbf{x}, \mathbf{y})\) is a function of two (or more) variables.
 
 For scalar elements, we can find partial derivatives of multivariate functions by considering that \(w = f(x, y)\) is differentiable on \(x\) and \(y\). The chain rule becomes
 \begin{align}
@@ -507,7 +481,7 @@ Note the backward placement of each summation term. This expression can be used 
 
 \subsection{Sum (or minus) rule}
 \subsubsection{Vector-vector derivative}
-Let \(\mathbf{x}, \mathbf{y} \in \mathbb{C}^{m}\) and \(a, b \in \mathbb{C}\), where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{w} \in \mathbb{C}^{n}\), but \(a\) and \(b\) do not. Therefore,
+Let \(\mathbf{x}, \mathbf{y} \in \mathbb{R}^{m}\) and \(a, b \in \mathbb{R}\), where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{w} \in \mathbb{R}^{n}\), but \(a\) and \(b\) do not. Therefore,
 \begin{align}
     \dfrac{\partial (a\mathbf{x} \pm b\mathbf{y})}{\partial\mathbf{w}} = a\dfrac{\partial \mathbf{x}}{\partial\mathbf{w}} \pm b\dfrac{\partial \mathbf{y}}{\partial\mathbf{w}}
 \end{align}
@@ -516,7 +490,7 @@ Another is when you have
 \begin{align}
     \dfrac{\partial \left( a\mathbf{X} \pm b\mathbf{Y} \right)}{\partial \alpha},
 \end{align}
-where \(\mathbf{X}, \mathbf{Y} \in \mathbb{C}^{m \times n}\) depend on \(\alpha \in \mathbb{C}\). The solution is
+where \(\mathbf{X}, \mathbf{Y} \in \mathbb{R}^{m \times n}\) depend on \(\alpha \in \mathbb{R}\). The solution is
 \begin{align}
     \dfrac{\partial (a\mathbf{X} \pm b\mathbf{Y})}{\partial\mathbf{\alpha}} = a\dfrac{\partial \mathbf{X}}{\partial \alpha} \pm b \dfrac{\partial \mathbf{Y}}{\partial \alpha}.
 \end{align}
@@ -525,42 +499,42 @@ The scalar-matrix derivative has a similar result, i.e.,
 \begin{align}
     \dfrac{\partial \left( ax \pm by \right)}{\partial \mathbf{W}} = a\dfrac{\partial x}{\partial \mathbf{W}} \pm b \dfrac{\partial y}{\partial \mathbf{W}},
 \end{align}
-where \(x, y \in \mathbb{C}\) depend on \(\mathbf{W} \in \mathbb{C}^{m\times n}\), but \(a,b \in \mathbb{C}\) do not.
+where \(x, y \in \mathbb{R}\) depend on \(\mathbf{W} \in \mathbb{R}^{m\times n}\), but \(a,b \in \mathbb{R}\) do not.
 
 \subsection{Product rule}
 \subsubsection{Vector-vector derivative}
-Let \(w \in \mathbb{C}\) and \(\mathbf{z} \in \mathbb{C}^{m}\), where both depend on \(\mathbf{x} \in \mathbb{C}^{n}\). Then,
+Let \(w \in \mathbb{R}\) and \(\mathbf{v} \in \mathbb{R}^{m}\), where both depend on \(\mathbf{x} \in \mathbb{R}^{n}\). Then,
 \begin{align}
-    \dfrac{\partial w \mathbf{z}}{\partial \mathbf{x}} = w \dfrac{\partial \mathbf{z}}{\partial \mathbf{x}} + \dfrac{\partial w}{\partial \mathbf{x}} \mathbf{z}^\trans.
+    \dfrac{\partial w \mathbf{v}}{\partial \mathbf{x}} = w \dfrac{\partial \mathbf{v}}{\partial \mathbf{x}} + \dfrac{\partial w}{\partial \mathbf{x}} \mathbf{v}^\trans.
 \end{align}
 
-Note that is not possible to apply the product rule when you have \(\mathbf{Wz}\), where \(\mathbf{W} \in \mathbb{C}^{n \times m}\) also depends on \(\mathbf{x}\). If you tried, you would get \(\partial\mathbf{W}/\partial\mathbf{x}\), which does not exist.
+Note that is not possible to apply the product rule when you have \(\mathbf{Wv}\), where \(\mathbf{W} \in \mathbb{R}^{n \times m}\) also depends on \(\mathbf{x}\). If you tried, you would get \(\partial\mathbf{W}/\partial\mathbf{x}\), which there is no consensus about this layout (vide Section \ref{sub-sec:notations-not-agreed}).
 \subsubsection{Scalar-vector derivative}
-Another possibility of applying the product rule is when you have \(\mathbf{w}^{\trans} \mathbf{z}\), where \(\mathbf{w} \in \mathbb{C}^{m}\) also depends on \(\mathbf{x} \in \mathbb{C}^{n}\). In this case, the dot product is given by
+Another possibility of applying the product rule is when you have \(\mathbf{w}^{\trans} \mathbf{v}\), where \(\mathbf{w} \in \mathbb{R}^{m}\) also depends on \(\mathbf{x} \in \mathbb{R}^{n}\). In this case, the dot product is given by
 \begin{align}
     \label{eq:scalar-vector-product-rule}
-    \dfrac{\partial \mathbf{w}^{\trans} \mathbf{z}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathbf{w} + \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}} \mathbf{z}.
+    \dfrac{\partial \mathbf{w}^{\trans} \mathbf{v}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{v}}{\partial \mathbf{x}} \mathbf{w} + \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}} \mathbf{v}.
 \end{align}
 
 \subsubsection{Scalar-matrix derivative}
 It is still possible to apply the product rule to
 \begin{align}
-    \dfrac{\partial wz}{\partial \mathbf{X}},
+    \dfrac{\partial wv}{\partial \mathbf{X}},
 \end{align}
-where \(w,z \in \mathbb{C}\) depend on \(\mathbf{X} \in \mathbb{C}^{m \times n}\). In this case, we have
+where \(w,v \in \mathbb{R}\) depend on \(\mathbf{X} \in \mathbb{R}^{m \times n}\). In this case, we have
 \begin{align}
-    \dfrac{\partial wz}{\partial \mathbf{X}} = w \dfrac{\partial z}{\partial \mathbf{X}} + z \dfrac{\partial w}{\partial \mathbf{X}}.
+    \dfrac{\partial wv}{\partial \mathbf{X}} = w \dfrac{\partial v}{\partial \mathbf{X}} + v \dfrac{\partial w}{\partial \mathbf{X}}.
 \end{align}
 
 \subsubsection{Matrix-scalar derivative}
 The last case is when you have
 \begin{align}
-    \dfrac{\partial \mathbf{W}\mathbf{Z}}{\partial \alpha},
+    \dfrac{\partial \mathbf{W}\mathbf{V}}{\partial \alpha},
 \end{align}
-where both \(\mathbf{W} \in \mathbb{C}^{m \times p}\) and \(\mathbf{Z} \in \mathbb{C}^{p\times n}\) depend on \(\alpha \in \mathbb{C}\). In this case, we have
+where both \(\mathbf{W} \in \mathbb{R}^{m \times p}\) and \(\mathbf{V} \in \mathbb{R}^{p\times n}\) depend on \(\alpha \in \mathbb{R}\). In this case, we have
 \begin{align}
     \label{eq:matrix-matrix-product-rule}
-    \dfrac{\partial \mathbf{W}\mathbf{Z}}{\partial \alpha} = \dfrac{\partial \mathbf{Z}}{\partial \alpha}\mathbf{W}^{\trans} + \mathbf{Z}^{T} \dfrac{\mathbf{W}}{\partial \alpha}
+    \dfrac{\partial \mathbf{W}\mathbf{V}}{\partial \alpha} = \dfrac{\partial \mathbf{V}}{\partial \alpha}\mathbf{W}^{\trans} + \mathbf{V}^{T} \dfrac{\mathbf{W}}{\partial \alpha}
 \end{align}
 
 
@@ -572,11 +546,11 @@ We usually have two ways to solve matrix differentiation:
 \end{enumerate}
 The latter is usually more straightforward and less toilsome than the former and is therefore preferable.
 
-The solutions in this Section will usually show the element-by-element solution and the solution by preserving the Matrix Calculus notation. For the element-by-element solutions, you only need to know that a scalar-vector derivate results in a vector for the Hessian formulation. All other shapes will naturally arise. For solutions with Matrix Calculus notation, you need to be acquainted with some of its identities.
+The solutions in this Section will usually show the element-by-element solution and the solution by preserving the Matrix Calculus notation. For the element-by-element solutions, you only need to know that a scalar-vector derivate results in a vector for the denominator layout. All other shapes will naturally arise. For solutions with Matrix Calculus notation, you need to be acquainted with some of the identities shown in Section \ref{sec:identities}.
 
 \subsection{\(\dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans\)}
 
-Let \(\mathbf{A}\in \mathbb{C}^{m\times n}\) and \(\mathbf{x} \in \mathbb{C}^{n}\), in which \(\mathbf{A}\) does not depend on \(\mathbf{x}\), we have that:
+Let \(\mathbf{A}\in \mathbb{R}^{m\times n}\) and \(\mathbf{x} \in \mathbb{R}^{n}\), in which \(\mathbf{A}\) does not depend on \(\mathbf{x}\), we have that:
 \begin{align}
     \dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = & \dfrac{\partial}{\partial \mathbf{x}} \left(
         \begin{bmatrix}
@@ -628,25 +602,25 @@ Since a scalar-vector derivative is represented by a vector, we have that
 \end{align}
 \begin{align}
     \label{eq:lt-slution}
-    \boxed{\dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans \in \mathbb{C}^{n\times m}}
+    \boxed{\dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans \in \mathbb{R}^{n\times m}}
 \end{align}
 
-\subsection{\(\dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \mathbf{A}^\trans\)}
+\subsection{\(\dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^\trans\)}
 
-Let \(\mathbf{x} \in \mathbb{C}^{n}\), \(\mathbf{z} \in \mathbb{C}^{p}\) and \(\mathbf{A} \in \mathbb{C}^{m\times n}\), where \(\mathbf{x}\) depends on \(\mathbf{z}\), but \(\mathbf{A}\) does not. Then
+Let \(\mathbf{x} \in \mathbb{R}^{n}\), \(\mathbf{v} \in \mathbb{R}^{p}\) and \(\mathbf{A} \in \mathbb{R}^{m\times n}\), where \(\mathbf{x}\) depends on \(\mathbf{v}\), but \(\mathbf{A}\) does not. Then
 \begin{align}
-    \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{z}} & =
+    \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} & =
     %
     \begin{bmatrix}
-        \dfrac{\partial}{\partial \mathbf{z}}\sum_{i=1}^{n} a_{1i}x_i & \dfrac{\partial}{\partial \mathbf{z}}\sum_{i=1}^{n} a_{2i}x_i & \cdots & \dfrac{\partial}{\partial \mathbf{z}}\sum_{i=1}^{n} a_{mi}x_i
+        \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} a_{1i}x_i & \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} a_{2i}x_i & \cdots & \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} a_{mi}x_i
     \end{bmatrix} \\
     %
     & = \begin{bmatrix}
-        \sum_{i=1}^{n} a_{1i}\dfrac{\partial x_i}{\partial \mathbf{z}} & \sum_{i=1}^{n} a_{2i}\dfrac{\partial x_i}{\partial \mathbf{z}} & \cdots & \sum_{i=1}^{n} a_{mi}\dfrac{\partial x_i}{\partial \mathbf{z}}
+        \sum_{i=1}^{n} a_{1i}\dfrac{\partial x_i}{\partial \mathbf{v}} & \sum_{i=1}^{n} a_{2i}\dfrac{\partial x_i}{\partial \mathbf{v}} & \cdots & \sum_{i=1}^{n} a_{mi}\dfrac{\partial x_i}{\partial \mathbf{v}}
     \end{bmatrix} \\
     %
     & = \underbrace{\begin{bmatrix}
-        \dfrac{\partial x_1}{\partial \mathbf{z}} & \dfrac{\partial x_2}{\partial \mathbf{z}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{z}}
+        \dfrac{\partial x_1}{\partial \mathbf{v}} & \dfrac{\partial x_2}{\partial \mathbf{v}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{v}}
     \end{bmatrix}}_{p \times n}
     %
     \underbrace{\begin{bmatrix}
@@ -657,17 +631,17 @@ Let \(\mathbf{x} \in \mathbb{C}^{n}\), \(\mathbf{z} \in \mathbb{C}^{p}\) and \(\
     \end{bmatrix}}_{n \times m}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \mathbf{A}^\trans \in \mathbb{C}^{p \times m}}
+    \boxed{\dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^\trans \in \mathbb{R}^{p \times m}}
 \end{align}
 
-Observe that this result is equivalent to applying the chain rule (c.f. Equation \eqref{eq:chain-1inter}), that is,
+Observe that this result is equivalent to applying the chain rule (c.f. \eqref{eq:chain-1inter}), that is,
 \begin{align}
-    \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \mathbf{A}^\trans.
+    \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^\trans.
 \end{align}
 
 \subsection{\(\dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a}\)}
 
-Let \(\mathbf{a, x} \in \mathbb{C}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). You can derive the derivative for the inner product by considering that \(\mathbf{a}^\trans\) is actually a \(1\times n\) matrix that transforms \(\mathbb{R}^{n}\) into \(\mathbb{R}\), and we already know what is the derivate of a \(\mathbf{Ax}\). Thus,
+Let \(\mathbf{a, x} \in \mathbb{R}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). You can derive the derivative for the inner product by considering that \(\mathbf{a}^\trans\) is actually a \(1\times n\) matrix that transforms \(\mathbb{R}^{n}\) into \(\mathbb{R}\), and we already know what is the derivate of a \(\mathbf{Ax}\). Thus,
 \begin{align}
     \dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = {\mathbf{a}^\trans}^\trans = \mathbf{a}.
 \end{align}
@@ -688,7 +662,7 @@ Even though, if you want the step-by-step, here it is:
     \end{bmatrix}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a} \in \mathbb{C}^{n}}
+    \boxed{\dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a} \in \mathbb{R}^{n}}
 \end{align}
 
 \subsection{\(\dfrac{\partial \mathbf{x}^\trans  \mathbf{a}}{\partial \mathbf{x}} = \mathbf{a}\)}
@@ -715,12 +689,12 @@ Nevertheless, here is the step-by-step:
     \end{bmatrix}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{a}}{\partial \mathbf{x}} = \mathbf{a} \in \mathbb{C}^{n}}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{a}}{\partial \mathbf{x}} = \mathbf{a} \in \mathbb{R}^{n}}
 \end{align}
 
 \subsection{\(\dfrac{\partial \mathbf{a}^\hermit  \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a}^*\)}
 
-Let \(\mathbf{a, x} \in \mathbb{C}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). Once again, we could say that
+Let \(\mathbf{a} \in \mathbb{C}^{n}\) and \(\mathbf{x}\in \mathbb{R}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). Once again, we could say that
 \begin{align}
     \dfrac{\partial \mathbf{a}^\hermit \mathbf{x}}{\partial \mathbf{x}} = {\mathbf{a}^\hermit}^\trans = \mathbf{a}^*
 \end{align}
@@ -749,80 +723,84 @@ Since a scalar-vector derivative is represented by a vector, we have that
     \boxed{\dfrac{\partial \mathbf{a}^\hermit \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a}^* \in \mathbb{C}^{n}}
 \end{align}
 
-\subsection{\(\dfrac{\partial \mathbf{x}^\hermit \mathbf{a}}{\partial \mathbf{x}} = \mathbf{0}\)}
-Notice that \(\mathbf{x}^\hermit \mathbf{a} \neq \mathbf{a}^\hermit \mathbf{x}\). Therefore, we have no choice but derive it. Let \(\mathbf{a, x} \in \mathbb{C}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\), we have that
+\subsection{\(\dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial \mathbf{z}} = \mathbf{0}\)}
+Let us define \(\mathbf{z}, \mathbf{a} \in \mathbb{C}^{n}\), where \(\mathbf{a}\) does not depend on \(\mathbf{z}\). Since \(\mathbf{z}^\hermit \mathbf{a} \neq \mathbf{a}^\hermit \mathbf{z}\), we have no choice but derive it:
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\hermit \mathbf{a}}{\partial\mathbf{x}} & = \dfrac{\partial}{\partial\mathbf{x}} \left(
+    \dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial\mathbf{z}} & = \dfrac{\partial}{\partial\mathbf{z}} \left(
     \begin{bmatrix}
-        x^*_1 & x^*_2 & \dots & x^*_n
+        z^*_1 & z^*_2 & \dots & z^*_n
     \end{bmatrix} \begin{bmatrix}
         a_{1} \\ a_{2} \\ \vdots \\ a_{n}
     \end{bmatrix} \right) \\
-    & = \dfrac{\partial}{\partial\mathbf{x}} \left( \sum_{i = 1}^n x^*_ia_i \right) \\
+    & = \dfrac{\partial}{\partial\mathbf{z}} \left( \sum_{i = 1}^n z^*_ia_i \right) \\
     &= \begin{bmatrix}
-            \dfrac{\partial}{\partial x_1} \left( \sum_{i = 1}^n x^*_ia_i \right) \\ \dfrac{\partial}{\partial x_2} \left( \sum_{i = 1}^n x^*_ia_i \right) \\ \vdots \\
-            \dfrac{\partial}{\partial x_n} \left( \sum_{i = 1}^n x^*_ia_i \right)
-        \end{bmatrix}.
+            \dfrac{\partial}{\partial z_1} \left( \sum_{i = 1}^n z^*_ia_i \right) \\ \dfrac{\partial}{\partial z_2} \left( \sum_{i = 1}^n z^*_ia_i \right) \\ \vdots \\
+            \dfrac{\partial}{\partial z_n} \left( \sum_{i = 1}^n z^*_ia_i \right)
+        \end{bmatrix} \\
+    & = \renewcommand{\arraystretch}{2.6}\begin{bmatrix}
+        \dfrac{\partial z_1^*}{\partial z_1} \\ \dfrac{\partial z_2^*}{\partial z_2} \\ \vdots \\
+        \dfrac{\partial z_n^*}{\partial z_n}
+    \end{bmatrix}.
 \end{align}
-By recalling that \(\dfrac{\partial x^*}{\partial x} = 0\) \cite{hjorungnes2011complex}, we have that
+By recalling that \(\dfrac{\partial z^*}{\partial z} = 0\) \cite{hjorungnes2011complex}, we have that
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\hermit \mathbf{a}}{\partial\mathbf{x}} = \begin{bmatrix}
+    \dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial\mathbf{z}} = \begin{bmatrix}
         0 \\ 0 \\ \vdots \\ 0
     \end{bmatrix}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\hermit \mathbf{a}}{\partial\mathbf{x}} = \mathbf{0} \in \mathbb{C}^{n}}
+    \boxed{\dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial\mathbf{z}} = \mathbf{0} \in \mathbb{C}^{n}}
 \end{align}
 where \(\mathbf{0}\) is the zero vector.
 
-\subsection{\(\dfrac{\partial \mathbf{x}^\hermit \mathbf{a}}{\partial \mathbf{x}^*} = \mathbf{a}\)}
+\subsection{\(\dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial \mathbf{z}^*} = \mathbf{a}\)}
 \obs{TODO} \cite{hjorungnes2011complex}
 
-\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}}\mathbf{x}\)}
-Let \(\mathbf{x},\mathbf{y} \in \mathbb{C}^{n}\) and \(\mathbf{z} \in \mathbb{C}^{m}\). Where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{z}\). Thus,
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}}\mathbf{x}\)}
+Let \(\mathbf{x},\mathbf{y} \in \mathbb{R}^{n}\) and \(\mathbf{v} \in \mathbb{R}^{m}\). Where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{v}\). Thus,
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{z}} & = \dfrac{\partial}{\partial \mathbf{z}}\sum_{i=1}^{n} y_ix_i \\
-    & = \sum_{i=1}^{n} \dfrac{\partial y_ix_i}{\partial \mathbf{z}}.
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} & = \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} y_ix_i \\
+    & = \sum_{i=1}^{n} \dfrac{\partial y_ix_i}{\partial \mathbf{v}}.
 \end{align}
 Recalling that \((fg)' = f'g + g'f\), we have
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{z}} & = \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial \mathbf{z}} + \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial \mathbf{z}} \\
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} & = \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial \mathbf{v}} + \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial \mathbf{v}} \\
     & = \begin{bmatrix}
-        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial z_1} \\
-        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial z_2} \\
+        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial v_1} \\
+        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial v_2} \\
         \vdots \\
-        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial z_m} \\
+        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial v_m} \\
     \end{bmatrix} +
     \begin{bmatrix}
-        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial z_1} \\
-        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial z_2} \\
+        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial v_1} \\
+        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial v_2} \\
         \vdots \\
-        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial z_m}
+        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial v_m}
     \end{bmatrix} \\
     %
     & = \begin{bmatrix}
-        \dfrac{\partial y_1}{\partial z_1} & \dfrac{\partial y_2}{\partial z_1} & \cdots & \dfrac{\partial y_n}{\partial z_1} \\
-        \dfrac{\partial y_1}{\partial z_2} & \dfrac{\partial y_2}{\partial z_2} & \cdots & \dfrac{\partial y_n}{\partial z_2} \\
+        \dfrac{\partial y_1}{\partial v_1} & \dfrac{\partial y_2}{\partial v_1} & \cdots & \dfrac{\partial y_n}{\partial v_1} \\
+        \dfrac{\partial y_1}{\partial v_2} & \dfrac{\partial y_2}{\partial v_2} & \cdots & \dfrac{\partial y_n}{\partial v_2} \\
         \vdots & \ddots & \vdots & \vdots \\
-        \dfrac{\partial y_1}{\partial z_m} & \dfrac{\partial y_2}{\partial z_m} & \cdots & \dfrac{\partial y_n}{\partial z_m} \\
+        \dfrac{\partial y_1}{\partial v_m} & \dfrac{\partial y_2}{\partial v_m} & \cdots & \dfrac{\partial y_n}{\partial v_m} \\
     \end{bmatrix} \mathbf{x} \\
     & \hspace{2.5ex} + \begin{bmatrix}
-        \dfrac{\partial x_1}{\partial z_1} & \dfrac{\partial x_2}{\partial z_1} & \cdots & \dfrac{\partial x_n}{\partial z_1} \\
-        \dfrac{\partial x_1}{\partial z_2} & \dfrac{\partial x_2}{\partial z_2} & \cdots & \dfrac{\partial x_n}{\partial z_2} \\
+        \dfrac{\partial x_1}{\partial v_1} & \dfrac{\partial x_2}{\partial v_1} & \cdots & \dfrac{\partial x_n}{\partial v_1} \\
+        \dfrac{\partial x_1}{\partial v_2} & \dfrac{\partial x_2}{\partial v_2} & \cdots & \dfrac{\partial x_n}{\partial v_2} \\
         \vdots & \ddots & \vdots & \vdots \\
-        \dfrac{\partial x_1}{\partial z_m} & \dfrac{\partial x_2}{\partial z_m} & \cdots & \dfrac{\partial x_n}{\partial z_m} \\
+        \dfrac{\partial x_1}{\partial v_m} & \dfrac{\partial x_2}{\partial v_m} & \cdots & \dfrac{\partial x_n}{\partial v_m} \\
     \end{bmatrix} \mathbf{y}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}}\mathbf{x} \in \mathbb{C}^{m}}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}}\mathbf{x} \in \mathbb{R}^{m}}
 \end{align}
-Note that, if either \(\mathbf{x}\) or \(\mathbf{y}\) does not depend on \(\mathbf{z}\), just disregard \(\dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{y}\) or \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{z}}\mathbf{x}\), respectively. When neither depends on \(\mathbf{z}\), the obvious result is the zero vector, \(\mathbf{0}\). A simpler way to solve it is to apply the scalar-vector product rule (see Equation \eqref{eq:scalar-vector-product-rule}), that is,
+Note that, if either \(\mathbf{x}\) or \(\mathbf{y}\) does not depend on \(\mathbf{v}\), just disregard \(\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{y}\) or \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{v}}\mathbf{x}\), respectively. When none depends on \(\mathbf{v}\), the obvious result is the zero vector, \(\mathbf{0}\). A simpler way to solve it is to apply the scalar-vector product rule (see \eqref{eq:scalar-vector-product-rule}), that is,
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{y}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}}\mathbf{x}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{y}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}}\mathbf{x}
 \end{align}
 
 \subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{x}\)}
-Let \(\mathbf{x} \in \mathbb{C}^{n}\) and \(\mathbf{z}\in \mathbb{C}^m\), where \(\mathbf{x}\) depends on \(\mathbf{z}\). Thus,
+Let \(\mathbf{x} \in \mathbb{R}^{n}\). Thus,
 \begin{align}
     \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} & = \dfrac{\partial}{\partial \mathbf{x}}\sum_{i=1}^{n} x_i^2 \\
     & = \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial \mathbf{x}} \\
@@ -842,45 +820,45 @@ Let \(\mathbf{x} \in \mathbb{C}^{n}\) and \(\mathbf{z}\in \mathbb{C}^m\), where 
     \end{bmatrix}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{x} \in \mathbb{C}^n}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{x} \in \mathbb{R}^n}
 \end{align}
 
 Note that this perfectly matches with the derivate of a quadratic scalar value, i.e., \(\frac{\diff x^2}{\diff x} = 2x\).
 
-\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{z}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{x}\)}
-Let \(\mathbf{x} \in \mathbb{C}^{n}\) and \(\mathbf{z}\in \mathbb{C}^m\), where \(\mathbf{x}\) depends on \(\mathbf{z}\). Thus,
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{x}\)}
+Let \(\mathbf{x} \in \mathbb{R}^{n}\) and \(\mathbf{v}\in \mathbb{R}^m\), where \(\mathbf{x}\) depends on \(\mathbf{v}\). Thus,
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{z}} & = \dfrac{\partial}{\partial \mathbf{z}}\sum_{i=1}^{n} x_i^2 \\
-    & = \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial \mathbf{z}} \\
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} & = \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} x_i^2 \\
+    & = \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial \mathbf{v}} \\
     %
     & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
-        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial z_1} \\
-        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial z_2} \\
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial v_1} \\
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial v_2} \\
         \vdots \\
-        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial z_m} \\
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial v_m} \\
     \end{bmatrix} \\
     %
     & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
-        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial z_1} \\
-        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial z_2} \\
+        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial v_1} \\
+        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial v_2} \\
         \vdots \\
-        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial z_m} \\
+        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial v_m} \\
     \end{bmatrix} \\
     & = 2 \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
-        \dfrac{\partial x_1}{\partial \mathbf{z}} & \dfrac{\partial x_2}{\partial \mathbf{z}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{z}}
+        \dfrac{\partial x_1}{\partial \mathbf{v}} & \dfrac{\partial x_2}{\partial \mathbf{v}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{v}}
     \end{bmatrix} \mathbf{x}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{z}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{x} \in \mathbb{C}^m}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{x} \in \mathbb{R}^m}
 \end{align}
 
-Note that this solution could also be solved by the chain rule (c.f. Equation \eqref{eq:chain-1inter}) as follows
+Note that this solution could also be solved by the chain rule (c.f. \eqref{eq:chain-1inter}) as follows
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{x} \in \mathbb{C}^m}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{x} \in \mathbb{R}^m}
 \end{align}
 
 \subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x}\)}
-Let \(\mathbf{A}\in \mathbb{C}^{n\times n}\) and \(\mathbf{x} \in \mathbb{C}^{n}\), in which \(\mathbf{A}\) does not depend on \(\mathbf{x}\). For the quadratic form, it follows that
+Let \(\mathbf{A}\in \mathbb{R}^{n\times n}\) and \(\mathbf{x} \in \mathbb{R}^{n}\), in which \(\mathbf{A}\) does not depend on \(\mathbf{x}\). For the quadratic form, it follows that
 \begin{align}
     \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
     \begin{bmatrix}
@@ -938,17 +916,17 @@ Note that the element inside the parentheses is a scalar and that a scalar-vecto
 \end{align}
 \begin{align}
     \label{eq:quadratic-solution}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x} \in \mathbb{C}^{n}}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x} \in \mathbb{R}^{n}}
 \end{align}
 For the special case where \(\mathbf{A}\) is symmetric, we obtain
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{A} \mathbf{x} \in \mathbb{C}^{n}}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{A} \mathbf{x} \in \mathbb{R}^{n}}
 \end{align}
 
-\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\left( \mathbf{A} + \mathbf{A}^\trans \right) \mathbf{x}\)}
-Let \(\mathbf{z} \in \mathbb{C}^{m}, \mathbf{x} \in \mathbb{C}^{n}\) and \(\mathbf{A}\in \mathbb{C}^{n\times n}\), where \(\mathbf{x}\) depends on \(\mathbf{z}\), but \(\mathbf{A}\) does not. For the quadratic form, it follows that
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\left( \mathbf{A} + \mathbf{A}^\trans \right) \mathbf{x}\)}
+Let \(\mathbf{v} \in \mathbb{R}^{m}, \mathbf{x} \in \mathbb{R}^{n}\) and \(\mathbf{A}\in \mathbb{R}^{n\times n}\), where \(\mathbf{x}\) depends on \(\mathbf{v}\), but \(\mathbf{A}\) does not. For the quadratic form, it follows that
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} &= \dfrac{\partial}{\partial \mathbf{z}} \left(
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} &= \dfrac{\partial}{\partial \mathbf{v}} \left(
     \begin{bmatrix}
         x_{1} & x_{2} & \dots & x_{n}
     \end{bmatrix}
@@ -960,7 +938,7 @@ Let \(\mathbf{z} \in \mathbb{C}^{m}, \mathbf{x} \in \mathbb{C}^{n}\) and \(\math
     \end{bmatrix} \begin{bmatrix}
         x_{1} \\ x_{2} \\ \vdots \\ x_{n}
     \end{bmatrix} \right) \\
-    &= \dfrac{\partial}{\partial \mathbf{z}} \left(
+    &= \dfrac{\partial}{\partial \mathbf{v}} \left(
 			\begin{bmatrix}
 				\displaystyle \sum_{i = 1}^{n} x_{i}a_{i1} & 
 				\displaystyle \sum_{i = 1}^{n} x_{i}a_{i2} & 
@@ -969,48 +947,48 @@ Let \(\mathbf{z} \in \mathbb{C}^{m}, \mathbf{x} \in \mathbb{C}^{n}\) and \(\math
 			\end{bmatrix} \begin{bmatrix}
 				x_{1} \\ x_{2} \\ \vdots \\ x_{n}
 			\end{bmatrix} \right) \\
-            &= \dfrac{\partial}{\partial \mathbf{z}} \left(
+            &= \dfrac{\partial}{\partial \mathbf{v}} \left(
 				\sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} x_{i} x_{j}
 			\right) \\
     &= \begin{bmatrix}
-        \displaystyle \dfrac{\partial}{\partial z_1} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) \\ 
-        \displaystyle  \dfrac{\partial}{\partial z_2} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) \\ 
+        \displaystyle \dfrac{\partial}{\partial v_1} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) \\ 
+        \displaystyle  \dfrac{\partial}{\partial v_2} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) \\ 
         \vdots \\ 
-        \displaystyle \dfrac{\partial}{\partial z_n} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) 
+        \displaystyle \dfrac{\partial}{\partial v_n} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) 
     \end{bmatrix} \\
     &= \begin{bmatrix}
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial z_1} \\ 
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial z_2} \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial v_1} \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial v_2} \\ 
         \vdots \\ 
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial z_n} 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial v_n} 
     \end{bmatrix}
 \end{align}
 
 Recalling that \((fg)' = f'g + g'f\), we have that
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} &= \begin{bmatrix}
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial z_1} +
-        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial z_1} \\ 
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial z_2} +
-        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial z_2} \\ 
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} &= \begin{bmatrix}
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_1} +
+        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_1} \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_2} +
+        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_2} \\ 
         \vdots \\ 
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial z_n} +
-        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial z_n} 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_n} +
+        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_n} 
     \end{bmatrix} \\
     &= \begin{bmatrix}
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial z_1} \\
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial z_2} \\
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_1} \\
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_2} \\
         \vdots \\ 
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial z_n}
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_n}
     \end{bmatrix} +
     \begin{bmatrix}
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial z_1} \\ 
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial z_2} \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_1} \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_2} \\ 
         \vdots \\ 
-        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial z_n} 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_n} 
     \end{bmatrix} \\
     &= \begin{bmatrix}
-       \dfrac{\partial x_{1}}{\partial \mathbf{z}} & \dfrac{\partial x_{2}}{\partial \mathbf{z}} & \cdots  & \dfrac{\partial x_{n}}{\partial \mathbf{z}}
+       \dfrac{\partial x_{1}}{\partial \mathbf{v}} & \dfrac{\partial x_{2}}{\partial \mathbf{v}} & \cdots  & \dfrac{\partial x_{n}}{\partial \mathbf{v}}
     \end{bmatrix}
     \begin{bmatrix}
         a_{11} & a_{12} & \dots & a_{1n} \\
@@ -1022,7 +1000,7 @@ Recalling that \((fg)' = f'g + g'f\), we have that
         x_{1} \\ x_{2} \\ \vdots \\ x_{n}
     \end{bmatrix} + \nonumber \\
     & \hspace{2.5ex} \begin{bmatrix}
-        \dfrac{\partial x_{1}}{\partial \mathbf{z}} & \dfrac{\partial x_{2}}{\partial \mathbf{z}} & \cdots  & \dfrac{\partial x_{n}}{\partial \mathbf{z}}
+        \dfrac{\partial x_{1}}{\partial \mathbf{v}} & \dfrac{\partial x_{2}}{\partial \mathbf{v}} & \cdots  & \dfrac{\partial x_{n}}{\partial \mathbf{v}}
      \end{bmatrix}
      \begin{bmatrix}
          a_{11} & a_{21} & \dots & a_{m1} \\
@@ -1033,25 +1011,25 @@ Recalling that \((fg)' = f'g + g'f\), we have that
      \begin{bmatrix}
          x_{1} \\ x_{2} \\ \vdots \\ x_{n}
      \end{bmatrix} \\
-     & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{A} \mathbf{x} + \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{A}^\trans \mathbf{x}
+     & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{A} \mathbf{x} + \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{A}^\trans \mathbf{x}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\left( \mathbf{A} + \mathbf{A}^\trans \right) \mathbf{x} \in \mathbb{C}^{m}}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\left( \mathbf{A} + \mathbf{A}^\trans \right) \mathbf{x} \in \mathbb{C}^{m}}
 \end{align}
 
 For the special case where \(\mathbf{A}\) is symmetric, we get
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{z}}\mathbf{A} \mathbf{x} \in \mathbb{C}^{m}}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{A} \mathbf{x} \in \mathbb{C}^{m}}
 \end{align}
 
 Note that the solution is much easier if we maintain the Matrix Calculus notation and apply the chain rule, that is,
 \begin{align}
-    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x},
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x},
 \end{align}
-where the last equality comes from Equation \eqref{eq:quadratic-solution}.
+where the last equality comes from \eqref{eq:quadratic-solution}.
 
 \subsection{\(\dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans \mathbf{b}\)} \label{sec:bt-A-x}
-Let \(\mathbf{x} \in \mathbb{C}^{n}\), \(\mathbf{b} \in \mathbb{C}^{m}\) and \(\mathbf{A}\in \mathbb{C}^{m\times n}\), where neither \(\mathbf{b}\) nor \(\mathbf{A}\) depend on \(\mathbf{x}\). It follows that
+Let \(\mathbf{x} \in \mathbb{R}^{n}\), \(\mathbf{b} \in \mathbb{R}^{m}\) and \(\mathbf{A}\in \mathbb{R}^{m\times n}\), where neither \(\mathbf{b}\) nor \(\mathbf{A}\) depend on \(\mathbf{x}\). It follows that
 
 \begin{align}
     \dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
@@ -1099,21 +1077,21 @@ Let \(\mathbf{x} \in \mathbb{C}^{n}\), \(\mathbf{b} \in \mathbb{C}^{m}\) and \(\
     \end{bmatrix}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans \mathbf{b} \in \mathbb{C}^{n}}
+    \boxed{\dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans \mathbf{b} \in \mathbb{R}^{n}}
 \end{align}
 
 Note that this solution could solve by simply observing that \(\mathbf{\mathbf{b}^\trans \mathbf{A}}\) is actually a linear transformation from \(\mathbb{R}^{n}\) to \(\mathbb{R}\). Thus,
 \begin{align}
     \dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \left( \mathbf{b}^\trans \mathbf{A} \right)^{\trans} = \mathbf{A}^\trans \mathbf{b},
 \end{align}
-where the first equality comes from the Equation \eqref{eq:lt-slution}.
+where the first equality comes from the \eqref{eq:lt-slution}.
 
 \subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} = \mathbf{Ab}\)}
-Let \(\mathbf{x} \in \mathbb{C}^{m}\), \(\mathbf{b} \in \mathbb{C}^{n}\) and \(\mathbf{A}\in \mathbb{C}^{m\times n}\), where neither \(\mathbf{b}\) nor \(\mathbf{A}\) depend on \(\mathbf{x}\). The quickest way to solve it is to note that \(\mathbf{x}^\trans \mathbf{A} \mathbf{b} =  \mathbf{b}^\trans \mathbf{A}^\trans \mathbf{x}\), which is the problem solved by the Section \ref{sec:bt-A-x}. Thus,
+Let \(\mathbf{x} \in \mathbb{R}^{m}\), \(\mathbf{b} \in \mathbb{R}^{n}\) and \(\mathbf{A}\in \mathbb{R}^{m\times n}\), where neither \(\mathbf{b}\) nor \(\mathbf{A}\) depend on \(\mathbf{x}\). The quickest way to solve it is to note that \(\mathbf{x}^\trans \mathbf{A} \mathbf{b} =  \mathbf{b}^\trans \mathbf{A}^\trans \mathbf{x}\), which is the problem solved by the Section \ref{sec:bt-A-x}. Thus,
 \begin{align}
     \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{b}^\trans \mathbf{A}^\trans \mathbf{x}}{\partial \mathbf{x}} = \left( \mathbf{b}^\trans \mathbf{A}^\trans \right)^{\trans} = \mathbf{A} \mathbf{b},
 \end{align}
-where the second equality comes from Equation \eqref{eq:lt-slution}. Nevertheless, here is the step-by-step
+where the second equality comes from \eqref{eq:lt-slution}. Nevertheless, here is the step-by-step
 \begin{align}
     \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
     \begin{bmatrix}
@@ -1160,14 +1138,14 @@ where the second equality comes from Equation \eqref{eq:lt-slution}. Nevertheles
     \end{bmatrix}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} = \mathbf{Ab} \in \mathbb{C}^{m}}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} = \mathbf{Ab} \in \mathbb{R}^{m}}
 \end{align}
 
 
-\subsection{\(\dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \mathbf{A} \mathbf{x}\)}
-Let \(\mathbf{x} \in \mathbb{C}^{n}\), \(\mathbf{y} \in \mathbb{C}^{m}\), \(\mathbf{z} \in \mathbb{C}^{p}\), and \(\mathbf{A}\in \mathbb{C}^{m\times n}\), where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{z}\), but \(\mathbf{A}\) does not. Therefore,
+\subsection{\(\dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}\)}
+Let \(\mathbf{x} \in \mathbb{R}^{n}\), \(\mathbf{y} \in \mathbb{R}^{m}\), \(\mathbf{v} \in \mathbb{R}^{p}\), and \(\mathbf{A}\in \mathbb{R}^{m\times n}\), where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{v}\), but \(\mathbf{A}\) does not. Therefore,
 \begin{align}
-    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} &= \dfrac{\partial}{\partial \mathbf{z}} \left(
+    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} &= \dfrac{\partial}{\partial \mathbf{v}} \left(
     \begin{bmatrix}
         y_{1} & y_{2} & \dots & y_{m}
     \end{bmatrix}
@@ -1179,7 +1157,7 @@ Let \(\mathbf{x} \in \mathbb{C}^{n}\), \(\mathbf{y} \in \mathbb{C}^{m}\), \(\mat
     \end{bmatrix} \begin{bmatrix}
         x_{1} \\ x_{2} \\ \vdots \\ x_{n}
     \end{bmatrix} \right) \\
-    &= \dfrac{\partial}{\partial \mathbf{z}} \left(
+    &= \dfrac{\partial}{\partial \mathbf{v}} \left(
 			\begin{bmatrix}
 				\displaystyle \sum_{i = 1}^{m} a_{i1}y_{i} & 
 				\displaystyle \sum_{i = 1}^{m} a_{i2}y_{i} & 
@@ -1188,10 +1166,10 @@ Let \(\mathbf{x} \in \mathbb{C}^{n}\), \(\mathbf{y} \in \mathbb{C}^{m}\), \(\mat
 			\end{bmatrix} \begin{bmatrix}
 				x_{1} \\ x_{2} \\ \vdots \\ x_{n}
 			\end{bmatrix} \right) \\
-    &= \dfrac{\partial}{\partial \mathbf{z}} \left(
+    &= \dfrac{\partial}{\partial \mathbf{v}} \left(
         \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} x_{j} y_{i}
     \right) \\
-    &= \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial y_{i}x_{j}}{\partial \mathbf{z}} %\\
+    &= \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial y_{i}x_{j}}{\partial \mathbf{v}} %\\
     % &= \begin{bmatrix}
     %     \sum_{j = 1}^{n} a_{1j} b_{j} \\
     %     \sum_{j = 1}^{n} a_{2j} b_{j} \\
@@ -1213,9 +1191,9 @@ Let \(\mathbf{x} \in \mathbb{C}^{n}\), \(\mathbf{y} \in \mathbb{C}^{m}\), \(\mat
 \end{align}
 Recalling that \((fg)' = f'g + g'f\), we have that
 \begin{align}
-    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} & = \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} y_{i} \dfrac{\partial x_{j}}{\partial \mathbf{z}} + \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} x_{j} \dfrac{\partial y_{i}}{\partial \mathbf{z}} \\
+    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} & = \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} y_{i} \dfrac{\partial x_{j}}{\partial \mathbf{v}} + \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} x_{j} \dfrac{\partial y_{i}}{\partial \mathbf{v}} \\
     & = \begin{bmatrix}
-        \dfrac{\partial x_1}{\partial \mathbf{z}} & \dfrac{\partial x_2}{\partial \mathbf{z}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{z}}
+        \dfrac{\partial x_1}{\partial \mathbf{v}} & \dfrac{\partial x_2}{\partial \mathbf{v}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{v}}
     \end{bmatrix}
     \begin{bmatrix}
         a_{11} & a_{21} & \dots & a_{m1} \\
@@ -1230,7 +1208,7 @@ Recalling that \((fg)' = f'g + g'f\), we have that
         y_m
     \end{bmatrix} + \\
     & \hspace{3ex} \begin{bmatrix}
-        \dfrac{\partial y_1}{\partial \mathbf{z}} & \dfrac{\partial y_2}{\partial \mathbf{z}} & \cdots & \dfrac{\partial y_m}{\partial \mathbf{z}}
+        \dfrac{\partial y_1}{\partial \mathbf{v}} & \dfrac{\partial y_2}{\partial \mathbf{v}} & \cdots & \dfrac{\partial y_m}{\partial \mathbf{v}}
     \end{bmatrix}
     \begin{bmatrix}
         a_{11} & a_{12} & \dots & a_{1n} \\
@@ -1246,15 +1224,14 @@ Recalling that \((fg)' = f'g + g'f\), we have that
     \end{bmatrix}
 \end{align}
 \begin{align}
-    \boxed{\dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \mathbf{A} \mathbf{x}}
+    \boxed{\dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}}
 \end{align}
 
-Even though this problem is trickier, we can find the same solution in a clever way by preserving the Matrix Calculus notation and applying the chain rule. Note that \(\mathbf{y}^\trans \mathbf{A} \mathbf{x}\) depends on both \(\mathbf{x}\) and \(\mathbf{y}\) which, in turn, depend on \(\mathbf{z}\). Therefore (c.f. Equation \eqref{eq:chain-multi-inter}),
+Even though this problem is trickier, we can find the same solution in a clever way by preserving the Matrix Calculus notation and applying the chain rule. Note that \(\mathbf{y}^\trans \mathbf{A} \mathbf{x}\) depends on both \(\mathbf{x}\) and \(\mathbf{y}\) which, in turn, depend on \(\mathbf{v}\). Therefore (c.f. \eqref{eq:chain-multi-inter}),
 \begin{align}
-    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{z}} & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{y}} \\
-    & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \mathbf{A} \mathbf{x},
+    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{y}} \\
+    & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}.
 \end{align}
-where the second equality comes from previous solutions.
 
 \subsection{\(\dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} = \mathbf{A}^\trans\)}
 
@@ -1361,7 +1338,7 @@ Let \(\mathbf{A}\in \mathbb{C}^{m\times n}\) and \(\alpha \in \mathbb{C}\). Reme
 \begin{align}
     \dfrac{\partial \mathbf{A}^{-1}\mathbf{A}}{\partial \alpha} & = \dfrac{\partial \mathbf{I}}{\partial \alpha} = \mathbf{0}_{m \times n},
 \end{align}
-where \(\mathbf{0}_{m \times n}\) is a zero matrix with dimension \(m \times n\). By applying the product rule of a matrix-matrix derivate, we get (c.f. Equation \eqref{eq:matrix-matrix-product-rule})
+where \(\mathbf{0}_{m \times n}\) is a zero matrix with dimension \(m \times n\). By applying the product rule of a matrix-matrix derivate, we get (c.f. \eqref{eq:matrix-matrix-product-rule})
 \begin{align}
     \dfrac{\partial \mathbf{A}^{-1}\mathbf{A}}{\partial \alpha} =  \dfrac{\partial \mathbf{A}}{\partial \alpha} \left( \mathbf{A}^{-1} \right)^{\trans} + \mathbf{A}^{\trans} \dfrac{\partial \mathbf{A}^{-1}}{\partial \alpha} & = \mathbf{0}_{m \times n}
 \end{align}
