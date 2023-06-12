@@ -23,7 +23,7 @@ compile: | default_preamble.tex # check whether it exists, but do not trigger it
 
 default_preamble.tex:
 	@echo "Downloading the default preamble"
-	wget -qO $@ https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/a7839f43cb09d8716b783bc937196cd1a952fd1b/_default_preamble.tex # The macro @ evaluates to the name of the current target
+	wget -qO $@ https://gist.githubusercontent.com/tapyu/886dc95fc19c4250fb38581ccc58bed8/raw/_default_preamble.tex # The macro @ evaluates to the name of the current target
 	
 clean:
 	@echo -n "cleaning auxiliary files...\n"
