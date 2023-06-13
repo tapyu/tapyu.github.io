@@ -1,5 +1,5 @@
 SHELL := /usr/bin/zsh # you must run this Makefile using the zsh interpreter
-filename=main
+filename=main # you should change the main LaTeX filename if it is not "main.tex". Don't include the ".tex" entension.
 .PHONY: clean format
 
 # Make considers targets that correspond to filenames to be up-to-date if the file exists and its modification time is later than that of its prerequisites. However, sometimes you may want to define targets that do not correspond to actual files, but rather perform some action such as cleaning up a build directory or running tests. These are called "phony" targets.
@@ -14,7 +14,7 @@ all: compile
 	
 compile: | default_preamble.tex # check whether it exists, but do not trigger it. If it doesn't exist, however, it is triggered.
 	@echo "Compiling..."
-	@-[[ -f main.tex ]] && [[ ! $$(cat main.tex) =~ '\\input\{default_preamble(\.tex)?\}' ]] && sed -i '2i\\\input{default_preamble.tex}' main.tex
+	@-[[ -f $(filename).tex ]] && [[ ! $$(cat $(filename).tex) =~ '\\input\{default_preamble(\.tex)?\}' ]] && sed -i '2i\\\input{default_preamble.tex}' $(filename).tex
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error $(filename).tex
 	biber $(filename).bcf
 	lualatex --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error $(filename).tex
@@ -32,6 +32,6 @@ clean:
 	@echo "Process completed successfully!"
 
 format:
-	@grep -oP "(?<=\\\\input{)[^}]+" main.tex | while read file; do
-		latexindent --silent --overwrite --local=.latexindent.yaml ${file}
+	@grep -oP "(?<=\\\\input{)[^}]+" main.tex | while read file; do \
+		latexindent --silent --overwrite --local=.latexindent.yaml $${file}; \
 	done

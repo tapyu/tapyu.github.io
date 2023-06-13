@@ -1,3 +1,4 @@
 {
-    "latex-workshop.latex.external.build.command": "make"
+    "latex-workshop.latex.external.build.command": "make",
+    "editor.wordWrap": "off"
 }
