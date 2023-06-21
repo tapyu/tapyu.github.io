@@ -24,8 +24,9 @@ body {
 header {
     position: fixed;
     top: 0;
-    background-color: black;
-    height: 5%;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.699);
     width: 100%;
 }
 
@@ -60,7 +61,8 @@ header {
 
 main {
     max-width: 1200px;
-    margin: 2em auto;
+    margin: 4rem auto;
+    min-height: 82.6vh;
 }
 
 #about h1 {
@@ -79,8 +81,6 @@ main {
     font-weight: bold;
     text-align: center;
     font-size: 3em;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
 }
 
 #blog h2 {
@@ -127,7 +127,7 @@ main {
 }
 
 #stats figure {
-    width: 90vw;
+    width: 100%;
     max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
@@ -138,21 +138,33 @@ main {
 
 #stats figure embed {
     width: 45%;
+    margin-bottom: 2rem;
 }
 
-#stats figure embed:last-of-type {
-    width: 92%;
-}
 
-.frame {
+/* .frame {
     display: flex;
     justify-content: center;
     align-items: center;
+} */
+
+#cv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+embed {
+    height: 684px;
+    width: 700px;
+    margin-bottom: 1rem;
 }
 
-iframe {
-    height: 716px;
-    width: 800px;
+.frame {
+    height: 723px;
+    width: 700px;
+    margin-bottom: 1rem;
 }
 
 #about code {
@@ -328,8 +340,12 @@ h2 {
 
 footer {
     text-align: center;
+    /* position: fixed;
+    bottom: 0;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px); */
     color: white;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.699);
     padding: 0.5em 0;
     width: 100%;
 }
