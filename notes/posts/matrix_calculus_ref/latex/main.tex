@@ -84,7 +84,7 @@ Since my Master's degree, I've been struggling with matrix differentiation as I 
 
 After delving a lot, I finally found a good reference from Professor Randal's class note \cite{barnes2006matrix}. However, to my surprise, when I tried to apply those matrix differentiation propositions, I got ``wrong'' answers! The truth is that \emph{Matrix Calculus notation is severely fragmented and there is no consensus among the researchers over which notation to follow}. Fortunately, there are two major ways to represent a derivative of a vector \cite{Singh}. If you do not select the author's representation, you will end up with the transposed result. The first representation is called Jacobian formulation or numerator layout, while the second one is called Hessian formulation or denominator layout. Nevertheless, even for the same layout, some conventions need to be stated.
 
-Due to the lack of references and the need to have one, I decided to make this quick guide. The goal here is twofold: make an introduction to both representations and derive the partial derivatives for the most common Matrix Calculus expressions you came across. Most of the problems will be defined in real space, but some will be extended to the complex plane. In the end, I hope to have a consistent reference guide to understand an author's book that uses a different notation. The way I define in Section \ref{sec:denominator} will be the way I adopt in my papers and in this guide, but I will let you know when some point is not consensus among the authors. Furthermore, I will adopt only apply the Hessian (or demodulator) formulation since it matches with the notation commonly used by authors of the field of Signal Processing, Machine Learning, and Optimization Theory.
+Due to the lack of references and the need to have one, I decided to make this quick guide. The goal here is twofold: make an introduction to both representations and derive the partial derivatives for the most common Matrix Calculus expressions you came across. Most of the problems will be defined in real space, but some will be extended to the complex plane. Furthermore, I will adopt only apply the Hessian (or demodulator) formulation since it matches with the notation commonly used by authors of the field of Signal Processing, Machine Learning, and Optimization Theory.
 
 \subsection{Curated reference list}
 The following list shows some references you can rely on besides this guide when it comes to Matrix Calculus (in decreasing order of importance):
@@ -92,9 +92,9 @@ The following list shows some references you can rely on besides this guide when
     \item Searle, Shayle R., and Andre I. Khuri. Matrix algebra useful for statistics \cite{searle2017matrix}: A classical book with the first edition in 1987. It treats Matrix Calculus in chapter 9 of the second edition.
     \item Hj\o rungnes, Are, and David Gesbert. Complex-valued matrix differentiation: Techniques and key results \cite{hjorungnes2011complex}. An advanced book that uses Wirtinger calculus to differentiate complex-valued matrices. You might prefer his article \cite{hjorungnes2007complex} which summarizes the key results.
     \item Matrix Calculus You Need For Deep Learning \cite{parrMatrixCalculusYou2018}: Preprint article focused on its application on Machine Learning. It offers the best tradeoff between comprehension and brevity as it is just 33 pages long.
-    \item You can find good references in these book appendices: Dattoro \cite{dattorroConvexOptimizationEuclidean2010}, appendix D; Bishop \cite{bishopPatternRecognitionMachine2006}, appendix C; Simon Haykin \cite{haykin2009neural}, appendix B (Wirtinger calculus).
+    \item You can find good references in the following book appendices: Dattoro \cite{dattorroConvexOptimizationEuclidean2010}, appendix D; Bishop \cite{bishopPatternRecognitionMachine2006}, appendix C; Simon Haykin \cite{haykin2009neural}, appendix B (Wirtinger calculus).
     \item Old and New Matrix Algebra Useful for Statistics, Thomas Minka \cite{ThomasMinka}: Another good guide for matrix algebra hosted on the personal site of the author. It has very well-referenced and focuses more on the concepts of Matrix Calculus than solving the derivatives.
-    \item The Matrix Cookbook \cite{petersen2008matrix}: Good reference to see Matrix Calculus results rather than understanding how they were solved.
+    \item The Matrix Cookbook \cite{petersen2008matrix}: Good reference to see Matrix Calculus expression results rather than understanding how they were solved.
     \item Lecture notes in Introduction to Machine Learning, from Carnegie Mellon University \cite{Singh}: A short lecture but with a clear explanation of the difference between numerator and denominator layout.
     \item Wikipedia \cite{Matrixca44:online}: Maybe it is not the most reliable source, but it is very comprehensive.
     \item Professor Randal's class note \cite{barnes2006matrix}: It has the same purpose as this guide, that is, to solve common matrix differentiation, but it is done using the numerator layout. Such a layout is rarely used for references herein cited.
@@ -112,16 +112,16 @@ Let
         a_{21} & a_{22} & \dots & a_{2n} \\
         \vdots & \vdots & \ddots & \vdots \\
         a_{m1} & a_{m2} & \dots & a_{mn} \\
-    \end{bmatrix} \in \mathbb{C}^{m \times n}
+    \end{bmatrix} \in \mathbb{R}^{m \times n}
 \end{align}
-be a complex matrix with dimension equal to \(m \times n\), where \(a_{ij} \in \mathbb{C}\) is its element in the position \((i,j)\). Similarly, a complex vector is defined by
+be a complex matrix with dimension equal to \(m \times n\), where \(a_{ij} \in \mathbb{R}\) is its element in the position \((i,j)\). Similarly, a complex vector is defined by
 \begin{align}
     \mathbf{x} = \begin{bmatrix}
         x_1 \\
         x_2 \\
         \vdots \\
         x_n
-    \end{bmatrix}  \in \mathbb{C}^{n},
+    \end{bmatrix}  \in \mathbb{R}^{n},
 \end{align}
 which may also be denoted as an \(n\)-tuple, \((x_1, x_2, \dots, x_n)\), when more convenient.
 
@@ -129,7 +129,7 @@ For scalars, italic Roman (\(a,b,c,\dots\)) represents constants (known values),
 
 \subsection{Jacobian formulation (numerator layout)}
 
-In the Jacobian formulation (also called numerator layout), the derivative matrix is written laying out the numerator in its shape, while the denominator has its shape transposed (you will understand it better as soon as you see the definitions).
+In the Jacobian formulation (also called numerator layout), the derivative matrix is written laying out the numerator in its shape, while the denominator has its shape transposed.
 
 \subsubsection{Vector-vector, scalar-vector, and vector-scalar derivatives}
 Consider two vectors \(\mathbf{x} \in \mathbb{R}^n\) and \(\mathbf{y} \in \mathbb{R}^m\). The partial derivative of each element in \(\mathbf{y}\) by each element in \(\mathbf{x}\) is represented as
@@ -196,7 +196,7 @@ However, by comparing with \eqref{eq:jacobian-formulation}, one can state that
 Therefore,
 \begin{align}
     \label{eq:hidden-num}
-    \left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Num}} = \left[\dfrac{\partial \alpha}{\partial \mathbf{x}}\right]_{\textnormal{Num}}^\top
+    \boxed{\left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Num}} = \left[\dfrac{\partial \alpha}{\partial \mathbf{x}}\right]_{\textnormal{Num}}^\top.}
 \end{align}
 
 Similarly, from \eqref{eq:tangent-num}, when $m=1 \therefore \mathbf{Y} = \mathbf{y}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{y} \in \mathbb{R}^n$, we have that
@@ -223,7 +223,7 @@ However, from \eqref{eq:jacobian-formulation}, we also have that
 
 Therefore,
 \begin{align}
-    \left[\dfrac{\partial \mathbf{y}^\top}{\partial \alpha}\right]_{\textnormal{Num}} = \left[\dfrac{\partial \mathbf{y}}{\partial \alpha}\right]_{\textnormal{Num}}^\top.
+    \boxed{\left[\dfrac{\partial \mathbf{y}^\top}{\partial \alpha}\right]_{\textnormal{Num}} = \left[\dfrac{\partial \mathbf{y}}{\partial \alpha}\right]_{\textnormal{Num}}^\top.}
 \end{align}
 
 \subsubsection{Jacobian matrix for the numerator layout}
@@ -336,7 +336,7 @@ however, by using we definition from \eqref{eq:denominator-layout}, it is also t
 Therefore,
 \begin{align}
     \label{eq:hidden-den}
-    \left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Den}} = \left[\dfrac{\partial \alpha}{\partial \mathbf{x}}\right]_{\textnormal{Den}}^\top
+    \boxed{\left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Den}} = \left[\dfrac{\partial \alpha}{\partial \mathbf{x}}\right]_{\textnormal{Den}}^\top}
 \end{align}
 
 Similarly, from \eqref{eq:tangent-matrix-den}, when $m=1 \therefore \mathbf{Y} = \mathbf{y}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{y} \in \mathbb{R}^n$, we have that
@@ -363,7 +363,7 @@ However, from \eqref{eq:denominator-layout}, we also have that
 
 Therefore,
 \begin{align}
-    \left[\dfrac{\partial \mathbf{y}^\top}{\partial \alpha}\right]_{\textnormal{Den}} = \left[\dfrac{\partial \mathbf{y}}{\partial \alpha}\right]_{\textnormal{Den}}^\top.
+    \boxed{\left[\dfrac{\partial \mathbf{y}^\top}{\partial \alpha}\right]_{\textnormal{Den}} = \left[\dfrac{\partial \mathbf{y}}{\partial \alpha}\right]_{\textnormal{Den}}^\top.}
 \end{align}
 
 \subsubsection{The Jacobian matrix for the denominator layout}
@@ -393,7 +393,7 @@ The Hessian matrix in the denominator layout is given by
         \dfrac{\partial^{2} f}{\partial x_n \partial x_1} & \dfrac{\partial^{2} f}{\partial x_n \partial x_2} & \dots & \dfrac{\partial^{2} f}{\partial x_n^2}
     \end{bmatrix} \in \mathbb{R}^{n \times n},
 \end{align}
-where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). The element \(\partial\mathbf{x}^2\) seems to be merely a convention which means that \(\partial\mathbf{x}\) is repeated twice, in the very same way it is done with scalar differentiations. It can be scaled to \(n\) consecutive derivatives without making the notation cumbersome (points to the denominator layout team).
+where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). The element \(\partial\mathbf{x}^2\) seems to merely be a convention which means that \(\partial\mathbf{x}\) is repeated twice, in the very same way it is done with scalar differentiations. It can be scaled to \(n\) consecutive derivatives without making the notation cumbersome (points to the denominator layout team).
 
 \subsection{Comparative between Jacobian and Hessian formulations}
 
@@ -406,9 +406,9 @@ As you could have noticed,
 \end{align}
 where that last equation can be inferred from the discussion about the Hessian matrix.
 
-That is the difference when you try to differentiate without paying attention to which representation the author adopted. The good news is that, as long as you differentiate it correctly, you can switch between the Jacobian and Hessian formulations by simply transposing the final result. Fortunately, the denominator layout is the most adopted by authors from areas related to Signal Processing and Machine Learning. That is why we will focus on the denominator layout hereafter (the notation \(\left[\cdot\right]_{\textnormal{Den}}\) will be dropped out since we do not need it anymore). % \footnote{First, you should apply \(\left[\cdot\right]_{\textnormal{Den}} = \left[\cdot\right]_{\textnormal{Num}}^{\trans}\) on partial derivatives that you get in the solution. Then, you apply the transpose to the whole solution.}
+That is the difference when you try to differentiate without paying attention to which representation the author adopted. The good news is that, as long as you differentiate it correctly, you can switch between the Jacobian and Hessian formulations by simply transposing the final result. Fortunately, the denominator layout is the most adopted by authors from areas related to Signal Processing, Machine Learning, and Optimization Theory. That is why we will focus on the denominator layout hereafter (the notation \(\left[\cdot\right]_{\textnormal{Den}}\) will be dropped out since we do not need it anymore). % \footnote{First, you should apply \(\left[\cdot\right]_{\textnormal{Den}} = \left[\cdot\right]_{\textnormal{Num}}^{\trans}\) on partial derivatives that you get in the solution. Then, you apply the transpose to the whole solution.}
 
-As a rule of thumb, keep in mind that:
+By adopting the denominator layout, keep in mind that:
 \begin{itemize}
     \item \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{x}}\) will yield a matrix.
     \item \(\dfrac{\partial \mathbf{Y}}{\partial x}\) will yield a matrix.
@@ -423,7 +423,7 @@ As a rule of thumb, keep in mind that:
 
 \subsection{Notations not widely agreed upon}
 \label{sub-sec:notations-not-agreed}
-Expressions such as \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{X}}, \dfrac{\partial \mathbf{Y}}{\partial \mathbf{X}}\), or \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{x}}\) have no agreement for both Jacobian and Hessian notations. It is possible, however, to define the matrix-matrix derivative for both representations. The problem is that some authors define it in the most intuitive manner: For \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{X}}\), element in the position \((i,j)\) is \(\partial y_{ij}/\partial x_{ij}\). However, as we saw, it is inconsistent for both formulations as the matrix for the Jacobian (Hessian) formulation must lay out its denominator (numerator) in its transposed shape. Therefore, for a consistent numerator layout, we would have
+Expressions such as \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{X}}, \dfrac{\partial \mathbf{Y}}{\partial \mathbf{X}}\), or \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{x}}\) have no agreement for both numerator and denominator layouts. It is possible, however, to define the matrix-matrix derivative for both representations. The problem is that some authors define it in the most intuitive manner: For \(\dfrac{\partial \mathbf{Y}}{\partial \mathbf{X}}\), element in the position \((i,j)\) is \(\partial y_{ij}/\partial x_{ij}\). However, as we saw, it is inconsistent for both formulations as the Jacobian (Hessian) formulation must lay out its denominator (numerator) in its transposed shape. Therefore, for a consistent numerator layout, we would have
 \begin{align}
     \left[\frac{\partial \mathbf{Y}}{\partial\mathbf{X}}\right]_{\textnormal{Num}} = \begin{bmatrix}
         \dfrac{\partial y_{1,1}}{\partial x_{1,1}} & \dfrac{\partial y_{1,2}}{\partial x_{2,1}} & \dots & \dfrac{\partial y_{1,m}}{\partial x_{m,1}} \\
@@ -453,10 +453,9 @@ It is common for some authors, such as Simon Haykin \cite{haykin2009neural}, to 
 and
 \begin{align}
     \mathbf{H} = \nabla^{2} f = \frac{\partial^2 f}{\partial \mathbf{x}^2},
+    \label{eq:H-nabla}
 \end{align}
-respectively. It is important to point out, however, that the notation \(\nabla^{2}\) might be ambiguous since it is also used in Vector Calculus to denote the Laplacian operator.
-
-Vector Calculus is another branch of Mathematics that deals with differentiations and integrals of vector fields in three-dimensional space. It is used in different areas of Physics and Engineering, such as electromagnetic fields, fluid flow, etc. In Vector Calculus, the gradient vector is commonly defined as
+respectively, where
 \begin{align}
     \mathbf{\nabla} = \begin{bmatrix}
         \dfrac{\partial}{\partial x_1} \\
@@ -465,12 +464,14 @@ Vector Calculus is another branch of Mathematics that deals with differentiation
         \dfrac{\partial}{\partial x_n} \\
     \end{bmatrix}
 \end{align}
+is the gradient vector. Therefore, the symbol \(\nabla^2 f\) means that the gradient vector is applied twice to the scalar function \(f\): the first is a scalar-vector differentiation; the second is a vector-vector differentiation. It is important to point out, however, that the notation \(\nabla^{2}\) might be ambiguous since it is also used in Vector Calculus to denote another operatoration.
 
-And the gradient vector is denoted in the very same way we denote in Matrix Calculus, i.e., \(\nabla f\), where \(f\) is a potential (or scalar-valued) function. On the other hand, the symbol \(\nabla^2 f\) is often used to denote the Laplacian operator, which is defined as
+Vector Calculus is another branch of Mathematics that deals with differentiations and integrals of vector fields in three-dimensional space. It is used in different areas of Physics and Engineering, such as electromagnetic fields, fluid flow, etc. In Vector Calculus, 
 \begin{align}
-    \nabla^2 f = \nabla \cdot \nabla f = \dfrac{\partial f}{\partial x_1} + \dfrac{\partial f}{\partial x_2} + \dots \dfrac{\partial f}{\partial x_n},
+    \nabla^2 f = \nabla \cdot \nabla f = \dfrac{\partial f}{\partial x_1} + \dfrac{\partial f}{\partial x_2} + \dots \dfrac{\partial f}{\partial x_n}
+    \label{eq:laplace-transforms}
 \end{align}
-where \(\cdot\) is the dot or inner product. Since Vector Calculus is far enough from Matrix Calculus in many applications, the notation \(\nabla^2 f\) is used in both fields without problems. However, when it is not the case, the notation \(\nabla^2 f\) must be avoided to denote the Hessian matrix. Other authors, such as Bishop \cite{bishopPatternRecognitionMachine2006}, use \(\nabla \nabla f\), which might be a way you insist on using \(\nabla\).
+denotes the so-called Laplacian operator, where \(\cdot\) is the dot or inner product. The equations \eqref{eq:H-nabla} and \eqref{eq:laplace-transforms} have the same notations but refer to different operations. That is a problem! Since Vector Calculus is far enough from Matrix Calculus in many applications, the notation \(\nabla^2 f\) is used in both fields without problems. However, when it is not the case, the notation \(\nabla^2 f\) must be avoided to denote the Hessian matrix. Other authors, such as Bishop \cite{bishopPatternRecognitionMachine2006}, use \(\nabla \nabla f\), which might be a way out to disambiguate it.
 
 \section{Identities}
 \label{sec:identities}
@@ -567,14 +568,12 @@ where both \(\mathbf{W} \in \mathbb{R}^{m \times p}\) and \(\mathbf{V} \in \math
 
 
 \section{Solution of Matrix Differentiations}\label{sec:diff}
-We usually have two ways to solve matrix differentiation:
+We have two ways to solve matrix differentiation:
 \begin{enumerate}
     \item Performing element-by-element operations in matrices and vectors;
     \item Preserving the Matrix Calculus notation, performing operations on the whole matrix/vector and, eventually, using some identities.
 \end{enumerate}
-The latter is usually more straightforward and less toilsome than the former and is therefore preferable.
-
-The solutions in this Section will usually show the element-by-element solution and the solution by preserving the Matrix Calculus notation. For the element-by-element solutions, you only need to know that a scalar-vector derivate results in a vector for the denominator layout. All other shapes will naturally arise. For solutions with Matrix Calculus notation, you need to be acquainted with some of the identities shown in Section \ref{sec:identities}.
+The latter is usually more straightforward and less toilsome than the former and is therefore preferable. In this section, we will solve the expressions in both ways.
 
 \subsection{\(\dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans\)}
 
