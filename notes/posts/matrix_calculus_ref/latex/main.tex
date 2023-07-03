@@ -1260,49 +1260,52 @@ Even though this problem is trickier, we can find the same solution in a clever 
     & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}.
 \end{align}
 
-\subsection{\(\dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} = \mathbf{A}^\trans\)}
+\subsection{\(\dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} = \dfrac{\partial \textnormal{tr}\left(\mathbf{X} \mathbf{A}\right)}{\partial \mathbf{X}} = \mathbf{A}^\trans\)}
 
-Let \(\mathbf{A}, \mathbf{X} \in \mathbb{R}^{n\times n}\), where \(\mathbf{A}\) does not depend on the elements in \(\mathbf{X}\).
+Let \(\mathbf{A} \in \mathbb{R}^{n\times m}\) and \(\mathbf{X} \in \mathbb{R}^{m\times n}\), where \(\mathbf{A}\) does not depend on the elements in \(\mathbf{X}\).
 \begin{align*}
     \dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left( \tr{\begin{bmatrix}
-        a_{11} & a_{12} & \dots & a_{1n} \\
-        a_{21} & a_{22} & \dots & a_{2n} \\
+        a_{11} & a_{12} & \dots & a_{1m} \\
+        a_{21} & a_{22} & \dots & a_{2m} \\
         \vdots & \vdots & \ddots & \vdots \\
-        a_{n1} & a_{n2} & \dots & a_{nn} \\
+        a_{n1} & a_{n2} & \dots & a_{nm} \\
     \end{bmatrix}
     \begin{bmatrix}
         x_{11} & x_{12} & \dots & x_{1n} \\
         x_{21} & x_{22} & \dots & x_{2n} \\
         \vdots & \vdots & \ddots & \vdots \\
-        x_{n1} & x_{n2} & \dots & x_{nn} \\
+        x_{m1} & x_{m2} & \dots & x_{mn} \\
     \end{bmatrix} \right)} \\
     %
-    &= \dfrac{\partial}{\partial \mathbf{X}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{X}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
     %
     &= \begin{bmatrix}
-        \displaystyle \dfrac{\partial}{\partial x_{11}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) & 
-        \displaystyle \dfrac{\partial}{\partial x_{12}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{11}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{12}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
         \dots & 
-        \displaystyle \dfrac{\partial}{\partial x_{1n}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) \\
-        \displaystyle \dfrac{\partial}{\partial x_{21}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) & 
-        \displaystyle \dfrac{\partial}{\partial x_{22}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{1n}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
+        \displaystyle \dfrac{\partial}{\partial x_{21}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{22}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
         \dots & 
-        \displaystyle \dfrac{\partial}{\partial x_{2n}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) \\
+        \displaystyle \dfrac{\partial}{\partial x_{2n}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
         \vdots & \vdots & \ddots & \vdots \\
-        \displaystyle \dfrac{\partial}{\partial x_{n1}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) & 
-        \displaystyle \dfrac{\partial}{\partial x_{n2}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{m1}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{m2}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
         \dots & 
-        \displaystyle \dfrac{\partial}{\partial x_{nn}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}x_{ji} \right) \\
+        \displaystyle \dfrac{\partial}{\partial x_{mn}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
     \end{bmatrix} \\
     &= \begin{bmatrix}
             a_{11} & a_{21} & \dots & a_{n1} \\
             a_{12} & a_{22} & \dots & a_{n2} \\
             \vdots & \vdots & \ddots & \vdots \\
-            a_{1n} & a_{2n} & \dots & a_{nn} \\
-        \end{bmatrix}
+            a_{1m} & a_{2m} & \dots & a_{mn} \\
+        \end{bmatrix} = \mathbf{A}^\top
 \end{align*}
+
+Finally, recalling that \(\textnormal{tr}\left( \mathbf{AB} \right) = \textnormal{tr}\left( \mathbf{BA} \right)\), we have that
+
 \begin{align}
-    \boxed{\dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} = \mathbf{A}^\trans}
+    \boxed{\dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} = \dfrac{\partial \textnormal{tr}\left(\mathbf{X} \mathbf{A}\right)}{\partial \mathbf{X}} = \mathbf{A}^\trans}
 \end{align}
 
 I have no idea how to make this solution simpler.
@@ -1361,7 +1364,7 @@ where \(\mathbf{C}_{ij}\) denotes the cofactor matrix of \(\mathbf{X}\) generate
 I have no idea how to make this solution simpler.
 
 \subsection{\(\dfrac{\partial \mathbf{A}^{-1}}{\partial \alpha} = - {\left( \mathbf{A}^{-1} \right)}^{\trans} \dfrac{\partial \mathbf{A}}{\partial \alpha} {\left( \mathbf{A}^{-1} \right)}^{\trans}\)}
-Let \(\mathbf{A}\in \mathbb{C}^{m\times n}\) and \(\alpha \in \mathbb{C}\). Remember that \(\mathbf{A}^{-1}\mathbf{A} = \mathbf{I}\). Differentiating both sides of this equation with respect to \(\alpha\), we get
+Let \(\mathbf{A}\in \mathbb{R}^{m\times n}\) and \(\alpha \in \mathbb{R}\). Remember that \(\mathbf{A}^{-1}\mathbf{A} = \mathbf{I}\). Differentiating both sides of this equation with respect to \(\alpha\), we get
 \begin{align}
     \dfrac{\partial \mathbf{A}^{-1}\mathbf{A}}{\partial \alpha} & = \dfrac{\partial \mathbf{I}}{\partial \alpha} = \mathbf{0}_{m \times n},
 \end{align}
