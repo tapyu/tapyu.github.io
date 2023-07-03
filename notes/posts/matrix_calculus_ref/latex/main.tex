@@ -1302,10 +1302,80 @@ Let \(\mathbf{A} \in \mathbb{R}^{n\times m}\) and \(\mathbf{X} \in \mathbb{R}^{m
         \end{bmatrix} = \mathbf{A}^\top
 \end{align*}
 
-Finally, recalling that \(\textnormal{tr}\left( \mathbf{AB} \right) = \textnormal{tr}\left( \mathbf{BA} \right)\), we have that
+Finally, recalling that \(\textnormal{tr}\left( \mathbf{AB} \right) = \textnormal{tr}\left( \mathbf{BA} \right)\), we have that (note that \(\mathbf{AB}\) and \(\mathbf{BA}\) must be square)
 
 \begin{align}
     \boxed{\dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} = \dfrac{\partial \textnormal{tr}\left(\mathbf{X} \mathbf{A}\right)}{\partial \mathbf{X}} = \mathbf{A}^\trans}
+\end{align}
+
+I have no idea how to make this solution simpler.
+
+\subsection{\(\dfrac{\partial \textnormal{tr}\left(\mathbf{XAX}^\top\right)}{\partial \mathbf{X}} = 2\mathbf{XA}\)}
+
+Let \(\mathbf{A} \in \mathbb{S}^{n}\) be a symmetric matrix (\(\mathbb{S}^{n}\) denotes the subspace of the symmetric matrices in \(\mathbb{R}^{n\times n}\)) and \(\mathbf{X} \in \mathbb{R}^{n\times n}\), where \(\mathbf{A}\) does not depend on the elements in \(\mathbf{X}\).
+\begin{align*}
+    \dfrac{\partial \textnormal{tr}\left(\mathbf{XAX}^\top\right)}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left(
+    \tr{
+        \begin{bmatrix}
+            x_{11} & x_{12} & \dots & x_{1n} \\
+            x_{21} & x_{22} & \dots & x_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            x_{n1} & x_{n2} & \dots & x_{nn} \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            a_{11} & a_{12} & \dots & a_{1n} \\
+            a_{21} & a_{22} & \dots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \dots & a_{nn} \\
+        \end{bmatrix}
+    \begin{bmatrix}
+        x_{11} & x_{21} & \dots & x_{n1} \\
+        x_{12} & x_{22} & \dots & x_{n2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        x_{1n} & x_{2n} & \dots & x_{nn} \\
+    \end{bmatrix} \right)} \\
+    %
+    &= \dfrac{\partial}{\partial \mathbf{X}} \left[ \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right] \\
+    %
+    &= \begin{bmatrix}
+        \displaystyle \dfrac{\partial}{\partial x_{11}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{12}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{1n}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) \\
+        \displaystyle \dfrac{\partial}{\partial x_{21}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{22}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{2n}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \displaystyle \dfrac{\partial}{\partial x_{n1}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{n2}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{nn}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) \\
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        \sum_{j = 1}^{n} a_{1j}x_{1j} + \sum_{k = 1}^{n} x_{1k}a_{k1} & \sum_{j = 1}^{n} a_{2j}x_{1j} + \sum_{k = 1}^{n} x_{1k}a_{k2} & \dots & \sum_{j = 1}^{n} a_{nj}x_{1j} + \sum_{k = 1}^{n} x_{1k}a_{kn} \\
+        \sum_{j = 1}^{n} a_{1j}x_{2j} + \sum_{k = 1}^{n} x_{2k}a_{k1} & \sum_{j = 1}^{n} a_{2j}x_{2j} + \sum_{k = 1}^{n} x_{2k}a_{k2} & \dots & \sum_{j = 1}^{n} a_{nj}x_{2j} + \sum_{k = 1}^{n} x_{2k}a_{kn} \\
+            \vdots & \vdots & \ddots & \vdots \\
+        \sum_{j = 1}^{n} a_{1j}x_{nj} + \sum_{k = 1}^{n} x_{nk}a_{k1} & \sum_{j = 1}^{n} a_{2j}x_{nj} + \sum_{k = 1}^{n} x_{nk}a_{k2} & \dots & \sum_{j = 1}^{n} a_{nj}x_{nj} + \sum_{k = 1}^{n} x_{nk}a_{kn} \\
+        \end{bmatrix}
+\end{align*}
+
+Since \(a_{ij} = a_{ji}\), it follows that
+
+\begin{align}
+    \dfrac{\partial \textnormal{tr}\left(\mathbf{XAX}^\top\right)}{\partial \mathbf{X}} &= \begin{bmatrix}
+        2 \sum_{k = 1}^{n} x_{1k}a_{k1} & 2 \sum_{k = 1}^{n} x_{1k}a_{k2} & \dots & 2 \sum_{k = 1}^{n} x_{1k}a_{kn} \\
+        2 \sum_{k = 1}^{n} x_{2k}a_{k1} & 2 \sum_{k = 1}^{n} x_{2k}a_{k2} & \dots & 2 \sum_{k = 1}^{n} x_{2k}a_{kn} \\
+            \vdots & \vdots & \ddots & \vdots \\
+        2 \sum_{k = 1}^{n} x_{nk}a_{k1} & 2 \sum_{k = 1}^{n} x_{nk}a_{k2} & \dots & 2 \sum_{k = 1}^{n} x_{nk}a_{kn} \\
+        \end{bmatrix} = 2\mathbf{XA}
+\end{align}
+
+
+Therefore,
+
+\begin{align}
+    \boxed{\dfrac{\partial \textnormal{tr}\left(\mathbf{XAX}^\top\right)}{\partial \mathbf{X}} = 2\mathbf{XA}}
 \end{align}
 
 I have no idea how to make this solution simpler.
