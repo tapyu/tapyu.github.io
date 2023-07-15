@@ -18,7 +18,9 @@ PS: Estimated terms come with a hat above of it
 	\(\Lambda(\mathbf{x})\)\cite{leon-garciaProbabilityStatisticsRandom2007}, \(\frac{p(\mathbf{x} \mid H_1)}{p(\mathbf{x} \mid H_0)}\) \cite{leon-garciaProbabilityStatisticsRandom2007,kayFundamentalsStatisticalProcessing2009}, \(L(\mathbf{x})\) \cite{kayFundamentalsStatisticalProcessing2009,CharlesPES} & Likelihood ratio function (also called likelihood ratio test (LRT) \cite{kayFundamentalsStatisticalProcessing2009}) \\ \hline
 	\(\Lambda_l(\mathbf{x})\), \(\mathcal{L}(\mathbf{x})\) \cite{CharlesPES}, \(l(\mathbf{x})\) \cite{kayFundamentalsStatisticalProcessing2009}                                                                                                                                                                  & Log-likelihood ratio (LLR \cite{kayFundamentalsStatisticalProcessing2009}) function                                 \\ \hline
 	\(\hat{\rho}_{x,y}\)                                                                                                                                                                                                                                                                                         & Estimated Pearson correlation coefficient between \(x\) and \(y\)                                                   \\ \hline
-	\(\mathcal{R}_k\)                                                                                                                                                                                                                                                                                            & Decision reagion                                                                                                    \\ \hline
+	\(\mathcal{R}_k\)                                                                                                                                                                                                                                                                                            & \(k\)th Decision region                                                                                                    \\ \hline
+    \(x(t)\overset{m.s.e}{=}y(t)\) & \(x(t)\) equals \(y(t)\) is the mean square error sense, that is \(\E{\abs{x(t) - y(t)}^2} = 0\) \\ \hline
+    \(x(t) = \limean_{N\rightarrow\infty}{\sum_{i=1}^{N} x_i \phi_i(t)}\)\cite{vantreesDetectionEstimationModulation2004} & \(\lim_{N\rightarrow\infty} \E{\abs{x(t) - \sum_{i=1}^{N} x_i \phi_i(t)}^{2}} = 0 \) (l.i.m stands for ``limit in the mean''). It is analogous to the \(\overset{m.s.e}{=}\) notation, but denoting that they equal in the MSE sense only when \(N\rightarrow\infty\) 
 \end{xltabular}
 
 
@@ -74,4 +76,25 @@ PS: Estimated terms come with a hat above of it
 	\(\mathscr{E}_{\textnormal{av}}(\cdot)\)\cite{haykinNeuralNetworksLearning2009}                                                                                                & Error energy averaged over the training sample or the empirical risk                                                                                                                                                                                                                                                                   \\ \hline
 	\(\rho\)                                                                                                                                                                       & Distance of the margin of separation between two classes (Support Vector Machine, SVM)                                                                                                                                                                                                                                                 \\ \hline
 	\(g(\cdot)\)                                                                                                                                                                   & Discriminant function, i.e., \(g(\mathbf{w}^{\star}) = 0\)
+\end{xltabular}
+
+
+\subsection{abbreviations}
+\begin{xltabular}{\textwidth}{XX}
+    MSE\cite{kayFundamentalsStatisticalSignal1993} & Mean square error \\ \hline
+    MVU\cite{kayFundamentalsStatisticalSignal1993} & Minimum variance unbiased \\ \hline
+    CRB\cite{vantreesDetectionEstimationModulation2004} or CRLB\cite{kayFundamentalsStatisticalProcessing2009} & Cramér-Rao bound or Cramer-Rao lower bound \\ \hline
+    BCRB\cite{vantreesDetectionEstimationModulation2004} & Baysean Cramér-Rao bound \\ \hline
+    DNN  & Deep Neural Network                                                                  \\ \hline
+	DL   & Deep Learning                                                                        \\ \hline
+	ANN  & Artificial Neural Networks \cite{goodfellowDeepLearning2016}                         \\ \hline
+	NN   & Nearest Neighbor                                                                     \\ \hline
+	AI   & Artificial Intelligence                                                              \\ \hline
+	SGD  & Stochastic gradient descent                                                          \\ \hline
+	SVM  & Support vector machine                                                               \\ \hline
+	BPNN & Backpropagation neural network \cite{jiaoAutomaticEquatorialGPS2017}                 \\ \hline
+	RBF  & Radial basis function                                                                \\ \hline
+	OLS  & Ordinary Least Squares                                                               \\ \hline
+	RLS  & Recursive Least Squares                                                              \\ \hline
+	LMS  & Least Mean Squares                                                                   \\ \hline
 \end{xltabular}

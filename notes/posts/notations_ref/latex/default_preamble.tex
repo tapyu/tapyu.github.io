@@ -76,6 +76,15 @@
 \NewDocumentCommand{\cov}{O{} m}{\ensuremath{\operatorname{cov}_{#1}\left[#2\right]}} % covariance, e.g., \cov[u]{x} or \cov{x}
 \let\var\undefined\NewDocumentCommand{\var}{O{} m}{\ensuremath{\operatorname{var}_{#1}\left[#2\right]}} % variance, e.g., \var[u]{x} or \var{x}
 \let\vec\undefined\NewDocumentCommand{\vec}{O{} m}{\ensuremath{\operatorname{\bf E}_{#1}\left[#2\right]}} % vectorize operator, e.g., \vec[u]{\mathbf{A}}, [u] is optional
+\NewDocumentCommand{\limean}{ E{_}{{}} m }{
+    \ensuremath{
+        \IfValueTF{#1}{%
+            \underset{#1}{\operatorname{l.i.m.}\;#2}
+        }{% else
+            \operatorname{l.i.m.}\;#2
+        }
+    }
+}
 
 % circular convolution a lá Oppenheim (if possible, prefer \circledast)
 \newcommand*\circconv[1]{%
