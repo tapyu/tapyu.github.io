@@ -182,6 +182,7 @@ where \(\mathbf{X} \in \mathbb{R}^{m \times n}\).
 
 From these definitions, we can infer two nonobvious equalities that are rather useful when handling matrix differentiations. If we consider a special case of the gradient matrix \eqref{eq:gradient-matrix-num}, when $m=1 \therefore \mathbf{X} = \mathbf{x}^\top \in \mathbb{R}^{1\times n}$, where $\mathbf{x} \in \mathbb{R}^n$, we have that
 \begin{align}
+    \label{eq:hidden-num-1}
     \left[\dfrac{\partial \alpha}{\partial \mathbf{x}^\top}\right]_{\textnormal{Num}} = \renewcommand{\arraystretch}{2.6}\begin{bmatrix}
         \dfrac{\partial \alpha}{\partial x_{1}} \\
         \dfrac{\partial \alpha}{\partial x_{2}} \\
@@ -255,18 +256,23 @@ where \(f = (f_1, f_2, \dots, f_m)\), being \(f_i: \mathbb{R}^n \rightarrow \mat
 The Matrix Calculus notation for the Hessian matrix in the numerator layout is given by
 \begin{align}
     \label{eq:hessian-eq-numerator}
-    \mathbf{H} = \left[ \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} \right]_{\textnormal{Num}} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+    \mathbf{H} = \left[ \left( \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} \right)^\top \right]_{\textnormal{Num}} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
         \dfrac{\partial^{2} f}{\partial x_1^2} & \dfrac{\partial^{2} f}{\partial x_1 \partial x_2} & \cdots & \dfrac{\partial^{2} f}{\partial x_1 \partial x_n} \\
         \dfrac{\partial^{2} f}{\partial x_2 \partial x_1} & \dfrac{\partial^{2} f}{\partial x_2^2} & \cdots & \dfrac{\partial^{2} f}{\partial x_2 \partial x_n} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial^{2} f}{\partial x_n \partial x_1} & \dfrac{\partial^{2} f}{\partial x_n \partial x_2} & \dots & \dfrac{\partial^{2} f}{\partial x_n^2}
     \end{bmatrix} \in \mathbb{R}^{n \times n},
 \end{align}
-where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). We can rewrite it by recalling \eqref{eq:hidden-num}, that is,
+where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\).
+
+Note that the term within parentheses in
 \begin{align}
-    \mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}^\top} \right) = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\top.
+    \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}^\top} \right)
 \end{align}
-Note that \(\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \right)^\top = \left( \dfrac{\partial f(\mathbf{x})}{\partial x_1}, \dfrac{\partial f(\mathbf{x})}{\partial x_2}, \dots, \dfrac{\partial f(\mathbf{x})}{\partial x_n} \right)\) is a vector. Therefore, we have a vector-vector derivate and, by applying the differentiation as shown in \eqref{eq:jacobian-formulation}, we get \(\mathbf{H}\).
+is a vector (cf. \eqref{eq:hidden-num-1}). However, since the first derivative of the Hessian must be laid out in terms of the row, the previous equations would yield the transpose of the Hessian matrix\footnote{Although it has no difference for real-valued derivates as Clairaut's theorem ensures that \(\frac{\partial^{2} f}{\partial x_a \partial x_b} = \frac{\partial^{2} f}{\partial x_b \partial x_a}\)\cite{stewart2020calculus}, we will obey the differentiation order as defined in the Hessian matrix for the sake of consistency.}. Therefore,
+\begin{align}
+    \mathbf{H} = \left[ \left( \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} \right)^\top \right]_{\textnormal{Num}}
+\end{align}
 
 \subsection{Hessian formulation (denominator layout)}
 \label{sec:denominator}
@@ -386,14 +392,18 @@ where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}\) and \(f = (f_1, f_2, \dot
 The Hessian matrix in the denominator layout is given by
 \begin{align}
     \label{eq:hessian-eq-denomintor}
-    \mathbf{H} = \left[ \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x}^2} \right]_{\textnormal{Den}} = \left[ \dfrac{\partial}{\partial \mathbf{x}} \left(\dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}}\right) \right]_{\textnormal{Den}} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+    \mathbf{H} = \left[ \dfrac{\partial^{2} f(\mathbf{x})}{\partial\mathbf{x}\partial\mathbf{x}^\top} \right]_{\textnormal{Den}} = \left[ \dfrac{\partial}{\partial \mathbf{x}} \left(\dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}^\top}\right) \right]_{\textnormal{Den}} = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
         \dfrac{\partial^{2} f}{\partial x_1^2} & \dfrac{\partial^{2} f}{\partial x_1 \partial x_2} & \cdots & \dfrac{\partial^{2} f}{\partial x_1 \partial x_n} \\
         \dfrac{\partial^{2} f}{\partial x_2 \partial x_1} & \dfrac{\partial^{2} f}{\partial x_2^2} & \cdots & \dfrac{\partial^{2} f}{\partial x_2 \partial x_n} \\
         \vdots & \vdots & \ddots & \vdots \\
         \dfrac{\partial^{2} f}{\partial x_n \partial x_1} & \dfrac{\partial^{2} f}{\partial x_n \partial x_2} & \dots & \dfrac{\partial^{2} f}{\partial x_n^2}
     \end{bmatrix} \in \mathbb{R}^{n \times n},
 \end{align}
-where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). The element \(\partial\mathbf{x}^2\) is merely a convention which means that \(\partial\mathbf{x}\) is repeated twice, in the very same way it is done with scalar differentiations. This notation is adopted by many authors \cite{diniz1997adaptive,haykinAdaptiveFilterTheory2002}. Note that it can be scaled to \(n\) consecutive derivatives without making the notation cumbersome (points to the denominator layout team).
+where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\). In the denominator layout, the visualization of the Hessian matrix is straightforward as it follows the denominator shape. It is important to point out that some authors \cite{diniz1997adaptive,haykinAdaptiveFilterTheory2002} prefer to denote the Hessian matrix as
+\begin{align}
+    \mathbf{H} = \left[ \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x}^2} \right]_{\textnormal{Den}},
+\end{align}
+where element \(\partial\mathbf{x}^2\) is merely a shorthand for \(\partial\mathbf{x}\partial\mathbf{x}^\top\). However, it might be encouraged as it makes the notation even more consufing.
 
 \subsection{Comparative between Jacobian and Hessian formulations}
 
@@ -416,7 +426,7 @@ By adopting the denominator layout, keep in mind that:
     \item \(\dfrac{\partial y}{\partial \mathbf{x}}\) will yield a vector.
     \item \(\dfrac{\partial \mathbf{y}}{\partial x}\) will yield a \(1\times n\) matrix (``row vector'').
     \item \(\mathbf{J} = \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}}^\top\).
-    \item \(\mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x}^2}\).
+    \item \(\mathbf{H} = \dfrac{\partial^{2} f(\mathbf{x})}{\partial\mathbf{x}\partial\mathbf{x}^\top}\).
     \item \(\dfrac{\partial\alpha}{\partial \mathbf{x}^\top} = \dfrac{\partial\alpha}{\partial \mathbf{x}}^\top\) for \(\alpha\in \mathbb{R}\).
     \item \(\dfrac{\partial \mathbf{y}^\top}{\partial \alpha} = \dfrac{\partial \mathbf{y}}{\partial \alpha}^\top\) for \(\alpha\in \mathbb{R}\).
 \end{itemize}
@@ -452,7 +462,7 @@ It is common for some authors, such as Simon Haykin \cite{haykin2009neural} and 
 \end{align}
 and
 \begin{align}
-    \mathbf{H} = \nabla^{2} f = \frac{\partial^2 f}{\partial \mathbf{x}^2},
+    \mathbf{H} = \nabla^{2} f = \dfrac{\partial^{2} f(\mathbf{x})}{\partial\mathbf{x}\partial\mathbf{x}^\top},
     \label{eq:H-nabla}
 \end{align}
 respectively, where
@@ -464,7 +474,7 @@ respectively, where
         \dfrac{\partial}{\partial x_n} \\
     \end{bmatrix}
 \end{align}
-is the gradient vector. Therefore, the symbol \(\nabla^2 f\) means that the gradient vector is applied twice to the scalar function \(f\): the first is a scalar-vector differentiation; the second is a vector-vector differentiation. It is important to point out, however, that the notation \(\nabla^{2}\) might be ambiguous since it is also used in Vector Calculus to denote another operatoration.
+is the gradient vector. Therefore, the symbol \(\nabla^2 f\) means that the gradient vector is applied twice to the scalar function \(f\): the first is a scalar-vector differentiation; the second is a vector-vector differentiation. It is important to point out, however, that the notation \(\nabla^{2}\) might be ambiguous since it is also used in Vector Calculus to denote another operator.
 
 Vector Calculus is another branch of Mathematics that deals with differentiations and integrals of vector fields in three-dimensional space. It is used in different areas of Physics and Engineering, such as electromagnetic fields, fluid flow, etc. In Vector Calculus, 
 \begin{align}
@@ -664,7 +674,7 @@ Let \(\mathbf{x} \in \mathbb{R}^{n}\), \(\mathbf{v} \in \mathbb{R}^{p}\) and \(\
     \boxed{\dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^\trans \in \mathbb{R}^{p \times m}}
 \end{align}
 
-Observe that this result is equivalent to applying the chain rule (c.f. \eqref{eq:chain-1inter}), that is,
+Observe that this result is equivalent to applying the chain rule (cf. \eqref{eq:chain-1inter}), that is,
 \begin{align}
     \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^\trans.
 \end{align}
@@ -726,8 +736,9 @@ Nevertheless, here is the step-by-step:
 
 Let \(\mathbf{a} \in \mathbb{C}^{n}\) and \(\mathbf{x}\in \mathbb{R}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). Once again, we could say that
 \begin{align}
-    \dfrac{\partial \mathbf{a}^\hermit \mathbf{x}}{\partial \mathbf{x}} = {\mathbf{a}^\hermit}^\trans = \mathbf{a}^*
+    \dfrac{\partial \mathbf{a}^\hermit \mathbf{x}}{\partial \mathbf{x}} = {\mathbf{a}^\hermit}^\trans = \mathbf{a}^*,
 \end{align}
+where \(\cdot^*\) denotes the conjugate operator.
 
 Nevertheless, here is the step-by-step:
 \begin{align}
@@ -882,7 +893,7 @@ Let \(\mathbf{x} \in \mathbb{R}^{n}\) and \(\mathbf{v}\in \mathbb{R}^m\), where 
     \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{x} \in \mathbb{R}^m}
 \end{align}
 
-Note that this solution could also be solved by the chain rule (c.f. \eqref{eq:chain-1inter}) as follows
+Note that this solution could also be solved by the chain rule (cf. \eqref{eq:chain-1inter}) as follows
 \begin{align}
     \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{x} \in \mathbb{R}^m}
 \end{align}
@@ -1257,7 +1268,7 @@ Recalling that \((fg)' = f'g + g'f\), we have that
     \boxed{\dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}}
 \end{align}
 
-Even though this problem is trickier, we can find the same solution in a clever way by preserving the Matrix Calculus notation and applying the chain rule. Note that \(\mathbf{y}^\trans \mathbf{A} \mathbf{x}\) depends on both \(\mathbf{x}\) and \(\mathbf{y}\) which, in turn, depend on \(\mathbf{v}\). Therefore (c.f. \eqref{eq:chain-multi-inter}),
+Even though this problem is trickier, we can find the same solution in a clever way by preserving the Matrix Calculus notation and applying the chain rule. Note that \(\mathbf{y}^\trans \mathbf{A} \mathbf{x}\) depends on both \(\mathbf{x}\) and \(\mathbf{y}\) which, in turn, depend on \(\mathbf{v}\). Therefore (cf. \eqref{eq:chain-multi-inter}),
 \begin{align}
     \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{y}} \\
     & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}.
@@ -1441,7 +1452,7 @@ Let \(\mathbf{A}\in \mathbb{R}^{m\times n}\) and \(\alpha \in \mathbb{R}\). Reme
 \begin{align}
     \dfrac{\partial \mathbf{A}^{-1}\mathbf{A}}{\partial \alpha} & = \dfrac{\partial \mathbf{I}}{\partial \alpha} = \mathbf{0}_{m \times n},
 \end{align}
-where \(\mathbf{0}_{m \times n}\) is a zero matrix with dimension \(m \times n\). By applying the product rule of a matrix-matrix derivate, we get (c.f. \eqref{eq:matrix-matrix-product-rule})
+where \(\mathbf{0}_{m \times n}\) is a zero matrix with dimension \(m \times n\). By applying the product rule of a matrix-matrix derivate, we get (cf. \eqref{eq:matrix-matrix-product-rule})
 \begin{align}
     \dfrac{\partial \mathbf{A}^{-1}\mathbf{A}}{\partial \alpha} =  \dfrac{\partial \mathbf{A}}{\partial \alpha} \left( \mathbf{A}^{-1} \right)^{\trans} + \mathbf{A}^{\trans} \dfrac{\partial \mathbf{A}^{-1}}{\partial \alpha} & = \mathbf{0}_{m \times n}
 \end{align}
