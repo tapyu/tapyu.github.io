@@ -265,14 +265,30 @@ The Matrix Calculus notation for the Hessian matrix in the numerator layout is g
 \end{align}
 where \(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\) and \(\mathbf{x} \in \mathbb{R}^{n}\).
 
-Note that the term within parentheses in
+The proof of \eqref{eq:hessian-eq-numerator} can be seen as follows
 \begin{align}
-    \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} = \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}^\top} \right)
+    \left( \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} \right)^\top & = \left( \dfrac{\partial }{\partial \mathbf{x}}\left( \dfrac{\partial f(\mathbf{x})}{\partial \mathbf{x}^\top} \right) \right)^\top \\
+    & = \left( \dfrac{\partial }{\partial \mathbf{x}} \begin{bmatrix}
+        \dfrac{\partial f(\mathbf{x})}{\partial x_1}\\
+        \dfrac{\partial f(\mathbf{x})}{\partial x_2}\\
+        \vdots\\
+        \dfrac{\partial f(\mathbf{x})}{\partial x_n}
+    \end{bmatrix} \right)^\top\\
+    & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+        \dfrac{\partial^2 f(\mathbf{x})}{\partial x_1^2} & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_2\partial x_1} & \cdots & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_n\partial x_1}\\
+        \dfrac{\partial^2 f(\mathbf{x})}{\partial x_1\partial x_2} & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_2\partial x_1}\\
+        \vdots&\vdots& \ddots&\vdots\\
+        \dfrac{\partial^2 f(\mathbf{x})}{\partial x_1\partial x_n} & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_2\partial x_n} & \cdots & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_n^2}\\
+    \end{bmatrix}^\top \\
+    & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+        \dfrac{\partial^2 f(\mathbf{x})}{\partial x_1^2} & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_1\partial x_2} & \cdots & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_1\partial x_n}\\
+        \dfrac{\partial^2 f(\mathbf{x})}{\partial x_2\partial x_1} & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_1\partial x_2}\\
+        \vdots&\vdots& \ddots&\vdots\\
+        \dfrac{\partial^2 f(\mathbf{x})}{\partial x_n\partial x_1} & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_n\partial x_2} & \cdots & \dfrac{\partial^2 f(\mathbf{x})}{\partial x_n^2}\\
+    \end{bmatrix} \\
+    & = \mathbf{H}
 \end{align}
-is a vector (cf. \eqref{eq:hidden-num-1}). However, since the first derivative of the Hessian must be laid out in terms of the row, the previous equations would yield the transpose of the Hessian matrix\footnote{Although it has no difference for real-valued derivates as Clairaut's theorem ensures that \(\frac{\partial^{2} f}{\partial x_a \partial x_b} = \frac{\partial^{2} f}{\partial x_b \partial x_a}\)\cite{stewart2020calculus}, we will obey the differentiation order as defined in the Hessian matrix for the sake of consistency.}. Therefore,
-\begin{align}
-    \mathbf{H} = \left[ \left( \dfrac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^\top} \right)^\top \right]_{\textnormal{Num}}
-\end{align}
+Although it has no difference for real-valued derivates as Clairaut's theorem ensures that \cite{stewart2020calculus} \(\dfrac{\partial^{2} f}{\partial x_a \partial x_b} = \dfrac{\partial^{2} f}{\partial x_b \partial x_a}\), we shall obey the differentiation order as defined in the Hessian matrix for the sake of consistency.
 
 \subsection{Hessian formulation (denominator layout)}
 \label{sec:denominator}
