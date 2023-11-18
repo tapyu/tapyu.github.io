@@ -32,13 +32,14 @@
 \usepackage{amsfonts}
 \newcommand{\trans}{\top}
 \newcommand{\hermit}{\mathsf{H}}
-\newcommand{\tr}[1]{\ensuremath{\textnormal{tr}\left(#1\right)}} % trace
-\newcommand{\adj}[1]{\ensuremath{\textnormal{adj}\left(#1\right)}} % adjoint
+% \newcommand{\tr}[1]{\ensuremath{\tr(#1)}} % trace
+\newcommand{\adj}[1]{\ensuremath{\textnormal{adj}\left(#1\right)}} % adjugate
 \newcommand{\obs}[1]{\textcolor{red}{(#1)}}
 \newcommand*\diff{\mathop{}\!\mathrm{d}}
+\usepackage{physics}
 
 % |a| -> absolute value of a, which is a scalar
-\newcommand\abs[1]{\left\lvert#1\right\rvert}
+% \newcommand\abs[1]{\left\lvert#1\right\rvert}
 
 % Set page size and margins
 % Replace `letterpaper' with`a4paper' for UK/EU standard size
@@ -82,7 +83,7 @@
 \section{Introduction}
 Since my Master's degree, I've been struggling with matrix differentiation as I could not find good references that cover it nicely. The bibliographies I found at that time were books from Economics \cite{dhrymes1978mathematics}, but they use an \st{weird} unfamiliar notation.
 
-After delving a lot, I finally found a good reference from Professor Randal's class note \cite{barnes2006matrix}. However, to my surprise, when I tried to apply those matrix differentiation propositions, I got ``wrong'' answers! The truth is that \emph{Matrix Calculus notation is severely fragmented and there is no consensus among the researchers over which notation to follow}. Fortunately, there are two major ways to represent a derivative of a vector \cite{Singh}. If you do not select the author's representation, you will end up with the transposed result. The first representation is called Jacobian formulation or numerator layout, while the second one is called Hessian formulation or denominator layout. Nevertheless, even for the same layout, some conventions need to be stated.
+After delving a lot, I finally found a good reference from Professor Randal's class note \cite{barnes2006matrix}. However, to my surprise, when I tried to apply those matrix differentiation propositions, I got ``wrong'' answers! The truth is that \emph{Matrix Calculus notation is severely fragmented and there is no consensus among the researchers over which notation to follow}. Fortunately, there are only two major ways to represent a derivative of a vector \cite{Singh}. If you do not select the author's representation, you will end up with the transposed result. The first representation is called Jacobian formulation or numerator layout, while the second one is called Hessian formulation or denominator layout. Nevertheless, even for the same layout, some conventions need to be stated.
 
 Due to the lack of references and the need to have one, I decided to make this quick guide. The goal here is twofold: make an introduction to both representations and derive the partial derivatives for the most common Matrix Calculus expressions you came across. Most of the problems will be defined in real space, but some will be extended to the complex plane. Furthermore, \textbf{I will adopt only the demodulator layout} since it matches the notation commonly used by authors of the field of Signal Processing, Machine Learning, and Optimization Theory.
 
@@ -95,7 +96,7 @@ The following list shows some references you can rely on besides this guide when
     \item Old and New Matrix Algebra Useful for Statistics, Thomas Minka \cite{ThomasMinka}: Another good guide for matrix algebra hosted on the personal site of the author. It has very well-referenced and focuses more on the concepts of Matrix Calculus than solving the derivatives.
     \item The Matrix Cookbook \cite{petersen2008matrix}: Good reference to see Matrix Calculus expression results rather than understanding how they were solved.
     \item Lecture notes in Introduction to Machine Learning, from Carnegie Mellon University \cite{Singh}: A short lecture but with a clear explanation of the difference between numerator and denominator layout.
-    \item Matrix Calculus You Need For Deep Learning \cite{parrMatrixCalculusYou2018}: Preprint article focused on its application on Machine Learning. It offers the best tradeoff between comprehension and brevity as it is just 33 pages long. It uses the numerator layout though.
+    \item Matrix Calculus You Need For Deep Learning \cite{parrMatrixCalculusYou2018}: Preprint article focused on its application on Machine Learning. It offers the best tradeoff between comprehension and brevity as it is just 33 pages long. It uses the numerator layout, though.
     \item Wikipedia \cite{Matrixca44:online}: Maybe it is not the most reliable source, but it is very comprehensive.
     \item Professor Randal's class note \cite{barnes2006matrix}: It has the same purpose as this guide, that is, to solve common matrix differentiation, but it is done using the numerator layout. Such a layout is rarely used for references herein cited.
 \end{itemize}
@@ -312,7 +313,7 @@ Consider two vectors \(\mathbf{x} \in \mathbb{R}^n\) and \(\mathbf{y} \in \mathb
 We can infer what is the shape of \(\dfrac{\partial y}{\partial \mathbf{x}}\) and \(\dfrac{\partial \mathbf{y}}{\partial x}\) by changing the respective vector sizes in \eqref{eq:denominator-layout}.
 
 \subsubsection{Matrix-scalar derivative (tangent matrix)}
-The partial derivative \(\dfrac{\partial \mathbf{Y}}{\partial x}\) (usually called tangent matrix) is defined for the denominator layout as
+The partial derivative \(\dfrac{\partial \mathbf{Y}}{\partial x}\) (usually called the tangent matrix) is defined for the denominator layout as
 \begin{align}
     \label{eq:tangent-matrix-den}
     \left[\dfrac{\partial \mathbf{Y}}{\partial x}\right]_{\textnormal{Den}} \renewcommand{\arraystretch}{1.8} = \begin{bmatrix}
@@ -423,7 +424,7 @@ where element \(\partial\mathbf{x}^2\) is merely a shorthand for \(\partial\math
 
 \subsection{Comparative between Jacobian and Hessian formulations}
 
-As you could have noticed,
+As you may have noticed,
 \begin{align}
     \left[ \dfrac{\partial \mathbf{y}}{\partial \mathbf{x}} \right]_{\textnormal{Num}} & = \left[ \dfrac{\partial \mathbf{y}}{\partial \mathbf{x}} \right]_{\textnormal{Den}}^{\trans}, \\
     \left[ \dfrac{\partial \mathbf{Y}}{\partial x}\right]_{\textnormal{Num}} & = \left[ \dfrac{\partial \mathbf{Y}}{\partial x}\right]_{\textnormal{Den}}^{\trans}, \\
@@ -497,7 +498,7 @@ Vector Calculus is another branch of Mathematics that deals with differentiation
     \nabla^2 f = \nabla \cdot \nabla f = \dfrac{\partial f}{\partial x_1} + \dfrac{\partial f}{\partial x_2} + \dots \dfrac{\partial f}{\partial x_n}
     \label{eq:laplace-transforms}
 \end{align}
-denotes the so-called Laplacian operator, where \(\cdot\) is the dot or inner product. The equations \eqref{eq:H-nabla} and \eqref{eq:laplace-transforms} have the same notations but refer to different operations. That is a problem! Since Vector Calculus is far enough from Matrix Calculus in many applications, the notation \(\nabla^2 f\) is used in both fields without problems. However, when it is not the case, the notation \(\nabla^2 f\) must be avoided to denote the Hessian matrix. Other authors, such as Bishop \cite{bishopPatternRecognitionMachine2006}, use \(\nabla \nabla f\), which might be a way out to disambiguate it.
+denotes the so-called Laplacian operator, where \(\cdot\) is the dot or inner product. The equations \eqref{eq:H-nabla} and \eqref{eq:laplace-transforms} have the same notations but refer to different operations. That is a problem! Since Vector Calculus is far enough from Matrix Calculus in many applications, the notation \(\nabla^2 f\) is used in both fields without problems. However, when this is not the case, the notation \(\nabla^2 f\) must be avoided to denote the Hessian matrix. Other authors, such as Bishop \cite{bishopPatternRecognitionMachine2006}, use \(\nabla \nabla f\), which might be a way out to disambiguate it.
 
 \section{Identities}
 \label{sec:identities}
@@ -515,7 +516,7 @@ Similarly, in matrix notation, we have
     \label{eq:chain-1inter}
     \dfrac{\partial \mathbf{w}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}}{\partial \mathbf{y}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}},
 \end{align}
-where \(\mathbf{x} \in \mathbb{R}^{n}, \mathbf{y} \in \mathbb{R}^{m}, \mathbf{v} \in \mathbb{R}^{p}\), and \(\mathbf{w} \in \mathbb{R}^q\). In this expression, \(\mathbf{w}\) depends on \(\mathbf{x}\), \(\mathbf{x}\) depends on \(\mathbf{y}\), and \(\mathbf{y}\) depends on \(\mathbf{z}\). The number of elements in the chain rule can be increased indiscriminately. The main point here is that \emph{the chain rule in Matrix Calculus notation must be placed backward when compared with the standard chain rule of scalar elements}.
+where \(\mathbf{x} \in \mathbb{R}^{n}, \mathbf{y} \in \mathbb{R}^{m}, \mathbf{v} \in \mathbb{R}^{p}\), and \(\mathbf{w} \in \mathbb{R}^q\). In this expression, \(\mathbf{w}\) depends on \(\mathbf{x}\), \(\mathbf{x}\) depends on \(\mathbf{y}\), and \(\mathbf{y}\) depends on \(\mathbf{z}\). The number of elements in the chain rule can be increased indiscriminately. The main point here is that \emph{the chain rule in Matrix Calculus notation must be placed backwards when compared with the standard chain rule of scalar elements}.
 
 \subsubsection{Multivariate functions}
 
@@ -697,7 +698,7 @@ Observe that this result is equivalent to applying the chain rule (cf. \eqref{eq
 
 \subsection{\(\dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a}\)}
 
-Let \(\mathbf{a, x} \in \mathbb{R}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). You can derive the derivative for the inner product by considering that \(\mathbf{a}^\trans\) is actually a \(1\times n\) matrix that transforms \(\mathbb{R}^{n}\) into \(\mathbb{R}\), and we already know what is the derivate of a \(\mathbf{Ax}\). Thus,
+Let \(\mathbf{a, x} \in \mathbb{R}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). You can derive the derivative for this inner product by considering that \(\mathbf{a}^\trans\) is actually a \(1\times n\) matrix that transforms a \(\mathbb{R}^{n}\) space into \(\mathbb{R}\), and we already know that \(\pdv*{\mathbf{Ax}}{\mathbf{x}} = \mathbf{A}^\top\). Thus,
 \begin{align}
     \dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = {\mathbf{a}^\trans}^\trans = \mathbf{a}.
 \end{align}
@@ -1290,11 +1291,11 @@ Even though this problem is trickier, we can find the same solution in a clever 
     & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}.
 \end{align}
 
-\subsection{\(\dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} = \dfrac{\partial \textnormal{tr}\left(\mathbf{X} \mathbf{A}\right)}{\partial \mathbf{X}} = \mathbf{A}^\trans\)}
+\subsection{\(\dfrac{\partial \tr(\mathbf{A} \mathbf{X})}{\partial \mathbf{X}} = \dfrac{\partial \tr(\mathbf{X} \mathbf{A})}{\partial \mathbf{X}} = \mathbf{A}^\trans\)}
 
 Let \(\mathbf{A} \in \mathbb{R}^{n\times m}\) and \(\mathbf{X} \in \mathbb{R}^{m\times n}\), where \(\mathbf{A}\) does not depend on the elements in \(\mathbf{X}\).
 \begin{align*}
-    \dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left( \tr{\begin{bmatrix}
+    \dfrac{\partial \tr(\mathbf{A} \mathbf{X})}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left( \tr(\begin{bmatrix}
         a_{11} & a_{12} & \dots & a_{1m} \\
         a_{21} & a_{22} & \dots & a_{2m} \\
         \vdots & \vdots & \ddots & \vdots \\
@@ -1305,7 +1306,7 @@ Let \(\mathbf{A} \in \mathbb{R}^{n\times m}\) and \(\mathbf{X} \in \mathbb{R}^{m
         x_{21} & x_{22} & \dots & x_{2n} \\
         \vdots & \vdots & \ddots & \vdots \\
         x_{m1} & x_{m2} & \dots & x_{mn} \\
-    \end{bmatrix} \right)} \\
+    \end{bmatrix}) \right) \\
     %
     &= \dfrac{\partial}{\partial \mathbf{X}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
     %
@@ -1332,20 +1333,20 @@ Let \(\mathbf{A} \in \mathbb{R}^{n\times m}\) and \(\mathbf{X} \in \mathbb{R}^{m
         \end{bmatrix} = \mathbf{A}^\top
 \end{align*}
 
-Finally, recalling that \(\textnormal{tr}\left( \mathbf{AB} \right) = \textnormal{tr}\left( \mathbf{BA} \right)\), we have that (note that \(\mathbf{AB}\) and \(\mathbf{BA}\) must be square)
+Finally, recalling that \(\tr( \mathbf{AB} ) = \tr( \mathbf{BA} )\), we have that (note that \(\mathbf{AB}\) and \(\mathbf{BA}\) must be square)
 
 \begin{align}
-    \boxed{\dfrac{\partial \textnormal{tr}\left(\mathbf{A} \mathbf{X}\right)}{\partial \mathbf{X}} = \dfrac{\partial \textnormal{tr}\left(\mathbf{X} \mathbf{A}\right)}{\partial \mathbf{X}} = \mathbf{A}^\trans}
+    \boxed{\dfrac{\partial \tr(\mathbf{A} \mathbf{X})}{\partial \mathbf{X}} = \dfrac{\partial \tr(\mathbf{X} \mathbf{A})}{\partial \mathbf{X}} = \mathbf{A}^\trans}
 \end{align}
 
 I have no idea how to make this solution simpler.
 
-\subsection{\(\dfrac{\partial \textnormal{tr}\left(\mathbf{XAX}^\top\right)}{\partial \mathbf{X}} = 2\mathbf{XA}\)}
+\subsection{\(\dfrac{\partial \tr(\mathbf{XAX}^\top)}{\partial \mathbf{X}} = 2\mathbf{XA}\)}
 
 Let \(\mathbf{A} \in \mathbb{S}^{n}\) be a symmetric matrix (\(\mathbb{S}^{n}\) denotes the subspace of the symmetric matrices in \(\mathbb{R}^{n\times n}\)) and \(\mathbf{X} \in \mathbb{R}^{n\times n}\), where \(\mathbf{A}\) does not depend on the elements in \(\mathbf{X}\).
 \begin{align*}
-    \dfrac{\partial \textnormal{tr}\left(\mathbf{XAX}^\top\right)}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left(
-    \tr{
+    \dfrac{\partial \tr(\mathbf{XAX}^\top)}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left(
+    \tr(
         \begin{bmatrix}
             x_{11} & x_{12} & \dots & x_{1n} \\
             x_{21} & x_{22} & \dots & x_{2n} \\
@@ -1363,7 +1364,7 @@ Let \(\mathbf{A} \in \mathbb{S}^{n}\) be a symmetric matrix (\(\mathbb{S}^{n}\) 
         x_{12} & x_{22} & \dots & x_{n2} \\
         \vdots & \vdots & \ddots & \vdots \\
         x_{1n} & x_{2n} & \dots & x_{nn} \\
-    \end{bmatrix} \right)} \\
+    \end{bmatrix}) \right) \\
     %
     &= \dfrac{\partial}{\partial \mathbf{X}} \left[ \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right] \\
     %
@@ -1393,7 +1394,7 @@ Let \(\mathbf{A} \in \mathbb{S}^{n}\) be a symmetric matrix (\(\mathbb{S}^{n}\) 
 Since \(a_{ij} = a_{ji}\), it follows that
 
 \begin{align}
-    \dfrac{\partial \textnormal{tr}\left(\mathbf{XAX}^\top\right)}{\partial \mathbf{X}} &= \begin{bmatrix}
+    \dfrac{\partial \tr(\mathbf{XAX}^\top)}{\partial \mathbf{X}} &= \begin{bmatrix}
         2 \sum_{k = 1}^{n} x_{1k}a_{k1} & 2 \sum_{k = 1}^{n} x_{1k}a_{k2} & \dots & 2 \sum_{k = 1}^{n} x_{1k}a_{kn} \\
         2 \sum_{k = 1}^{n} x_{2k}a_{k1} & 2 \sum_{k = 1}^{n} x_{2k}a_{k2} & \dots & 2 \sum_{k = 1}^{n} x_{2k}a_{kn} \\
             \vdots & \vdots & \ddots & \vdots \\
@@ -1405,7 +1406,7 @@ Since \(a_{ij} = a_{ji}\), it follows that
 Therefore,
 
 \begin{align}
-    \boxed{\dfrac{\partial \textnormal{tr}\left(\mathbf{XAX}^\top\right)}{\partial \mathbf{X}} = 2\mathbf{XA}}
+    \boxed{\dfrac{\partial \tr(\mathbf{XAX}^\top)}{\partial \mathbf{X}} = 2\mathbf{XA}}
 \end{align}
 
 I have no idea how to make this solution simpler.
