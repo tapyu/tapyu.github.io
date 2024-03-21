@@ -1,0 +1,886 @@
+\section{Differentiation solutions}\label{sec:diff}
+We have two ways to solve matrix differentiation:
+\begin{enumerate}
+    \item Performing element-by-element operations in matrices and vectors;
+    \item Preserving the Matrix Calculus notation, performing operations on the whole matrix/vector and, eventually, using some identities.
+\end{enumerate}
+The latter is usually more straightforward and less toilsome than the former and is therefore preferable. In this section, we will solve the expressions in both ways.
+
+\subsection{\(\dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans\)}
+
+Let \(\mathbf{A}\in \mathbb{R}^{m\times n}\) and \(\mathbf{x} \in \mathbb{R}^{n}\), in which \(\mathbf{A}\) does not depend on \(\mathbf{x}\), we have that:
+\begin{align}
+    \dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = & \dfrac{\partial}{\partial \mathbf{x}} \left(
+        \begin{bmatrix}
+            a_{11} & a_{12} & \dots & a_{1n} \\
+            a_{21} & a_{22} & \dots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \dots & a_{mn} \\
+        \end{bmatrix} \begin{bmatrix}
+            x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+        \end{bmatrix} \right)  \\
+    %
+    = & \dfrac{\partial}{\partial \mathbf{x}} \left(\begin{bmatrix} 
+        \sum_{j = 1}^n a_{1j}x_j \\
+        \sum_{j = 1}^n a_{2j}x_j \\
+        \vdots \\
+        \sum_{j = 1}^n a_{mj}x_j
+    \end{bmatrix}^\trans \right)  \\
+    %
+    = & \begin{bmatrix}
+        \dfrac{\partial}{\partial \mathbf{x}}\left(\sum_{j = 1}^n {a_{1j}x_j}\right) & \dfrac{\partial}{\partial \mathbf{x}}\left(\sum_{j = 1}^n {a_{2j}x_j}\right) & \dots & \dfrac{\partial}{\partial \mathbf{x}}\left(\sum_{j = 1}^n {a_{mj}x_j}\right)
+    \end{bmatrix}
+\end{align}
+
+Since a scalar-vector derivative is represented by a vector, we have that
+\begin{align}
+    %
+    \dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = & \begin{bmatrix}
+        \dfrac{\partial}{\partial x_1} \left( \sum_{j = 1}^n a_{1j}x_j \right) & 
+        \dfrac{\partial}{\partial x_1} \left( \sum_{j = 1}^n a_{21j}x_j \right) & 
+        \dots & 
+        \dfrac{\partial}{\partial x_1} \left( \sum_{j = 1}^n a_{mj}x_j \right) \\
+        \dfrac{\partial}{\partial x_2} \left( \sum_{j = 1}^n a_{1j}x_j \right) & 
+        \dfrac{\partial}{\partial x_2} \left( \sum_{j = 1}^n a_{21j}x_j \right) & 
+        \dots & 
+        \dfrac{\partial}{\partial x_2} \left( \sum_{j = 1}^n a_{mj}x_j \right) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \dfrac{\partial}{\partial x_n} \left( \sum_{j = 1}^n a_{1j}x_j \right) & 
+        \dfrac{\partial}{\partial x_n} \left( \sum_{j = 1}^n a_{21j}x_j \right) & 
+        \dots & 
+        \dfrac{\partial}{\partial x_n} \left( \sum_{j = 1}^n a_{mj}x_j \right) \\
+    \end{bmatrix}  \\
+    %
+    = & \begin{bmatrix}
+        a_{11} & a_{21} & \dots & a_{n1} \\
+        a_{12} & a_{22} & \dots & a_{n2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1m} & a_{2m} & \dots & a_{nm} \\
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \label{eq:lt-slution}
+    \boxed{\dfrac{\partial \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans \in \mathbb{R}^{n\times m}}
+\end{align}
+
+\subsection{\(\dfrac{\partial \mathbf{x}^\top\mathbf{A}}{\partial \mathbf{x}} = \mathbf{A}\)}
+\obs{TODO}
+
+\subsection{\(\dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^\trans\)}
+
+Let \(\mathbf{x} \in \mathbb{R}^{n}\), \(\mathbf{v} \in \mathbb{R}^{p}\) and \(\mathbf{A} \in \mathbb{R}^{m\times n}\), where \(\mathbf{x}\) depends on \(\mathbf{v}\), but \(\mathbf{A}\) does not. Then
+\begin{align}
+    \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} & =
+    %
+    \begin{bmatrix}
+        \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} a_{1i}x_i & \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} a_{2i}x_i & \cdots & \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} a_{mi}x_i
+    \end{bmatrix} \\
+    %
+    & = \begin{bmatrix}
+        \sum_{i=1}^{n} a_{1i}\dfrac{\partial x_i}{\partial \mathbf{v}} & \sum_{i=1}^{n} a_{2i}\dfrac{\partial x_i}{\partial \mathbf{v}} & \cdots & \sum_{i=1}^{n} a_{mi}\dfrac{\partial x_i}{\partial \mathbf{v}}
+    \end{bmatrix} \\
+    %
+    & = \underbrace{\begin{bmatrix}
+        \dfrac{\partial x_1}{\partial \mathbf{v}} & \dfrac{\partial x_2}{\partial \mathbf{v}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{v}}
+    \end{bmatrix}}_{p \times n}
+    %
+    \underbrace{\begin{bmatrix}
+        a_{11} & a_{21} & \dots & a_{m1} \\
+        a_{12} & a_{22} & \dots & a_{m2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1n} & a_{2n} & \dots & a_{mn} \\
+    \end{bmatrix}}_{n \times m}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^\trans \in \mathbb{R}^{p \times m}}
+\end{align}
+
+Observe that this result is equivalent to applying the chain rule (cf. \eqref{eq:chain-1inter}), that is,
+\begin{align}
+    \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{A}  \mathbf{x}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^\trans.
+\end{align}
+
+\subsection{\(\dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a}\)}
+
+Let \(\mathbf{a, x} \in \mathbb{R}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). You can derive the derivative for this inner product by considering that \(\mathbf{a}^\trans\) is actually a \(1\times n\) matrix that transforms a \(\mathbb{R}^{n}\) space into \(\mathbb{R}\), and we already know that \(\pdv*{\mathbf{Ax}}{\mathbf{x}} = \mathbf{A}^\top\). Thus,
+\begin{align}
+    \dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = {\mathbf{a}^\trans}^\trans = \mathbf{a}.
+\end{align}
+
+Even though, if you want the step-by-step, here it is:
+\begin{align}
+    \dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+    \begin{bmatrix}
+        a_1 & a_2 & \dots & a_n
+    \end{bmatrix} \begin{bmatrix}
+        x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+    \end{bmatrix} \right) \\
+    & = \dfrac{\partial}{\partial \mathbf{x}} \left( \sum_{i = 1}^n a_ix_i \right) \\
+    & = \begin{bmatrix}
+        \dfrac{\partial}{\partial x_1} \left( \sum_{i = 1}^n a_ix_i \right) \\ \dfrac{\partial}{\partial x_2} \left( \sum_{i = 1}^n a_ix_i \right) \\ \vdots \\ \dfrac{\partial}{\partial x_n} \left( \sum_{i = 1}^n a_ix_i \right) 
+    \end{bmatrix} = \begin{bmatrix}
+        a_1 \\ a_2 \\ \vdots \\ a_n
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{a}^\trans \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a} \in \mathbb{R}^{n}}
+\end{align}
+
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans  \mathbf{a}}{\partial \mathbf{x}} = \mathbf{a}\)}
+
+This one can be solved quickly by noticing that \(\mathbf{x}^\trans  \mathbf{a} = \mathbf{a}^\trans  \mathbf{x}\). Hence,
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans  \mathbf{a}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{a}^\trans  \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a}
+\end{align}
+
+Nevertheless, here is the step-by-step:
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{a}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+    \begin{bmatrix}
+        x_1 & x_2 & \dots & x_n
+    \end{bmatrix} \begin{bmatrix}
+        a_{1} \\ a_{2} \\ \vdots \\ a_{n}
+    \end{bmatrix} \right) \\
+    & = \dfrac{\partial}{\partial \mathbf{x}} \left( \sum_{i = 1}^n x_ia_i \right) \\
+    & = \begin{bmatrix}
+        \dfrac{\partial}{\partial x_1} \left( \sum_{i = 1}^n x_ia_i \right) \\ \dfrac{\partial}{\partial x_2} \left( \sum_{i = 1}^n x_ia_i \right) \\ \vdots \\ \dfrac{\partial}{\partial x_n} \left( \sum_{i = 1}^n x_ia_i \right) 
+    \end{bmatrix} 
+    = \begin{bmatrix}
+        a_1 \\ a_2 \\ \vdots \\ a_n
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{a}}{\partial \mathbf{x}} = \mathbf{a} \in \mathbb{R}^{n}}
+\end{align}
+
+\subsection{\(\dfrac{\partial \mathbf{a}^\hermit  \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a}^*\)}
+
+Let \(\mathbf{a} \in \mathbb{C}^{n}\) and \(\mathbf{x}\in \mathbb{R}^{n}\), in which \(\mathbf{a}\) does not depend on \(\mathbf{x}\). Once again, we could say that
+\begin{align}
+    \dfrac{\partial \mathbf{a}^\hermit \mathbf{x}}{\partial \mathbf{x}} = {\mathbf{a}^\hermit}^\trans = \mathbf{a}^*,
+\end{align}
+where \(\cdot^*\) denotes the conjugate operator.
+
+Nevertheless, here is the step-by-step:
+\begin{align}
+    \dfrac{\partial \mathbf{a}^\hermit \mathbf{x}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+    \begin{bmatrix}
+        a^*_1 & a^*_2 & \dots & a^*_n
+    \end{bmatrix} \begin{bmatrix}
+        x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+    \end{bmatrix} \right) 
+    = \dfrac{\partial}{\partial \mathbf{x}} \left( \sum_{i = 1}^n a^*_ix_i \right) \\
+\end{align}
+
+Since a scalar-vector derivative is represented by a vector, we have that
+\begin{align}
+    \dfrac{\partial \mathbf{a}^\hermit \mathbf{x}}{\partial \mathbf{x}} &= \begin{bmatrix}
+        \dfrac{\partial}{\partial x_1} \left( \sum_{i = 1}^n a^*_ix_i \right) \\ \dfrac{\partial}{\partial x_2} \left( \sum_{i = 1}^n a^*_ix_i \right) \\ \vdots \\ \dfrac{\partial}{\partial x_n} \left( \sum_{i = 1}^n a^*_ix_i \right) 
+    \end{bmatrix}
+    = \begin{bmatrix}
+        a^*_1 \\ a^*_2 \\ \vdots \\ a^*_n
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{a}^\hermit \mathbf{x}}{\partial \mathbf{x}} = \mathbf{a}^* \in \mathbb{C}^{n}}
+\end{align}
+
+\subsection{\(\dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial \mathbf{z}} = \mathbf{0}\)}
+Let us define \(\mathbf{z}, \mathbf{a} \in \mathbb{C}^{n}\), where \(\mathbf{a}\) does not depend on \(\mathbf{z}\). Since \(\mathbf{z}^\hermit \mathbf{a} \neq \mathbf{a}^\hermit \mathbf{z}\), we have no choice but derive it:
+\begin{align}
+    \dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial\mathbf{z}} & = \dfrac{\partial}{\partial\mathbf{z}} \left(
+    \begin{bmatrix}
+        z^*_1 & z^*_2 & \dots & z^*_n
+    \end{bmatrix} \begin{bmatrix}
+        a_{1} \\ a_{2} \\ \vdots \\ a_{n}
+    \end{bmatrix} \right) \\
+    & = \dfrac{\partial}{\partial\mathbf{z}} \left( \sum_{i = 1}^n z^*_ia_i \right) \\
+    &= \begin{bmatrix}
+            \dfrac{\partial}{\partial z_1} \left( \sum_{i = 1}^n z^*_ia_i \right) \\ \dfrac{\partial}{\partial z_2} \left( \sum_{i = 1}^n z^*_ia_i \right) \\ \vdots \\
+            \dfrac{\partial}{\partial z_n} \left( \sum_{i = 1}^n z^*_ia_i \right)
+        \end{bmatrix} \\
+    & = \renewcommand{\arraystretch}{2.6}\begin{bmatrix}
+        \dfrac{\partial z_1^*}{\partial z_1} \\ \dfrac{\partial z_2^*}{\partial z_2} \\ \vdots \\
+        \dfrac{\partial z_n^*}{\partial z_n}
+    \end{bmatrix}.
+\end{align}
+By recalling that \(\dfrac{\partial z^*}{\partial z} = 0\) \cite{hjorungnes2011complex}, we have that
+\begin{align}
+    \dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial\mathbf{z}} = \begin{bmatrix}
+        0 \\ 0 \\ \vdots \\ 0
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial\mathbf{z}} = \mathbf{0} \in \mathbb{C}^{n}}
+\end{align}
+where \(\mathbf{0}\) is the zero vector.
+
+\subsection{\(\dfrac{\partial \mathbf{z}^\hermit \mathbf{a}}{\partial \mathbf{z}^*} = \mathbf{a}\)}
+\obs{TODO} \cite{hjorungnes2011complex}
+
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}}\mathbf{x}\)}
+Let \(\mathbf{x},\mathbf{y} \in \mathbb{R}^{n}\) and \(\mathbf{v} \in \mathbb{R}^{m}\). Where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{v}\). Thus,
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} & = \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} y_ix_i \\
+    & = \sum_{i=1}^{n} \dfrac{\partial y_ix_i}{\partial \mathbf{v}}.
+\end{align}
+Recalling that \((fg)' = f'g + g'f\), we have
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} & = \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial \mathbf{v}} + \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial \mathbf{v}} \\
+    & = \begin{bmatrix}
+        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial v_1} \\
+        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial v_2} \\
+        \vdots \\
+        \sum_{i=1}^{n} x_i\dfrac{\partial y_i}{\partial v_m} \\
+    \end{bmatrix} +
+    \begin{bmatrix}
+        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial v_1} \\
+        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial v_2} \\
+        \vdots \\
+        \sum_{i=1}^{n} y_i\dfrac{\partial x_i}{\partial v_m}
+    \end{bmatrix} \\
+    %
+    & = \begin{bmatrix}
+        \dfrac{\partial y_1}{\partial v_1} & \dfrac{\partial y_2}{\partial v_1} & \cdots & \dfrac{\partial y_n}{\partial v_1} \\
+        \dfrac{\partial y_1}{\partial v_2} & \dfrac{\partial y_2}{\partial v_2} & \cdots & \dfrac{\partial y_n}{\partial v_2} \\
+        \vdots & \ddots & \vdots & \vdots \\
+        \dfrac{\partial y_1}{\partial v_m} & \dfrac{\partial y_2}{\partial v_m} & \cdots & \dfrac{\partial y_n}{\partial v_m} \\
+    \end{bmatrix} \mathbf{x} \\
+    & \hspace{2.5ex} + \begin{bmatrix}
+        \dfrac{\partial x_1}{\partial v_1} & \dfrac{\partial x_2}{\partial v_1} & \cdots & \dfrac{\partial x_n}{\partial v_1} \\
+        \dfrac{\partial x_1}{\partial v_2} & \dfrac{\partial x_2}{\partial v_2} & \cdots & \dfrac{\partial x_n}{\partial v_2} \\
+        \vdots & \ddots & \vdots & \vdots \\
+        \dfrac{\partial x_1}{\partial v_m} & \dfrac{\partial x_2}{\partial v_m} & \cdots & \dfrac{\partial x_n}{\partial v_m} \\
+    \end{bmatrix} \mathbf{y}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}}\mathbf{x} \in \mathbb{R}^{m}}
+\end{align}
+Note that, if either \(\mathbf{x}\) or \(\mathbf{y}\) does not depend on \(\mathbf{v}\), just disregard \(\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{y}\) or \(\dfrac{\partial \mathbf{y}}{\partial \mathbf{v}}\mathbf{x}\), respectively. When none depends on \(\mathbf{v}\), the obvious result is the zero vector, \(\mathbf{0}\). A simpler way to solve it is to apply the scalar-vector product rule (see \eqref{eq:scalar-vector-product-rule}), that is,
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{y}}{\partial \mathbf{y}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}}\mathbf{x}
+\end{align}
+
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{x}\)}
+Let \(\mathbf{x} \in \mathbb{R}^{n}\). Thus,
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} & = \dfrac{\partial}{\partial \mathbf{x}}\sum_{i=1}^{n} x_i^2 \\
+    & = \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial \mathbf{x}} \\
+    %
+    & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial x_1} \\
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial x_2} \\
+        \vdots \\
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial x_m} \\
+    \end{bmatrix} \\
+    %
+    & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+        2x_1 \\
+        2x_2 \\
+        \vdots \\
+        2x_n \\
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{x} \in \mathbb{R}^n}
+\end{align}
+
+Note that this perfectly matches with the derivate of a quadratic scalar value, i.e., \(\frac{\diff x^2}{\diff x} = 2x\).
+
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{x}\)}
+Let \(\mathbf{x} \in \mathbb{R}^{n}\) and \(\mathbf{v}\in \mathbb{R}^m\), where \(\mathbf{x}\) depends on \(\mathbf{v}\). Thus,
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} & = \dfrac{\partial}{\partial \mathbf{v}}\sum_{i=1}^{n} x_i^2 \\
+    & = \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial \mathbf{v}} \\
+    %
+    & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial v_1} \\
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial v_2} \\
+        \vdots \\
+        \sum_{i=1}^{n} \dfrac{\partial x_i^2}{\partial v_m} \\
+    \end{bmatrix} \\
+    %
+    & = \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial v_1} \\
+        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial v_2} \\
+        \vdots \\
+        \sum_{i=1}^{n} 2x_i\dfrac{\partial x_i}{\partial v_m} \\
+    \end{bmatrix} \\
+    & = 2 \renewcommand{\arraystretch}{2.2}\begin{bmatrix}
+        \dfrac{\partial x_1}{\partial \mathbf{v}} & \dfrac{\partial x_2}{\partial \mathbf{v}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{v}}
+    \end{bmatrix} \mathbf{x}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{x} \in \mathbb{R}^m}
+\end{align}
+
+Note that this solution could also be solved by the chain rule (cf. \eqref{eq:chain-1inter}) as follows
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{x}}{\partial \mathbf{x}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{x} \in \mathbb{R}^m}
+\end{align}
+
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x}\)}
+Let \(\mathbf{A}\in \mathbb{R}^{n\times n}\) and \(\mathbf{x} \in \mathbb{R}^{n}\), in which \(\mathbf{A}\) does not depend on \(\mathbf{x}\). For the quadratic form, it follows that
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+    \begin{bmatrix}
+        x_{1} & x_{2} & \dots & x_{n}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \dots & a_{nn} \\
+    \end{bmatrix} \begin{bmatrix}
+        x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+    \end{bmatrix} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+			\begin{bmatrix}
+				\displaystyle \sum_{i = 1}^{n} x_{i}a_{i1} & 
+				\displaystyle \sum_{i = 1}^{n} x_{i}a_{i2} & 
+				\dots & 
+				\displaystyle \sum_{i = 1}^{n} x_{i}a_{in}
+			\end{bmatrix} \begin{bmatrix}
+				x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+			\end{bmatrix} \right) \\
+            &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+				\sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} x_{i} x_{j}
+			\right).
+\end{align}
+
+Note that the element inside the parentheses is a scalar and that a scalar-vector derivative results in a vector, that is,
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} &= \begin{bmatrix}
+        \displaystyle \dfrac{\partial}{\partial x_1} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) \\ 
+        \displaystyle  \dfrac{\partial}{\partial x_2} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) \\ 
+        \vdots \\ 
+        \displaystyle \dfrac{\partial}{\partial x_n} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) 
+    \end{bmatrix} \\
+    & = \begin{bmatrix}
+        \displaystyle 2x_1a_{11} + \sum_{\substack{j = 1 \\ j \neq 1}}^{n} a_{1j} x_{j} + \sum_{\substack{i = 1 \\ i \neq 1}}^{n} a_{i1} x_{i} \\
+        \displaystyle 2x_2a_{22} + \sum_{\substack{j = 1 \\ j \neq 2}}^{n} a_{2j} x_{j} + \sum_{\substack{i = 1 \\ i \neq 2}}^{n} a_{i2} x_{i} \\
+        \vdots \\
+        \displaystyle 2x_na_{nn} + \sum_{\substack{j = 1 \\ j \neq n}}^{n} a_{nj} x_{j} + \sum_{\substack{i = 1 \\ i \neq n}}^{n} a_{in} x_{i} 
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        \displaystyle \sum_{j = 1}^{n} a_{1j} x_{j} \\
+        \displaystyle \sum_{j = 1}^{n} a_{2j} x_{j} \\
+        \vdots \\
+        \displaystyle \sum_{j = 1}^{n} a_{nj} x_{j} 
+    \end{bmatrix} +
+    \begin{bmatrix}
+        \displaystyle \sum_{i = 1}^{n} a_{i1} x_{i} \\
+        \displaystyle \sum_{i = 1}^{n} a_{i2} x_{i} \\
+        \vdots \\
+        \displaystyle \sum_{i = 1}^{n} a_{in} x_{i} 
+    \end{bmatrix} \\
+    & = \mathbf{A}^\trans \mathbf{x} + \mathbf{A} \mathbf{x}
+\end{align}
+\begin{align}
+    \label{eq:quadratic-solution}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x} \in \mathbb{R}^{n}}
+\end{align}
+For the special case where \(\mathbf{A}\) is symmetric, we obtain
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{A} \mathbf{x} \in \mathbb{R}^{n}}
+\end{align}
+
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\left( \mathbf{A} + \mathbf{A}^\trans \right) \mathbf{x}\)}
+Let \(\mathbf{v} \in \mathbb{R}^{m}, \mathbf{x} \in \mathbb{R}^{n}\) and \(\mathbf{A}\in \mathbb{R}^{n\times n}\), where \(\mathbf{x}\) depends on \(\mathbf{v}\), but \(\mathbf{A}\) does not. For the quadratic form, it follows that
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} &= \dfrac{\partial}{\partial \mathbf{v}} \left(
+    \begin{bmatrix}
+        x_{1} & x_{2} & \dots & x_{n}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \dots & a_{nn} \\
+    \end{bmatrix} \begin{bmatrix}
+        x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+    \end{bmatrix} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{v}} \left(
+			\begin{bmatrix}
+				\displaystyle \sum_{i = 1}^{n} x_{i}a_{i1} & 
+				\displaystyle \sum_{i = 1}^{n} x_{i}a_{i2} & 
+				\dots & 
+				\displaystyle \sum_{i = 1}^{n} x_{i}a_{in}
+			\end{bmatrix} \begin{bmatrix}
+				x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+			\end{bmatrix} \right) \\
+            &= \dfrac{\partial}{\partial \mathbf{v}} \left(
+				\sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} x_{i} x_{j}
+			\right) \\
+    &= \begin{bmatrix}
+        \displaystyle \dfrac{\partial}{\partial v_1} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) \\ 
+        \displaystyle  \dfrac{\partial}{\partial v_2} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) \\ 
+        \vdots \\ 
+        \displaystyle \dfrac{\partial}{\partial v_n} \left( \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i} a_{ij} x_{j} \right) 
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial v_1} \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial v_2} \\ 
+        \vdots \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial x_{i}x_{j}}{\partial v_n} 
+    \end{bmatrix}
+\end{align}
+
+Recalling that \((fg)' = f'g + g'f\), we have that
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} &= \begin{bmatrix}
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_1} +
+        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_1} \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_2} +
+        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_2} \\ 
+        \vdots \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_n} +
+        \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_n} 
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_1} \\
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_2} \\
+        \vdots \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{j}a_{ij} \dfrac{\partial x_{i}}{\partial v_n}
+    \end{bmatrix} +
+    \begin{bmatrix}
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_1} \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_2} \\ 
+        \vdots \\ 
+        \displaystyle \sum_{i = 1}^{n}\sum_{j = 1}^{n} x_{i}a_{ij} \dfrac{\partial x_{j}}{\partial v_n} 
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+       \dfrac{\partial x_{1}}{\partial \mathbf{v}} & \dfrac{\partial x_{2}}{\partial \mathbf{v}} & \cdots  & \dfrac{\partial x_{n}}{\partial \mathbf{v}}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn} \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+    \end{bmatrix} + \nonumber \\
+    & \hspace{2.5ex} \begin{bmatrix}
+        \dfrac{\partial x_{1}}{\partial \mathbf{v}} & \dfrac{\partial x_{2}}{\partial \mathbf{v}} & \cdots  & \dfrac{\partial x_{n}}{\partial \mathbf{v}}
+     \end{bmatrix}
+     \begin{bmatrix}
+         a_{11} & a_{21} & \dots & a_{m1} \\
+         a_{12} & a_{22} & \dots & a_{m2} \\
+         \vdots & \vdots & \ddots & \vdots \\
+         a_{1n} & a_{2n} & \dots & a_{mn} \\
+     \end{bmatrix}
+     \begin{bmatrix}
+         x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+     \end{bmatrix} \\
+     & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{A} \mathbf{x} + \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{A}^\trans \mathbf{x}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\left( \mathbf{A} + \mathbf{A}^\trans \right) \mathbf{x} \in \mathbb{C}^{m}}
+\end{align}
+
+For the special case where \(\mathbf{A}\) is symmetric, we get
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = 2\dfrac{\partial \mathbf{x}}{\partial \mathbf{v}}\mathbf{A} \mathbf{x} \in \mathbb{C}^{m}}
+\end{align}
+
+Note that the solution is much easier if we maintain the Matrix Calculus notation and apply the chain rule, that is,
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \left(\mathbf{A}^\trans + \mathbf{A}\right) \mathbf{x},
+\end{align}
+where the last equality comes from \eqref{eq:quadratic-solution}.
+
+\subsection{\(\dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans \mathbf{b}\)} \label{sec:bt-A-x}
+Let \(\mathbf{x} \in \mathbb{R}^{n}\), \(\mathbf{b} \in \mathbb{R}^{m}\) and \(\mathbf{A}\in \mathbb{R}^{m\times n}\), where neither \(\mathbf{b}\) nor \(\mathbf{A}\) depend on \(\mathbf{x}\). It follows that
+
+\begin{align}
+    \dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+    \begin{bmatrix}
+        b_{1} & b_{2} & \dots & b_{m}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn} \\
+    \end{bmatrix} \begin{bmatrix}
+        x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+    \end{bmatrix} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+			\begin{bmatrix}
+				\displaystyle \sum_{i = 1}^{m} a_{i1}b_{i} & 
+				\displaystyle \sum_{i = 1}^{m} a_{i2}b_{i} & 
+				\dots & 
+				\displaystyle \sum_{i = 1}^{m} a_{in}b_{i}
+			\end{bmatrix} \begin{bmatrix}
+				x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+			\end{bmatrix} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+        \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} b_{i} x_{j}
+    \right) \\
+    &= \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} b_{i} \dfrac{\partial x_{j}}{\partial \mathbf{x}} \\
+    &= \begin{bmatrix}
+        \sum_{i = 1}^{m} a_{i1} b_{i} \\
+        \sum_{i = 1}^{m} a_{i2} b_{i} \\
+        \vdots \\
+        \sum_{i = 1}^{m} a_{in} b_{i} \\
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        a_{11} & a_{21} & \dots & a_{m1} \\
+        a_{12} & a_{22} & \dots & a_{m2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1n} & a_{2n} & \dots & a_{mn} \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        b_1 \\
+        b_2 \\
+        \vdots \\
+        b_m
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^\trans \mathbf{b} \in \mathbb{R}^{n}}
+\end{align}
+
+Note that this solution could solve by simply observing that \(\mathbf{\mathbf{b}^\trans \mathbf{A}}\) is actually a linear transformation from \(\mathbb{R}^{n}\) to \(\mathbb{R}\). Thus,
+\begin{align}
+    \dfrac{\partial \mathbf{b}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} = \left( \mathbf{b}^\trans \mathbf{A} \right)^{\trans} = \mathbf{A}^\trans \mathbf{b},
+\end{align}
+where the first equality comes from the \eqref{eq:lt-slution}.
+
+\subsection{\(\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} = \mathbf{Ab}\)}
+Let \(\mathbf{x} \in \mathbb{R}^{m}\), \(\mathbf{b} \in \mathbb{R}^{n}\) and \(\mathbf{A}\in \mathbb{R}^{m\times n}\), where neither \(\mathbf{b}\) nor \(\mathbf{A}\) depend on \(\mathbf{x}\). The quickest way to solve it is to note that \(\mathbf{x}^\trans \mathbf{A} \mathbf{b} =  \mathbf{b}^\trans \mathbf{A}^\trans \mathbf{x}\), which is the problem solved by the Section \ref{sec:bt-A-x}. Thus,
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{b}^\trans \mathbf{A}^\trans \mathbf{x}}{\partial \mathbf{x}} = \left( \mathbf{b}^\trans \mathbf{A}^\trans \right)^{\trans} = \mathbf{A} \mathbf{b},
+\end{align}
+where the second equality comes from \eqref{eq:lt-slution}. Nevertheless, here is the step-by-step
+\begin{align}
+    \dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+    \begin{bmatrix}
+        x_{1} & x_{2} & \dots & x_{m}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn} \\
+    \end{bmatrix} \begin{bmatrix}
+        b_{1} \\ b_{2} \\ \vdots \\ b_{n}
+    \end{bmatrix} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+			\begin{bmatrix}
+				\displaystyle \sum_{i = 1}^{m} a_{i1}x_{i} & 
+				\displaystyle \sum_{i = 1}^{m} a_{i2}x_{i} & 
+				\dots & 
+				\displaystyle \sum_{i = 1}^{m} a_{in}x_{i}
+			\end{bmatrix} \begin{bmatrix}
+				b_{1} \\ b_{2} \\ \vdots \\ b_{n}
+			\end{bmatrix} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{x}} \left(
+        \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} b_{j} x_{i}
+    \right) \\
+    &= \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} b_{j} \dfrac{\partial x_{i}}{\partial \mathbf{x}} \\
+    &= \begin{bmatrix}
+        \sum_{j = 1}^{n} a_{1j} b_{j} \\
+        \sum_{j = 1}^{n} a_{2j} b_{j} \\
+        \vdots \\
+        \sum_{j = 1}^{n} a_{nj} b_{j} \\
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn} \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        b_1 \\
+        b_2 \\
+        \vdots \\
+        b_n
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{x}^\trans \mathbf{A} \mathbf{b}}{\partial \mathbf{x}} = \mathbf{Ab} \in \mathbb{R}^{m}}
+\end{align}
+
+
+\subsection{\(\dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}\)}
+Let \(\mathbf{x} \in \mathbb{R}^{n}\), \(\mathbf{y} \in \mathbb{R}^{m}\), \(\mathbf{v} \in \mathbb{R}^{p}\), and \(\mathbf{A}\in \mathbb{R}^{m\times n}\), where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{v}\), but \(\mathbf{A}\) does not. Therefore,
+\begin{align}
+    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} &= \dfrac{\partial}{\partial \mathbf{v}} \left(
+    \begin{bmatrix}
+        y_{1} & y_{2} & \dots & y_{m}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn} \\
+    \end{bmatrix} \begin{bmatrix}
+        x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+    \end{bmatrix} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{v}} \left(
+			\begin{bmatrix}
+				\displaystyle \sum_{i = 1}^{m} a_{i1}y_{i} & 
+				\displaystyle \sum_{i = 1}^{m} a_{i2}y_{i} & 
+				\dots & 
+				\displaystyle \sum_{i = 1}^{m} a_{in}y_{i}
+			\end{bmatrix} \begin{bmatrix}
+				x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+			\end{bmatrix} \right) \\
+    &= \dfrac{\partial}{\partial \mathbf{v}} \left(
+        \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} x_{j} y_{i}
+    \right) \\
+    &= \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} \dfrac{\partial y_{i}x_{j}}{\partial \mathbf{v}} %\\
+    % &= \begin{bmatrix}
+    %     \sum_{j = 1}^{n} a_{1j} b_{j} \\
+    %     \sum_{j = 1}^{n} a_{2j} b_{j} \\
+    %     \vdots \\
+    %     \sum_{j = 1}^{n} a_{nj} b_{j} \\
+    % \end{bmatrix} \\
+    % &= \begin{bmatrix}
+    %     a_{11} & a_{12} & \dots & a_{1n} \\
+    %     a_{21} & a_{22} & \dots & a_{2n} \\
+    %     \vdots & \vdots & \ddots & \vdots \\
+    %     a_{m1} & a_{m2} & \dots & a_{mn} \\
+    % \end{bmatrix}
+    % \begin{bmatrix}
+    %     b_1 \\
+    %     b_2 \\
+    %     \vdots \\
+    %     b_n
+    % \end{bmatrix}
+\end{align}
+Recalling that \((fg)' = f'g + g'f\), we have that
+\begin{align}
+    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} & = \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} y_{i} \dfrac{\partial x_{j}}{\partial \mathbf{v}} + \sum_{i = 1}^{m}\sum_{j = 1}^{n} a_{ij} x_{j} \dfrac{\partial y_{i}}{\partial \mathbf{v}} \\
+    & = \begin{bmatrix}
+        \dfrac{\partial x_1}{\partial \mathbf{v}} & \dfrac{\partial x_2}{\partial \mathbf{v}} & \cdots & \dfrac{\partial x_n}{\partial \mathbf{v}}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_{11} & a_{21} & \dots & a_{m1} \\
+        a_{12} & a_{22} & \dots & a_{m2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1n} & a_{2n} & \dots & a_{mn} \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        y_1 \\
+        y_2 \\
+        \vdots \\
+        y_m
+    \end{bmatrix} + \\
+    & \hspace{3ex} \begin{bmatrix}
+        \dfrac{\partial y_1}{\partial \mathbf{v}} & \dfrac{\partial y_2}{\partial \mathbf{v}} & \cdots & \dfrac{\partial y_m}{\partial \mathbf{v}}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1n} \\
+        a_{21} & a_{22} & \dots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \dots & a_{mn} \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        \vdots \\
+        x_n
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}}
+\end{align}
+
+Even though this problem is trickier, we can find the same solution in a clever way by preserving the Matrix Calculus notation and applying the chain rule. Note that \(\mathbf{y}^\trans \mathbf{A} \mathbf{x}\) depends on both \(\mathbf{x}\) and \(\mathbf{y}\) which, in turn, depend on \(\mathbf{v}\). Therefore (cf. \eqref{eq:chain-multi-inter}),
+\begin{align}
+    \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{v}} & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{y}^\trans \mathbf{A} \mathbf{x}}{\partial \mathbf{y}} \\
+    & = \dfrac{\partial \mathbf{x}}{\partial \mathbf{v}} \mathbf{A}^{\trans} \mathbf{y} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \mathbf{A} \mathbf{x}.
+\end{align}
+
+\subsection{\(\dfrac{\partial \tr(\mathbf{A} \mathbf{X})}{\partial \mathbf{X}} = \dfrac{\partial \tr(\mathbf{X} \mathbf{A})}{\partial \mathbf{X}} = \mathbf{A}^\trans\)}
+
+Let \(\mathbf{A} \in \mathbb{R}^{n\times m}\) and \(\mathbf{X} \in \mathbb{R}^{m\times n}\), where \(\mathbf{A}\) does not depend on the elements in \(\mathbf{X}\).
+\begin{align*}
+    \dfrac{\partial \tr(\mathbf{A} \mathbf{X})}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left( \tr(\begin{bmatrix}
+        a_{11} & a_{12} & \dots & a_{1m} \\
+        a_{21} & a_{22} & \dots & a_{2m} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \dots & a_{nm} \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_{11} & x_{12} & \dots & x_{1n} \\
+        x_{21} & x_{22} & \dots & x_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        x_{m1} & x_{m2} & \dots & x_{mn} \\
+    \end{bmatrix}) \right) \\
+    %
+    &= \dfrac{\partial}{\partial \mathbf{X}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
+    %
+    &= \begin{bmatrix}
+        \displaystyle \dfrac{\partial}{\partial x_{11}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{12}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{1n}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
+        \displaystyle \dfrac{\partial}{\partial x_{21}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{22}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{2n}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \displaystyle \dfrac{\partial}{\partial x_{m1}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{m2}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{mn}} \left( \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{ij}x_{ji} \right) \\
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+            a_{11} & a_{21} & \dots & a_{n1} \\
+            a_{12} & a_{22} & \dots & a_{n2} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{1m} & a_{2m} & \dots & a_{mn} \\
+        \end{bmatrix} = \mathbf{A}^\top
+\end{align*}
+
+Finally, recalling that \(\tr( \mathbf{AB} ) = \tr( \mathbf{BA} )\), we have that (note that \(\mathbf{AB}\) and \(\mathbf{BA}\) must be square)
+
+\begin{align}
+    \boxed{\dfrac{\partial \tr(\mathbf{A} \mathbf{X})}{\partial \mathbf{X}} = \dfrac{\partial \tr(\mathbf{X} \mathbf{A})}{\partial \mathbf{X}} = \mathbf{A}^\trans}
+\end{align}
+
+I have no idea how to make this solution simpler.
+
+\subsection{\(\dfrac{\partial \tr(\mathbf{XAX}^\top)}{\partial \mathbf{X}} = 2\mathbf{XA}\)}
+
+Let \(\mathbf{A} \in \mathbb{S}^{n}\) be a symmetric matrix (\(\mathbb{S}^{n}\) denotes the subspace of the symmetric matrices in \(\mathbb{R}^{n\times n}\)) and \(\mathbf{X} \in \mathbb{R}^{n\times n}\), where \(\mathbf{A}\) does not depend on the elements in \(\mathbf{X}\).
+\begin{align*}
+    \dfrac{\partial \tr(\mathbf{XAX}^\top)}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left(
+    \tr(
+        \begin{bmatrix}
+            x_{11} & x_{12} & \dots & x_{1n} \\
+            x_{21} & x_{22} & \dots & x_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            x_{n1} & x_{n2} & \dots & x_{nn} \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            a_{11} & a_{12} & \dots & a_{1n} \\
+            a_{21} & a_{22} & \dots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \dots & a_{nn} \\
+        \end{bmatrix}
+    \begin{bmatrix}
+        x_{11} & x_{21} & \dots & x_{n1} \\
+        x_{12} & x_{22} & \dots & x_{n2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        x_{1n} & x_{2n} & \dots & x_{nn} \\
+    \end{bmatrix}) \right) \\
+    %
+    &= \dfrac{\partial}{\partial \mathbf{X}} \left[ \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right] \\
+    %
+    &= \begin{bmatrix}
+        \displaystyle \dfrac{\partial}{\partial x_{11}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{12}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{1n}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) \\
+        \displaystyle \dfrac{\partial}{\partial x_{21}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{22}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{2n}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \displaystyle \dfrac{\partial}{\partial x_{n1}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{n2}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{nn}} \left( \sum_{i = 1}^{n} \sum_{k = 1}^{n} \sum_{j = 1}^{n} x_{ik}a_{kj}x_{ij} \right) \\
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        \sum_{j = 1}^{n} a_{1j}x_{1j} + \sum_{k = 1}^{n} x_{1k}a_{k1} & \sum_{j = 1}^{n} a_{2j}x_{1j} + \sum_{k = 1}^{n} x_{1k}a_{k2} & \dots & \sum_{j = 1}^{n} a_{nj}x_{1j} + \sum_{k = 1}^{n} x_{1k}a_{kn} \\
+        \sum_{j = 1}^{n} a_{1j}x_{2j} + \sum_{k = 1}^{n} x_{2k}a_{k1} & \sum_{j = 1}^{n} a_{2j}x_{2j} + \sum_{k = 1}^{n} x_{2k}a_{k2} & \dots & \sum_{j = 1}^{n} a_{nj}x_{2j} + \sum_{k = 1}^{n} x_{2k}a_{kn} \\
+            \vdots & \vdots & \ddots & \vdots \\
+        \sum_{j = 1}^{n} a_{1j}x_{nj} + \sum_{k = 1}^{n} x_{nk}a_{k1} & \sum_{j = 1}^{n} a_{2j}x_{nj} + \sum_{k = 1}^{n} x_{nk}a_{k2} & \dots & \sum_{j = 1}^{n} a_{nj}x_{nj} + \sum_{k = 1}^{n} x_{nk}a_{kn} \\
+        \end{bmatrix}
+\end{align*}
+
+Since \(a_{ij} = a_{ji}\), it follows that
+
+\begin{align}
+    \dfrac{\partial \tr(\mathbf{XAX}^\top)}{\partial \mathbf{X}} &= \begin{bmatrix}
+        2 \sum_{k = 1}^{n} x_{1k}a_{k1} & 2 \sum_{k = 1}^{n} x_{1k}a_{k2} & \dots & 2 \sum_{k = 1}^{n} x_{1k}a_{kn} \\
+        2 \sum_{k = 1}^{n} x_{2k}a_{k1} & 2 \sum_{k = 1}^{n} x_{2k}a_{k2} & \dots & 2 \sum_{k = 1}^{n} x_{2k}a_{kn} \\
+            \vdots & \vdots & \ddots & \vdots \\
+        2 \sum_{k = 1}^{n} x_{nk}a_{k1} & 2 \sum_{k = 1}^{n} x_{nk}a_{k2} & \dots & 2 \sum_{k = 1}^{n} x_{nk}a_{kn} \\
+        \end{bmatrix} = 2\mathbf{XA}
+\end{align}
+
+
+Therefore,
+
+\begin{align}
+    \boxed{\dfrac{\partial \tr(\mathbf{XAX}^\top)}{\partial \mathbf{X}} = 2\mathbf{XA}}
+\end{align}
+
+I have no idea how to make this solution simpler.
+
+\subsection{\(\dfrac{\partial \abs{\mathbf{X}}}{\partial \mathbf{X}} = \adj{\mathbf{X}}\)}
+Let \(\mathbf{X} \in \mathbb{R}^{n\times n}\). Through Laplace expansion (cofactor expansion), we can rewrite the determinant of \(\mathbf{X}\) as the sum of the cofactors of any row or column, multiplied by its generating element, that is
+\begin{align}
+    \abs{\mathbf{X}} = \sum_{i = 1}^{n} x_{ki} \abs{\mathbf{C}_{ki}} = \sum_{i = 1}^{n} x_{ik} \abs{\mathbf{C}_{ik}} \,\,\,\,\,\, \forall \,\, k \in \left\{ 1, 2, ..., n \right\},
+\end{align}
+where \(\mathbf{C}_{ij}\) denotes the cofactor matrix of \(\mathbf{X}\) generated from element \(x_{ij}\). It is worth noting that the cofactor of \(\mathbf{C}_{ij}\) is independent of the value of any element \((i,j)\) in \(\mathbf{X}\). Therefore, it follows that
+\begin{align}
+    \dfrac{\partial \abs{\mathbf{X}}}{\partial \mathbf{X}} &= \dfrac{\partial}{\partial \mathbf{X}} \left( \sum_{i = 1}^{n} x_{ki} \abs{\mathbf{C}_{ki}} \right) \,\,\,\,\,\, \forall \,\, k \in \left\{ 1, 2, ..., n \right\} \\
+    %
+    & = \dfrac{\partial}{\partial \mathbf{X}} \left( \begin{bmatrix}
+        \displaystyle \sum_{i = 1}^{n} x_{1i} \abs{\mathbf{C}_{1i}} & 
+        \displaystyle \sum_{i = 1}^{n} x_{1i} \abs{\mathbf{C}_{1i}} & 
+        \dots & 
+        \displaystyle \sum_{i = 1}^{n} x_{1i} \abs{\mathbf{C}_{1i}} \\
+        \displaystyle \sum_{i = 1}^{n} x_{2i} \abs{\mathbf{C}_{2i}} & 
+        \displaystyle \sum_{i = 1}^{n} x_{2i} \abs{\mathbf{C}_{2i}} & 
+        \dots & 
+        \displaystyle \sum_{i = 1}^{n} x_{2i} \abs{\mathbf{C}_{2i}} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \displaystyle \sum_{i = 1}^{n} x_{ni} \abs{\mathbf{C}_{ni}} & 
+        \displaystyle \sum_{i = 1}^{n} x_{ni} \abs{\mathbf{C}_{ni}} & 
+        \dots & 
+        \displaystyle \sum_{i = 1}^{n} x_{ni} \abs{\mathbf{C}_{ni}}
+    \end{bmatrix} \right) \\
+    %
+    & = \begin{bmatrix}
+        \displaystyle \dfrac{\partial}{\partial x_{11}} \left( \sum_{i = 1}^{n} x_{1i} \abs{\mathbf{C}_{1i}} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{12}} \left( \sum_{i = 1}^{n} x_{1i} \abs{\mathbf{C}_{1i}} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{13}} \left( \sum_{i = 1}^{n} x_{1i} \abs{\mathbf{C}_{1i}} \right) \\
+        \displaystyle \dfrac{\partial}{\partial x_{21}} \left( \sum_{i = 1}^{n} x_{2i} \abs{\mathbf{C}_{2i}} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{22}} \left( \sum_{i = 1}^{n} x_{2i} \abs{\mathbf{C}_{2i}} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{33}} \left( \sum_{i = 1}^{n} x_{2i} \abs{\mathbf{C}_{2i}} \right) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \displaystyle \dfrac{\partial}{\partial x_{n1}} \left( \sum_{i = 1}^{n} x_{ni} \abs{\mathbf{C}_{ni}} \right) & 
+        \displaystyle \dfrac{\partial}{\partial x_{n2}} \left( \sum_{i = 1}^{n} x_{ni} \abs{\mathbf{C}_{ni}} \right) & 
+        \dots & 
+        \displaystyle \dfrac{\partial}{\partial x_{n3}} \left( \sum_{i = 1}^{n} x_{ni} \abs{\mathbf{C}_{ni}} \right) \\
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        \abs{\mathbf{C}_{11}} & \abs{\mathbf{C}_{12}} & \dots & \abs{\mathbf{C}_{1n}} \\
+        \abs{\mathbf{C}_{21}} & \abs{\mathbf{C}_{22}} & \dots & \abs{\mathbf{C}_{2n}} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \abs{\mathbf{C}_{n1}} & \abs{\mathbf{C}_{n2}} & \dots & \abs{\mathbf{C}_{nn}} \\
+    \end{bmatrix}
+\end{align}
+\begin{align}
+    \boxed{\dfrac{\partial \abs{\mathbf{X}}}{\partial \mathbf{X}} = \adj{\mathbf{X}}}
+\end{align}
+
+I have no idea how to make this solution simpler.
+
+\subsection{\(\dfrac{\partial \mathbf{A}^{-1}}{\partial \alpha} = - {\left( \mathbf{A}^{-1} \right)}^{\trans} \dfrac{\partial \mathbf{A}}{\partial \alpha} {\left( \mathbf{A}^{-1} \right)}^{\trans}\)}
+Let \(\mathbf{A}\in \mathbb{R}^{m\times n}\) and \(\alpha \in \mathbb{R}\). Remember that \(\mathbf{A}^{-1}\mathbf{A} = \mathbf{I}\). Differentiating both sides of this equation with respect to \(\alpha\), we get
+\begin{align}
+    \dfrac{\partial \mathbf{A}^{-1}\mathbf{A}}{\partial \alpha} & = \dfrac{\partial \mathbf{I}}{\partial \alpha} = \mathbf{0}_{m \times n},
+\end{align}
+where \(\mathbf{0}_{m \times n}\) is a zero matrix with dimension \(m \times n\). By applying the product rule of a matrix-matrix derivate, we get (cf. \eqref{eq:matrix-matrix-product-rule})
+\begin{align}
+    \dfrac{\partial \mathbf{A}^{-1}\mathbf{A}}{\partial \alpha} =  \dfrac{\partial \mathbf{A}}{\partial \alpha} \left( \mathbf{A}^{-1} \right)^{\trans} + \mathbf{A}^{\trans} \dfrac{\partial \mathbf{A}^{-1}}{\partial \alpha} & = \mathbf{0}_{m \times n}
+\end{align}
+Using the property \(\left( \mathbf{A}^{\trans} \right)^{-1} = \left( \mathbf{A}^{-1} \right)^{\trans}\) and rearranging this expression, we get
+\begin{align}
+    \boxed{\dfrac{\partial \mathbf{A}^{-1}}{\partial \alpha} = - {\left( \mathbf{A}^{-1} \right)}^{\trans} \dfrac{\partial \mathbf{A}}{\partial \alpha} {\left( \mathbf{A}^{-1} \right)}^{\trans}}
+\end{align}
+
+\nocite{*}
+\printbibliography

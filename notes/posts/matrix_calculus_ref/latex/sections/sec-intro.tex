@@ -1,93 +1,11 @@
-\documentclass{article}
-
-% redefine \maketitle
-\makeatletter
-\def\@maketitle{%
-  \newpage
-  \null
-  \vskip 2em%
-  \begin{center}%
-  \let \footnote \thanks
-    {\LARGE \@title \par}%
-    \vskip 1.5em%
-    {\large
-      \lineskip .5em%
-      \begin{tabular}[t]{c}%
-        \@author\\
-      \end{tabular}\par}%
-    \vskip 1em%
-    {\large {\tt Version:}\@date}%
-  \end{center}%
-  \par
-  \vskip 1.5em}
-\makeatother
-
-% Language setting
-% Replace `english' with e.g. `spanish' to change the document language
-\usepackage[english]{babel}
-\usepackage{float}
-\usepackage{multirow}
-
-% math
-\usepackage{amsfonts}
-\newcommand{\trans}{\top}
-\newcommand{\hermit}{\mathsf{H}}
-% \newcommand{\tr}[1]{\ensuremath{\tr(#1)}} % trace
-\newcommand{\adj}[1]{\ensuremath{\textnormal{adj}\left(#1\right)}} % adjugate
-\newcommand{\obs}[1]{\textcolor{red}{(#1)}}
-\newcommand*\diff{\mathop{}\!\mathrm{d}}
-\usepackage{physics}
-
-% |a| -> absolute value of a, which is a scalar
-% \newcommand\abs[1]{\left\lvert#1\right\rvert}
-
-% Set page size and margins
-% Replace `letterpaper' with`a4paper' for UK/EU standard size
-\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
-
-% Useful packages
-\usepackage{amsmath,amssymb}
-\usepackage{graphicx}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-
-% title packages
-\usepackage{authblk}
-
-% bmatrix with additional gaps
-\usepackage{tabstackengine}
-\stackMath
-\setstackgap{L}{30pt} % vertical gap
-\setstacktabbedgap{10pt} % horizontal gap
-\def\lrgap{\kern6pt}
-\def\xbracketVectorstack#1{\left[\lrgap\Vectorstack{#1}\lrgap\right]} % use it for vectors
-\def\xbracketMatrixstack#1{\left[\lrgap\tabbedCenterstack{#1}\lrgap\right]} % use it for matrices
-
-% biblatex
-\usepackage[backend=bibtex, sorting=none, style=numeric-comp, defernumbers=true]{biblatex} % using biblatex
-\addbibresource{refs.bib} % add reference file
-% for each cited reference create a category named "cited"
-
-% strike out texts
-\usepackage{soul}
-
-% begin
-\title{\textbf{The Guide for Matrix Calculus}  \vspace{-.3cm}}
-\author{Rubem Vasconcelos Pacelli\\
-  {\tt rubem.engenharia@gmail.com}}
-\affil{Department of Teleinformatics Engineering, Federal University of Ceará.\\Fortaleza, Ceará, Brazil. \vspace{-.5cm}}
-
-\begin{document}
-\maketitle
-\tableofcontents
-\newpage
-\section{Introduction}
+\chapter{Introduction}
 Since my Master's degree, I've been struggling with matrix differentiation as I could not find good references that cover it nicely. The bibliographies I found at that time were books from Economics \cite{dhrymes1978mathematics}, but they use an \st{weird} unfamiliar notation.
 
 After delving a lot, I finally found a good reference from Professor Randal's class note \cite{barnes2006matrix}. However, to my surprise, when I tried to apply those matrix differentiation propositions, I got ``wrong'' answers! The truth is that \emph{Matrix Calculus notation is severely fragmented and there is no consensus among the researchers over which notation to follow}. Fortunately, there are only two major ways to represent a derivative of a vector \cite{Singh}. If you do not select the author's representation, you will end up with the transposed result. The first representation is called Jacobian formulation or numerator layout, while the second one is called Hessian formulation or denominator layout. Nevertheless, even for the same layout, some conventions need to be stated.
 
 Due to the lack of references and the need to have one, I decided to make this guide. The goal here is twofold: introduce the theoretical aspects of Matrix Calculus (first part) and solve partial derivatives for the most common Matrix Calculus expressions you may come across (second part). The second part is nothing more than a manual solution for some expressions, which might be useful to the reader as a quick reminder of how to solve them. The step-by-step is given. Most problems will be defined in real space, but some will be extended to complex space. Furthermore, \textbf{I will adopt only the demodulator layout} since it matches the notation commonly used by authors in the field of Signal Processing, Machine Learning, and Optimization Theory. On the other hand, the first part might be valuable for those who are trying to understand theoretical concepts, conventions, notations, identities, and applications\footnote{Especially to Optimization Theory.} of Matrix Calculus.
 
-\subsection{Curated reference list}
+\section{Curated reference list}
 The following list shows some references you can rely on besides this guide when it comes to Matrix Calculus (in decreasing order of importance):
 \begin{itemize}
     \item Searle, Shayle R., and Andre I. Khuri. Matrix algebra useful for statistics \cite{searle2017matrix}: A classical book with the first edition in 1987. It treats Matrix Calculus (in denominator layout) in chapter 9 of the second edition.
@@ -102,14 +20,3 @@ The following list shows some references you can rely on besides this guide when
 \end{itemize}
 
 Differentiation solutions that were collected from other sources will be referenced, while solutions that I derived by myself will not have any reference. Obviously, this guide may have errors (I hope not). If you find it, feel free to reach out through email or simply make a pull request on my \href{https://github.com/tapyu/tapyu.github.io/tree/master/notes/posts/matrix_diff_ref/latex}{Github}.
-
-\part{Theory}
-
-\input{sections/sec-notation.tex}
-\input{sections/sec-identities.tex}
-
-\part{Manual Solution}
-
-\input{sections/sec-diff-sol.tex}
-
-\end{document}

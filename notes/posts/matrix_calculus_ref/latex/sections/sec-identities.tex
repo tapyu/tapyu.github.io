@@ -1,0 +1,92 @@
+\section{Identities}
+\label{sec:identities}
+
+We need to be cautious when applying the matrix differentiation identities since the element orders matter. For instance, for scalar elements, the product rule may be written as either \((fg)' = f'g + g'f\) or \((fg)' = g f' + f g'\). In Matrix Calculus, we do not have such a privilege.
+
+\subsection{Chain rule}
+\subsubsection{Univariate functions}
+For scalar elements, the chain rule is given by
+\begin{align}
+    \dfrac{\partial w}{\partial v} = \dfrac{\partial w}{\partial x} \dfrac{\partial x}{\partial y} \dfrac{\partial y}{\partial v}.
+\end{align}
+Similarly, in matrix notation, we have
+\begin{align}
+    \label{eq:chain-1inter}
+    \dfrac{\partial \mathbf{w}}{\partial \mathbf{v}} = \dfrac{\partial \mathbf{y}}{\partial \mathbf{v}} \dfrac{\partial \mathbf{x}}{\partial \mathbf{y}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}},
+\end{align}
+where \(\mathbf{x} \in \mathbb{R}^{n}, \mathbf{y} \in \mathbb{R}^{m}, \mathbf{v} \in \mathbb{R}^{p}\), and \(\mathbf{w} \in \mathbb{R}^q\). In this expression, \(\mathbf{w}\) depends on \(\mathbf{x}\), \(\mathbf{x}\) depends on \(\mathbf{y}\), and \(\mathbf{y}\) depends on \(\mathbf{z}\). The number of elements in the chain rule can be increased indiscriminately. The main point here is that \emph{the chain rule in Matrix Calculus notation must be placed backwards when compared with the standard chain rule of scalar elements}.
+
+\subsubsection{Multivariate functions}
+
+In the previous section, we had a case where \(\mathbf{w}\) depends on \(\mathbf{x}\), which depends on \(\mathbf{y}\), which depends on \(\mathbf{v}\). If \(\mathbf{w} = f(\mathbf{x}), \mathbf{x} = g(\mathbf{y})\), and \(\mathbf{y} = h(\mathbf{v})\), then \(f, g\), and \(h\) are functions of one variable, also called univariate functions. However, we might find a situation where \(\mathbf{w} = f(\mathbf{x}, \mathbf{y})\) is a function of two (or more) variables.
+
+For scalar elements, we can find partial derivatives of multivariate functions by considering that \(w = f(x, y)\) is differentiable on \(x\) and \(y\). The chain rule becomes
+\begin{align}
+    \dfrac{\partial w}{\partial z} = \dfrac{\partial w}{\partial x} \dfrac{\partial x}{\partial z} + \dfrac{\partial w}{\partial y} \dfrac{\partial y}{\partial z}.
+\end{align}
+
+Similarly, for Matrix Calculus notation, we have
+\begin{align}
+    \label{eq:chain-multi-inter}
+    \dfrac{\partial \mathbf{w}}{\partial \mathbf{z}} = \dfrac{\partial \mathbf{x}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}} + \dfrac{\partial \mathbf{y}}{\partial \mathbf{z}} \dfrac{\partial \mathbf{w}}{\partial \mathbf{y}}
+\end{align}
+
+Note the backward placement of each summation term. This expression can be used for an unrestricted number of variables.
+
+\subsection{Sum (or minus) rule}
+\subsubsection{Vector-vector derivative}
+Let \(\mathbf{x}, \mathbf{y} \in \mathbb{R}^{m}\) and \(a, b \in \mathbb{R}\), where \(\mathbf{x}\) and \(\mathbf{y}\) depend on \(\mathbf{w} \in \mathbb{R}^{n}\), but \(a\) and \(b\) do not. Therefore,
+\begin{align}
+    \dfrac{\partial (a\mathbf{x} \pm b\mathbf{y})}{\partial\mathbf{w}} = a\dfrac{\partial \mathbf{x}}{\partial\mathbf{w}} \pm b\dfrac{\partial \mathbf{y}}{\partial\mathbf{w}}
+\end{align}
+\subsubsection{Matrix-scalar derivative}
+Another is when you have
+\begin{align}
+    \dfrac{\partial \left( a\mathbf{X} \pm b\mathbf{Y} \right)}{\partial \alpha},
+\end{align}
+where \(\mathbf{X}, \mathbf{Y} \in \mathbb{R}^{m \times n}\) depend on \(\alpha \in \mathbb{R}\). The solution is
+\begin{align}
+    \dfrac{\partial (a\mathbf{X} \pm b\mathbf{Y})}{\partial\mathbf{\alpha}} = a\dfrac{\partial \mathbf{X}}{\partial \alpha} \pm b \dfrac{\partial \mathbf{Y}}{\partial \alpha}.
+\end{align}
+\subsubsection{Scalar-matrix derivative}
+The scalar-matrix derivative has a similar result, i.e.,
+\begin{align}
+    \dfrac{\partial \left( ax \pm by \right)}{\partial \mathbf{W}} = a\dfrac{\partial x}{\partial \mathbf{W}} \pm b \dfrac{\partial y}{\partial \mathbf{W}},
+\end{align}
+where \(x, y \in \mathbb{R}\) depend on \(\mathbf{W} \in \mathbb{R}^{m\times n}\), but \(a,b \in \mathbb{R}\) do not.
+
+\subsection{Product rule}
+\subsubsection{Vector-vector derivative}
+Let \(w \in \mathbb{R}\) and \(\mathbf{v} \in \mathbb{R}^{m}\), where both depend on \(\mathbf{x} \in \mathbb{R}^{n}\). Then,
+\begin{align}
+    \dfrac{\partial w \mathbf{v}}{\partial \mathbf{x}} = w \dfrac{\partial \mathbf{v}}{\partial \mathbf{x}} + \dfrac{\partial w}{\partial \mathbf{x}} \mathbf{v}^\trans.
+\end{align}
+
+Note that is not possible to apply the product rule when you have \(\mathbf{Wv}\), where \(\mathbf{W} \in \mathbb{R}^{n \times m}\) also depends on \(\mathbf{x}\). If you tried, you would get \(\partial\mathbf{W}/\partial\mathbf{x}\), which there is no consensus about this layout (vide Section \ref{sub-sec:notations-not-agreed}).
+\subsubsection{Scalar-vector derivative}
+Another possibility of applying the product rule is when you have \(\mathbf{w}^{\trans} \mathbf{v}\), where \(\mathbf{w} \in \mathbb{R}^{m}\) also depends on \(\mathbf{x} \in \mathbb{R}^{n}\). In this case, the dot product is given by
+\begin{align}
+    \label{eq:scalar-vector-product-rule}
+    \dfrac{\partial \mathbf{w}^{\trans} \mathbf{v}}{\partial \mathbf{x}} = \dfrac{\partial \mathbf{v}}{\partial \mathbf{x}} \mathbf{w} + \dfrac{\partial \mathbf{w}}{\partial \mathbf{x}} \mathbf{v}.
+\end{align}
+
+\subsubsection{Scalar-matrix derivative}
+It is still possible to apply the product rule to
+\begin{align}
+    \dfrac{\partial wv}{\partial \mathbf{X}},
+\end{align}
+where \(w,v \in \mathbb{R}\) depend on \(\mathbf{X} \in \mathbb{R}^{m \times n}\). In this case, we have
+\begin{align}
+    \dfrac{\partial wv}{\partial \mathbf{X}} = w \dfrac{\partial v}{\partial \mathbf{X}} + v \dfrac{\partial w}{\partial \mathbf{X}}.
+\end{align}
+
+\subsubsection{Matrix-scalar derivative}
+The last case is when you have
+\begin{align}
+    \dfrac{\partial \mathbf{W}\mathbf{V}}{\partial \alpha},
+\end{align}
+where both \(\mathbf{W} \in \mathbb{R}^{m \times p}\) and \(\mathbf{V} \in \mathbb{R}^{p\times n}\) depend on \(\alpha \in \mathbb{R}\). In this case, we have
+\begin{align}
+    \label{eq:matrix-matrix-product-rule}
+    \dfrac{\partial \mathbf{W}\mathbf{V}}{\partial \alpha} = \dfrac{\partial \mathbf{V}}{\partial \alpha}\mathbf{W}^{\trans} + \mathbf{V}^{T} \dfrac{\mathbf{W}}{\partial \alpha}
+\end{align}
