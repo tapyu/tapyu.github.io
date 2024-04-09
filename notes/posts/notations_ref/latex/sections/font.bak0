@@ -1,0 +1,8 @@
+\section{Font notation}
+\begin{xltabular}{\textwidth}{XX}
+	$a,b,c, \dots, A, B, C, \dots$                                                                            & Scalars or tuples (the elements should be denoted in parentheses \cite{theodoridisMachineLearningBayesian2020}, although some authors also denote them in angle brackets \cite{brewkaArtificialIntelligenceModern1996})  \\ \hline
+	$\mathbf{a}, \mathbf{b}, \mathbf{c}, \dots$                                                               & Vectors  \\ \hline
+	$\mathbf{A}, \mathbf{B}, \mathbf{C}, \dots$                                                               & Matrices \\ \hline
+	$\pmb{\mathcal{A}}, \pmb{\mathcal{B}}, \pmb{\mathcal{C}}, \dots$                                          & Tensors  \\ \hline
+	$A, B, C, \dots, \mathcal{A}, \mathcal{B}, \mathcal{C}, \dots, \mathbb{A}, \mathbb{B}, \mathbb{C}, \dots$ & Sets     \\
+\end{xltabular}

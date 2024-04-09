@@ -15,11 +15,11 @@
 %%%%%%%%% references %%%%%%%%%
 \makeatletter
 \@ifclassloaded{beamer}{}{
-	\usepackage[colorlinks=true]{hyperref} % make references blue and clickable
-	\hypersetup{ % you can use allcolors=blue in hyperref options instead this setup. Color it as black to disable it
-		linkcolor=blue,          % For \gls{} entries
-		citecolor=blue,          % For \cite{} entries
-	}
+  \usepackage[colorlinks=true]{hyperref} % make references blue and clickable
+  \hypersetup{ % you can use allcolors=blue in hyperref options instead this setup. Color it as black to disable it
+      linkcolor=blue,          % For \gls{} entries
+      citecolor=blue,          % For \cite{} entries
+  }
 }
 \makeatother
 \usepackage{glossaries} % \newglossaryentry{} entries. If you want to make the entries nonclickable, load this package before hyperref
@@ -67,9 +67,9 @@
 \let\emptyset\varnothing
 % circular convolution a lá Oppenheim (if possible, prefer \circledast)
 \newcommand*\circconv[1]{%
-	\begin{tikzpicture}
-		\node[draw,circle,inner sep=1pt] {#1};
-	\end{tikzpicture}}
+  \begin{tikzpicture}
+    \node[draw,circle,inner sep=1pt] {#1};
+  \end{tikzpicture}}
 \newcommand{\intersection}{\bigcap\limits} % intersection operator
 
 %%%%%%%%% delimiters %%%%%%%%%
@@ -99,76 +99,76 @@
 
 %%%%%%%%% complex functions %%%%%%%%%
 \NewDocumentCommand{\argmin}{ e{_} m }{% \argmin_{x ∈ A}{f(x)} or \argmin{f(x)}
-	\ensuremath{%
-		\IfValueTF{#1}{%
-			\underset{#1}{\operatorname{arg\,min}\;#2}
-		}{% else
-			\operatorname{arg\,min}\;#2
-		}
-	}
+    \ensuremath{%
+        \IfValueTF{#1}{%
+            \underset{#1}{\operatorname{arg\,min}\;#2}
+        }{% else
+            \operatorname{arg\,min}\;#2
+        }
+    }
 }
 \NewDocumentCommand{\argmax}{ e{_} m }{% \argmax_{x ∈ A}{f(x)} or \argmax{f(x)}
-	\ensuremath{%
-		\IfValueTF{#1}{%
-			\underset{#1}{\operatorname{arg\,max}\;#2}
-		}{% else
-			\operatorname{arg\,max}\;#2
-		}
-	}
+    \ensuremath{%
+        \IfValueTF{#1}{%
+            \underset{#1}{\operatorname{arg\,max}\;#2}
+        }{% else
+            \operatorname{arg\,max}\;#2
+        }
+    }
 }
 % limit in the mean (see Van Tress, chapter 6)
 \NewDocumentCommand{\limean}{ E{_}{{}} m }{ % \limean_{x ∈ A}{f(x)} or \limean{f(x)}
-	\ensuremath{
-		\IfValueTF{#1}{%
-			\underset{#1}{\operatorname{l.i.m.}\;#2}
-		}{% else
-			\operatorname{l.i.m.}\;#2
-		}
-	}
+    \ensuremath{
+        \IfValueTF{#1}{%
+            \underset{#1}{\operatorname{l.i.m.}\;#2}
+        }{% else
+            \operatorname{l.i.m.}\;#2
+        }
+    }
 }
 % \E{A}, \E_{u}{A}
 % if you want only the left or right part of \E (useful for breaking line) you can use \E_{u}[left-only]{A} or \E_{u}[right-only]{A}, respectively
 \NewDocumentCommand{\E}{ E{_}{{}} o m }{%
-\ensuremath{%
-\IfValueTF{#2}{%
-\IfStrEq{#2}{left-only}{%
-\operatorname{E}_{#1}\left[#3\right.%
-}{% right-only
-\left.#3\right]%
-}%
-}{%
-\operatorname{E}_{#1}\left[#3\right]%
-}%
-}
+    \ensuremath{%
+        \IfValueTF{#2}{%
+            \IfStrEq{#2}{left-only}{%
+              \operatorname{E}_{#1}\left[#3\right.%
+            }{% right-only
+              \left.#3\right]%
+            }%
+          }{%
+            \operatorname{E}_{#1}\left[#3\right]%
+          }%
+    }
 }
 \NewDocumentCommand{\cov}{O{} m}{\ensuremath{\operatorname{cov}_{#1}\left[#2\right]}} % covariance, e.g., \cov[u]{x} or \cov{x}
 \let\var\undefined\NewDocumentCommand{\var}{O{} m}{\ensuremath{\operatorname{var}_{#1}\left[#2\right]}} % variance, e.g., \var[u]{x} or \var{x}
 \let\vec\undefined\NewDocumentCommand{\vec}{O{} m}{\ensuremath{\operatorname{vec}_{#1}\left[#2\right]}} % vectorize operator, e.g., \vec[u]{\mathbf{A}}, [u] is optional
 % normalize all trigonometry functions (new and predefined) to put a parenthesis around the input argument
 \RenewDocumentCommand{\sin}{s m}{% \sin{x} -> sin(x) \sin*{x} -> sin x
-	\ensuremath{
-		\IfBooleanTF{#1}{\operatorname{sin} #2}{\operatorname{sin}\left(#2\right)}%
-	}
+    \ensuremath{
+    \IfBooleanTF{#1}{\operatorname{sin} #2}{\operatorname{sin}\left(#2\right)}%
+    }
 }
 \RenewDocumentCommand{\cos}{s m}{% \cos{x} -> cos(x) \cos*{x} -> cos x
-	\ensuremath{
-		\IfBooleanTF{#1}{\operatorname{cos} #2}{\operatorname{cos}\left(#2\right)}%
-	}
+    \ensuremath{
+    \IfBooleanTF{#1}{\operatorname{cos} #2}{\operatorname{cos}\left(#2\right)}%
+    }
 }
 \RenewDocumentCommand{\tan}{s m}{% \tan{x} -> tan(x) \tan*{x} -> tan x
-	\ensuremath{
-		\IfBooleanTF{#1}{\operatorname{tan} #2}{\operatorname{tan}\left(#2\right)}%
-	}
+    \ensuremath{
+    \IfBooleanTF{#1}{\operatorname{tan} #2}{\operatorname{tan}\left(#2\right)}%
+    }
 }
 \NewDocumentCommand{\sinc}{s m}{% \sin{x} -> sinc(x) \sinc*{x} -> sinc x
-	\ensuremath{
-		\IfBooleanTF{#1}{\operatorname{sinc} #2}{\operatorname{sinc}\left(#2\right)}%
-	}
+    \ensuremath{
+    \IfBooleanTF{#1}{\operatorname{sinc} #2}{\operatorname{sinc}\left(#2\right)}%
+    }
 }
 \NewDocumentCommand{\sgn}{s m}{% \sgn{x} -> sgn(x) \sng*{x} -> sgn x
-	\ensuremath{
-		\IfBooleanTF{#1}{\operatorname{sng} #2}{\operatorname{sgn}\left(#2\right)}%
-	}
+    \ensuremath{
+    \IfBooleanTF{#1}{\operatorname{sng} #2}{\operatorname{sgn}\left(#2\right)}%
+    }
 }
 
 %%%%%%%%% minor adjusts in some mathematical symbols %%%%%%%%%
