@@ -176,15 +176,3 @@ a {
   object-fit: contain;
   transform: translateY(-50%);
 }
-
-/* ---------- Portfolio placeholder ---------- */
-
-.placeholder {
-  text-align: center;
-  font-size: 1.1rem;
-}
-
-.placeholder h1 {
-  font-size: 2rem;
-  margin: 0 0 8px;
-}
