@@ -56,21 +56,6 @@
       <clipPath id="scope-screen-clip">
         <rect x="448" y="302" width="192" height="150"/>
       </clipPath>
-      <!-- waterfall spectrogram: vertical streaks at two signal frequencies -->
-      <linearGradient id="waterfall" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#0b1a4a"/>
-        <stop offset="0.27" stop-color="#0d2260"/>
-        <stop offset="0.31" stop-color="#2a7fd9"/>
-        <stop offset="0.33" stop-color="#f5c542"/>
-        <stop offset="0.35" stop-color="#2a7fd9"/>
-        <stop offset="0.39" stop-color="#0d2260"/>
-        <stop offset="0.67" stop-color="#0b1a4a"/>
-        <stop offset="0.7" stop-color="#2a9fd9"/>
-        <stop offset="0.71" stop-color="#9be7c4"/>
-        <stop offset="0.72" stop-color="#2a9fd9"/>
-        <stop offset="0.75" stop-color="#0b1a4a"/>
-        <stop offset="1" stop-color="#0d2260"/>
-      </linearGradient>
     </defs>
   </svg>
 
@@ -284,7 +269,7 @@
           </button>
         </div>
 
-        <!-- Layer 3: desk with ESD mat, HackRF, dev board, GNSS antenna, Yagi antenna, waterfall tablet -->
+        <!-- Layer 3: desk with ESD mat, HackRF, dev board, GNSS antenna, Yagi antenna, tablet with C code -->
         <svg class="scene-layer scene-layer--desk" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g class="scene-layer__content">
             <rect x="0" y="545" width="1200" height="1200" fill="url(#desk-wood)"/>
@@ -355,7 +340,7 @@
                 <rect x="850" y="600" width="100" height="100" rx="8" fill="#e9e4d8"/>
                 <rect x="868" y="618" width="64" height="64" rx="2" fill="#d4a64a"/>
                 <circle cx="912" cy="640" r="4" fill="#c9ced6"/>
-                <text x="852" y="716" font-family="JetBrains Mono, monospace" font-size="10" fill="#b8d8d4">GNSS L1/L5</text>
+                <text x="900" y="695" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#4a5566">GNSS L1/L5</text>
               </g>
 
               <!-- Yagi-Uda antenna lying on the mat -->
@@ -368,19 +353,51 @@
                 <path d="M1050 712 C1050 760 1010 770 980 760" fill="none" stroke="#1b1d21" stroke-width="4"/>
               </g>
 
-              <!-- tablet showing a live waterfall spectrogram (revealed while scrolling) -->
+              <!-- tablet showing a C FIR filter in a code editor (revealed while scrolling) -->
               <g>
                 <rect x="110" y="770" width="300" height="190" rx="14" fill="#1a1c20"/>
-                <rect x="122" y="782" width="276" height="166" rx="4" fill="url(#waterfall)"/>
-                <path d="M122 806 L150 804 L170 806 L190 800 L205 790 L212 784 L219 790 L234 800 L260 806 L290 805 L310 798 L318 794 L326 798 L346 805 L398 806" fill="none" stroke="#f4f1ea" stroke-width="1.5"/>
+                <rect x="122" y="782" width="276" height="166" rx="4" fill="#1e2228"/>
+                <rect x="122" y="782" width="276" height="14" rx="4" fill="#16191e"/>
+                <rect x="126" y="784" width="40" height="12" fill="#1e2228"/>
+                <text x="132" y="793" font-family="JetBrains Mono, monospace" font-size="8" fill="#d7dae0">fir.c</text>
+                <g font-family="JetBrains Mono, monospace" font-size="9.5" fill="#abb2bf">
+                  <g fill="#4b5263" text-anchor="end">
+                    <text x="138" y="810">1</text><text x="138" y="823">2</text><text x="138" y="836">3</text><text x="138" y="849">4</text>
+                    <text x="138" y="862">5</text><text x="138" y="875">6</text><text x="138" y="888">7</text>
+                  </g>
+                  <text x="146" y="810" fill="#7f848e" font-style="italic">// y[n] = Σ h[k] x[n − k]</text>
+                  <text x="146" y="823"><tspan fill="#e5c07b">float</tspan> <tspan fill="#61afef">fir</tspan>(<tspan fill="#e5c07b">float</tspan> *h, <tspan fill="#e5c07b">float</tspan> *x, <tspan fill="#e5c07b">int</tspan> taps) {</text>
+                  <text x="166" y="836"><tspan fill="#e5c07b">float</tspan> y = <tspan fill="#d19a66">0.0f</tspan>;</text>
+                  <text x="166" y="849"><tspan fill="#c678dd">for</tspan> (<tspan fill="#e5c07b">int</tspan> k = <tspan fill="#d19a66">0</tspan>; k &lt; taps; k++)</text>
+                  <text x="186" y="862">y += h[k] * x[taps - <tspan fill="#d19a66">1</tspan> - k];</text>
+                  <text x="166" y="875"><tspan fill="#c678dd">return</tspan> y;</text>
+                  <text x="146" y="888">}</text>
+                  <rect class="led-blink" x="153" y="880" width="5" height="10" fill="#528bff"/>
+                </g>
               </g>
 
               <!-- handwritten notes (revealed while scrolling) -->
-              <g transform="rotate(4 610 850)">
+              <!-- signal processing (DTFT, convolution, Wiener-Hopf solution) and a sketched neural network -->
+              <g transform="rotate(4 610 850)" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#2c3e8f">
                 <rect x="520" y="780" width="200" height="140" rx="2" fill="#f4efe2"/>
-                <text x="536" y="816" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#2c3e8f">x̂ₖ = x̂ₖ⁻ + Kₖ(yₖ − Hx̂ₖ⁻)</text>
-                <text x="536" y="846" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#2c3e8f">Pₖ = (I − KₖH)Pₖ⁻</text>
-                <path d="M536 880 q 15 -24 30 0 t 30 0 t 30 0 t 30 0" fill="none" stroke="#d9473d" stroke-width="2"/>
+                <text x="536" y="806">X(ω) = Σₙ x[n] e<tspan dy="-7" font-size="11">−jωn</tspan></text>
+                <text x="536" y="832">y[n] = Σₖ h[k] x[n − k]</text>
+                <text x="536" y="858">w<tspan dy="5" font-size="11">o</tspan><tspan dy="-5"> = R</tspan><tspan dy="-7" font-size="11">−1</tspan><tspan dy="7">p</tspan></text>
+                <!-- hand-drawn 3-4-2 neural network -->
+                <g fill="none" stroke="#d9473d" stroke-linecap="round">
+                  <path d="M560 878L610 872M560 878L610 884M560 878L610 896M560 878L610 908M560 890L610 872M560 890L610 884M560 890L610 896M560 890L610 908M560 902L610 872M560 902L610 884M560 902L610 896M560 902L610 908M610 872L660 884M610 872L660 896M610 884L660 884M610 884L660 896M610 896L660 884M610 896L660 896M610 908L660 884M610 908L660 896" stroke-width="0.8" opacity="0.7"/>
+                  <path d="M546 878H556M546 890H556M546 902H556M664 884H676M664 896H676" stroke-width="1.2"/>
+                  <g fill="#f4efe2" stroke-width="1.5"><circle cx="560" cy="878" r="3.5"/><circle cx="560" cy="890" r="3.5"/><circle cx="560" cy="902" r="3.5"/><circle cx="610" cy="872" r="3.5"/><circle cx="610" cy="884" r="3.5"/><circle cx="610" cy="896" r="3.5"/><circle cx="610" cy="908" r="3.5"/><circle cx="660" cy="884" r="3.5"/><circle cx="660" cy="896" r="3.5"/></g>
+                </g>
+              </g>
+              <!-- linear algebra and neural networks: SVD, eigenvalues, neuron, gradient descent -->
+              <g transform="rotate(-3 870 850)" font-family="Georgia, serif" font-style="italic" font-size="15" fill="#2c3e8f">
+                <rect x="770" y="776" width="200" height="140" rx="2" fill="#f4efe2"/>
+                <text x="786" y="800">A = UΣV<tspan dy="-7" font-size="11">T</tspan></text>
+                <text x="786" y="825">Av = λv</text>
+                <path d="M786 835H954" stroke="#9aa1a8" stroke-width="1" stroke-dasharray="4 3"/>
+                <text x="786" y="853">y = σ(Wx + b)</text>
+                <text x="786" y="878">θ ← θ − η∇<tspan font-size="11" dy="4">θ</tspan><tspan dy="-4">L</tspan></text>
               </g>
             </g>
           </g>
@@ -395,16 +412,15 @@
       <svg class="curtain__board" viewBox="0 770 1200 612" preserveAspectRatio="xMidYMin slice">
         <rect x="-40" y="770" width="1280" height="1500" rx="28" fill="#0f3323" stroke="#1f5c3e" stroke-width="6"/>
 
-        <!-- Traces from the chip's pins to every photo module -->
+        <!-- Traces from the chip's pins to every photo module, routed with 45° bends -->
         <g fill="none" stroke="#2e7d52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M502 1028H360V910H340M502 1128H360V1237H340"/>
-          <path d="M698 1028H840V910H860M698 1128H840V1237H860"/>
-          <path d="M530 1000V991H450V981M590 1000V981M670 1000V991H750V981"/>
-          <path d="M530 1146V1156H470V1166M670 1146V1156H730V1166"/>
+          <path d="M502 1028H380L360 1008V925L345 910H340M502 1128H380L360 1148V1222L345 1237H340"/>
+          <path d="M698 1028H820L840 1008V925L855 910H860M698 1128H820L840 1148V1222L855 1237H860"/>
+          <path d="M530 1000L515 985V981M590 1000V981M670 1000L685 985V981"/>
+          <path d="M530 1146V1166M670 1146V1166"/>
         </g>
         <g fill="#c9a24a">
-          <circle cx="360" cy="1028" r="6"/><circle cx="360" cy="1128" r="6"/><circle cx="840" cy="1028" r="6"/><circle cx="840" cy="1128" r="6"/>
-          <circle cx="450" cy="991" r="6"/><circle cx="750" cy="991" r="6"/><circle cx="470" cy="1156" r="6"/><circle cx="730" cy="1156" r="6"/>
+          <circle cx="360" cy="966" r="6"/><circle cx="360" cy="1185" r="6"/><circle cx="840" cy="966" r="6"/><circle cx="840" cy="1185" r="6"/>
         </g>
 
         <!-- Main chip -->
