@@ -76,7 +76,7 @@
     .to(".scene-layer--wall .scene-layer__content", { y: -150 }, 0)
     .to(".scene-layer--instruments .scene-layer__content", { y: -260 }, 0)
     .to(".hero__heading", { y: () => -window.innerHeight * 0.1 }, 0)
-    .to([".hero__kicker", ".hero__cue"], { autoAlpha: 0, duration: 0.1 }, 0)
+    .to(".hero__cue", { autoAlpha: 0, duration: 0.1 }, 0)
     .to(".scene-layer--desk .scene-layer__content", { y: -450 }, 0)
     .to(".scene-layer--foreground .scene-layer__content", { y: -1000 }, 0);
 
