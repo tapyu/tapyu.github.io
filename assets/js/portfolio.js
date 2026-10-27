@@ -45,6 +45,9 @@
   );
   sections.forEach((section) => section_observer.observe(section));
 
+  // The PCB curtain gets a new revision every year: "REV YYYY".
+  document.querySelector(".pcb-revision-year").textContent = new Date().getFullYear();
+
   document.querySelector(".hero__cue").addEventListener("click", () => {
     document.querySelector(".project").scrollIntoView({ behavior: scroll_behavior });
   });
