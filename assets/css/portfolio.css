@@ -458,11 +458,34 @@
   }
 }
 
+.radio-wave {
+  opacity: 0;
+  animation: radio-wave-pulse 1.8s ease-out infinite;
+}
+
+.radio-wave--middle {
+  animation-delay: 0.3s;
+}
+
+.radio-wave--outer {
+  animation-delay: 0.6s;
+}
+
+@keyframes radio-wave-pulse {
+  30% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero__cue svg,
   .scope-wave,
   .led-blink,
+  .radio-wave,
   .project__placeholder::after {
     animation: none;
+  }
+
+  .radio-wave {
+    opacity: 0.6;
   }
 }

@@ -101,14 +101,20 @@
               <circle cx="336" cy="158" r="14" fill="none" stroke="#b03a31" stroke-width="2"/>
               <circle cx="336" cy="158" r="6" fill="#1a1d22"/>
             </g>
-            <!-- pinned datasheet -->
+            <!-- pinned datasheet with a 16-QAM constellation sketch -->
             <g transform="rotate(-3 905 145)">
               <rect x="850" y="70" width="112" height="150" rx="2" fill="#e6e1d6"/>
               <rect x="862" y="86" width="60" height="6" fill="#9aa1a8"/>
               <rect x="862" y="100" width="88" height="3" fill="#c3c4c0"/>
               <rect x="862" y="110" width="80" height="3" fill="#c3c4c0"/>
               <rect x="862" y="120" width="84" height="3" fill="#c3c4c0"/>
-              <path d="M862 170 q 11 -36 22 0 t 22 0 t 22 0 t 22 0" fill="none" stroke="#3d7fd9" stroke-width="2"/>
+              <path d="M906 136V200M868 168H944" stroke="#9aa1a8" stroke-width="1.5"/>
+              <g fill="#3d7fd9">
+                <circle cx="876" cy="144" r="3"/><circle cx="896" cy="144" r="3"/><circle cx="916" cy="144" r="3"/><circle cx="936" cy="144" r="3"/>
+                <circle cx="876" cy="160" r="3"/><circle cx="896" cy="160" r="3"/><circle cx="916" cy="160" r="3"/><circle cx="936" cy="160" r="3"/>
+                <circle cx="876" cy="176" r="3"/><circle cx="896" cy="176" r="3"/><circle cx="916" cy="176" r="3"/><circle cx="936" cy="176" r="3"/>
+                <circle cx="876" cy="192" r="3"/><circle cx="896" cy="192" r="3"/><circle cx="916" cy="192" r="3"/><circle cx="936" cy="192" r="3"/>
+              </g>
               <rect x="862" y="196" width="70" height="3" fill="#c3c4c0"/>
               <circle cx="906" cy="76" r="5" fill="#e0483e"/>
             </g>
@@ -146,22 +152,40 @@
             <rect x="0" y="470" width="1200" height="3" fill="#7a5639"/>
             <rect x="0" y="484" width="1200" height="8" fill="#000" opacity="0.25"/>
 
-            <!-- soldering station -->
+            <!-- spectrum analyzer with a rubber-duck antenna radiating -->
             <g>
-              <circle cx="90" cy="389" r="16" fill="#9aa4b1"/>
-              <circle cx="90" cy="389" r="6" fill="#2b2f36"/>
-              <rect x="40" y="405" width="160" height="65" rx="6" fill="#2a2f38"/>
-              <rect x="52" y="417" width="74" height="26" rx="3" fill="#120d08"/>
-              <text x="58" y="437" font-family="JetBrains Mono, monospace" font-size="17" fill="#ff9f43">350°C</text>
-              <circle cx="164" cy="437" r="14" fill="#1b2029" stroke="#4a5566" stroke-width="2"/>
-              <line x1="164" y1="437" x2="164" y2="425" stroke="#c9ced6" stroke-width="2"/>
+              <g class="radio-waves" fill="none" stroke="#4fc3f7" stroke-width="3" stroke-linecap="round">
+                <path class="radio-wave" d="M183 262 A14 14 0 0 0 183 286 M207 262 A14 14 0 0 1 207 286"/>
+                <path class="radio-wave radio-wave--middle" d="M174 254 A26 26 0 0 0 174 294 M216 254 A26 26 0 0 1 216 294"/>
+                <path class="radio-wave radio-wave--outer" d="M165 246 A38 38 0 0 0 165 302 M225 246 A38 38 0 0 1 225 302"/>
+              </g>
+              <rect x="190" y="264" width="10" height="72" rx="5" fill="#1b1d21"/>
+              <rect x="189" y="334" width="12" height="11" fill="#d4a64a"/>
+              <rect x="30" y="345" width="185" height="125" rx="6" fill="#2a3240"/>
+              <rect x="40" y="355" width="112" height="88" rx="3" fill="#07131f"/>
+              <g stroke="#173049" stroke-width="1">
+                <path d="M62 355V443M84 355V443M106 355V443M128 355V443"/>
+                <path d="M40 377H152M40 399H152M40 421H152"/>
+              </g>
+              <path d="M40 432 L48 428 L54 433 L60 427 L66 431 L72 426 L78 429 L84 418 L88 400 L92 376 L95 368 L98 376 L102 400 L106 418 L112 429 L118 426 L124 431 L128 422 L131 414 L134 422 L138 430 L144 427 L152 431" fill="none" stroke="#4fc3f7" stroke-width="1.8" stroke-linejoin="round"/>
+              <polygon points="91,360 99,360 95,366" fill="#f5c542"/>
+              <text x="102" y="366" font-family="JetBrains Mono, monospace" font-size="9" fill="#f5c542">2.4GHz</text>
+              <text x="42" y="458" font-family="JetBrains Mono, monospace" font-size="9" fill="#8a929c">SPECTRUM ANALYZER</text>
+              <circle cx="184" cy="376" r="13" fill="#1b2029" stroke="#4a5566" stroke-width="2"/>
+              <line x1="184" y1="376" x2="192" y2="366" stroke="#c9ced6" stroke-width="2"/>
+              <rect x="164" y="400" width="14" height="9" rx="2" fill="#4a5566"/>
+              <rect x="182" y="400" width="14" height="9" rx="2" fill="#4a5566"/>
+              <rect x="164" y="414" width="14" height="9" rx="2" fill="#4fc3f7"/>
+              <rect x="182" y="414" width="14" height="9" rx="2" fill="#4a5566"/>
+              <circle cx="190" cy="450" r="7" fill="#d4a64a"/>
+              <circle cx="190" cy="450" r="3" fill="#333"/>
             </g>
 
-            <!-- function generator -->
+            <!-- RF signal generator -->
             <g>
               <rect x="225" y="375" width="185" height="95" rx="6" fill="#2f3846"/>
               <rect x="237" y="387" width="103" height="28" rx="3" fill="#081626"/>
-              <text x="243" y="407" font-family="JetBrains Mono, monospace" font-size="14" fill="#57c7ff">10.000MHz</text>
+              <text x="243" y="407" font-family="JetBrains Mono, monospace" font-size="14" fill="#57c7ff">2.412 GHz</text>
               <rect x="240" y="428" width="18" height="10" rx="2" fill="#4a5566"/>
               <rect x="264" y="428" width="18" height="10" rx="2" fill="#4a5566"/>
               <rect x="288" y="428" width="18" height="10" rx="2" fill="#f5c542"/>
@@ -245,7 +269,7 @@
           </button>
         </div>
 
-        <!-- Layer 3: desk with ESD mat, breadboard, dev board, GNSS antenna, multimeter -->
+        <!-- Layer 3: desk with ESD mat, SDR, breadboard, dev board, GNSS antenna, multimeter -->
         <svg class="scene-layer scene-layer--desk" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g class="scene-layer__content">
             <rect x="0" y="545" width="1200" height="1200" fill="url(#desk-wood)"/>
@@ -287,6 +311,7 @@
               <rect x="650" y="691" width="140" height="10" fill="url(#header-pins)"/>
               <rect x="680" y="630" width="44" height="44" rx="2" fill="#1a1c20"/>
               <text x="688" y="657" font-family="JetBrains Mono, monospace" font-size="10" fill="#8a929c">MCU</text>
+              <path d="M738 624h16v8h-16v8h16v8h-16v8h16v8h-16v8h16" fill="none" stroke="#d4a64a" stroke-width="2"/>
               <circle class="led-blink" cx="770" cy="632" r="4" fill="#39ff88"/>
               <circle cx="770" cy="660" r="4" fill="#ff9f43"/>
             </g>
@@ -312,13 +337,18 @@
               <line x1="1045" y1="700" x2="1060" y2="682" stroke="#f2c230" stroke-width="4" stroke-linecap="round"/>
             </g>
 
-            <!-- SDR dongle and handwritten notes (revealed while scrolling) -->
+            <!-- software-defined radio with telescopic antenna -->
             <g>
-              <rect x="290" y="800" width="120" height="38" rx="6" fill="#1a1c20"/>
-              <rect x="410" y="810" width="18" height="18" fill="#c9ced6"/>
-              <text x="304" y="824" font-family="JetBrains Mono, monospace" font-size="11" fill="#8a929c">SDR</text>
-              <path d="M290 819 C230 819 210 860 160 880" fill="none" stroke="#1b1d21" stroke-width="4"/>
+              <path d="M117 652 L150 582" stroke="#c9ced6" stroke-width="5" stroke-linecap="round"/>
+              <path d="M150 582 L166 548" stroke="#c9ced6" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="166" cy="548" r="4" fill="#c9ced6"/>
+              <rect x="92" y="650" width="50" height="86" rx="6" fill="#1a1c20"/>
+              <rect x="108" y="642" width="18" height="10" fill="#d4a64a"/>
+              <text x="117" y="700" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#8a929c">SDR</text>
+              <circle class="led-blink" cx="132" cy="724" r="3" fill="#4fc3f7"/>
             </g>
+
+            <!-- handwritten notes (revealed while scrolling) -->
             <g transform="rotate(4 610 850)">
               <rect x="520" y="780" width="200" height="140" rx="2" fill="#f4efe2"/>
               <text x="536" y="816" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#2c3e8f">x̂ₖ = x̂ₖ⁻ + Kₖ(yₖ − Hx̂ₖ⁻)</text>
