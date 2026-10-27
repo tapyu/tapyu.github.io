@@ -87,7 +87,7 @@
 
 .hero {
   position: relative;
-  height: 300vh;
+  height: 250vh;
 }
 
 .hero__stage {
@@ -189,21 +189,70 @@
   50% { opacity: 0.25; }
 }
 
+/* ---------- Curtain: PCB with photo modules ---------- */
+
+/* Starts one screen before the hero ends, so it slides over the pinned workbench
+   and covers it exactly when the workbench unpins. */
+.curtain {
+  position: relative;
+  z-index: 2;
+  margin-top: -100vh;
+}
+
+.curtain__board {
+  display: block;
+  width: 100%;
+  height: max(51vw, 100vh);
+}
+
+/* Legends wrap inside the strip under each photo (sizes are in SVG viewBox units). */
+.curtain-photo__legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  color: rgba(215, 227, 218, 0.85);
+}
+
+.curtain-photo--portrait .curtain-photo__legend {
+  font-size: 9px;
+  line-height: 1.2;
+}
+
 /* ---------- Projects ---------- */
 
+/* Tucked slightly under the curtain's empty bottom edge so project 1 follows the photos closely. */
 .projects {
   position: relative;
+  margin-top: -25vh;
+}
+
+/* Grid background fades in so it blends with the plain PCB above it. */
+.projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background-color: var(--color-pcb);
   background-image:
     radial-gradient(circle at 20px 20px, rgba(201, 162, 74, 0.35) 3px, transparent 4px),
     linear-gradient(rgba(46, 125, 82, 0.18) 2px, transparent 2px),
     linear-gradient(90deg, rgba(46, 125, 82, 0.18) 2px, transparent 2px);
   background-size: 160px 160px, 80px 80px, 80px 80px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30vh);
+  mask-image: linear-gradient(to bottom, transparent, #000 30vh);
 }
 
 .projects__trace {
   position: absolute;
-  top: 0;
+  top: 50vh;
   bottom: 0;
   left: var(--trace-x);
   width: 4px;

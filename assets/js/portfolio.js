@@ -45,7 +45,7 @@
   );
   sections.forEach((section) => section_observer.observe(section));
 
-  // The PCB curtain gets a new revision every year: "REV YYYY".
+  // The PCB curtain covers everything up to the current year: "REV ≤ YYYY".
   document.querySelector(".pcb-revision-year").textContent = new Date().getFullYear();
 
   document.querySelector(".hero__cue").addEventListener("click", () => {
@@ -61,7 +61,7 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Parallax: each layer rises at its own speed (y in SVG viewBox units); the PCB ends up covering the scene.
+  // Parallax: each layer rises at its own speed (y in SVG viewBox units) while the PCB curtain scrolls over it.
   gsap
     .timeline({
       defaults: { ease: "none" },
@@ -77,8 +77,7 @@
     .to(".scene-layer--instruments .scene-layer__content", { y: -260 }, 0)
     .to(".hero__heading", { y: () => -window.innerHeight * 0.1 }, 0)
     .to(".hero__cue", { autoAlpha: 0, duration: 0.1 }, 0)
-    .to(".scene-layer--desk .scene-layer__content", { y: -450 }, 0)
-    .to(".scene-layer--foreground .scene-layer__content", { y: -1000 }, 0);
+    .to(".scene-layer--desk .scene-layer__content", { y: -450 }, 0);
 
   // fullPage-style snapping: once past the workbench, scrolling settles on the nearest panel.
   const snap_panels = [...document.querySelectorAll(".project, .outro")];

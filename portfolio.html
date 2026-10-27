@@ -385,47 +385,89 @@
             </g>
           </g>
         </svg>
-
-        <!-- Layer 4: printed circuit board that rises and covers the scene (fastest) -->
-        <svg class="scene-layer scene-layer--foreground" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <g class="scene-layer__content">
-            <rect x="-40" y="770" width="1280" height="1500" rx="28" fill="#0f3323" stroke="#1f5c3e" stroke-width="6"/>
-            <g fill="none" stroke="#2e7d52" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M40 860H300L360 920V1060"/>
-              <path d="M40 900H260L300 940H420"/>
-              <path d="M1160 850H900L840 910H760"/>
-              <path d="M1160 890H940L900 930V1040"/>
-              <path d="M600 800V880"/>
-              <path d="M560 800V840L520 880"/>
-              <path d="M640 800V840L680 880"/>
-              <path d="M120 1000H220L280 1060H440"/>
-              <path d="M1080 990H980L920 1050H760"/>
-              <path d="M200 1140H1000"/>
-              <path d="M160 1200H480L520 1240H1040"/>
-            </g>
-            <g fill="#c9a24a">
-              <circle cx="360" cy="1060" r="8"/><circle cx="420" cy="940" r="8"/><circle cx="760" cy="910" r="8"/>
-              <circle cx="900" cy="1040" r="8"/><circle cx="520" cy="880" r="8"/><circle cx="680" cy="880" r="8"/>
-              <circle cx="440" cy="1060" r="8"/><circle cx="760" cy="1050" r="8"/><circle cx="200" cy="1140" r="8"/>
-              <circle cx="1000" cy="1140" r="8"/><circle cx="160" cy="1200" r="8"/><circle cx="1040" cy="1240" r="8"/>
-            </g>
-            <g>
-              <rect x="510" y="920" width="180" height="180" rx="6" fill="#15191e"/>
-              <path d="M530 912v8M550 912v8M570 912v8M590 912v8M610 912v8M630 912v8M650 912v8M670 912v8M530 1100v8M550 1100v8M570 1100v8M590 1100v8M610 1100v8M630 1100v8M650 1100v8M670 1100v8M502 940h8M502 960h8M502 980h8M502 1000h8M502 1020h8M502 1040h8M502 1060h8M502 1080h8M690 940h8M690 960h8M690 980h8M690 1000h8M690 1020h8M690 1040h8M690 1060h8M690 1080h8" stroke="#aab3bf" stroke-width="4"/>
-              <circle cx="530" cy="940" r="5" fill="#2a2f36"/>
-              <!-- The year is kept current by portfolio.js -->
-              <text x="600" y="1018" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="22" fill="#6f7782">REV <tspan class="pcb-revision-year">2026</tspan></text>
-            </g>
-            <g fill="#3a3d43">
-              <rect x="220" y="960" width="34" height="18" rx="2"/><rect x="900" y="960" width="34" height="18" rx="2"/>
-              <rect x="300" y="1090" width="18" height="34" rx="2"/><rect x="860" y="1090" width="18" height="34" rx="2"/>
-            </g>
-            <g fill="#0b2419" stroke="#c9a24a" stroke-width="4">
-              <circle cx="40" cy="820" r="14"/><circle cx="1160" cy="820" r="14"/>
-            </g>          </g>
-        </svg>
       </div>
     </section>
+
+    <!-- ===================== CURTAIN =====================
+         A printed circuit board that scrolls over the pinned workbench, with photo
+         modules wired to the main chip. Replace each "Legend placeholder". -->
+    <div class="curtain" aria-hidden="true">
+      <svg class="curtain__board" viewBox="0 770 1200 612" preserveAspectRatio="xMidYMin slice">
+        <rect x="-40" y="770" width="1280" height="1500" rx="28" fill="#0f3323" stroke="#1f5c3e" stroke-width="6"/>
+
+        <!-- Traces from the chip's pins to every photo module -->
+        <g fill="none" stroke="#2e7d52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M502 1028H360V910H340M502 1128H360V1237H340"/>
+          <path d="M698 1028H840V910H860M698 1128H840V1237H860"/>
+          <path d="M530 1000V991H450V981M590 1000V981M670 1000V991H750V981"/>
+          <path d="M530 1146V1156H470V1166M670 1146V1156H730V1166"/>
+        </g>
+        <g fill="#c9a24a">
+          <circle cx="360" cy="1028" r="6"/><circle cx="360" cy="1128" r="6"/><circle cx="840" cy="1028" r="6"/><circle cx="840" cy="1128" r="6"/>
+          <circle cx="450" cy="991" r="6"/><circle cx="750" cy="991" r="6"/><circle cx="470" cy="1156" r="6"/><circle cx="730" cy="1156" r="6"/>
+        </g>
+
+        <!-- Main chip -->
+        <g>
+          <rect x="510" y="1008" width="180" height="130" rx="6" fill="#15191e"/>
+          <path d="M530 1000v8M550 1000v8M570 1000v8M590 1000v8M610 1000v8M630 1000v8M650 1000v8M670 1000v8M530 1138v8M550 1138v8M570 1138v8M590 1138v8M610 1138v8M630 1138v8M650 1138v8M670 1138v8M502 1028h8M502 1048h8M502 1068h8M502 1088h8M502 1108h8M502 1128h8M690 1028h8M690 1048h8M690 1068h8M690 1088h8M690 1108h8M690 1128h8" stroke="#aab3bf" stroke-width="4"/>
+          <circle cx="530" cy="1028" r="5" fill="#2a2f36"/>
+          <!-- The year is kept current by portfolio.js -->
+          <text x="600" y="1081" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="22" fill="#6f7782">REV ≤ <tspan class="pcb-revision-year">2026</tspan></text>
+        </g>
+
+        <!-- Photo modules: replace each "Legend placeholder" with the photo's caption; long legends wrap to fit -->
+        <g class="curtain-photo curtain-photo--portrait">
+          <rect x="380" y="785" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/spectrum-monitoring-talk.jpg" x="388" y="793" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="388" y="941" width="124" height="38"><p class="curtain-photo__legend">Anatel Workshop, SP, Brazil, Apr 2026</p></foreignObject>
+        </g>
+        <g class="curtain-photo curtain-photo--portrait">
+          <rect x="530" y="785" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/ieee-talk.jpg" x="538" y="793" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="538" y="941" width="124" height="38"><p class="curtain-photo__legend">INCT Signals, UFC/LESC, Fortaleza, Brazil, Jun 2026</p></foreignObject>
+        </g>
+        <g class="curtain-photo curtain-photo--portrait">
+          <rect x="680" y="785" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/inpe-antenna.jpg" x="688" y="793" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="688" y="941" width="124" height="38"><p class="curtain-photo__legend">Work at INPE/CE, Brazil, Aug 2019</p></foreignObject>
+        </g>
+        <g class="curtain-photo curtain-photo--landscape">
+          <rect x="40" y="785" width="300" height="250" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/gmsk-modem-talk.jpg" x="48" y="793" width="284" height="198" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="48" y="993" width="284" height="40"><p class="curtain-photo__legend">Introduction to research, UNIFOR/CE, Oct 2018</p></foreignObject>
+        </g>
+        <g class="curtain-photo curtain-photo--landscape">
+          <rect x="40" y="1112" width="300" height="250" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/control-system-talk.jpg" x="48" y="1120" width="284" height="198" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="48" y="1320" width="284" height="40"><p class="curtain-photo__legend">Undergraduate final project in Electronics Engineering, UNIFOR/CE, Dec 2018</p></foreignObject>
+        </g>
+        <g class="curtain-photo curtain-photo--landscape">
+          <rect x="860" y="785" width="300" height="250" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/inpe-eusebio-meeting.jpg" x="868" y="793" width="284" height="198" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="868" y="993" width="284" height="40"><p class="curtain-photo__legend">Spain-Brazilian GMB2022 at INPE/CE, Sep 2022</p></foreignObject>
+        </g>
+        <g class="curtain-photo curtain-photo--landscape">
+          <rect x="860" y="1112" width="300" height="250" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/campus-ceara-group.jpg" x="868" y="1120" width="284" height="198" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="868" y="1320" width="284" height="40"><p class="curtain-photo__legend">Visiting ITA Fortaleza, Brazil, Nov 2022</p></foreignObject>
+        </g>
+        <g class="curtain-photo curtain-photo--portrait">
+          <rect x="400" y="1166" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/etsetb-telecom-school.jpg" x="408" y="1174" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="408" y="1322" width="124" height="38"><p class="curtain-photo__legend">UPC, Barcelona Tech, Spain, Feb 2024</p></foreignObject>
+        </g>
+        <g class="curtain-photo curtain-photo--portrait">
+          <rect x="660" y="1166" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
+          <image href="assets/img/curtain/campus-handshake.jpg" x="668" y="1174" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
+          <foreignObject x="668" y="1322" width="124" height="38"><p class="curtain-photo__legend">Doctorate defense at ITA/SP, Brazil, Apr 2026</p></foreignObject>
+        </g>
+
+        <g fill="#0b2419" stroke="#c9a24a" stroke-width="4">
+          <circle cx="12" cy="800" r="10"/><circle cx="1188" cy="800" r="10"/>
+        </g>
+      </svg>
+    </div>
 
     <!-- ===================== PROJECTS =====================
          Each <article class="project"> is one full-screen panel.
