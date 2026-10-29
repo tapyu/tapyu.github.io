@@ -4,6 +4,7 @@
   --color-hover-tint: rgba(37, 79, 26, 0.08);
   --font-family: "EB Garamond", Georgia, "Times New Roman", serif;
   --content-max-width: 680px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 *,
@@ -72,7 +73,16 @@ a {
 .page {
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 40px 16px 48px;
+  padding: 40px 16px 64px;
+}
+
+/* Warm paper: two soft glows and a faint grain */
+.links-page {
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(60rem 28rem at 50% -8rem, rgba(37, 79, 26, 0.12), transparent 70%),
+    radial-gradient(36rem 28rem at 100% 100%, rgba(201, 162, 74, 0.14), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.15 0 0 0 0 0.31 0 0 0 0 0.1 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
 }
 
 /* ---------- Profile header ---------- */
@@ -85,94 +95,393 @@ a {
 }
 
 .profile__avatar {
-  width: 96px;
-  height: 96px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
   object-fit: cover;
+  outline: 2px solid rgba(201, 162, 74, 0.85);
+  outline-offset: 4px;
+  box-shadow: 0 14px 30px -12px rgba(37, 79, 26, 0.55);
 }
 
 .profile__name {
-  margin: 16px 0 4px;
-  font-size: 1.4rem;
+  margin: 20px 0 4px;
+  font-size: 1.65rem;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .profile__description {
-  max-width: 380px;
+  max-width: 400px;
   margin: 0;
   font-size: 1.1rem;
   line-height: 1.5;
+  opacity: 0.85;
 }
 
-/* ---------- Social icons ---------- */
+/* ---------- Featured link (GitHub) ---------- */
 
-.social-links {
+.featured-link {
+  position: relative;
+  isolation: isolate;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding: 22px 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 246, 230, 0.08);
+  border-radius: 24px;
+  background: radial-gradient(130% 160% at 0% 0%, #3a7429 0%, #224a18 50%, #15300f 100%);
+  color: var(--color-background);
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 2px rgba(21, 48, 15, 0.25),
+    0 22px 40px -20px rgba(21, 48, 15, 0.7);
+  transition: transform 160ms var(--ease-out);
+}
+
+.featured-link:active {
+  transform: scale(0.985);
+}
+
+/* Contribution graph behind the card's right side (cells are added by links.js) */
+.featured-link__graph {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: 18px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 9px);
+  grid-auto-columns: 9px;
+  gap: 3px;
+  transform: translateY(-50%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 60%);
+  mask-image: linear-gradient(to right, transparent, #000 60%);
+}
+
+.featured-link__cell {
+  border-radius: 2px;
+  background: rgba(255, 246, 230, 0.06);
+  animation: cell-in 360ms var(--ease-out) backwards;
+  animation-delay: calc(250ms + var(--week-index) * 16ms);
+}
+
+.featured-link__cell[data-level="1"] { background: rgba(155, 233, 168, 0.16); }
+.featured-link__cell[data-level="2"] { background: rgba(155, 233, 168, 0.3); }
+.featured-link__cell[data-level="3"] { background: rgba(110, 214, 120, 0.5); }
+.featured-link__cell[data-level="4"] { background: rgba(155, 233, 168, 0.72); }
+
+@keyframes cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+/* Soft light that follows the pointer (positioned by links.js) */
+.featured-link__spotlight {
+  position: absolute;
+  z-index: -1;
+  top: -180px;
+  left: -180px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 246, 230, 0.14), transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.featured-link__badge {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 246, 230, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 246, 230, 0.14);
+}
+
+.featured-link__icon {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.featured-link__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.featured-link__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b9e39f;
+}
+
+.featured-link__title {
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.featured-link__subtitle {
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.35;
+  opacity: 0.78;
+}
+
+.featured-link__cta {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 8px 14px 8px 16px;
+  border-radius: 9999px;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.45);
+}
+
+.featured-link__arrow,
+.link-button__arrow {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 200ms var(--ease-out), opacity 150ms ease;
+}
+
+/* ---------- Contact pair (LinkedIn, Email) ---------- */
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* scoped to .contact-links so it wins over the generic white tile below */
+.contact-links .link-button__tile--linkedin,
+.contact-links .link-button__tile--email {
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.contact-links .link-button__tile--linkedin {
+  background: #0a66c2;
+}
+
+.contact-links .link-button__tile--email {
+  background: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.link-button__tile svg {
+  fill: currentColor;
+}
+
+/* long addresses end in an ellipsis instead of wrapping */
+.link-button__hint {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- Link buttons ---------- */
+
+/* "More links" label between two hairlines */
+.link-list__heading {
+  display: flex;
+  align-items: center;
   gap: 12px;
+  margin: 40px 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.link-list__heading::before,
+.link-list__heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin: 16px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.social-links__link {
-  display: flex;
-  padding: 4px;
-  color: var(--color-foreground);
-  transition: transform 0.15s ease;
-}
-
-.social-links__link:hover {
-  transform: scale(1.1);
-}
-
-.social-links__icon {
-  width: 32px;
-  height: 32px;
-  fill: currentColor;
-}
-
-/* ---------- Link buttons ---------- */
-
-.link-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 32px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
 .link-button {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 64px;
-  padding: 8px 68px;
-  border: 1.5px solid var(--color-foreground);
-  border-radius: 9999px;
+  gap: 14px;
+  padding: 10px 20px 10px 10px;
+  border: 1px solid rgba(37, 79, 26, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.5);
   color: var(--color-foreground);
-  font-size: 1.1rem;
-  font-weight: 400;
-  line-height: 1.3;
-  text-align: center;
   text-decoration: none;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  box-shadow: 0 1px 2px rgba(37, 79, 26, 0.06);
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 200ms ease;
 }
 
-.link-button:hover {
-  transform: scale(1.02);
-  background: var(--color-hover-tint);
+.link-button:active {
+  transform: scale(0.985);
+}
+
+.link-button__tile {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(37, 79, 26, 0.08);
 }
 
 .link-button__thumbnail {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
-  transform: translateY(-50%);
+}
+
+.link-button__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.link-button__label {
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.link-button__hint {
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.3;
+  opacity: 0.6;
+}
+
+.link-button__arrow {
+  margin-left: auto;
+  opacity: 0.3;
+}
+
+/* Hover feedback only where a real pointer can hover */
+@media (hover: hover) and (pointer: fine) {
+  .featured-link:hover .featured-link__spotlight {
+    opacity: 1;
+  }
+
+  .featured-link:hover .featured-link__arrow,
+  .link-button:hover .link-button__arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  .link-button:hover {
+    border-color: rgba(37, 79, 26, 0.3);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 24px -14px rgba(37, 79, 26, 0.45);
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-link {
+    gap: 12px;
+    padding: 18px 16px;
+  }
+
+  /* the graph sits under the text here, so keep it a faint texture */
+  .featured-link__graph {
+    opacity: 0.3;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr;
+  }
+
+  /* arrow-only call to action on narrow screens */
+  .featured-link__cta {
+    padding: 10px;
+    font-size: 0;
+  }
+}
+
+/* ---------- Entrance: a short stagger on first load ---------- */
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.profile,
+.featured-link,
+.contact-links,
+.link-list__heading,
+.link-list > li {
+  /* backwards fill: nothing lingers after the entrance, so :active transforms still transition */
+  animation: rise-in 400ms var(--ease-out) backwards;
+}
+
+.featured-link { animation-delay: 60ms; }
+.contact-links { animation-delay: 90ms; }
+.link-list__heading { animation-delay: 110ms; }
+.link-list > li:nth-child(1) { animation-delay: 150ms; }
+.link-list > li:nth-child(2) { animation-delay: 190ms; }
+.link-list > li:nth-child(3) { animation-delay: 230ms; }
+.link-list > li:nth-child(4) { animation-delay: 270ms; }
+.link-list > li:nth-child(5) { animation-delay: 310ms; }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile,
+  .featured-link,
+  .contact-links,
+  .link-list__heading,
+  .link-list > li {
+    animation-name: fade-in;
+  }
+
+  .featured-link__cell {
+    animation: none;
+  }
 }
