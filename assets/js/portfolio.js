@@ -1,7 +1,7 @@
 // Portfolio page: LED section navigation, scroll-driven workbench parallax and project reveals.
 (() => {
-  const is_reduced_motion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const scroll_behavior = is_reduced_motion ? "auto" : "smooth";
+  // Same motion on every device, whatever the OS motion setting.
+  const scroll_behavior = "smooth";
 
   // ---------- LED navigation (one LED per [data-section]) ----------
 
@@ -53,8 +53,6 @@
   });
 
   // ---------- Scroll animations ----------
-  // They are driven by the user's own scrolling, so they also run with reduced motion;
-  // only the looping ambient animations are disabled in that case (see portfolio.css).
 
   const has_gsap = Boolean(window.gsap && window.ScrollTrigger);
   if (!has_gsap) return;

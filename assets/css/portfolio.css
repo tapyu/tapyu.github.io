@@ -527,17 +527,3 @@
   30% { opacity: 0.9; }
   100% { opacity: 0; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__cue svg,
-  .scope-wave,
-  .led-blink,
-  .radio-wave,
-  .project__placeholder::after {
-    animation: none;
-  }
-
-  .radio-wave {
-    opacity: 0.6;
-  }
-}
