@@ -15,6 +15,12 @@
   background: var(--color-pcb);
 }
 
+/* tilted photos near the edges must not add a horizontal scrollbar;
+   "clip" (unlike "hidden") keeps the sticky workbench working */
+.portfolio-page main {
+  overflow-x: clip;
+}
+
 /* ---------- Tabs (overlay) ---------- */
 
 .portfolio-page .site-nav {
@@ -208,25 +214,119 @@
   height: max(51vw, 100vh);
 }
 
-/* Legends wrap inside the strip under each photo (sizes are in SVG viewBox units). */
-.curtain-photo__legend {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+
+/* ---------- Taped photos (curtain corners and one per section) ---------- */
+
+/* Rough left/right edges, like tape torn by hand */
+.taped-photo {
+  --torn-edges: polygon(0 0, 100% 0, calc(100% - 4px) 20%, 100% 40%, calc(100% - 4px) 60%, 100% 80%, calc(100% - 3px) 100%, 0 100%, 4px 80%, 0 60%, 4px 40%, 0 20%);
+  position: absolute;
+  z-index: 1;
+  width: clamp(150px, 19vw, 300px);
   margin: 0;
-  overflow: hidden;
-  font-family: var(--font-family);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.25;
-  text-align: center;
-  color: rgba(215, 227, 218, 0.85);
+  padding: 8px 8px 0;
+  background: #fbf8f1;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 16px 30px -12px rgba(0, 0, 0, 0.6);
+  /* "rotate" composes with the GSAP scale used for the reveal */
+  rotate: var(--tilt, 0deg);
 }
 
-.curtain-photo--portrait .curtain-photo__legend {
-  font-size: 9px;
-  line-height: 1.2;
+.taped-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* strip of tape holding the photo at the top */
+.taped-photo::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 46%;
+  height: 26px;
+  background: linear-gradient(rgba(240, 231, 203, 0.82), rgba(226, 214, 180, 0.82));
+  clip-path: var(--torn-edges);
+  translate: -50% 0;
+  rotate: -3deg;
+}
+
+/* the legend is handwritten on a second strip of tape across the bottom edge */
+.taped-photo__legend {
+  position: relative;
+  width: fit-content;
+  max-width: 108%;
+  margin: -14px auto -16px;
+  padding: 5px 14px 3px;
+  background: linear-gradient(rgba(242, 233, 206, 0.95), rgba(228, 216, 182, 0.95));
+  clip-path: var(--torn-edges);
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  color: #2b2620;
+  rotate: 1.5deg;
+}
+
+.curtain .taped-photo--top-left { top: 7vh; left: 4vw; }
+.curtain .taped-photo--top-right { top: 9vh; right: 4vw; }
+/* clear of the bottom quarter, which project 1 slides under */
+.curtain .taped-photo--bottom-right { bottom: calc(25vh + 6vh); right: 7vw; }
+
+/* In the sections the photos sit in the empty margins beside the 1160px panel */
+.project .taped-photo,
+.outro .taped-photo {
+  --side-offset: calc(28px - max(0px, (100vw - 1160px) / 2));
+  width: 200px;
+}
+
+.project .taped-photo--top-left { top: 96px; left: var(--side-offset); }
+.project .taped-photo--top-right { top: 96px; right: var(--side-offset); }
+.project .taped-photo--bottom-left { bottom: 72px; left: calc(var(--side-offset) + 24px); }
+.project .taped-photo--bottom-right { bottom: 72px; right: var(--side-offset); }
+.outro .taped-photo--bottom-left { bottom: 56px; left: calc(var(--trace-x) + 56px); }
+
+/* Without wide margins, the photo joins the panel's flow above the content */
+@media (max-width: 1499px) {
+  .project .taped-photo {
+    position: relative;
+    inset: auto;
+    grid-column: 1 / -1;
+    width: 180px;
+    margin-bottom: 8px;
+  }
+
+  .project .taped-photo--top-left,
+  .project .taped-photo--bottom-left {
+    justify-self: start;
+    margin-left: 48px;
+  }
+
+  .project .taped-photo--top-right,
+  .project .taped-photo--bottom-right {
+    justify-self: end;
+    margin-right: 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .outro .taped-photo {
+    position: relative;
+    inset: auto;
+    width: 170px;
+    margin-bottom: 32px;
+  }
+
+  .curtain .taped-photo {
+    width: 140px;
+  }
+
+  .taped-photo__legend {
+    font-size: 1rem;
+  }
 }
 
 /* ---------- Projects ---------- */

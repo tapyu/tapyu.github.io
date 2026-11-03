@@ -45,6 +45,19 @@
   );
   sections.forEach((section) => section_observer.observe(section));
 
+  // Taped photos: the legend is the photo's file name, with "§" standing for "/"
+  // (not allowed in file names) and a trailing "(N)" duplicate counter dropped.
+  for (const taped_photo of document.querySelectorAll(".taped-photo")) {
+    const photo = taped_photo.querySelector("img");
+    const file_name = decodeURIComponent(new URL(photo.src).pathname.split("/").pop());
+    const legend = file_name
+      .replace(/\.[^.]+$/, "")
+      .replace(/\s*\(\d+\)$/, "")
+      .replaceAll("§", "/");
+    taped_photo.querySelector(".taped-photo__legend").textContent = legend;
+    photo.alt = legend;
+  }
+
   // The PCB curtain covers everything up to the current year: "REV ≤ YYYY".
   document.querySelector(".pcb-revision-year").textContent = new Date().getFullYear();
 
@@ -124,9 +137,23 @@
         0.35
       )
       .from(
+        project.querySelector(".taped-photo"),
+        { autoAlpha: 0, scale: 1.15, duration: 0.5, ease: "back.out(1.6)" },
+        0.3
+      )
+      .from(
         project.querySelectorAll(".project__body > *"),
         { y: 40, autoAlpha: 0, stagger: 0.07, duration: 0.6, ease: "power2.out" },
         0.15
       );
   }
+
+  // The outro photo is stuck on the same way.
+  gsap.from(".outro .taped-photo", {
+    autoAlpha: 0,
+    scale: 1.15,
+    duration: 0.5,
+    ease: "back.out(1.6)",
+    scrollTrigger: { trigger: ".outro", start: "top 65%", toggleActions: "play none none reverse" },
+  });
 })();

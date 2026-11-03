@@ -4,14 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
+  <!-- the page is already dark: keep dark-mode extensions (Dark Reader) from recolouring the photos and tape -->
+  <meta name="darkreader-lock">
   <title>Portfolio · Rubem Vasconcelos Pacelli</title>
   <meta name="description" content="Projects by Rubem Vasconcelos Pacelli.">
   <link rel="icon" href="assets/img/avatar.jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Montserrat:wght@900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;600&family=Montserrat:wght@900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=6">
-  <link rel="stylesheet" href="assets/css/portfolio.css?v=3">
+  <link rel="stylesheet" href="assets/css/portfolio.css?v=8">
 </head>
 <body class="portfolio-page">
   <nav class="site-nav" aria-label="Main">
@@ -407,21 +409,24 @@
     </section>
 
     <!-- ===================== CURTAIN =====================
-         A printed circuit board that scrolls over the pinned workbench, with photo
-         modules wired to the main chip. Replace each "Legend placeholder". -->
-    <div class="curtain" aria-hidden="true">
-      <svg class="curtain__board" viewBox="0 770 1200 612" preserveAspectRatio="xMidYMin slice">
+         A printed circuit board that scrolls over the pinned workbench, with three
+         photos taped to its corners. Each legend comes from the photo's file name
+         (see portfolio.js): "§" becomes "/" and a trailing "(N)" is dropped. -->
+    <div class="curtain">
+      <svg class="curtain__board" viewBox="0 770 1200 612" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
         <rect x="-40" y="770" width="1280" height="1500" rx="28" fill="#0f3323" stroke="#1f5c3e" stroke-width="6"/>
 
-        <!-- Traces from the chip's pins to every photo module, routed with 45° bends -->
+        <!-- Traces fanning out from the chip to the board edges, routed with 45° bends -->
         <g fill="none" stroke="#2e7d52" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M502 1028H380L360 1008V925L345 910H340M502 1128H380L360 1148V1222L345 1237H340"/>
-          <path d="M698 1028H820L840 1008V925L855 910H860M698 1128H820L840 1148V1222L855 1237H860"/>
-          <path d="M530 1000L515 985V981M590 1000V981M670 1000L685 985V981"/>
-          <path d="M530 1146V1166M670 1146V1166"/>
+          <path d="M502 1028H400L350 978H40M502 1128H400L350 1178H40M502 1088H120"/>
+          <path d="M698 1028H800L850 978H1160M698 1128H800L850 1178H1160M698 1068H1080"/>
+          <path d="M570 1000V900L540 870V800M630 1000V910L660 880V800"/>
+          <path d="M570 1146V1240L540 1270V1360M630 1146V1250L660 1280V1360"/>
         </g>
         <g fill="#c9a24a">
-          <circle cx="360" cy="966" r="6"/><circle cx="360" cy="1185" r="6"/><circle cx="840" cy="966" r="6"/><circle cx="840" cy="1185" r="6"/>
+          <circle cx="40" cy="978" r="7"/><circle cx="40" cy="1178" r="7"/><circle cx="120" cy="1088" r="7"/>
+          <circle cx="1160" cy="978" r="7"/><circle cx="1160" cy="1178" r="7"/><circle cx="1080" cy="1068" r="7"/>
+          <circle cx="540" cy="800" r="7"/><circle cx="660" cy="800" r="7"/><circle cx="540" cy="1360" r="7"/><circle cx="660" cy="1360" r="7"/>
         </g>
 
         <!-- Main chip -->
@@ -433,57 +438,23 @@
           <text x="600" y="1081" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="22" fill="#6f7782">REV ≤ <tspan class="pcb-revision-year">2026</tspan></text>
         </g>
 
-        <!-- Photo modules: replace each "Legend placeholder" with the photo's caption; long legends wrap to fit -->
-        <g class="curtain-photo curtain-photo--portrait">
-          <rect x="380" y="785" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/spectrum-monitoring-talk.jpg" x="388" y="793" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="388" y="941" width="124" height="38"><p class="curtain-photo__legend">Anatel Workshop, SP, Brazil, Apr 2026</p></foreignObject>
-        </g>
-        <g class="curtain-photo curtain-photo--portrait">
-          <rect x="530" y="785" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/ieee-talk.jpg" x="538" y="793" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="538" y="941" width="124" height="38"><p class="curtain-photo__legend">INCT Signals, UFC/LESC, Fortaleza, Brazil, Jun 2026</p></foreignObject>
-        </g>
-        <g class="curtain-photo curtain-photo--portrait">
-          <rect x="680" y="785" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/inpe-antenna.jpg" x="688" y="793" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="688" y="941" width="124" height="38"><p class="curtain-photo__legend">Work at INPE/CE, Brazil, Aug 2019</p></foreignObject>
-        </g>
-        <g class="curtain-photo curtain-photo--landscape">
-          <rect x="40" y="785" width="300" height="250" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/gmsk-modem-talk.jpg" x="48" y="793" width="284" height="198" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="48" y="993" width="284" height="40"><p class="curtain-photo__legend">Introduction to research, UNIFOR/CE, Oct 2018</p></foreignObject>
-        </g>
-        <g class="curtain-photo curtain-photo--landscape">
-          <rect x="40" y="1112" width="300" height="250" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/control-system-talk.jpg" x="48" y="1120" width="284" height="198" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="48" y="1320" width="284" height="40"><p class="curtain-photo__legend">Undergraduate final project in Electronics Engineering, UNIFOR/CE, Dec 2018</p></foreignObject>
-        </g>
-        <g class="curtain-photo curtain-photo--landscape">
-          <rect x="860" y="785" width="300" height="250" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/inpe-eusebio-meeting.jpg" x="868" y="793" width="284" height="198" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="868" y="993" width="284" height="40"><p class="curtain-photo__legend">Spain-Brazilian GMB2022 at INPE/CE, Sep 2022</p></foreignObject>
-        </g>
-        <g class="curtain-photo curtain-photo--landscape">
-          <rect x="860" y="1112" width="300" height="250" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/campus-ceara-group.jpg" x="868" y="1120" width="284" height="198" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="868" y="1320" width="284" height="40"><p class="curtain-photo__legend">Visiting ITA Fortaleza, Brazil, Nov 2022</p></foreignObject>
-        </g>
-        <g class="curtain-photo curtain-photo--portrait">
-          <rect x="400" y="1166" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/etsetb-telecom-school.jpg" x="408" y="1174" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="408" y="1322" width="124" height="38"><p class="curtain-photo__legend">UPC, Barcelona Tech, Spain, Feb 2024</p></foreignObject>
-        </g>
-        <g class="curtain-photo curtain-photo--portrait">
-          <rect x="660" y="1166" width="140" height="196" rx="8" fill="#15191e" stroke="#2c3038" stroke-width="2"/>
-          <image href="assets/img/curtain/campus-handshake.jpg" x="668" y="1174" width="124" height="146" preserveAspectRatio="xMidYMid slice"/>
-          <foreignObject x="668" y="1322" width="124" height="38"><p class="curtain-photo__legend">Doctorate defense at ITA/SP, Brazil, Apr 2026</p></foreignObject>
-        </g>
-
         <g fill="#0b2419" stroke="#c9a24a" stroke-width="4">
           <circle cx="12" cy="800" r="10"/><circle cx="1188" cy="800" r="10"/>
         </g>
       </svg>
+
+      <figure class="taped-photo taped-photo--top-left" style="--tilt: -4deg">
+        <img src="assets/img/photos/Doctorate%20defense%20at%20ITA%C2%A7SP%2C%20Brazil%2C%20Apr%202026.jpg" alt="" loading="lazy">
+        <figcaption class="taped-photo__legend"></figcaption>
+      </figure>
+      <figure class="taped-photo taped-photo--top-right" style="--tilt: 3deg">
+        <img src="assets/img/photos/Visiting%20ITA%20Fortaleza%2C%20Brazil%2C%20Aug%202026.jpg" alt="" loading="lazy">
+        <figcaption class="taped-photo__legend"></figcaption>
+      </figure>
+      <figure class="taped-photo taped-photo--bottom-right" style="--tilt: -2deg">
+        <img src="assets/img/photos/Spain-Brazilian%20GMB2022%20at%20INPE%C2%A7CE%2C%20Sep%202022.jpg" alt="" loading="lazy">
+        <figcaption class="taped-photo__legend"></figcaption>
+      </figure>
     </div>
 
     <!-- ===================== PROJECTS =====================
@@ -496,6 +467,10 @@
       <!-- Project 1 (placeholder) -->
       <article class="project" id="project-1" data-section data-section-label="Project 1">
         <span class="project__via" aria-hidden="true"></span>
+        <figure class="taped-photo taped-photo--bottom-right" style="--tilt: 2deg">
+          <img src="assets/img/photos/Introduction%20to%20research%2C%20UNIFOR%C2%A7CE%2C%20Oct%202018.jpg" alt="" loading="lazy">
+          <figcaption class="taped-photo__legend"></figcaption>
+        </figure>
         <div class="project__media">
           <div class="project__screen">
             <div class="project__placeholder"><span>Image / demo placeholder</span></div>
@@ -526,6 +501,10 @@
       <!-- Project 2 (placeholder) -->
       <article class="project project--reversed" id="project-2" data-section data-section-label="Project 2">
         <span class="project__via" aria-hidden="true"></span>
+        <figure class="taped-photo taped-photo--top-left" style="--tilt: -3deg">
+          <img src="assets/img/photos/Work%20at%20INPE%C2%A7CE%2C%20Brazil%2C%20Aug%202019.jpg" alt="" loading="lazy">
+          <figcaption class="taped-photo__legend"></figcaption>
+        </figure>
         <div class="project__media">
           <div class="project__screen">
             <div class="project__placeholder"><span>Image / demo placeholder</span></div>
@@ -556,6 +535,10 @@
       <!-- Project 3 (placeholder) -->
       <article class="project" id="project-3" data-section data-section-label="Project 3">
         <span class="project__via" aria-hidden="true"></span>
+        <figure class="taped-photo taped-photo--top-right" style="--tilt: 3deg">
+          <img src="assets/img/photos/UPC%2C%20RSLab%2C%20Barcelona%2C%20Mar%202024.jpg" alt="" loading="lazy">
+          <figcaption class="taped-photo__legend"></figcaption>
+        </figure>
         <div class="project__media">
           <div class="project__screen">
             <div class="project__placeholder"><span>Image / demo placeholder</span></div>
@@ -585,6 +568,10 @@
 
       <section class="outro" id="outro" data-section data-section-label="More">
         <span class="project__via" aria-hidden="true"></span>
+        <figure class="taped-photo taped-photo--bottom-left" style="--tilt: -2deg">
+          <img src="assets/img/photos/TED%20ANATEL-ITA%2C%20S%C3%A3o%20Paulo%C2%A7SP%2C%20Apr%202026.jpg" alt="" loading="lazy">
+          <figcaption class="taped-photo__legend"></figcaption>
+        </figure>
         <h2 class="outro__title">More on the bench soon.</h2>
         <p class="outro__text">Meanwhile, find my code, papers and CV here:</p>
         <div class="project__links">
@@ -597,6 +584,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="assets/js/portfolio.js?v=2"></script>
+  <script src="assets/js/portfolio.js?v=3"></script>
 </body>
 </html>
