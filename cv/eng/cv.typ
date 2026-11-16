@@ -162,6 +162,17 @@
     location: "Fortaleza, Brazil",
     start: "Jun 2019",
     end: "Dec 2020"
+  ),
+  armtec2017: (
+    name: "Hardware intern",
+    university: "Armtec Tecnologia em Robótica (ARMTEC)",
+    info: (
+      "Electronic circuit design and PCB layout with Altium.",
+      "Participation in product development, from the requirements phase to assembly and testing."
+    ),
+    location: "Brazil",
+    start: "2017",
+    end: "2017"
   )
 )
 // research
@@ -183,6 +194,15 @@
     from: "Aeronautics Institute of Technology (ITA) project funded by the Brazilian National Telecommunications Agency (ANATEL)",
     info: (
       "Application of AI and machine learning to telecommunications: service quality estimation, QoS versus infrastructure capacity, cybersecurity, autonomous spectrum monitoring, marketplace monitoring, and social-network detection of service outages.",
+    )
+  ),
+  inct2024: (
+    name: "INCT Signals: Airborne and Spaceborne Remote Sensing and Surveillance",
+    start: "2024",
+    end: "Present",
+    from: "National Institute of Science and Technology funded by National Council of Scientific and Technological Development (CNPq)",
+    info: (
+      "Research network (UFC, ITA, UFRGS, PUCRS, UNIPAMPA) developing remote sensing, communication, monitoring, and surveillance solutions from airborne and satellite platforms.",
     )
   ),
   pr2019: (
@@ -632,7 +652,7 @@
 
 = Career Summary
 
-Skilled Engineer with academic experience in GNSS Signal Processing and multidisciplinary background in
+Electronics engineer with a joint PhD (cotutelle) from the Federal University of Ceará (UFC, Brazil) and the Universitat Politècnica de Catalunya (UPC, Spain), currently a postdoctoral researcher at UFC and at the Aeronautics Institute of Technology (ITA), working on signal processing for satellite navigation and communication (GNSS), with a multidisciplinary background in
 - Statistical signal processing, system identification, and adaptive filtering.
 - Software-defined radio, digital modems, and synchronization techniques.
 - Deep learning, pattern recognition, and optimization theory.// artificial intelligence.

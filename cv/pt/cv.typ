@@ -165,6 +165,17 @@
     location: "Fortaleza, Brasil",
     start: "jun 2019",
     end: "dez 2020"
+  ),
+  armtec2017: (
+    name: "Estagiário de hardware",
+    university: "Armtec Tecnologia em Robótica (ARMTEC)",
+    info: (
+      "Projeto de circuitos eletrônicos e de PCBs com o Altium.",
+      "Participação no desenvolvimento de projetos, da fase informacional à montagem e realização de testes."
+    ),
+    location: "Brasil",
+    start: "2017",
+    end: "2017"
   )
 )
 // research
@@ -186,6 +197,15 @@
     from: "Projeto do Instituto Tecnológico de Aeronáutica (ITA) financiado pela Agência Nacional de Telecomunicações (ANATEL)",
     info: (
       "Aplicação de IA e aprendizado de máquina a telecomunicações: estimação da qualidade dos serviços, QoS versus capacidade da infraestrutura, cibersegurança, monitoramento autônomo do espectro, monitoramento de marketplaces e detecção de interrupções de serviço em redes sociais.",
+    )
+  ),
+  inct2024: (
+    name: "INCT Signals: Sensoriamento e Vigilância Remota Aerotransportada e Espacial",
+    start: "2024",
+    end: "atual",
+    from: "Instituto Nacional de Ciência e Tecnologia financiado pelo Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)",
+    info: (
+      "Rede de pesquisa (UFC, ITA, UFRGS, PUCRS, UNIPAMPA) dedicada a soluções de sensoriamento remoto, comunicações, monitoramento e vigilância a partir de plataformas aerotransportadas e satelitais.",
     )
   ),
   pr2019: (
@@ -635,7 +655,7 @@
 
 = Resumo Profissional
 
-Engenheiro com experiência acadêmica em processamento de sinais GNSS e formação multidisciplinar em
+Engenheiro eletrônico, doutor pela Universidade Federal do Ceará (UFC) e pela Universitat Politècnica de Catalunya (UPC, Espanha) em regime de cotutela, atualmente pesquisador de pós-doutorado na UFC e no Instituto Tecnológico de Aeronáutica (ITA), atuando em processamento de sinais para navegação e comunicação por satélite (GNSS), com formação multidisciplinar em
 - Processamento estatístico de sinais, identificação de sistemas e filtragem adaptativa.
 - Rádio definido por software, modems digitais e técnicas de sincronização.
 - Aprendizado profundo, reconhecimento de padrões e teoria de otimização.
