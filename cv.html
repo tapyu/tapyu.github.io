@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Curriculum Vitae · Rubem Vasconcelos Pacelli</title>
+  <meta name="description" content="Curriculum vitae of Rubem Vasconcelos Pacelli, in English and Portuguese.">
+  <link rel="icon" href="assets/img/avatar.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=8">
+</head>
+<body class="links-page cv-page">
+  <nav class="site-nav" aria-label="Main">
+    <ul class="site-nav__tabs">
+      <li><a class="site-nav__tab" href="./">Links</a></li>
+      <li><a class="site-nav__tab" href="portfolio.html">Portfolio</a></li>
+      <li><a class="site-nav__tab" href="cv.html" aria-current="page">Curriculum Vitae</a></li>
+    </ul>
+  </nav>
+
+  <main class="cv">
+    <header class="cv__header">
+      <h1 class="cv__title">Curriculum Vitae</h1>
+      <!-- Language sub-tabs; the choice is kept in the URL (#en / #pt) so it can be shared -->
+      <div class="cv__switch" role="tablist" aria-label="CV language">
+        <span class="cv__switch-indicator" aria-hidden="true"></span>
+        <button class="cv__switch-tab" type="button" role="tab" id="cv-tab-en" aria-controls="cv-panel-en" aria-selected="true" data-language="en">English</button>
+        <button class="cv__switch-tab" type="button" role="tab" id="cv-tab-pt" aria-controls="cv-panel-pt" aria-selected="false" tabindex="-1" data-language="pt">Português</button>
+      </div>
+    </header>
+
+    <!-- Each panel renders its PDF page by page (assets/js/cv.js); the buttons work without JavaScript -->
+    <section class="cv__panel" id="cv-panel-en" role="tabpanel" aria-labelledby="cv-tab-en" data-language="en" data-pdf="cv/eng/cv.pdf">
+      <div class="cv__actions">
+        <a class="cv__action" href="cv/eng/cv.pdf" target="_blank" rel="noopener">Open PDF</a>
+        <a class="cv__action" href="cv/eng/cv.pdf" download="Rubem-Pacelli-CV-EN.pdf">Download</a>
+      </div>
+      <div class="cv__pages" lang="en"><p class="cv__status">Loading the CV…</p></div>
+    </section>
+
+    <section class="cv__panel" id="cv-panel-pt" role="tabpanel" aria-labelledby="cv-tab-pt" data-language="pt" data-pdf="cv/pt/cv.pdf" hidden>
+      <div class="cv__actions">
+        <a class="cv__action" href="cv/pt/cv.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        <a class="cv__action" href="cv/pt/cv.pdf" download="Rubem-Pacelli-CV-PT.pdf">Baixar</a>
+      </div>
+      <div class="cv__pages" lang="pt"><p class="cv__status">Carregando o currículo…</p></div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="assets/js/cv.js"></script>
+</body>
+</html>
