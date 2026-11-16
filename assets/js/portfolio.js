@@ -58,6 +58,39 @@
     photo.alt = legend;
   }
 
+  // Project slideshows: cross-fade every few seconds, pause on hover/focus, dots to jump.
+  const slide_interval_milliseconds = 4500;
+  for (const gallery of document.querySelectorAll(".project__gallery")) {
+    const slides = [...gallery.querySelectorAll(".project__slide")];
+    const dots_container = gallery.querySelector(".project__gallery-dots");
+    let active_slide_index = 0;
+    let is_paused = false;
+
+    const dots = slides.map((slide, slide_index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "project__gallery-dot";
+      dot.setAttribute("aria-label", `Show image ${slide_index + 1} of ${slides.length}`);
+      dot.addEventListener("click", () => show_slide(slide_index));
+      dots_container.append(dot);
+      return dot;
+    });
+
+    const show_slide = (slide_index) => {
+      active_slide_index = slide_index;
+      slides.forEach((slide, index) => slide.classList.toggle("is-active", index === slide_index));
+      dots.forEach((dot, index) => dot.setAttribute("aria-current", String(index === slide_index)));
+    };
+    show_slide(0);
+
+    for (const [event_name, should_pause] of [["pointerenter", true], ["pointerleave", false], ["focusin", true], ["focusout", false]]) {
+      gallery.addEventListener(event_name, () => { is_paused = should_pause; });
+    }
+    setInterval(() => {
+      if (!is_paused && !document.hidden) show_slide((active_slide_index + 1) % slides.length);
+    }, slide_interval_milliseconds);
+  }
+
   // The PCB curtain covers everything up to the current year: "REV ≤ YYYY".
   document.querySelector(".pcb-revision-year").textContent = new Date().getFullYear();
 
@@ -99,9 +132,12 @@
     snap: {
       snapTo: (progress, self) => {
         const scroll_range = self.end - self.start;
-        const panel_progresses = snap_panels.map((panel) =>
-          Math.min(1, (panel.getBoundingClientRect().top + window.scrollY - self.start) / scroll_range)
-        );
+        // A panel the curtain still overlaps (the first one) settles at the curtain's bottom edge instead.
+        const curtain_bottom = document.querySelector(".curtain").getBoundingClientRect().bottom + window.scrollY;
+        const panel_progresses = snap_panels.map((panel) => {
+          const panel_top = Math.max(panel.getBoundingClientRect().top + window.scrollY, curtain_bottom);
+          return Math.min(1, (panel_top - self.start) / scroll_range);
+        });
         return panel_progresses.reduce((closest, candidate) =>
           Math.abs(candidate - progress) < Math.abs(closest - progress) ? candidate : closest
         );

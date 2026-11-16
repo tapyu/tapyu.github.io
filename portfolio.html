@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;600&family=Montserrat:wght@900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=10">
-  <link rel="stylesheet" href="assets/css/portfolio.css?v=8">
+  <link rel="stylesheet" href="assets/css/portfolio.css?v=12">
 </head>
 <body class="portfolio-page">
   <nav class="site-nav" aria-label="Main">
@@ -461,47 +461,68 @@
 
     <!-- ===================== PROJECTS =====================
          Each <article class="project"> is one full-screen panel.
-         Replace the placeholder text, tags and links; swap the
-         .project__placeholder div for an <img> (or <video>) when ready. -->
+         Each screen holds a .project__gallery slideshow (one <figure> per image). -->
     <section class="projects" id="projects">
       <div class="projects__trace" aria-hidden="true"><div class="projects__trace-fill"></div></div>
 
-      <!-- Project 1 (placeholder) -->
-      <article class="project" id="project-1" data-section data-section-label="Project 1">
+      <!-- Project 1: AI for spectrum monitoring (ITA–ANATEL) -->
+      <article class="project" id="project-1" data-section data-section-label="AI for spectrum monitoring">
         <span class="project__via" aria-hidden="true"></span>
         <figure class="taped-photo taped-photo--bottom-right" style="--tilt: 2deg">
-          <img src="assets/img/photos/Introduction%20to%20research%2C%20UNIFOR%C2%A7CE%2C%20Oct%202018.jpg" alt="" loading="lazy">
+          <img src="assets/img/photos/TED%20ANATEL-ITA%2C%20S%C3%A3o%20Paulo%C2%A7SP%2C%20Apr%202026.jpg" alt="" loading="lazy">
           <figcaption class="taped-photo__legend"></figcaption>
         </figure>
         <div class="project__media">
           <div class="project__screen">
-            <div class="project__placeholder"><span>Image / demo placeholder</span></div>
+            <!-- Slideshow: assets/js/portfolio.js cycles the slides and builds the dots -->
+            <div class="project__gallery" aria-roledescription="carousel" aria-label="Spectrum monitoring results">
+              <figure class="project__slide is-active">
+                <img src="assets/img/projects/spectrum-monitoring/waterfall.jpg" alt="Real RFeye sensor data: spectrum trace and waterfall in appAnalise (ANATEL)" width="1600" height="1000">
+                <figcaption class="project__slide-caption">Real RFeye sensor data: spectrum trace and waterfall in appAnalise (ANATEL)</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/spectrum-monitoring/yolo-detections.jpg" alt="Fine-tuned YOLOv26 detecting radio emissions in test spectrograms" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">Fine-tuned YOLOv26 detecting radio emissions in test spectrograms</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/spectrum-monitoring/spectrodet.jpg" alt="SpectroDet: detected emitters with time–frequency boxes and SNR" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">SpectroDet: detected emitters with time–frequency boxes and SNR</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/spectrum-monitoring/appanalise.jpg" alt="ANATEL's appAnalise playback, the starting point of the monitoring pipeline" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">ANATEL's appAnalise playback, the starting point of the monitoring pipeline</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/spectrum-monitoring/training-curves.jpg" alt="SpectroDet training/validation loss, tracked with DVC" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">SpectroDet training/validation loss, tracked with DVC</figcaption>
+              </figure>
+              <div class="project__gallery-dots"></div>
+            </div>
           </div>
         </div>
         <div class="project__body">
           <p class="project__index">01 / 03</p>
-          <h2 class="project__title">Project title one</h2>
-          <p class="project__tagline">A one-line tagline that says what this project is.</p>
-          <p class="project__description">Short description of the project: the problem it addresses, the approach you took, and the outcome. Two or three sentences are enough here.</p>
+          <h2 class="project__title">AI for Spectrum Monitoring</h2>
+          <p class="project__tagline">Turning raw spectrograms into actionable radio information.</p>
+          <p class="project__description">ITA–ANATEL project (TED 03/2023) using real RFeye recordings from Brazil's telecom regulator to detect, locate and characterize emitters automatically, instead of labeling each emission by hand.</p>
           <h3 class="project__features-heading">Key functionalities</h3>
           <ul class="project__features">
-            <li>Key functionality #1 — one-line explanation</li>
-            <li>Key functionality #2 — one-line explanation</li>
-            <li>Key functionality #3 — one-line explanation</li>
+            <li>ML-assisted blind emitter candidate generation</li>
+            <li>Signal detection in spectrograms with fine-tuned YOLOv26</li>
+            <li>Radio technology classification with MobileNetV3</li>
+            <li>SpectroDet: detection plus modulation and SNR estimation</li>
           </ul>
           <ul class="project__tags">
-            <li>Tag 1</li><li>Tag 2</li><li>Tag 3</li>
+            <li>PyTorch</li><li>YOLO</li><li>EfficientDet</li><li>ONNX</li><li>DVC</li><li>Hydra</li>
           </ul>
           <div class="project__links">
-            <a class="project__link" href="#">Code</a>
-            <a class="project__link" href="#">Paper</a>
-            <a class="project__link" href="#">Demo</a>
+            <a class="project__link" href="https://doi.org/10.1049/ell2.70685" target="_blank" rel="noopener">Paper</a>
           </div>
         </div>
       </article>
 
-      <!-- Project 2 (placeholder) -->
-      <article class="project project--reversed" id="project-2" data-section data-section-label="Project 2">
+      <!-- Project 2: GNSS-SDR-SIM signal generator -->
+      <article class="project project--reversed" id="project-2" data-section data-section-label="GNSS-SDR-SIM">
         <span class="project__via" aria-hidden="true"></span>
         <figure class="taped-photo taped-photo--top-left" style="--tilt: -3deg">
           <img src="assets/img/photos/Work%20at%20INPE%C2%A7CE%2C%20Brazil%2C%20Aug%202019.jpg" alt="" loading="lazy">
@@ -509,33 +530,48 @@
         </figure>
         <div class="project__media">
           <div class="project__screen">
-            <div class="project__placeholder"><span>Image / demo placeholder</span></div>
+            <!-- Slideshow: assets/js/portfolio.js cycles the slides and builds the dots -->
+            <div class="project__gallery" aria-roledescription="carousel" aria-label="GNSS-SDR-SIM results">
+              <figure class="project__slide is-active">
+                <img src="assets/img/projects/gnss-sdr-sim/acquisition.png" alt="Acquisition of the generated GPS L1 C/A signal: 8 satellites in view" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">Acquisition of the generated GPS L1 C/A signal: 8 satellites in view</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/gnss-sdr-sim/pvt-fixes.png" alt="GNSS-SDR position fixes from the simulated signal: 1.7 m median horizontal error" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">GNSS-SDR position fixes from the simulated signal: 1.7 m median horizontal error</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/gnss-sdr-sim/scintillation.png" alt="Strong ionospheric scintillation (CPSSM) injected into the signal" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">Strong ionospheric scintillation (CPSSM) injected into the signal</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/gnss-sdr-sim/architecture.png" alt="Processing chain: from RINEX data and a trajectory to SDR-ready I/Q samples" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">Processing chain: from RINEX data and a trajectory to SDR-ready I/Q samples</figcaption>
+              </figure>
+              <div class="project__gallery-dots"></div>
+            </div>
           </div>
         </div>
         <div class="project__body">
           <p class="project__index">02 / 03</p>
-          <h2 class="project__title">Project title two</h2>
-          <p class="project__tagline">A one-line tagline that says what this project is.</p>
-          <p class="project__description">Short description of the project: the problem it addresses, the approach you took, and the outcome. Two or three sentences are enough here.</p>
+          <h2 class="project__title">GNSS-SDR-SIM</h2>
+          <p class="project__tagline">A GNSS signal generator for SDR test benches.</p>
+          <p class="project__description">Turns real RINEX ephemerides and a receiver trajectory into baseband I/Q samples, replayed from file or transmitted by an SDR, so GNSS receivers can be tested hardware-in-the-loop under controlled conditions.</p>
           <h3 class="project__features-heading">Key functionalities</h3>
           <ul class="project__features">
-            <li>Key functionality #1 — one-line explanation</li>
-            <li>Key functionality #2 — one-line explanation</li>
-            <li>Key functionality #3 — one-line explanation</li>
+            <li>Orbits, satellite clocks and Sagnac effect from RINEX v3</li>
+            <li>GPS L1 C/A, with Galileo E1-B/C in development</li>
+            <li>Ionospheric scintillation injection from CPSSM</li>
+            <li>Output to file, HackRF or ADALM-PLUTO; validated with GNSS-SDR</li>
           </ul>
           <ul class="project__tags">
-            <li>Tag 1</li><li>Tag 2</li><li>Tag 3</li>
+            <li>C</li><li>SDR</li><li>HackRF</li><li>GNSS-SDR</li><li>RINEX</li><li>MATLAB</li>
           </ul>
-          <div class="project__links">
-            <a class="project__link" href="#">Code</a>
-            <a class="project__link" href="#">Paper</a>
-            <a class="project__link" href="#">Demo</a>
-          </div>
         </div>
       </article>
 
-      <!-- Project 3 (placeholder) -->
-      <article class="project" id="project-3" data-section data-section-label="Project 3">
+      <!-- Project 3: hands-on work in the ITA GNSS Lab and UFC's SENSElab -->
+      <article class="project" id="project-3" data-section data-section-label="GNSS laboratories">
         <span class="project__via" aria-hidden="true"></span>
         <figure class="taped-photo taped-photo--top-right" style="--tilt: 3deg">
           <img src="assets/img/photos/UPC%2C%20RSLab%2C%20Barcelona%2C%20Mar%202024.jpg" alt="" loading="lazy">
@@ -543,27 +579,53 @@
         </figure>
         <div class="project__media">
           <div class="project__screen">
-            <div class="project__placeholder"><span>Image / demo placeholder</span></div>
+            <!-- Slideshow: assets/js/portfolio.js cycles the slides and builds the dots -->
+            <div class="project__gallery" aria-roledescription="carousel" aria-label="GNSS laboratory work">
+              <figure class="project__slide is-active">
+                <img src="assets/img/projects/gnss-labs/antenna-site.jpg" alt="GNSS antenna site at ITA, São José dos Campos, near the southern crest of the equatorial anomaly" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">GNSS antenna site at ITA, São José dos Campos, near the southern crest of the equatorial anomaly</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/gnss-labs/ita-gnss-lab.jpg" alt="ITA GPS/GNSS Laboratory, São José dos Campos" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">ITA GPS/GNSS Laboratory, São José dos Campos, home of the USRP X310 recorder</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/gnss-labs/iq-quality.jpg" alt="Raw I/Q checks of every recording: L1 and L5 spectra and sample distributions (no clipping)" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">Raw I/Q checks of every recording: L1 and L5 spectra and sample distributions (no clipping)</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/gnss-labs/acquisition-tracking.jpg" alt="GNSS-SDR on the recorded data: acquisition peak and prompt correlator constellations" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">GNSS-SDR on the recorded data: acquisition peak and prompt correlator constellations</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/gnss-labs/skyplot-position.jpg" alt="Sky plot and position error against the surveyed antenna" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">Sky plot and position error against the surveyed antenna</figcaption>
+              </figure>
+              <figure class="project__slide">
+                <img src="assets/img/projects/gnss-labs/senselab-bench.jpg" alt="SENSElab bench at UFC: NI PXI recorder, SDRs and AIS receiver" width="1600" height="1000" loading="lazy">
+                <figcaption class="project__slide-caption">SENSElab bench at UFC: NI PXI recorder, SDRs and AIS receiver</figcaption>
+              </figure>
+              <div class="project__gallery-dots"></div>
+            </div>
           </div>
         </div>
         <div class="project__body">
           <p class="project__index">03 / 03</p>
-          <h2 class="project__title">Project title three</h2>
-          <p class="project__tagline">A one-line tagline that says what this project is.</p>
-          <p class="project__description">Short description of the project: the problem it addresses, the approach you took, and the outcome. Two or three sentences are enough here.</p>
+          <h2 class="project__title">GNSS Laboratories</h2>
+          <p class="project__tagline">Hands-on data acquisition at ITA's GNSS Lab and UFC's SENSElab.</p>
+          <p class="project__description">At ITA, a USRP X310 records multi-band GNSS signals every evening through an unattended Linux pipeline that processes them and keeps only scintillation events. At UFC, I co-lead SENSElab's scintillation monitoring station.</p>
           <h3 class="project__features-heading">Key functionalities</h3>
           <ul class="project__features">
-            <li>Key functionality #1 — one-line explanation</li>
-            <li>Key functionality #2 — one-line explanation</li>
-            <li>Key functionality #3 — one-line explanation</li>
+            <li>systemd timers and services for unattended recording</li>
+            <li>L1, L2 and L5 I/Q capture to SigMF with UHD and Python</li>
+            <li>GNSS-SDR processing and S4/σφ scintillation indices</li>
+            <li>Self-updating report, WhatsApp digest and NAS triage</li>
           </ul>
           <ul class="project__tags">
-            <li>Tag 1</li><li>Tag 2</li><li>Tag 3</li>
+            <li>Linux</li><li>systemd</li><li>USRP X310</li><li>UHD</li><li>SigMF</li><li>GNSS-SDR</li><li>Python</li>
           </ul>
           <div class="project__links">
-            <a class="project__link" href="#">Code</a>
-            <a class="project__link" href="#">Paper</a>
-            <a class="project__link" href="#">Demo</a>
+            <a class="project__link" href="https://github.com/ita-gnss-lab" target="_blank" rel="noopener">ITA GNSS Lab</a>
           </div>
         </div>
       </article>
@@ -571,7 +633,7 @@
       <section class="outro" id="outro" data-section data-section-label="More">
         <span class="project__via" aria-hidden="true"></span>
         <figure class="taped-photo taped-photo--bottom-left" style="--tilt: -2deg">
-          <img src="assets/img/photos/TED%20ANATEL-ITA%2C%20S%C3%A3o%20Paulo%C2%A7SP%2C%20Apr%202026.jpg" alt="" loading="lazy">
+          <img src="assets/img/photos/INCT%20Signals%2C%20UFC%C2%A7LESC%2C%20Fortaleza%2C%20Brazil%2C%20Jun%202026.jpg" alt="" loading="lazy">
           <figcaption class="taped-photo__legend"></figcaption>
         </figure>
         <h2 class="outro__title">More on the bench soon.</h2>
@@ -586,6 +648,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="assets/js/portfolio.js?v=3"></script>
+  <script src="assets/js/portfolio.js?v=7"></script>
 </body>
 </html>
