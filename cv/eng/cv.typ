@@ -46,6 +46,10 @@
   orcid: (
     url: "https://orcid.org/0000-0001-5933-8565",
     fig: "figs/orcid.png"
+  ),
+  website: (
+    url: "https://tapyu.github.io/",
+    fig: "figs/website.svg"
   )
 )
 // education
@@ -356,7 +360,8 @@
     #link(contact.lattes.url)[#box(image(contact.lattes.fig, height: 10pt))], 
     #link(contact.github.url)[#box(image(contact.github.fig, height: 10pt))], 
     #link(contact.scholar.url)[#box(image(contact.scholar.fig, height: 10pt))], 
-    #link(contact.linkedin.url)[#box(image(contact.linkedin.fig, height: 10pt))]
+    #link(contact.linkedin.url)[#box(image(contact.linkedin.fig, height: 10pt))], 
+    #link(contact.website.url)[#box(image(contact.website.fig, height: 10pt))]
   ]
 ))
 
