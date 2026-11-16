@@ -15,9 +15,13 @@
     initials: "PPGETI",
     url: "https://ppgeti.ufc.br/en/",
   ),
-  group: (
-    initials: "GPSI",
-    url: "https://ppgeti.ufc.br/en/laboratories/laboratory-of-the-signal-and-information-processing-research-group-gpsi/",
+  second_place: (
+    initials: "ITA",
+    url: "https://www.ita.br/",
+  ),
+  second_program: (
+    initials: "PGEEC",
+    url: "https://www.ita.br/",
   )
 )
 // contact
@@ -59,17 +63,32 @@
     level: "Doctorate",
     initials: "PhD",
     start: "Jul 2021",
-    end: "Present",
+    end: "Apr 2026",
     location: "Fortaleza, Brazil",
     university: (
       full: "Federal University of Ceará",
       initials: "UFC",
     ),
+    cotutelle: (
+      course: "Aerospace Science and Technology",
+      initials: "PhD",
+      start: "2023",
+      end: "Apr 2026",
+      location: "Barcelona, Spain",
+      university: (
+        full: "Universitat Politècnica de Catalunya",
+        initials: "UPC",
+      ),
+      advisors: (
+        "Àngela Aragón Àngel",
+        "Felix Dieter Antreich"
+      ),
+    ),
     thesis: (
-      title: "Detection, characterization, and forecasting of the equatorial ionospheric scintillation signal on GNSS receive",
+      title: "Detection and characterization of equatorial ionospheric scintillation based on GNSS observations using convolutional neural networks",
       advisors: (
         "Felix Dieter Antreich",
-        "André Lima Ferrer de Almeida"
+        "André Lima Férrer de Almeida"
       ),
       is_pt: false,
     )
@@ -86,7 +105,7 @@
       initials: "UFC",
     ),
     thesis: (
-      title: "Coherent and all-digital AFSK modem for TT&C module of CubeSat systems",
+      title: "Coherent and all-digital AFSK modem for CubeSat-standard TT&C module",
       advisors: (
         "João Cesar Moura Mota",
         "Antônio Macilio Pereira de Lucena"
@@ -99,7 +118,7 @@
     course: "Electronics Engineering",
     level: "Graduation",
     initials: "BSc",
-    start: "Jan 2013",
+    start: "Aug 2014",
     end: "Dec 2018",
     location: "Fortaleza, Brazil",
     university: (
@@ -107,7 +126,7 @@
       initials: "Unifor"
     ),
     thesis: (
-      title: "Design of a portable charger converter with USB Type-C interface",
+      title: "Design of a converter for a portable charger with USB Type-C interface",
       advisors: ("Bruno Ricardo de Almeida",),
       is_pt: true,
     )
@@ -115,6 +134,28 @@
 )
 // experience
 #let experience = (
+  ita2026: (
+    name: "Postdoctoral researcher",
+    university: "Aeronautics Institute of Technology (ITA)",
+    info: (
+      "Postdoctoral researcher in the Telecommunications area of the Graduate Program in Electronics and Computer Engineering (PGEEC), supervised by Prof. Dr. Felix Dieter Antreich.",
+      "Research scholarship from the Casimiro Montenegro Filho Foundation (FCMF) in the project \"Study of Artificial Intelligence (AI) techniques applied to different telecommunications environments\", funded by ANATEL."
+    ),
+    location: "São José dos Campos, Brazil",
+    start: "Apr 2026",
+    end: "Present"
+  ),
+  ufc2026: (
+    name: "Postdoctoral researcher",
+    university: "Federal University of Ceará (UFC)",
+    info: (
+      "Postdoctoral researcher in the Graduate Program in Teleinformatics Engineering (PPGETI), supervised by Prof. Dr. André Lima Férrer de Almeida, with a CNPq scholarship.",
+      "Research project on ionospheric scintillation effects on the GNSS signal processing chain, using hardware-in-the-loop simulation for realistic validation of the tracking module."
+    ),
+    location: "Fortaleza, Brazil",
+    start: "Apr 2026",
+    end: "Present"
+  ),
   ird-ufc: (
     name: "IRD-UFC research partnership",
     university: "Federal University of Ceará (UFC)",
@@ -125,15 +166,54 @@
     location: "Fortaleza, Brazil",
     start: "Jun 2019",
     end: "Dec 2020"
+  ),
+  armtec2017: (
+    name: "Hardware intern",
+    university: "Armtec Tecnologia em Robótica (ARMTEC)",
+    info: (
+      "Electronic circuit design and PCB layout with Altium.",
+      "Participation in product development, from the requirements phase to assembly and testing."
+    ),
+    location: "Brazil",
+    start: "2017",
+    end: "2017"
   )
 )
 // research
 #let research = (
+  ufc_hil2026: (
+    name: "Effects of ionospheric scintillation on the GNSS signal processing chain: hardware-in-the-loop (HIL) simulation for realistic validation of the tracking module",
+    start: "2026",
+    end: "Present",
+    from: "Postdoctoral scholarship from National Council of Scientific and Technological Development (CNPq)",
+    info: (
+      "Investigation of ionospheric scintillation effects along the GNSS signal processing chain, focusing on the tracking module.",
+      "Development of a hardware-in-the-loop platform that reproduces realistic scintillation conditions in a controlled and repeatable way to validate tracking algorithms."
+    )
+  ),
+  anatel2024: (
+    name: "Study of Artificial Intelligence (AI) techniques applied to different telecommunications environments",
+    start: "2024",
+    end: "Present",
+    from: "Aeronautics Institute of Technology (ITA) project funded by the Brazilian National Telecommunications Agency (ANATEL)",
+    info: (
+      "Application of AI and machine learning to telecommunications: service quality estimation, QoS versus infrastructure capacity, cybersecurity, autonomous spectrum monitoring, marketplace monitoring, and social-network detection of service outages.",
+    )
+  ),
+  inct2024: (
+    name: "INCT Signals: Airborne and Spaceborne Remote Sensing and Surveillance",
+    start: "2024",
+    end: "Present",
+    from: "National Institute of Science and Technology funded by National Council of Scientific and Technological Development (CNPq)",
+    info: (
+      "Research network (UFC, ITA, UFRGS, PUCRS, UNIPAMPA) developing remote sensing, communication, monitoring, and surveillance solutions from airborne and satellite platforms.",
+    )
+  ),
   pr2019: (
     name: "Research and development of a fully digital modem for satellite communications",
     start: "Jun 2019",
     end: "Jun 2021",
-    from: "Master scholarship from Coordination for the Improvement of Higher Education Personnel (CAPES)",
+    from: "Master scholarship from Ceará Foundation for Support of Scientific and Technological Development (FUNCAP)",
     info: (
       "Fully digital modem for satellite communications, targeting its implementation in FPGAs.",
       "Design of the logical architecture of the modulator and demodulator.",
@@ -165,6 +245,59 @@
 // publications
 #let publications = (
   jounal_articles: (
+    taes2026: (
+      title: "Machine Learning-Based Ionospheric Irregularity Parameter Estimation",
+      publisher: "IEEE Transactions on Aerospace and Electronic Systems (accepted)",
+      year: 2026,
+      is_pt: false,
+      authors: (
+        "Florindo, R. L.",
+        "Pacelli, R. V.",
+        "Silva, P. R. B.",
+        "Antreich, F.",
+        "Alves, D. I.",
+        "Flores, E. S.",
+        "Kriegel, M.",
+        "Vasylyev, D.",
+      )
+    ),
+    el2026: (
+      title: "Machine learning-assisted blind emitter candidate generation in power spectrum analysis",
+      publisher: "Electronics Letters",
+      volume: "62",
+      start-page: "1",
+      end-page: "5",
+      year: 2026,
+      url: "https://doi.org/10.1049/ell2.70685",
+      is_pt: false,
+      authors: (
+        "Flores, E. S.",
+        "Florindo, R. L.",
+        "Silva, P. R. B.",
+        "Pacelli, R. V.",
+        "Delgado, E.",
+        "Lobao, F. S.",
+        "Nunes, M.",
+        "Alves, D. I.",
+        "Machado, R.",
+        "Antreich, F.",
+      )
+    ),
+    dsp2025: (
+      title: "An all-digital coherent AFSK demodulator for CubeSat applications",
+      publisher: "Digital Signal Processing",
+      volume: "162",
+      start-page: "105147",
+      year: 2025,
+      url: "https://doi.org/10.1016/j.dsp.2025.105147",
+      is_pt: false,
+      authors: (
+        "Pacelli, R. V.",
+        "Florindo, R. L.",
+        "Antreich, F.",
+        "de Lucena, A. M. P.",
+      )
+    ),
     bjd2020: (
       title: "Fully digital GMSK modem with noncoherent demodulation",
       publisher: "Brazilian Journal of Development",
@@ -192,7 +325,8 @@
       is_pt: true,
       authors: (
         "Pacelli, R. V.",
-        "Lucena, A. M. P."
+        "Lucena, A. M. P.",
+        "Figueiredo, S. S.",
       )
     ),
     bjd2020b: (
@@ -228,6 +362,119 @@
     )
   ),
   conferences: (
+    navicon2026: (
+      title: "Multifrequency Ionospheric Irregularity Parameter Inference Using GNSS Signals",
+      from: "IEEE Navigation Conference (NAVICON) 2026",
+      year: 2026,
+      is_pt: false,
+      authors: (
+        "Florindo, R. L.",
+        "Pacelli, R. V.",
+        "Vasylyev, D.",
+        "Silva, P. R. B.",
+        "Berdermann, J.",
+        "Antreich, F.",
+      )
+    ),
+    iongnss2026: (
+      title: "Geometry-Aided Kalman-Based Tracking Loops for Ionospheric Scintillation Monitoring",
+      from: "ION GNSS+ 2026",
+      year: 2026,
+      is_pt: false,
+      authors: (
+        "Pacelli, R. V.",
+        "Florindo, R. L.",
+        "Antreich, F.",
+        "Kriegel, M.",
+      )
+    ),
+    sbrt2026: (
+      title: "Imbalance-Aware MobileNet for Automated Classification of Radio Technologies in Spectrograms",
+      from: "SBrT 2026 - Brazilian Symposium on Telecommunications and Signal Processing",
+      year: 2026,
+      is_pt: false,
+      authors: (
+        "Flores, E. S.",
+        "Silva, P. R. B.",
+        "Florindo, R. L.",
+        "Pacelli, R. V.",
+        "Souza, F. J.",
+        "Delgado, E.",
+        "Lobao, F. S.",
+        "Nunes, M.",
+        "Alves, D. I.",
+        "Antreich, F.",
+        "Machado, R.",
+      )
+    ),
+    sbrt2026a: (
+      title: "Fine-Tuned YOLOv26 for Automated Detection of Radio Signals in Spectrograms",
+      from: "SBrT 2026 - Brazilian Symposium on Telecommunications and Signal Processing",
+      year: 2026,
+      is_pt: false,
+      authors: (
+        "Flores, E. S.",
+        "Silva, P. R. B.",
+        "Florindo, R. L.",
+        "Pacelli, R. V.",
+        "Medeiros, V. I. A.",
+        "Delgado, E.",
+        "Lobao, F. S.",
+        "Nunes, M.",
+        "Alves, D. I.",
+        "Antreich, F.",
+        "Machado, R.",
+      )
+    ),
+    iongnss2025: (
+      title: "Characterization of Ionospheric Scintillation Using Deep Learning Models",
+      from: "38th International Technical Meeting of the Satellite Division of The Institute of Navigation (ION GNSS+ 2025)",
+      start-page: "3339",
+      end-page: "3352",
+      year: 2025,
+      url: "https://doi.org/10.33012/2025.20390",
+      is_pt: false,
+      authors: (
+        "Pacelli, R. V.",
+        "Florindo, R. L.",
+        "Antreich, F.",
+        "de Almeida, A. L. F.",
+        "Aragon-Angel, A.",
+        "Garcia, A. R.",
+      )
+    ),
+    iongnss2025a: (
+      title: "Advanced Kalman Filter Carrier Tracking: Performance Assessment Under Two Ionospheric Scintillation Models",
+      from: "38th International Technical Meeting of the Satellite Division of The Institute of Navigation (ION GNSS+ 2025)",
+      start-page: "3421",
+      end-page: "3435",
+      year: 2025,
+      url: "https://doi.org/10.33012/2025.20395",
+      is_pt: false,
+      authors: (
+        "Florindo, R. L.",
+        "Pacelli, R. V.",
+        "Ferreira, T. L.",
+        "Silva, D. O.",
+        "de Lucena, A. M. P.",
+        "Antreich, F.",
+      )
+    ),
+    iongnss2024: (
+      title: "Convolutional Neural Networks for Time Series Classification of Ionospheric Scintillation",
+      from: "37th International Technical Meeting of the Satellite Division of The Institute of Navigation (ION GNSS+ 2024)",
+      start-page: "3019",
+      year: 2024,
+      url: "https://doi.org/10.33012/2024.19929",
+      is_pt: false,
+      authors: (
+        "Pacelli, R. V.",
+        "Aragon-Angel, A.",
+        "García, A. R.",
+        "de Almeida, A. L. F.",
+        "Antreich, F.",
+      )
+    ),
     cba2022: (
       title: "Convolutional Long-Short-Term Memory Networks (ConvLSTM) for Weather Prediction using Radar and Satellite Images",
       from: "CBA 2022",
@@ -252,16 +499,48 @@
     ),
     sbrt2020: (
       title: "All-digital AFSK modem with Viterbi detection for TT&C CubeSat transceiver",
-      from: "XXXVIII Simpósio Brasileiro de Telecomunicações e Processamento De Sinais",
+      from: "XXXVIII Brazilian Symposium on Telecommunications and Signal Processing",
       start-page: "1",
       end-page: "5",
-      year: 2022,
-      url: "https://www.sbrt.org.br/sbrt2020/papers/1570654898.pdf",
+      year: 2020,
+      url: "https://doi.org/10.14209/SBRT.2020.1570654898",
       is_pt: false,
       authors: (
         "Pacelli, R. V.",
-        "Mota, J. C. M.",
         "Lucena, A. M. P.",
+        "Mota, J. C. M.",
+      )
+    ),
+    eip2018: (
+      title: "Fully digital GMSK modem with noncoherent demodulation",
+      from: "XXIV Research Initiation Meeting",
+      year: 2018,
+      is_pt: true,
+      authors: (
+        "Pacelli, R. V.",
+        "Lucena, A. M. P.",
+      )
+    ),
+    eip2017: (
+      title: "Carrier synchronization technique for OFDM communication systems",
+      from: "XXIII Research Initiation Meeting",
+      year: 2017,
+      is_pt: true,
+      authors: (
+        "Pacelli, R. V.",
+        "Lucena, A. M. P.",
+        "Figueiredo, S. S.",
+      )
+    ),
+    eip2017a: (
+      title: "Carrier selection technique for OFDM system in time-dispersive channels",
+      from: "XXIII Research Initiation Meeting",
+      year: 2017,
+      is_pt: true,
+      authors: (
+        "Figueiredo, S. S.",
+        "Lucena, A. M. P.",
+        "Pacelli, R. V.",
       )
     ),
     ic_unifor2016: (
@@ -273,9 +552,20 @@
       url: "https://uol.unifor.br/oul/conteudosite/?cdConteudo=6946081",
       is_pt: true,
       authors: (
-        "Mourão, J. A",
-        "Pacelli, R. V.",
+        "Mourão, J. A.",
         "Lucena, A. M. P.",
+        "Araújo, D. C.",
+        "Pacelli, R. V.",
+      )
+    ),
+    eip2015: (
+      title: "Energy efficiency in parallel programming",
+      from: "XXI Research Initiation Meeting",
+      year: 2015,
+      is_pt: true,
+      authors: (
+        "Pacelli, R. V.",
+        "Pontes, H. P.",
       )
     )
   ),
@@ -293,7 +583,7 @@
       is_pt: false,
       authors: (
         "Pacelli, R. V.",
-        "Moreira, N. de A.",
+        "Moreira, N. A.",
         "Maciel, T. F.",
         "Kacou, M.",
         "Gosset, M.",
@@ -314,12 +604,12 @@
         "Pacelli, R. V.",
         "Lucena, A. M. P.",
         "Araújo, D. C.",
-        "Mourão, J. A",
+        "Mourão, J. A.",
       )
     ),
     bj2020: (
       title: "GMSK modem with noncoherent demodulation and all-digital implementation",
-      publisher: "Atena",
+      publisher: "Brazilian Journals Editora",
       book: "The impacts of studies focused on exact sciences",
       chapter: "2",
       volume: "1",
@@ -341,7 +631,7 @@
     requirement: "BR 10 2021 023220 0",
     title: "Digital demodulation architecture and coherent detection method for AFSK signals",
     is_pt: true,
-    status: "filed"
+    status: "filed; examination requested (Dec 2023)"
   )
 )
 
@@ -353,7 +643,7 @@
   [Last update: #datetime.today().display()],
   [#info.home_place.full (#info.home_place.initials)],
   [Mobile: #contact.cellphone],
-  [#link(info.home_place.url)[#info.home_place.initials]-#link(info.program.url)[#info.program.initials]-#link(info.group.url)[#info.group.initials]],
+  [#link(info.home_place.url)[#info.home_place.initials]-#link(info.program.url)[#info.program.initials], #link(info.second_place.url)[#info.second_place.initials]-#link(info.second_program.url)[#info.second_program.initials]],
   [ 
     #link(contact.email.url)[#box(image(contact.email.fig, height: 10pt))], 
     #link(contact.orcid.url)[#box(image(contact.orcid.fig, height: 10pt))], 
@@ -365,9 +655,9 @@
   ]
 ))
 
-= Carrer Summary
+= Career Summary
 
-Skilled Engineer with academic experience in GNSS Signal Processing and multidisciplinary background in
+Electronics engineer with a joint PhD (cotutelle) from the Federal University of Ceará (UFC, Brazil) and the Universitat Politècnica de Catalunya (UPC, Spain), currently a postdoctoral researcher at UFC and at the Aeronautics Institute of Technology (ITA), working on signal processing for satellite navigation and communication (GNSS), with a multidisciplinary background in
 - Statistical signal processing, system identification, and adaptive filtering.
 - Software-defined radio, digital modems, and synchronization techniques.
 - Deep learning, pattern recognition, and optimization theory.// artificial intelligence.
@@ -424,6 +714,9 @@ Skilled Engineer with academic experience in GNSS Signal Processing and multidis
 = Academic Activity and membership
 == Associate member
 - Brazilian Telecommunications Society (SBrT)
+
+== Research networks
+- #link("https://inct-signals.org")[INCT Signals]: National Institute of Science and Technology on Signal Processing, Communications, Sensing and Surveillance.
 
 = Publications
 My academic publications are also listed on #link(contact.scholar.url)[Google Scholar].
