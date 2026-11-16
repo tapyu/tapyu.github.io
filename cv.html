@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=10">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=13">
 </head>
 <body class="links-page cv-page">
   <nav class="site-nav" aria-label="Main">
@@ -32,7 +33,7 @@
       </div>
     </header>
 
-    <!-- Each panel renders its PDF page by page (assets/js/cv.js); the buttons work without JavaScript -->
+    <!-- Each panel renders its PDF page by page (assets/js/pdf-viewer.js: zoom, selectable text); the buttons work without JavaScript -->
     <section class="cv__panel" id="cv-panel-en" role="tabpanel" aria-labelledby="cv-tab-en" data-language="en" data-pdf="cv/eng/cv.pdf">
       <div class="cv__actions">
         <a class="cv__action" href="cv/eng/cv.pdf" target="_blank" rel="noopener">Open PDF</a>
@@ -51,6 +52,7 @@
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="assets/js/cv.js"></script>
+  <script src="assets/js/pdf-viewer.js?v=3"></script>
+  <script src="assets/js/cv.js?v=3"></script>
 </body>
 </html>

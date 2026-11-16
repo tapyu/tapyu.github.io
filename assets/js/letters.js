@@ -43,100 +43,18 @@
   );
   letters.forEach((letter) => letter_observer.observe(letter));
 
-  // ---------- PDF rendering ----------
+  // ---------- PDF viewers (assets/js/pdf-viewer.js: zoom, text selection, links) ----------
 
-  const has_pdfjs = Boolean(window.pdfjsLib);
-  if (has_pdfjs) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-  }
-
-  const pdf_documents = new Map(); // pdf url -> loading promise
-  const rendered_widths = new Map(); // viewer -> width its pages were rendered at
-
-  const load_pdf = (pdf_url) => {
-    if (!pdf_documents.has(pdf_url)) pdf_documents.set(pdf_url, pdfjsLib.getDocument(pdf_url).promise);
-    return pdf_documents.get(pdf_url);
-  };
-
-  const add_link_overlays = async (page, viewport, page_element) => {
-    for (const annotation of await page.getAnnotations()) {
-      if (annotation.subtype !== "Link" || !annotation.url) continue;
-      const [left, top, right, bottom] = viewport.convertToViewportRectangle(annotation.rect);
-      const link = document.createElement("a");
-      link.className = "letter__page-link";
-      link.href = annotation.url;
-      link.target = "_blank";
-      link.rel = "noopener";
-      link.setAttribute("aria-label", annotation.url);
-      Object.assign(link.style, {
-        left: `${(Math.min(left, right) / viewport.width) * 100}%`,
-        top: `${(Math.min(top, bottom) / viewport.height) * 100}%`,
-        width: `${(Math.abs(right - left) / viewport.width) * 100}%`,
-        height: `${(Math.abs(bottom - top) / viewport.height) * 100}%`,
-      });
-      page_element.append(link);
-    }
-  };
-
-  const show_iframe_fallback = (letter, viewer) => {
-    const frame = document.createElement("iframe");
-    frame.className = "letter__frame";
-    frame.src = letter.dataset.pdf;
-    frame.title = viewer.getAttribute("aria-label");
-    viewer.replaceChildren(frame);
-  };
-
-  const render_letter = async (letter) => {
+  for (const letter of letters) {
     const viewer = letter.querySelector(".letter__viewer");
-    const viewer_style = getComputedStyle(viewer);
-    const content_width =
-      viewer.clientWidth - parseFloat(viewer_style.paddingLeft) - parseFloat(viewer_style.paddingRight);
-    if (rendered_widths.get(viewer) === content_width) return;
-    rendered_widths.set(viewer, content_width);
-
-    if (!has_pdfjs) {
-      show_iframe_fallback(letter, viewer);
-      return;
-    }
-
-    try {
-      const pdf_document = await load_pdf(letter.dataset.pdf);
-      const page_elements = [];
-      for (let page_number = 1; page_number <= pdf_document.numPages; page_number++) {
-        const page = await pdf_document.getPage(page_number);
-        const css_viewport = page.getViewport({ scale: content_width / page.getViewport({ scale: 1 }).width });
-        const pixel_ratio = Math.min(window.devicePixelRatio || 1, 3);
-        const render_viewport = page.getViewport({ scale: css_viewport.scale * pixel_ratio });
-
-        const canvas = document.createElement("canvas");
-        canvas.className = "letter__page-canvas";
-        canvas.width = Math.floor(render_viewport.width);
-        canvas.height = Math.floor(render_viewport.height);
-        await page.render({ canvasContext: canvas.getContext("2d"), viewport: render_viewport }).promise;
-
-        const page_element = document.createElement("div");
-        page_element.className = "letter__page";
-        page_element.style.aspectRatio = `${css_viewport.width} / ${css_viewport.height}`;
-        page_element.append(canvas);
-        await add_link_overlays(page, css_viewport, page_element);
-        page_elements.push(page_element);
-      }
-      // Swap all pages at once, so a re-render on resize never flashes empty.
-      if (rendered_widths.get(viewer) === content_width) viewer.replaceChildren(...page_elements);
-    } catch (error) {
-      console.error("[letters] PDF.js could not render", letter.dataset.pdf, error);
-      show_iframe_fallback(letter, viewer);
-    }
-  };
-
-  letters.forEach(render_letter);
-
-  let resize_timer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resize_timer);
-    resize_timer = setTimeout(() => letters.forEach(render_letter), 200);
-  });
+    window
+      .create_pdf_viewer({
+        host: viewer,
+        pdf_url: letter.dataset.pdf,
+        title: viewer.getAttribute("aria-label"),
+      })
+      .render();
+  }
 
   // ---------- Scroll animations ----------
 
@@ -201,7 +119,7 @@
         0.15
       )
       .from(
-        letter.querySelector(".letter__viewer"),
+        letter.querySelector(".letter__document"),
         { y: 50, autoAlpha: 0, duration: 0.7, ease: "power2.out" },
         0.25
       );

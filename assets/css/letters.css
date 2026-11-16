@@ -100,45 +100,30 @@
   text-transform: uppercase;
 }
 
-/* ---------- Scrollable PDF viewer ---------- */
+/* ---------- Scrollable PDF viewer (pages, text layer and zoom: assets/js/pdf-viewer.js) ---------- */
 
+.letter__document {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* the letter's window (bar + pages: assets/js/pdf-viewer.js) */
 .letter__viewer {
-  min-height: 240px;
-  max-height: min(80vh, 820px);
-  max-height: min(80svh, 820px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 14px;
+  height: min(80vh, 840px);
+  height: min(80svh, 840px);
+  min-height: 320px;
   border-radius: 16px;
-  background: #232a33;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), inset 0 0 0 2px #3a4352;
+}
+
+.letter__viewer .pdf-viewer__scroll {
   scrollbar-color: var(--color-copper) transparent;
 }
 
-.letter__viewer:focus-visible {
-  outline: 2px solid var(--color-led);
-  outline-offset: 4px;
-}
-
-.letter__page {
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px;
-  background: #fff;
-}
-
-.letter__page + .letter__page {
-  margin-top: 14px;
-}
-
-.letter__page-canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.letter__page-link {
-  position: absolute;
+.letter__viewer .pdf-pages {
+  gap: 14px;
 }
 
 .letter__status {
@@ -147,15 +132,6 @@
   font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--color-text-muted);
-}
-
-.letter__frame {
-  display: block;
-  width: 100%;
-  height: min(76vh, 800px);
-  border: 0;
-  border-radius: 4px;
-  background: #fff;
 }
 
 /* ---------- Tablets and phones: profile on top, letter below ---------- */
@@ -180,8 +156,11 @@
   }
 
   .letter__viewer {
-    max-height: 75vh;
-    max-height: 75svh;
+    height: 75vh;
+    height: 75svh;
+  }
+
+  .letter__viewer .pdf-viewer__scroll {
     padding: 8px;
   }
 }
