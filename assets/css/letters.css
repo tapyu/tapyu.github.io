@@ -46,8 +46,10 @@
   order: 2;
 }
 
+/* a portrait-friendly screen for the profile photo */
 .letter__screen {
-  max-width: 420px;
+  max-width: 480px;
+  aspect-ratio: 4 / 3;
 }
 
 .letter__name {
@@ -68,27 +70,28 @@
   gap: 12px;
 }
 
+/* the photo fills the whole screen */
 .letter-profile__avatar {
-  display: grid;
-  place-items: center;
-  width: 38%;
-  aspect-ratio: 1;
-  border: 2px dashed rgba(57, 255, 136, 0.7);
-  border-radius: 50%;
-  background: rgba(57, 255, 136, 0.06);
-}
-
-.letter-profile__avatar svg {
-  width: 62%;
-  height: auto;
-  fill: rgba(57, 255, 136, 0.55);
+  width: 100%;
+  height: 100%;
 }
 
 .letter-profile__avatar img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 8px;
   object-fit: cover;
+}
+
+/* no scanning sweep over the profile photos */
+.letter-profile::after {
+  content: none;
+}
+
+/* a small photo is shown whole, centered, instead of stretched to fill the screen */
+.letter-profile__avatar--centered img {
+  object-fit: contain;
+  border-radius: 0;
 }
 
 .letter-profile__caption {

@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=10">
   <link rel="stylesheet" href="assets/css/portfolio.css?v=8">
-  <link rel="stylesheet" href="assets/css/letters.css?v=2">
+  <link rel="stylesheet" href="assets/css/letters.css?v=7">
 </head>
 <body class="portfolio-page letters-page">
   <nav class="site-nav" aria-label="Main">
@@ -35,7 +35,7 @@
 
     <!-- Each <article class="letter"> is one full-screen snap panel:
          a profile "screen" on one side and the letter PDF (rendered by assets/js/letters.js) on the other.
-         Swap .letter-profile__avatar's placeholder for an <img> when a photo is available. -->
+         Profile photos live in assets/img/letters/. -->
     <section class="projects letters" id="letters">
       <div class="projects__trace" aria-hidden="true"><div class="projects__trace-fill"></div></div>
 
@@ -45,10 +45,9 @@
           <p class="project__index">Letter 01 / 02</p>
           <div class="project__screen letter__screen">
             <div class="project__placeholder letter-profile">
-              <div class="letter-profile__avatar" aria-hidden="true">
-                <svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="24" r="12"/><path d="M10 58c2-13 11-20 22-20s20 7 22 20z"/></svg>
+              <div class="letter-profile__avatar letter-profile__avatar--centered">
+                <img src="assets/img/letters/jaume-sanz.jpg" alt="Prof. Dr. Jaume Sanz Subirana">
               </div>
-              <span class="letter-profile__caption">Profile photo placeholder</span>
             </div>
           </div>
           <h2 class="project__title letter__name">Prof. Dr. Jaume Sanz Subirana</h2>
@@ -71,10 +70,9 @@
           <p class="project__index">Letter 02 / 02</p>
           <div class="project__screen letter__screen">
             <div class="project__placeholder letter-profile">
-              <div class="letter-profile__avatar" aria-hidden="true">
-                <svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="24" r="12"/><path d="M10 58c2-13 11-20 22-20s20 7 22 20z"/></svg>
+              <div class="letter-profile__avatar">
+                <img src="assets/img/letters/macilio-lucena.jpeg" alt="Dr. Antonio Macilio Pereira de Lucena" style="object-position: 50% 0%">
               </div>
-              <span class="letter-profile__caption">Profile photo placeholder</span>
             </div>
           </div>
           <h2 class="project__title letter__name">Dr. Antonio Macilio Pereira de Lucena</h2>
