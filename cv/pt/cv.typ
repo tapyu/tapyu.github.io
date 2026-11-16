@@ -198,7 +198,7 @@
     name: "Estudo de técnicas de Inteligência Artificial (IA) aplicadas em diferentes ambientes de telecomunicações",
     start: "2024",
     end: "atual",
-    from: "Projeto do Instituto Tecnológico de Aeronáutica (ITA) financiado pela Agência Nacional de Telecomunicações (ANATEL)",
+    from: "Projeto do Instituto Tecnológico de Aeronáutica (ITA) financiado pela Fundação Casimiro Montenegro Filho (FCMF)",
     info: (
       "Aplicação de IA e aprendizado de máquina a telecomunicações: estimação da qualidade dos serviços, QoS versus capacidade da infraestrutura, cibersegurança, monitoramento autônomo do espectro, monitoramento de marketplaces e detecção de interrupções de serviço em redes sociais.",
     )
@@ -207,7 +207,7 @@
     name: "INCT Signals: Sensoriamento e Vigilância Remota Aerotransportada e Espacial",
     start: "2024",
     end: "atual",
-    from: "Instituto Nacional de Ciência e Tecnologia financiado pelo Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)",
+    from: "Instituto Nacional de Ciência e Tecnologia (INCT) com financiamento de diversas agências",
     info: (
       "Rede de pesquisa (UFC, ITA, UFRGS, PUCRS, UNIPAMPA) dedicada a soluções de sensoriamento remoto, comunicações, monitoramento e vigilância a partir de plataformas aerotransportadas e satelitais.",
     )
@@ -648,13 +648,13 @@
   [Celular: #contact.cellphone],
   [#link(info.home_place.url)[#info.home_place.initials]-#link(info.program.url)[#info.program.initials], #link(info.second_place.url)[#info.second_place.initials]-#link(info.second_program.url)[#info.second_program.initials]],
   [
+    #link(contact.website.url)[#box(image(contact.website.fig, height: 10pt))],
     #link(contact.email.url)[#box(image(contact.email.fig, height: 10pt))],
     #link(contact.orcid.url)[#box(image(contact.orcid.fig, height: 10pt))],
     #link(contact.lattes.url)[#box(image(contact.lattes.fig, height: 10pt))],
     #link(contact.github.url)[#box(image(contact.github.fig, height: 10pt))],
     #link(contact.scholar.url)[#box(image(contact.scholar.fig, height: 10pt))],
     #link(contact.linkedin.url)[#box(image(contact.linkedin.fig, height: 10pt))], 
-    #link(contact.website.url)[#box(image(contact.website.fig, height: 10pt))]
   ]
 ))
 
@@ -689,16 +689,29 @@ Engenheiro qualificado com experiência acadêmica em Processamento de Sinais GN
 = Competências
 
 == Técnicas
-- Linguagens de programação científica: Python, Julia, R, MATLAB/Simulink, Octave.
-- Frameworks de aprendizado profundo: PyTorch, TensorFlow, Keras.
-- Ferramentas de MLOps:
-  - Ecossistema Amazon Web Services (AWS): Amazon SageMaker, Elastic Container Service (ECS), Elastic Container Registry (ECR).
-  - Pipelines de CI/CD: Jenkins, GitHub Actions, Travis CI.
-  - Tecnologias de contêineres: Docker, Kubernetes.
-  - Data Version Control (DVC).
-- Linguagens de programação de sistemas: C, C++ e Assembly.
-- GNU/Linux: scripts em shell UNIX, fundamentos de sistemas Linux, git.
-- Sistemas de composição tipográfica: LaTeX, Typst.
+- Sistemas e redes:
+    - GNU/Linux: scripts em shell UNIX, fundamentos de sistemas Linux, serviços e automação.
+    - Redes: SSH para acesso remoto e Tailscale para tunelamento.
+    - Tecnologias de contêineres: Docker Compose CLI, construção de imagens Docker e Docker Hub para hospedagem de imagens.
+    - Versionamento de código e colaboração: Git, GitHub, GitHub Actions.
+- Competências acadêmicas e científicas:
+    - Linguagens de programação científica: Python, Julia, R, MATLAB/Simulink, Octave.
+    - Sistemas de composição tipográfica: LaTeX, Typst. Redação de documentos científicos, relatórios e artigos acadêmicos.
+    - Patentes e propriedade intelectual: redação, busca e depósito de patentes.
+- Ferramentas de MLOps e ecossistema de Ciência de Dados:
+  - Bibliotecas de aprendizado profundo: PyTorch, Keras/TensorFlow.
+  - Pipelines e orquestração: Data Version Control (DVC).
+  - Visualização e análise de dados: Studio Datachain.
+  - Serviços de computação em nuvem: Amazon Web Services (AWS).
+- Sistemas embarcados e projeto de hardware:
+    - Linguagens de programação de sistemas para desenvolvimento de firmware: C, C++ e Assembly.
+    - Arquitetura de computadores: programação em nível de registradores, interrupções, acesso direto à memória (DMA), temporizadores, ADC/DAC, PWM, linker scripts, bootloaders e E/S mapeada em memória.
+    - Projeto de PCB: KiCad, Altium, integridade de sinal e de potência, EMC, projeto para manufatura (DFM). Conhecimento básico de KiCad+MCP para prototipagem e produção de PCBs ultrarrápidas guiadas por IA.
+    - HDLs e FPGAs: VHDL e Quartus Prime para projeto e simulação de FPGAs.
+    - Protocolos cabeados: UART, SPI, I²C, CAN/CAN-FD, LIN, USB, Ethernet, Modbus.
+    - RTOS e sistemas operacionais: programação bare-metal, kernel FreeRTOS. Experiência prévia com a família da NXP Semiconductors, plataforma de desenvolvimento FRDM modelo KL25Z.
+    - DSP embarcado e ML na borda: aritmética de ponto fixo, CMSIS-DSP, filtros FIR/IIR, FFT, TensorFlow Lite Micro (LiteRT), Edge Impulse. Experiência prévia no desenvolvimento de baixo nível de modems digitais.
+    - Plataformas de rádio definido por software (SDR): USRP, HackRF, ADALM-PLUTO, RTL-SDR. Experiência com GNU Radio, aquisição automatizada de dados, processamento de sinais e aprendizado de máquina para aplicações de SDR.
 
 == Idiomas
 - Inglês: proficiência profissional (exames #link("https://github.com/tapyu/tapyu/blob/master/cv/Latex/figs/Toefl.pdf")[TOEFL iBT] e #link("https://github.com/tapyu/tapyu/blob/master/cv/Latex/figs/Cambridge\%20FCE.pdf")[Cambridge FCE]).

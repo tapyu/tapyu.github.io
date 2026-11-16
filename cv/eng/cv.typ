@@ -195,7 +195,7 @@
     name: "Study of Artificial Intelligence (AI) techniques applied to different telecommunications environments",
     start: "2024",
     end: "Present",
-    from: "Aeronautics Institute of Technology (ITA) project funded by the Brazilian National Telecommunications Agency (ANATEL)",
+    from: "Aeronautics Institute of Technology (ITA) project funded by the Casimiro Montenegro Filho Foundation (FCMF)",
     info: (
       "Application of AI and machine learning to telecommunications: service quality estimation, QoS versus infrastructure capacity, cybersecurity, autonomous spectrum monitoring, marketplace monitoring, and social-network detection of service outages.",
     )
@@ -204,7 +204,7 @@
     name: "INCT Signals: Airborne and Spaceborne Remote Sensing and Surveillance",
     start: "2024",
     end: "Present",
-    from: "National Institute of Science and Technology funded by National Council of Scientific and Technological Development (CNPq)",
+    from: "National Institute of Science and Technology (INCT) funded by multiple agencies",
     info: (
       "Research network (UFC, ITA, UFRGS, PUCRS, UNIPAMPA) developing remote sensing, communication, monitoring, and surveillance solutions from airborne and satellite platforms.",
     )
@@ -645,13 +645,13 @@
   [Mobile: #contact.cellphone],
   [#link(info.home_place.url)[#info.home_place.initials]-#link(info.program.url)[#info.program.initials], #link(info.second_place.url)[#info.second_place.initials]-#link(info.second_program.url)[#info.second_program.initials]],
   [ 
+    #link(contact.website.url)[#box(image(contact.website.fig, height: 10pt))],
     #link(contact.email.url)[#box(image(contact.email.fig, height: 10pt))], 
     #link(contact.orcid.url)[#box(image(contact.orcid.fig, height: 10pt))], 
     #link(contact.lattes.url)[#box(image(contact.lattes.fig, height: 10pt))], 
     #link(contact.github.url)[#box(image(contact.github.fig, height: 10pt))], 
     #link(contact.scholar.url)[#box(image(contact.scholar.fig, height: 10pt))], 
     #link(contact.linkedin.url)[#box(image(contact.linkedin.fig, height: 10pt))], 
-    #link(contact.website.url)[#box(image(contact.website.fig, height: 10pt))]
   ]
 ))
 
@@ -687,19 +687,29 @@ Skilled Engineer with academic experience in GNSS Signal Processing and multidis
 = Skills
 
 == Technical
-- Scientific programming languages: Python, Julia, R, MATLAB/Simulink, Octave.
-- Deep learning frameworks: PyTorch, TensorFlow, Keras.
-- MLOps Tools:
-  // NOTE: https://neptune.ai/blog/mlops-tools-platforms-landscape
-  // - Cloud platform services: Amazon Web Services (AWS), Google Cloud Platform (GCP), Microsoft Azure Cloud.
-  // - End-to-end MLOps platforms: Azure Machine Learning, Amazon SageMaker, Kubeflow, MLFlow.
-  - Amazon Web Services (AWS) ecosystem: Amazon SageMaker, Elastic Container Service (ECS), Elastic Container Registry (ECR).
-  - CI/CD Pipelines: Jenkins, GitHub Actions, Travis CI.
-  - Container technologies: Docker, Kubernetes.
-  - Data Version Control (DVC).
-- Systems programming languages: C, C++, and Assembly. // Rust
-- GNU/Linux: UNIX Shell scripting, Linux system fundamentals, git.
-- Typesetting systems: LaTeX, Typst.
+- Systems & network expertise:
+    - GNU/Linux: UNIX Shell scripting, Linux system fundamentals, services and automation.
+    - Networking: : SSH for remote access and tailscale for tunneling.
+    - Container technologies: Docker Compose CLI, Docker image building, and Docker Hub for image hosting.
+    - Code versioning and collaboration: Git, GitHub, GitHub Actions.
+- Academic and scientific skill set:
+    - Scientific programming languages: Python, Julia, R, MATLAB/Simulink, Octave.
+    - Typesetting systems: LaTeX, Typst. Ability to write scientific documents, reports, and academic papers.
+    - Patent and intellectual property: patent drafting, patent search, and patent filing.
+- MLOps tools and its Data Science ecosystem:
+  - Deep learning packages: PyTorch, Keras/TensorFlow.
+  - Pipelines & orchestration: Data Version Control (DVC).
+  - Data visualization & analysis: Studio Datachain.
+  - Cloud platform services: Amazon Web Services (AWS)
+- Embedded systems and hardware design:
+    - System programming languages for firmware development: C, C++, and Assembly.
+    - Computer architecture: register-level programming, interrupts, direct memory access, timers, ADC/DAC, PWM, linker scripts, bootloaders, and memory-mapped I/O.
+    - PCB design: KiCad, Altium, signal and power integrity, EMC, design for manufacturing (DFM). Basic undertanding in KiCad+MCP for ultra-fast AI-driven prototyping and production of PCBs.
+    - HDLs and FPGAs: VHDL and Quartus Prime for FPGA design and simulation.
+    - Wired protocols: UART, SPI, I²C, CAN/CAN-FD, LIN, USB, Ethernet, Modbus
+    - RTOS and OS: bare-metal programming, FreeRTOS kernel. Previous experience with an NXP Semiconductors' family, the FRDM Development Platform model KL25Z.
+    - Embedded DSP and edge ML: fixed-point arithmetic, CMSIS-DSP, FIR/IIR filters, FFT, TensorFlow Lite Micro (LiteRT), Edge Impulse. Previous experience with low-level development of digital modems.
+    - Software-defined radio (SDR) platforms: USRP, HackRF, ADALM-PLUTO, RTL-SDR. Experience with GNU Radio, automatized data acquisition, signal processing, and machine learning for SDR applications.
 
 == Languages
 - English: Professional working proficiency  (#link("https://github.com/tapyu/tapyu/blob/master/cv/Latex/figs/Toefl.pdf")[TOEFL IBT] and #link("https://github.com/tapyu/tapyu/blob/master/cv/Latex/figs/Cambridge\%20FCE.pdf")[Cambridge FCE] exams).
