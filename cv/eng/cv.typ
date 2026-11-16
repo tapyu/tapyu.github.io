@@ -657,7 +657,7 @@
 
 = Career Summary
 
-Electronics engineer with a joint PhD (cotutelle) from the Federal University of Ceará (UFC, Brazil) and the Universitat Politècnica de Catalunya (UPC, Spain), currently a postdoctoral researcher at UFC and at the Aeronautics Institute of Technology (ITA), working on signal processing for satellite navigation and communication (GNSS), with a multidisciplinary background in
+Skilled Engineer with academic experience in GNSS Signal Processing and multidisciplinary background in
 - Statistical signal processing, system identification, and adaptive filtering.
 - Software-defined radio, digital modems, and synchronization techniques.
 - Deep learning, pattern recognition, and optimization theory.// artificial intelligence.

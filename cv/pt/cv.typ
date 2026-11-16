@@ -660,7 +660,7 @@
 
 = Resumo Profissional
 
-Engenheiro eletrônico, doutor pela Universidade Federal do Ceará (UFC) e pela Universitat Politècnica de Catalunya (UPC, Espanha) em regime de cotutela, atualmente pesquisador de pós-doutorado na UFC e no Instituto Tecnológico de Aeronáutica (ITA), atuando em processamento de sinais para navegação e comunicação por satélite (GNSS), com formação multidisciplinar em
+Engenheiro qualificado com experiência acadêmica em Processamento de Sinais GNSS e formação multidisciplinar em
 - Processamento estatístico de sinais, identificação de sistemas e filtragem adaptativa.
 - Rádio definido por software, modems digitais e técnicas de sincronização.
 - Aprendizado profundo, reconhecimento de padrões e teoria de otimização.
