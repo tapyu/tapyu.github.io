@@ -276,21 +276,25 @@
 /* clear of the bottom quarter, which project 1 slides under */
 .curtain .taped-photo--bottom-right { bottom: calc(25vh + 6vh); right: 7vw; }
 
-/* In the sections the photos sit in the empty margins beside the 1160px panel */
+/* In the sections the photos always hang in the margin left of the copper trace,
+   centered in it; only their height varies (top/bottom). Panels span the full width,
+   so --trace-x means the same thing here as on .projects. */
 .project .taped-photo,
 .outro .taped-photo {
-  --side-offset: calc(28px - max(0px, (100vw - 1160px) / 2));
-  width: 200px;
+  --photo-width: min(190px, calc(var(--trace-x) - 56px));
+  width: var(--photo-width);
+  left: calc((var(--trace-x) - var(--photo-width)) / 2);
+  right: auto;
 }
 
-.project .taped-photo--top-left { top: 96px; left: var(--side-offset); }
-.project .taped-photo--top-right { top: 96px; right: var(--side-offset); }
-.project .taped-photo--bottom-left { bottom: 72px; left: calc(var(--side-offset) + 24px); }
-.project .taped-photo--bottom-right { bottom: 72px; right: var(--side-offset); }
-.outro .taped-photo--bottom-left { bottom: 56px; left: calc(var(--trace-x) + 56px); }
+.project .taped-photo--top-left,
+.project .taped-photo--top-right { top: 96px; }
+.project .taped-photo--bottom-left,
+.project .taped-photo--bottom-right { bottom: 72px; }
+.outro .taped-photo { bottom: 56px; }
 
-/* Without wide margins, the photo joins the panel's flow above the content */
-@media (max-width: 1499px) {
+/* Once the margin left of the trace is too narrow, the photo joins the panel's flow above the content */
+@media (max-width: 1649px) {
   .project .taped-photo {
     position: relative;
     inset: auto;
@@ -309,6 +313,13 @@
   .project .taped-photo--bottom-right {
     justify-self: end;
     margin-right: 24px;
+  }
+
+  .outro .taped-photo {
+    position: relative;
+    inset: auto;
+    width: 180px;
+    margin-bottom: 32px;
   }
 }
 
@@ -389,14 +400,18 @@
 .project {
   position: relative;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  /* the screen gets the larger share: the photos no longer take the right margin */
+  grid-template-columns: 1.35fr 1fr;
   align-items: center;
-  gap: 64px;
+  gap: 56px;
   min-height: 100vh;
   min-height: 100svh;
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 96px 56px 64px 72px;
+  /* full width, with the content kept between the trace and a matching right margin */
+  padding: 96px max(56px, calc(50% - 620px + 40px)) 64px calc(var(--trace-x) + 64px);
+}
+
+.project--reversed {
+  grid-template-columns: 1fr 1.35fr;
 }
 
 .project--reversed .project__media {
