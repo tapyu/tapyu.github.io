@@ -62,6 +62,15 @@
     [#education.university.full (#education.university.initials)],
     education.location
   ))
+  if education.keys().contains("cotutelle") {
+    let cot = education.cotutelle
+    cv_entry((
+      [*#cot.initials* em #cot.course (cotutela)],
+      [#cot.start\-#cot.end],
+      [#cot.university.full (#cot.university.initials)],
+      cot.location
+    ), left-space: 3fr, right-space: 1fr)
+  }
 }
 
 #let add_experience(experience) = {
@@ -88,10 +97,13 @@
   ]
 }
 
+#let advisors_text(advisors) = advisors.map(a => [Prof. Dr. #a]).join([ e ])
+
 // In this Portuguese version, works written in English are flagged instead.
-#let add_thesis(edu) = [
-  #edu.thesis.kind em #edu.course. "#if edu.thesis.keys().contains("url") {link(edu.thesis.url)[#edu.thesis.title]} else {edu.thesis.title}"#if not edu.thesis.is_pt [ (em inglês)]. Orientado por #for (index, advisor) in edu.thesis.advisors.enumerate() {if index==0 and edu.thesis.advisors.len()==2 [Prof. Dr. #advisor e ] else [Prof. Dr. #advisor]}.
-]
+#let add_thesis(edu) = {
+  let cot = edu.at("cotutelle", default: none)
+  [#edu.thesis.kind em #edu.course#if cot != none [ (#edu.university.initials) e #cot.course (#cot.university.initials), em regime de cotutela]. "#if edu.thesis.keys().contains("url") {link(edu.thesis.url)[#edu.thesis.title]} else {edu.thesis.title}"#if not edu.thesis.is_pt [ (em inglês)]. Orientado por #advisors_text(edu.thesis.advisors)#if cot != none [ (#edu.university.initials) e por #advisors_text(cot.advisors) (#cot.university.initials)].]
+}
 
 #let add_journal_article(article) = {
   for (index, author) in article.authors.enumerate() {
@@ -117,6 +129,8 @@
   ]
   if article.keys().contains("start-page") and article.keys().contains("end-page") [
     p. #article.start-page\-#article.end-page,
+  ] else if article.keys().contains("start-page") [
+    p. #article.start-page,
   ]
   if article.keys().contains("year") [
     #article.year.
@@ -141,6 +155,8 @@
   ]
   if article.keys().contains("start-page") and article.keys().contains("end-page") [
     p. #article.start-page\-#article.end-page,
+  ] else if article.keys().contains("start-page") [
+    p. #article.start-page,
   ]
   if article.keys().contains("year") [
     #article.year.
@@ -163,6 +179,8 @@
   [Capítulo #article.chapter em #article.book,]
   if article.keys().contains("start-page") and article.keys().contains("end-page") [
     p. #article.start-page\-#article.end-page,
+  ] else if article.keys().contains("start-page") [
+    p. #article.start-page,
   ]
   if article.keys().contains("year") [
     #article.year.
