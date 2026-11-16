@@ -331,13 +331,27 @@
     margin-bottom: 32px;
   }
 
-  .curtain .taped-photo {
-    width: 140px;
-  }
-
   .taped-photo__legend {
     font-size: 1rem;
   }
+
+  /* On a tall phone screen the board is scaled to the height, so the chip (pins included)
+     spans 37.6vh–61.4vh: two small photos above it, below the tabs, and one below it. */
+  /* shorter phones get smaller photos, so the portrait one still clears the chip */
+  .curtain .taped-photo {
+    width: clamp(84px, 14vh, 112px);
+    padding: 6px 6px 0;
+  }
+
+  .curtain .taped-photo__legend {
+    margin: -10px auto -12px;
+    padding: 4px 8px 2px;
+    font-size: 0.8rem;
+  }
+
+  .curtain .taped-photo--top-left { top: min(88px, 11.5vh); left: 5vw; }
+  .curtain .taped-photo--top-right { top: min(100px, 13vh); right: 5vw; }
+  .curtain .taped-photo--bottom-right { top: calc(61.4vh + 20px); bottom: auto; right: 9vw; }
 }
 
 /* ---------- Projects ---------- */
