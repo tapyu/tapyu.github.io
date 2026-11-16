@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <!-- the page is already dark: keep dark-mode extensions (Dark Reader) from recolouring the letters -->
+  <meta name="darkreader-lock">
+  <title>Recommendation Letters · Rubem Vasconcelos Pacelli</title>
+  <meta name="description" content="Recommendation letters for Rubem Vasconcelos Pacelli.">
+  <link rel="icon" href="assets/img/avatar.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=10">
+  <link rel="stylesheet" href="assets/css/portfolio.css?v=8">
+  <link rel="stylesheet" href="assets/css/letters.css?v=2">
+</head>
+<body class="portfolio-page letters-page">
+  <nav class="site-nav" aria-label="Main">
+    <ul class="site-nav__tabs">
+      <li><a class="site-nav__tab" href="./">Links</a></li>
+      <li><a class="site-nav__tab" href="portfolio.html">Portfolio</a></li>
+      <li><a class="site-nav__tab" href="cv.html"><span class="site-nav__label-long">Curriculum<br>Vitae</span><span class="site-nav__label-short">CV</span></a></li>
+      <li><a class="site-nav__tab" href="letters.html" aria-current="page"><span class="site-nav__label-long">Recommendation<br>Letters</span><span class="site-nav__label-short">Letters</span></a></li>
+    </ul>
+  </nav>
+
+  <nav class="led-nav" aria-label="Letters">
+    <ul class="led-nav__list"></ul>
+  </nav>
+
+  <main>
+    <h1 class="visually-hidden">Recommendation Letters</h1>
+
+    <!-- Each <article class="letter"> is one full-screen snap panel:
+         a profile "screen" on one side and the letter PDF (rendered by assets/js/letters.js) on the other.
+         Swap .letter-profile__avatar's placeholder for an <img> when a photo is available. -->
+    <section class="projects letters" id="letters">
+      <div class="projects__trace" aria-hidden="true"><div class="projects__trace-fill"></div></div>
+
+      <article class="letter" id="letter-sanz" data-section data-section-label="Jaume Sanz Subirana" data-pdf="letters/jaume-sanz.pdf">
+        <span class="project__via" aria-hidden="true"></span>
+        <div class="letter__profile">
+          <p class="project__index">Letter 01 / 02</p>
+          <div class="project__screen letter__screen">
+            <div class="project__placeholder letter-profile">
+              <div class="letter-profile__avatar" aria-hidden="true">
+                <svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="24" r="12"/><path d="M10 58c2-13 11-20 22-20s20 7 22 20z"/></svg>
+              </div>
+              <span class="letter-profile__caption">Profile photo placeholder</span>
+            </div>
+          </div>
+          <h2 class="project__title letter__name">Prof. Dr. Jaume Sanz Subirana</h2>
+          <p class="project__tagline">Tenured Full Professor, Universitat Politècnica de Catalunya (UPC) · Co-Head of gAGE</p>
+          <p class="project__description">Taught me satellite navigation during my cotutelle PhD at UPC, where I joined the gAGE research environment working on the GNSS receiver signal processing chain.</p>
+          <p class="letter__date">Barcelona, 13 May 2026</p>
+          <div class="project__links">
+            <a class="project__link" href="letters/jaume-sanz.pdf" target="_blank" rel="noopener">Open PDF</a>
+            <a class="project__link" href="letters/jaume-sanz.pdf" download="Recommendation-Letter-Sanz.pdf">Download</a>
+          </div>
+        </div>
+        <div class="letter__viewer" tabindex="0" aria-label="Recommendation letter from Jaume Sanz Subirana">
+          <p class="letter__status">Loading the letter…</p>
+        </div>
+      </article>
+
+      <article class="letter letter--reversed" id="letter-lucena" data-section data-section-label="Antonio Macilio Pereira de Lucena" data-pdf="letters/macilio-lucena.pdf">
+        <span class="project__via" aria-hidden="true"></span>
+        <div class="letter__profile">
+          <p class="project__index">Letter 02 / 02</p>
+          <div class="project__screen letter__screen">
+            <div class="project__placeholder letter-profile">
+              <div class="letter-profile__avatar" aria-hidden="true">
+                <svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="24" r="12"/><path d="M10 58c2-13 11-20 22-20s20 7 22 20z"/></svg>
+              </div>
+              <span class="letter-profile__caption">Profile photo placeholder</span>
+            </div>
+          </div>
+          <h2 class="project__title letter__name">Dr. Antonio Macilio Pereira de Lucena</h2>
+          <p class="project__tagline">Retired researcher, National Institute for Space Research (INPE)</p>
+          <p class="project__description">Supervised my undergraduate research at UNIFOR from Aug 2015 to Jul 2018, on multicarrier synchronization, OFDM and digital modems for satellite communications.</p>
+          <p class="letter__date">Fortaleza, 12 May 2026</p>
+          <div class="project__links">
+            <a class="project__link" href="letters/macilio-lucena.pdf" target="_blank" rel="noopener">Open PDF</a>
+            <a class="project__link" href="letters/macilio-lucena.pdf" download="Recommendation-Letter-Lucena.pdf">Download</a>
+          </div>
+        </div>
+        <div class="letter__viewer" tabindex="0" aria-label="Recommendation letter from Antonio Macilio Pereira de Lucena">
+          <p class="letter__status">Loading the letter…</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/letters.js?v=1"></script>
+</body>
+</html>

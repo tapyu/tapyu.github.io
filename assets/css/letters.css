@@ -1,0 +1,184 @@
+/* Recommendation letters: the portfolio's PCB panels without the workbench and curtain. */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* No curtain above: the grid starts at the top and needs no fade-in mask. */
+.letters-page .projects {
+  margin-top: 0;
+}
+
+.letters-page .projects::before {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.letters-page .projects__trace {
+  top: 0;
+}
+
+/* ---------- One letter = one snap panel ---------- */
+
+.letter {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 56px;
+  min-height: 100vh;
+  min-height: 100svh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 56px 48px 72px;
+}
+
+.letter--reversed {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.letter--reversed .letter__profile {
+  order: 2;
+}
+
+.letter__screen {
+  max-width: 420px;
+}
+
+.letter__name {
+  margin-top: 24px;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+}
+
+.letter__date {
+  margin: 12px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-copper);
+}
+
+/* Profile placeholder shown on the scope-style screen */
+.letter-profile {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.letter-profile__avatar {
+  display: grid;
+  place-items: center;
+  width: 38%;
+  aspect-ratio: 1;
+  border: 2px dashed rgba(57, 255, 136, 0.7);
+  border-radius: 50%;
+  background: rgba(57, 255, 136, 0.06);
+}
+
+.letter-profile__avatar svg {
+  width: 62%;
+  height: auto;
+  fill: rgba(57, 255, 136, 0.55);
+}
+
+.letter-profile__avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.letter-profile__caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ---------- Scrollable PDF viewer ---------- */
+
+.letter__viewer {
+  min-height: 240px;
+  max-height: min(80vh, 820px);
+  max-height: min(80svh, 820px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 14px;
+  border-radius: 16px;
+  background: #232a33;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), inset 0 0 0 2px #3a4352;
+  scrollbar-color: var(--color-copper) transparent;
+}
+
+.letter__viewer:focus-visible {
+  outline: 2px solid var(--color-led);
+  outline-offset: 4px;
+}
+
+.letter__page {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.letter__page + .letter__page {
+  margin-top: 14px;
+}
+
+.letter__page-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.letter__page-link {
+  position: absolute;
+}
+
+.letter__status {
+  margin: 0;
+  padding: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.letter__frame {
+  display: block;
+  width: 100%;
+  height: min(76vh, 800px);
+  border: 0;
+  border-radius: 4px;
+  background: #fff;
+}
+
+/* ---------- Tablets and phones: profile on top, letter below ---------- */
+
+@media (max-width: 900px) {
+  .letter {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 96px 20px 56px 52px;
+  }
+
+  .letter--reversed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .letter--reversed .letter__profile {
+    order: 0;
+  }
+
+  .letter__screen {
+    max-width: 260px;
+  }
+
+  .letter__viewer {
+    max-height: 75vh;
+    max-height: 75svh;
+    padding: 8px;
+  }
+}
