@@ -525,6 +525,27 @@ a {
   }
 }
 
+/* ---------- Bio page ---------- */
+
+.bio {
+  margin-top: 36px;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  text-align: justify;
+  hyphens: auto;
+  animation: rise-in 400ms var(--ease-out) 80ms backwards;
+}
+
+.bio p {
+  margin: 0 0 1.1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio {
+    animation-name: fade-in;
+  }
+}
+
 /* ---------- CV page ---------- */
 
 .cv {
