@@ -134,8 +134,8 @@ a {
 }
 
 .profile__avatar {
-  width: 104px;
-  height: 104px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   object-fit: cover;
   outline: 2px solid rgba(201, 162, 74, 0.85);
